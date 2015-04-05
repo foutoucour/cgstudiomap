@@ -48,3 +48,32 @@ class ResPartner(models.Model):
     # Should be used in couple with context
     is_portal_user = fields.Boolean(default=True)
 
+    @api.one
+    def _is_favorite(self):
+        """Check to know if the res.partner is a favorite of the user."""
+        self.favorite = self.env['res.users'].browse(self._uid) in self.favorite_ids
+
+    @api.one
+    def _set_favorite(self):
+        """Set or unset the res.partner as a favorite of the user.
+
+        Check the statuts of favorite field to know if the user wants to
+        set or unset the record as partner. It adds or remove the user
+        from favorite_ids according to the setting.
+        """
+        user = self.env['res.users'].browse(self._uid)
+        if self.favorite:
+            code = 4
+        else:
+            code = 3
+        return self.write({'favorite_ids': [(code, user.id)]})
+
+    # List of users that favorited the res.partner.
+    favorite_ids = fields.Many2many('res.users', string='favorited by')
+    # To note if a company is a favorite of the user.
+    # The field is set dynamically. It exists only to help the user experience.
+    favorite = fields.Boolean(
+        'Favorite', default=False, inverse=_set_favorite, compute=_is_favorite,
+        help='Set the company as one of your favorites.'
+    )
+
