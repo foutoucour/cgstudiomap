@@ -58,6 +58,27 @@
                   parent="portal_user.portal_listing"
                   groups="base.group_portal"/>
 
+        <record id="action_portal_favorite_companies" model="ir.actions.act_window">
+            <field name="name">favorite</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,form,tree,geoengine</field>
+            <field name="domain">[('is_company','=', True), ('favorite', '=', True)]</field>
+            <field name="context" eval="{'is_portal':True}"/>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a contact in your address book.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_portal_favorite_companies"
+                  action="action_portal_favorite_companies"
+                  parent="portal_user.portal_listing"
+                  groups="base.group_portal"/>
+        
         <record id="action_portal_dead_companies" model="ir.actions.act_window">
             <field name="name">Inactive</field>
             <field name="type">ir.actions.act_window</field>

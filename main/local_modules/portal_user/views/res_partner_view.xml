@@ -11,6 +11,13 @@
                     <field name="is_portal_user" invisible="1"/>
                     <!--<field name="is_portal_user"/>-->
                 </field>
+                <label for="street" position="before">
+                        <field name="favorite"
+                               attrs="{'invisible': [('is_portal_user', '!=', context.get('is_portal', False))]}"/>
+                        <field name="favorite_ids"
+                               attrs="{'invisible': [('is_portal_user', '=', context.get('is_portal', False))]}"
+                               widget="many2many_tags"/>
+                </label>
                 <field name="email" position="replace">
                     <field name="email" placeholder="e.g. cgstudiomap@gmail.com"/>
                 </field>
