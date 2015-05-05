@@ -62,7 +62,7 @@
 					<meta name="twitter:title" content="Where cg is"/>
 					<meta name="twitter:description" content="Premier directory of Computer Graphics Industry."/>
 					<meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg"/>
-					
+
 					<link rel="apple-touch-icon" sizes="57x57" href="/main_data/static/src/fav/apple-touch-icon-57x57.png"/>
 					<link rel="apple-touch-icon" sizes="60x60" href="/main_data/static/src/fav/apple-touch-icon-60x60.png"/>
 					<link rel="apple-touch-icon" sizes="72x72" href="/main_data/static/src/fav/apple-touch-icon-72x72.png"/>
@@ -84,8 +84,7 @@
 					<meta name="msapplication-config" content="/main_data/static/src/fav/browserconfig.xml"/>
 					<meta name="theme-color" content="#ffffff"/>
 
-                    <title t-value="website.website_name"/>
-
+                    <title>cgstudiomap</title>
 
 					<t t-set="languages" t-value="website.get_languages() if website else None"/>
 					<t t-if="request and request.website_multilang and website">
