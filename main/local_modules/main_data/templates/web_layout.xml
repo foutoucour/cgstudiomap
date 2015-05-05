@@ -23,11 +23,11 @@
                 <link rel="icon" type="image/png" href="/main_data/static/src/fav/android-chrome-192x192.png" sizes="192x192"/>
                 <link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-16x16.png" sizes="16x16"/>
                 <link rel="manifest" href="/main_data/static/src/fav/manifest.json"/>
-                <link rel="shortcut icon" href="/main_data/static/src/fav/favicon.ico">
-                <meta name="msapplication-TileColor" content="#ffffff">
-                <meta name="msapplication-TileImage" content="/main_data/static/src/fav/mstile-144x144.png">
-                <meta name="msapplication-config" content="/main_data/static/src/fav/browserconfig.xml">
-                <meta name="theme-color" content="#ffffff">
+                <link rel="shortcut icon" href="/main_data/static/src/fav/favicon.ico"/>
+                <meta name="msapplication-TileColor" content="#ffffff"/>
+                <meta name="msapplication-TileImage" content="/main_data/static/src/fav/mstile-144x144.png"/>
+                <meta name="msapplication-config" content="/main_data/static/src/fav/browserconfig.xml"/>
+                <meta name="theme-color" content="#ffffff"/>
             </xpath>
         </template>
 
@@ -46,7 +46,7 @@
 						<t t-set="title"><t t-if="additional_title"><t t-raw="additional_title"/> | </t><t t-esc="(website or res_company).name"/></t>
 					</t>
 					
-					<meta http-equiv="X-UA-Compatible" content="IE=edge">
+					<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 					<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 					
 					<meta name="description" t-att-content="main_object and 'website_meta_description' in main_object
@@ -57,33 +57,33 @@
 					
 					<link rel="canonical" href="http://cgstudiomap.org/" />
 						
-					<meta name="twitter:card" content="summary_large_image">
-					<meta name="twitter:site" content="@CGStudioMap">
-					<meta name="twitter:title" content="Where cg is">
-					<meta name="twitter:description" content="Premier directory of Computer Graphics Industry.">
-					<meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg">
+					<meta name="twitter:card" content="summary_large_image"/>
+					<meta name="twitter:site" content="@CGStudioMap"/>
+					<meta name="twitter:title" content="Where cg is"/>
+					<meta name="twitter:description" content="Premier directory of Computer Graphics Industry."/>
+					<meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg"/>
 					
-					<link rel="apple-touch-icon" sizes="57x57" href="/main_data/static/src/fav/apple-touch-icon-57x57.png">
-					<link rel="apple-touch-icon" sizes="60x60" href="/main_data/static/src/fav/apple-touch-icon-60x60.png">
-					<link rel="apple-touch-icon" sizes="72x72" href="/main_data/static/src/fav/apple-touch-icon-72x72.png">
-					<link rel="apple-touch-icon" sizes="76x76" href="/main_data/static/src/fav/apple-touch-icon-76x76.png">
-					<link rel="apple-touch-icon" sizes="114x114" href="/main_data/static/src/fav/apple-touch-icon-114x114.png">
-					<link rel="apple-touch-icon" sizes="120x120" href="/main_data/static/src/fav/apple-touch-icon-120x120.png">
-					<link rel="apple-touch-icon" sizes="144x144" href="/main_data/static/src/fav/apple-touch-icon-144x144.png">
-					<link rel="apple-touch-icon" sizes="152x152" href="/main_data/static/src/fav/apple-touch-icon-152x152.png">
-					<link rel="apple-touch-icon" sizes="180x180" href="/main_data/static/src/fav/apple-touch-icon-180x180.png">
-					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-32x32.png" sizes="32x32">
-					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-194x194.png" sizes="194x194">
-					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-96x96.png" sizes="96x96">
-					<link rel="icon" type="image/png" href="/main_data/static/src/fav/android-chrome-192x192.png" sizes="192x192">
-					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-16x16.png" sizes="16x16">
-					<link rel="manifest" href="/main_data/static/src/fav/manifest.json">
-					<link rel="shortcut icon" href="/main_data/static/src/fav/favicon.ico">
-					<meta name="msapplication-TileColor" content="#ffffff">
-					<meta name="msapplication-TileImage" content="/main_data/static/src/fav/mstile-144x144.png">
-					<meta name="msapplication-config" content="/main_data/static/src/fav/browserconfig.xml">
-					<meta name="theme-color" content="#ffffff">
-					<title><t t-esc="title"/></title>
+					<link rel="apple-touch-icon" sizes="57x57" href="/main_data/static/src/fav/apple-touch-icon-57x57.png"/>
+					<link rel="apple-touch-icon" sizes="60x60" href="/main_data/static/src/fav/apple-touch-icon-60x60.png"/>
+					<link rel="apple-touch-icon" sizes="72x72" href="/main_data/static/src/fav/apple-touch-icon-72x72.png"/>
+					<link rel="apple-touch-icon" sizes="76x76" href="/main_data/static/src/fav/apple-touch-icon-76x76.png"/>
+					<link rel="apple-touch-icon" sizes="114x114" href="/main_data/static/src/fav/apple-touch-icon-114x114.png"/>
+					<link rel="apple-touch-icon" sizes="120x120" href="/main_data/static/src/fav/apple-touch-icon-120x120.png"/>
+					<link rel="apple-touch-icon" sizes="144x144" href="/main_data/static/src/fav/apple-touch-icon-144x144.png"/>
+					<link rel="apple-touch-icon" sizes="152x152" href="/main_data/static/src/fav/apple-touch-icon-152x152.png"/>
+					<link rel="apple-touch-icon" sizes="180x180" href="/main_data/static/src/fav/apple-touch-icon-180x180.png"/>
+					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-32x32.png" sizes="32x32"/>
+					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-194x194.png" sizes="194x194"/>
+					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-96x96.png" sizes="96x96"/>
+					<link rel="icon" type="image/png" href="/main_data/static/src/fav/android-chrome-192x192.png" sizes="192x192"/>
+					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-16x16.png" sizes="16x16"/>
+					<link rel="manifest" href="/main_data/static/src/fav/manifest.json"/>
+					<link rel="shortcut icon" href="/main_data/static/src/fav/favicon.ico"/>
+					<meta name="msapplication-TileColor" content="#ffffff"/>
+					<meta name="msapplication-TileImage" content="/main_data/static/src/fav/mstile-144x144.png"/>
+					<meta name="msapplication-config" content="/main_data/static/src/fav/browserconfig.xml"/>
+					<meta name="theme-color" content="#ffffff"/>
+					<title>cgstudiomap</title>
 						
 
 					<t t-set="languages" t-value="website.get_languages() if website else None"/>
