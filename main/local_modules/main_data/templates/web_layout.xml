@@ -2,6 +2,7 @@
 <!-- vim:fdn=3:
 -->
 <openerp>
+
 <data>
 	<template id='web_layout' inherit_id="web.layout" name="cgstudiomap: Web layout">
 		<xpath expr="//title" position="replace">
@@ -95,6 +96,96 @@
 				<t t-if="request and request.website_multilang and website">
 					<t t-foreach="website.get_alternate_languages(request.httprequest)" t-as="lang">
 						<link rel="alternate" t-att-hreflang="lang['hreflang']" t-att-href="lang['href']" />
+    <data>
+        <template id='web_layout' inherit_id="web.layout" name="cgstudiomap: Web layout">
+            <xpath expr="//title" position="replace">
+                <title>cgstudiomap</title>
+            </xpath>
+            <xpath expr='//link[@rel="shortcut icon"]' position="replace">
+                <link rel="apple-touch-icon" sizes="57x57" href="/main_data/static/src/fav/apple-touch-icon-57x57.png"/>
+                <link rel="apple-touch-icon" sizes="60x60" href="/main_data/static/src/fav/apple-touch-icon-60x60.png"/>
+                <link rel="apple-touch-icon" sizes="72x72" href="/main_data/static/src/fav/apple-touch-icon-72x72.png"/>
+                <link rel="apple-touch-icon" sizes="76x76" href="/main_data/static/src/fav/apple-touch-icon-76x76.png"/>
+                <link rel="apple-touch-icon" sizes="114x114" href="/main_data/static/src/fav/apple-touch-icon-114x114.png"/>
+                <link rel="apple-touch-icon" sizes="120x120" href="/main_data/static/src/fav/apple-touch-icon-120x120.png"/>
+                <link rel="apple-touch-icon" sizes="144x144" href="/main_data/static/src/fav/apple-touch-icon-144x144.png"/>
+                <link rel="apple-touch-icon" sizes="152x152" href="/main_data/static/src/fav/apple-touch-icon-152x152.png"/>
+                <link rel="apple-touch-icon" sizes="180x180" href="/main_data/static/src/fav/apple-touch-icon-180x180.png"/>
+                <link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-32x32.png" sizes="32x32"/>
+                <link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-194x194.png" sizes="194x194"/>
+                <link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-96x96.png" sizes="96x96"/>
+                <link rel="icon" type="image/png" href="/main_data/static/src/fav/android-chrome-192x192.png" sizes="192x192"/>
+                <link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-16x16.png" sizes="16x16"/>
+                <link rel="manifest" href="/main_data/static/src/fav/manifest.json"/>
+                <link rel="shortcut icon" href="/main_data/static/src/fav/favicon.ico"/>
+                <meta name="msapplication-TileColor" content="#ffffff"/>
+                <meta name="msapplication-TileImage" content="/main_data/static/src/fav/mstile-144x144.png"/>
+                <meta name="msapplication-config" content="/main_data/static/src/fav/browserconfig.xml"/>
+                <meta name="theme-color" content="#ffffff"/>
+            </xpath>
+        </template>
+
+        <template id='website_layout' inherit_id="website.layout" name="cgstudiomap: Website layout">
+            <xpath expr='//head' position="replace">
+				
+				<head>
+					<meta charset="utf-8" />
+					<t t-if="main_object and 'website_meta_title' in main_object and not title">
+						<t t-set="title" t-value="main_object.website_meta_title"/>
+					</t>
+					<t t-if="main_object and 'name' in main_object and not title and not additional_title">
+						<t t-set="additional_title" t-value="main_object.name"/>
+					</t>
+					<t t-if="not title">
+						<t t-set="title"><t t-if="additional_title"><t t-raw="additional_title"/> | </t><t t-esc="(website or res_company).name"/></t>
+					</t>
+					
+					<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+					<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+					
+					<meta name="description" t-att-content="main_object and 'website_meta_description' in main_object
+						and main_object.website_meta_description or website_meta_description"/>
+					<meta name="keywords" t-att-content="main_object and 'website_meta_keywords' in main_object
+						and main_object.website_meta_keywords or website_meta_keywords"/>
+					<meta name="generator" content="Odoo"/>
+					
+					<link rel="canonical" href="http://cgstudiomap.org/" />
+						
+					<meta name="twitter:card" content="summary_large_image"/>
+					<meta name="twitter:site" content="@CGStudioMap"/>
+					<meta name="twitter:title" content="Where cg is"/>
+					<meta name="twitter:description" content="Premier directory of Computer Graphics Industry."/>
+					<meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg"/>
+					
+					<link rel="apple-touch-icon" sizes="57x57" href="/main_data/static/src/fav/apple-touch-icon-57x57.png"/>
+					<link rel="apple-touch-icon" sizes="60x60" href="/main_data/static/src/fav/apple-touch-icon-60x60.png"/>
+					<link rel="apple-touch-icon" sizes="72x72" href="/main_data/static/src/fav/apple-touch-icon-72x72.png"/>
+					<link rel="apple-touch-icon" sizes="76x76" href="/main_data/static/src/fav/apple-touch-icon-76x76.png"/>
+					<link rel="apple-touch-icon" sizes="114x114" href="/main_data/static/src/fav/apple-touch-icon-114x114.png"/>
+					<link rel="apple-touch-icon" sizes="120x120" href="/main_data/static/src/fav/apple-touch-icon-120x120.png"/>
+					<link rel="apple-touch-icon" sizes="144x144" href="/main_data/static/src/fav/apple-touch-icon-144x144.png"/>
+					<link rel="apple-touch-icon" sizes="152x152" href="/main_data/static/src/fav/apple-touch-icon-152x152.png"/>
+					<link rel="apple-touch-icon" sizes="180x180" href="/main_data/static/src/fav/apple-touch-icon-180x180.png"/>
+					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-32x32.png" sizes="32x32"/>
+					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-194x194.png" sizes="194x194"/>
+					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-96x96.png" sizes="96x96"/>
+					<link rel="icon" type="image/png" href="/main_data/static/src/fav/android-chrome-192x192.png" sizes="192x192"/>
+					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-16x16.png" sizes="16x16"/>
+					<link rel="manifest" href="/main_data/static/src/fav/manifest.json"/>
+					<link rel="shortcut icon" href="/main_data/static/src/fav/favicon.ico"/>
+					<meta name="msapplication-TileColor" content="#ffffff"/>
+					<meta name="msapplication-TileImage" content="/main_data/static/src/fav/mstile-144x144.png"/>
+					<meta name="msapplication-config" content="/main_data/static/src/fav/browserconfig.xml"/>
+					<meta name="theme-color" content="#ffffff"/>
+					<title>cgstudiomap</title>
+						
+
+					<t t-set="languages" t-value="website.get_languages() if website else None"/>
+					<t t-if="request and request.website_multilang and website">
+						<t t-foreach="website.get_alternate_languages(request.httprequest)" t-as="lang">
+							<link rel="alternate" t-att-hreflang="lang['hreflang']" t-att-href="lang['href']"/>
+						</t>
+
 					</t>
 				</t>
 
