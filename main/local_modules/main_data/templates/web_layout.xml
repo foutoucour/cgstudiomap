@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- vim:fdn=3:
 -->
 <openerp>
+<<<<<<< HEAD
     <data>
         <template id='web_layout' inherit_id="web.layout" name="cgstudiomap: Web layout">
             <xpath expr="//title" position="replace">
@@ -91,14 +92,80 @@
 						<t t-foreach="website.get_alternate_languages(request.httprequest)" t-as="lang">
 							<link rel="alternate" t-att-hreflang="lang['hreflang']" t-att-href="lang['href']"/>
 						</t>
-					</t>
+				</t>
 
-					<t t-call-assets="web.assets_common" t-js="false"/>
-					<t t-call-assets="website.assets_frontend" t-js="false"/>
+				<t t-call-assets="web.assets_common" t-js="false" />
+				<t t-call-assets="website.assets_frontend" t-js="false" />
 
-					<t t-raw="head or ''" name='layout_head'/>
-				</head>
-            </xpath>
+				<t t-raw="head or ''" name='layout_head' />
+
+			</head>
+		</xpath>
+		<xpath expr='//body' position="replace"><xpath expr='//body' position="replace">
+			<body>
+                <div id="wrapwrap" style="hidden"/>
+				<header>
+					<div class="navbar-wrapper">
+					<div class="container">
+                    <nav class="navbar navbar-default navbar-static-top">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="/" t-field="res_company.name"/>
+                            </div>
+                            <div class="collapse navbar-collapse navbar-top-collapse">
+                                <ul class="nav navbar-nav navbar-left" id="top_menu">
+                                    <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                        <t t-call="website.submenu"/>
+                                    </t>
+                                    <li class="divider" t-ignore="true" t-if="website.user_id != user_id"/>
+                                    <li class="dropdown" t-ignore="true" t-if="website.user_id != user_id">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <b>
+                                                <span t-esc="user_id.name"/>
+                                                <span class="caret"></span>
+                                            </b>
+                                        </a>
+                                        <ul class="dropdown-menu js_usermenu" role="menu">
+                                            <li><a href="/web" role="menuitem">My Account</a></li>
+                                            <li class="divider"/>
+                                            <li><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+					</nav>
+                    </div>
+					</div>
+                </header>
+
+                <main>
+                    <t t-raw="0"/>
+                </main>
+                <footer>
+                    <div id="footer_container">
+                    </div>
+                </footer>
+
+				<t t-call-assets="web.assets_common" t-css="false"/>
+				<t t-call-assets="website.assets_frontend" t-css="false"/>
+				<script t-if="website and website.google_analytics_key">
+					(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+					})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+					ga('create', _.str.trim('<t t-esc="website.google_analytics_key"/>'), 'auto');
+					ga('send','pageview');
+				</script>
+			</body>
+		</xpath>
         </template>
 
 
@@ -186,3 +253,20 @@
         </template>
     </data>
 </openerp>
+||||||| merged common ancestors
+					<t t-raw="head or ''" name='layout_head'/>
+				</head>
+            </xpath>
+        </template>
+    </data>
+</openerp>
+=======
+					ga('create', _.str.trim('<t t-esc="website.google_analytics_key"/>'), 'auto');
+					ga('send', 'pageview');
+				</script>
+			</body>
+		</xpath>
+	</template>
+</data>
+</openerp>
+>>>>>>> update web layout
