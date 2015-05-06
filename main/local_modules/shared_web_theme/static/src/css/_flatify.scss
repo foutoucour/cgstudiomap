@@ -1,0 +1,30 @@
+html {
+  font-family: sans-serif !important;
+  -ms-text-size-adjust: 100% !important;
+  -webkit-text-size-adjust: 100% !important;
+}
+
+* {
+  border: 0;
+}
+
+* {
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+* {
+  moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+a:active,
+a:hover {
+  outline: 0 !important;
+}
+
+img {
+  border: 0 !important;
+}

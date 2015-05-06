@@ -14,7 +14,11 @@ pip-log.txt
 pip-delete-this-directory.txt
 *.log
 
+# specific files
+# pycharm
 .idea
+# macos
+.DS_Store
 
 # Backup files
 *~

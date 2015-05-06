@@ -1,0 +1,295 @@
+body {
+	overflow: hidden;
+}
+
+
+/* CUSTOMIZE HOME MAP
+-------------------------------------------------- */
+#geochart_div {
+	width: 100%;
+	height: 750px;
+	text-align: center;
+	margin: 0 auto;
+	padding: 0;
+}
+
+@media (max-width: 767px){
+	#geochart_div {
+		height: 350px;
+	}
+}
+
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper > .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+.navbar-wrapper .navbar {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.navbar-wrapper .navbar .container {
+  width: auto;
+}
+
+
+
+.btn-primary {
+  background-color: $c-cg;
+  border-color: $c-cg-80opa;
+  &:hover {
+    background-color: $c-cg-80opa;
+    border-color: $c-cg-80opa;
+  }
+}
+
+.openerp {
+  img {
+    border-radius: 0;
+  }
+  button {
+    @extend .btn;
+    @extend .btn-default;
+
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+    outline: none;
+
+    &:hover {
+      box-shadow: none;
+      text-shadow: none;
+      outline: none;
+      background-image: none;
+    }
+
+    &.oe_highlight {
+      @extend .btn-primary;
+      background-image: none;
+      box-shadow: none;
+      text-shadow: none;
+      outline: none;
+      &:hover {
+        box-shadow: none;
+        text-shadow: none;
+        outline: none;
+        background-image: none;
+      }
+    }
+    &.oe_form_button {
+      padding: 2px 12px 2px 12px;
+    }
+  }
+  .oe_button {
+    @extend button;
+    &:hover {
+      @extend button:hover;
+    }
+  }
+  .oe_view_manager_current > .oe_view_manager_header,
+  ul.oe_form_status li,
+  ul.oe_form_status li.oe_active,
+  .oe_form header {
+    background-image: none;
+  }
+  ul.oe_form_status li.oe_active > .arrow span {
+    background: $c-cg none;
+  }
+  ul.oe_form_status li > .arrow span {
+    background: $c-cg none;
+  }
+  .oe_secondary_menu_section {
+    color: $menu_section;
+  }
+
+  .oe_form .oe_form_required {
+    select:not([disabled]):not([readonly]),
+    textarea:not([disabled]):not([readonly]),
+    input:not([disabled]):not([readonly]) {
+      background-color: $form_required !important;
+      color: $form_required_text;
+    }
+  }
+
+  .oe_application {
+
+    .oe_breadcrumb_title > * {
+      color: $breadcrumb_title;
+    }
+    .oe_breadcrumb_item:not(:last-child) {
+      color: $breadcrumb_item;
+    }
+    a {
+      color: $c-txt-link;
+    }
+    .oe_form_sheetbg {
+      background: none;
+    }
+  }
+  .nav-pills > li.active a {
+    background-color: $nav_pills;
+    color: $nav_pills_text;
+    &:hover, &:focus {
+      background-color: $nav_pills_hover;
+      color: $nav_pills_text_hover;
+    }
+    .badge {
+      background-color: $active_badge_background_color;
+    }
+  }
+  .oe_stat_button {
+    color: $stat_button;
+    .stat_button_icon {
+      color: $stat_button;
+    }
+    &:hover {
+      color: $stat_button_text_hover;
+      background-color: $stat_button_hover;
+      & .fa {
+        color: $stat_button_fa_hover;
+      }
+    }
+  }
+  .badge {
+    color: $badge_color;
+    background-color: $badge_backgroung_color;
+  }
+  .oe_leftbar > div a.oe_logo {
+    background-color: $c-bg-logo;
+  }
+  .oe_searchview {
+    border-radius: 0;
+    border-color: $c-studios;
+
+    .oe_focused {
+      border-color: $c-studios;
+    }
+  }
+
+  //  oe_tag manage the tags associated to the record.
+  //  A good example for them is the industries ot the categories
+  //  of companies.
+  .oe_tag {
+    border-radius: 0;
+    border-color: $c-studios;
+    background-color: $c-bg-light;
+  }
+  .oe_tag_dark {
+    background-color: $tag_dark;
+  }
+  .oe_searchview .oe_searchview_facets .oe_searchview_facet .oe_facet_values {
+    background-color: $search_facet;
+  }
+  .oe_searchview .oe-autocomplete ul li.oe-selection-focus {
+    background-color: $c-cg !important;
+  }
+  .oe_horizontal_separator {
+    color: $c-map;
+  }
+}
+
+.oe_single_form_container {
+  padding: 10px;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  margin-left: -200px;
+}
+
+.navbar-static-top {
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+}
+.navbar-static-top {
+  z-index: 1000;
+  border-width: 0 0 0;
+}
+
+html {
+  //  background: url(../../form_sheetbg.png) repeat scroll 0% 0% transparent;
+}
+
+body {
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0);
+}
+
+footer {
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
+  padding: 10px;
+}
+
+.modal-content {
+  box-shadow: none;
+}
+
+a {
+  color: $c-txt-link;
+  &:hover, &:focus {
+    color: $c-txt-link;
+  }
+}
+
+.btn-link {
+  color: $c-txt-link;
+}
+
+.bg-logo-color {
+  background-color: $c-bg-logo;
+}
+
+// Design of the map_info overlay
+//@import "_map_info";
+#map_infobox {
+  bottom: -13px;
+  left: 17px;
+  width: 250px;
+  height: 150px;
+  background-color: $c-bg-light;
+}
+
+.map_overlay {
+  padding: 0;
+  border: 1px solid $c-map;
+}
+
+#map_info {
+  height: auto;
+  padding: 0;
+}
+
+#map_info_header {
+  background-color: $c-map;
+  color: $c-txt-light;
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+#map_info_content {
+  padding: 10px 10px 10px 20px;
+}
+
+#map_info_footer {
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  button {
+    border: 0;
+    background-color: $c-cg;
+    color: $c-txt-light;
+    width: 100%;
+  }
+}

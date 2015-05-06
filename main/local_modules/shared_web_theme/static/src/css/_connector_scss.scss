@@ -1,0 +1,110 @@
+.openerp {
+  img {
+
+  }
+  button {
+    @extend .btn;
+    @extend .btn-default;
+    }
+
+    &.oe_highlight {
+      @extend .btn-primary;
+
+    }
+    &.oe_form_button {
+
+    }
+  }
+  .oe_button {
+    @extend button;
+    &:hover {
+      @extend button:hover;
+    }
+  }
+  .oe_view_manager_current > .oe_view_manager_header,
+  ul.oe_form_status li,
+  ul.oe_form_status li.oe_active,
+  .oe_form header {
+
+  }
+  ul.oe_form_status li.oe_active > .arrow span {
+
+  }
+  ul.oe_form_status li > .arrow span {
+
+  }
+  .oe_secondary_menu_section {
+
+  }
+
+  .oe_form .oe_form_required
+  {
+
+    }
+  }
+
+  .oe_application {
+    .oe_breadcrumb_title > * {
+
+    }
+    .oe_breadcrumb_item:not(:last-child) {
+
+    }
+    a {
+
+    }
+  }
+  .nav-pills > li.active a {
+
+    &:hover, &:focus {
+
+    }
+    .badge {
+
+    }
+  }
+  .oe_stat_button {
+
+    .stat_button_icon {
+
+    }
+    &:hover {
+
+      & .fa {
+
+      }
+    }
+  }
+  .badge {
+
+  }
+  .oe_leftbar > div a.oe_logo img {
+
+  }
+  .oe_searchview {
+
+  }
+  .oe_tag_dark {
+
+  }
+  .oe_searchview .oe_searchview_facets .oe_searchview_facet .oe_facet_values {
+
+  }
+  .oe_searchview .oe-autocomplete ul li.oe-selection-focus {
+
+  }
+  .oe_horizontal_separator {
+
+  }
+}
+
+.oe_single_form_container {
+
+}
+
+
+
+
+.modal-content {
+
+}

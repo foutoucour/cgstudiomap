@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'cgsm-bold';
+    src: url('colabbol-webfont.eot');
+    src: url('colabbol-webfont.eot?#iefix') format('embedded-opentype'),
+         url('colabbol-webfont.woff2') format('woff2'),
+         url('colabbol-webfont.woff') format('woff'),
+         url('colabbol-webfont.ttf') format('truetype'),
+         url('colabbol-webfont.svg#colaborate-boldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'cgsm-light';
+    src: url('../fonts/colablig-webfont.eot');
+    src: url('../fonts/colablig-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/colablig-webfont.woff2') format('woff2'),
+         url('../fonts/colablig-webfont.woff') format('woff'),
+         url('../fonts/colablig-webfont.ttf') format('truetype'),
+         url('../fonts/colablig-webfont.svg#colaboratelightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'cgsm-regular';
+    src: url('../fonts/colabreg-webfont.eot');
+    src: url('../fonts/colabreg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/colabreg-webfont.woff2') format('woff2'),
+         url('../fonts/colabreg-webfont.woff') format('woff'),
+         url('../fonts/colabreg-webfont.ttf') format('truetype'),
+         url('../fonts/colabreg-webfont.svg#colaborate-regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'cgsm-thin';
+    src: url('../fonts/colabthi-webfont.eot');
+    src: url('../fonts/colabthi-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/colabthi-webfont.woff2') format('woff2'),
+         url('../fonts/colabthi-webfont.woff') format('woff'),
+         url('../fonts/colabthi-webfont.ttf') format('truetype'),
+         url('../fonts/colabthi-webfont.svg#colaborate-thinregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

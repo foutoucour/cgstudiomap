@@ -33,6 +33,7 @@
         'ammap',
         'portal',
         'auth_signup',
+        'website_menu_by_user_status',
         'res_partner_industry',
     ],
     'data': [

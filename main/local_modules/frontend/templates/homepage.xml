@@ -76,7 +76,7 @@
                 </script>
 
                 <div id="wrap" class="oe_structure oe_empty">
-                    <div t-att-id="geochart_target" style="width: 100%; height: 500px;"></div>
+                    <div t-att-id="geochart_target"></div>
                 </div>
             </t>
         </template>

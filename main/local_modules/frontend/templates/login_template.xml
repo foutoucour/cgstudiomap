@@ -2,14 +2,19 @@
 <openerp>
     <data>
 
-        <template id="Wrap Layout" inherit_id="website.layout" name="Main layout">
+        <!--Hide the footer.-->
+        <!--The footer is not sticked to the bottom so it distrub our design for now.-->
+        <template id="Wrap Layout" inherit_id="website.layout"
+                  name="Main layout: Hidden Footer">
             <xpath expr="//footer" position="attributes">
                 <attribute name="class">hidden</attribute>
             </xpath>
         </template>
 
-        <template id="web.login" name="Login">
+        <template id="web.login" name="Login Container">
             <t t-call="web.login_layout">
+                <!--Add a container to center the view and the modal-content to -->
+                <!--add border around the content-->
                 <div class="oe_single_form_container modal-content">
                     <form class="oe_login_form" role="form"
                           t-attf-action="/web/login{{ '?debug' if debug else '' }}"
@@ -19,15 +24,20 @@
                         <t t-call="web.database_select"/>
 
                         <div class="form-group field-login">
-                            <label for="login" class="control-label">Email</label>
+                            <label for="login" class="control-label">Email
+                            </label>
                             <input type="text" name="login" t-att-value="login"
-                                   id="login" class="form-control" required="required"
+                                   id="login" class="form-control"
+                                   required="required"
                                    autofocus="autofocus"/>
                         </div>
 
                         <div class="form-group field-password">
-                            <label for="password" class="control-label">Password</label>
-                            <input type="password" name="password" id="password"
+                            <label for="password" class="control-label">
+                                Password
+                            </label>
+                            <input type="password" name="password"
+                                   id="password"
                                    class="form-control" required="required"
                                    t-att-autofocus="'autofocus' if login else None"/>
                         </div>
@@ -39,9 +49,12 @@
                             <t t-esc="message"/>
                         </p>
 
-                        <input type="hidden" name="redirect" t-att-value="redirect"/>
+                        <input type="hidden" name="redirect"
+                               t-att-value="redirect"/>
                         <div class="clearfix oe_login_buttons">
-                            <button type="submit" class="btn btn-primary">Log in</button>
+                            <button type="submit" class="btn btn-primary">Log
+                                in
+                            </button>
                         </div>
 
                     </form>
@@ -49,30 +62,129 @@
             </t>
         </template>
 
-        <template id="auth_signup.signup" name="Sign up login">
+        <!--https://github.com/cgstudiomap/cgstudiomap/issues/73-->
+        <!--For the alpha as it is closed, the self sign up is not wanted.-->
+        <!--We change the view to inform how to get invited to the closed alpha.-->
+        <template id="auth_signup.signup" name="Sign up Container">
             <t t-call="web.login_layout">
-                <div class="oe_single_form_container modal-content">
-                <form class="oe_signup_form" role="form" method="post"
-                      t-if="not message">
+                <!--Add a container to center the view and the modal-content to -->
+                <!--add border around the content-->
+                <div class="oe_single_form_container modal-content" style="width:670px; margin-left: -335px; display:inline-flex; padding:0">
+                    <!--<form class="oe_signup_form" role="form" method="post"-->
+                    <!--t-if="not message">-->
 
-                    <t t-call="auth_signup.fields"/>
+                    <!--<t t-call="auth_signup.fields"/>-->
 
-                    <p class="alert alert-danger" t-if="error">
-                        <t t-esc="error"/>
-                    </p>
-                    <input type="hidden" name="redirect" t-att-value="redirect"/>
-                    <input type="hidden" name="token" t-att-value="token"/>
-                    <div class="clearfix oe_login_buttons">
-                        <a t-attf-href="/web/login?{{ keep_query() }}"
-                           class="btn btn-link pull-right">Back to Login
-                        </a>
-                        <button type="submit" class="btn btn-primary pull-left">Sign up
-                        </button>
+                    <!--<p class="alert alert-danger" t-if="error">-->
+                    <!--<t t-esc="error"/>-->
+                    <!--</p>-->
+                    <!--<input type="hidden" name="redirect" t-att-value="redirect"/>-->
+                    <!--<input type="hidden" name="token" t-att-value="token"/>-->
+                    <!--<div class="clearfix oe_login_buttons">-->
+                    <!--<a t-attf-href="/web/login?{{ keep_query() }}"-->
+                    <!--class="btn btn-link pull-right">Back to Login-->
+                    <!--</a>-->
+                    <!--<button type="submit" class="btn btn-primary pull-left">Sign up-->
+                    <!--</button>-->
+                    <!--</div>-->
+
+                    <!--</form>-->
+                    <div style="float:left;padding:10px;"
+                         class="bg-logo-color">
+                        <img src="/main_data/static/cgsm-logo-gray.png"
+                             t-att-alt="'Logo of %s' % res_company.name"
+                             t-att-title="res_company.name"
+                             style="width:150px;"
+                                />
                     </div>
+                    <div style="float:left; padding:15px">
+                        <h1>Sorry, Private Alpha Phase</h1>
+                        <p></p>
 
-                </form>
+                        <p >
+                            Contact us via <a t-att-href="website.social_twitter">twitter</a> or <a t-attf-href="mailto:{{ res_company.email }}">email</a> to request your invitation.
+                            <br />
+                            We will invite you as soon as some slot opens!
+                            <br /><br/>
+                            Follow us on to be informed on the next move!<br />
+                            <!--<a t-att-href="website.social_twitter"><i class="fa fa-twitter" style="font-size:40px"/></a> - <a t-att-href="website.social_github"><i class="fa fa-github" style="font-size:40px"/></a>-->
+                            <br />
+                            <br />
+                            Looking forward to seeing you on board.
+                        </p>
+                        <p></p>
+                        <p style="text-align: right">The team</p>
+                    </div>
                 </div>
             </t>
         </template>
+
+        <record id="menu_sign_up" model="website.menu">
+            <field name="name">Sign up</field>
+            <field name="url">/web/signup</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">70</field>
+            <field name="user_logged" eval="False"/>
+            <field name="user_not_logged" eval="True"/>
+        </record>
+
+        <template id="auth_signup.reset_password"
+                  name="Reset password Containter">
+            <t t-call="web.login_layout">
+                <!--Add a container to center the view and the modal-content to -->
+                <!--add border around the content-->
+                <div class="oe_single_form_container modal-content">
+                    <div t-if="message">
+                        <p class="alert alert-success" t-if="message">
+                            <t t-esc="message"/>
+                        </p>
+                        <a href="/web/login" class="btn btn-link pull-right">
+                            Back to Login
+                        </a>
+                    </div>
+
+                    <form class="oe_reset_password_form" role="form"
+                          method="post" t-if="not message">
+
+                        <t t-if="token">
+                            <t t-call="auth_signup.fields">
+                                <t t-set="only_passwords" t-value="1"/>
+                            </t>
+                        </t>
+
+                        <t t-if="not token">
+                            <div class="form-group field-login">
+                                <label for="login" class="control-label">Your
+                                    Email
+                                </label>
+                                <input type="text" name="login"
+                                       t-att-value="login" id="login"
+                                       class="form-control"
+                                       autofocus="autofocus"
+                                       required="required"/>
+                            </div>
+                        </t>
+
+                        <p class="alert alert-danger" t-if="error">
+                            <t t-esc="error"/>
+                        </p>
+                        <input type="hidden" name="redirect"
+                               t-att-value="redirect"/>
+                        <input type="hidden" name="token" t-att-value="token"/>
+                        <div class="clearfix oe_login_buttons">
+                            <a t-attf-href="/web/login?{{ keep_query() }}"
+                               class="btn btn-link pull-right">Back to Login
+                            </a>
+                            <button type="submit"
+                                    class="btn btn-primary pull-left">Reset
+                                password
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </t>
+        </template>
+
     </data>
 </openerp>
