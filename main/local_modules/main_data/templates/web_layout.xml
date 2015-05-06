@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- vim:fdn=3:
--->
 <openerp>
 
 <data>
@@ -50,7 +48,7 @@
 						<t t-esc="(website or res_company).name" /></t>
 				</t>
 
-				<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
 				<meta name="description" t-att-content="main_object and 'website_meta_description' in main_object
@@ -87,189 +85,171 @@
 				<meta name="msapplication-TileImage" content="/main_data/static/src/fav/mstile-144x144.png" />
 				<meta name="msapplication-config" content="/main_data/static/src/fav/browserconfig.xml" />
 				<meta name="theme-color" content="#ffffff" />
-				<title>
-					<title>cgstudiomap</title>
-				</title>
+                <title>cgstudiomap</title>
 
 
 				<t t-set="languages" t-value="website.get_languages() if website else None" />
 				<t t-if="request and request.website_multilang and website">
 					<t t-foreach="website.get_alternate_languages(request.httprequest)" t-as="lang">
 						<link rel="alternate" t-att-hreflang="lang['hreflang']" t-att-href="lang['href']" />
-    <data>
-        <template id='web_layout' inherit_id="web.layout" name="cgstudiomap: Web layout">
-            <xpath expr="//title" position="replace">
-                <title>cgstudiomap</title>
-            </xpath>
-            <xpath expr='//link[@rel="shortcut icon"]' position="replace">
-                <link rel="apple-touch-icon" sizes="57x57" href="/main_data/static/src/fav/apple-touch-icon-57x57.png"/>
-                <link rel="apple-touch-icon" sizes="60x60" href="/main_data/static/src/fav/apple-touch-icon-60x60.png"/>
-                <link rel="apple-touch-icon" sizes="72x72" href="/main_data/static/src/fav/apple-touch-icon-72x72.png"/>
-                <link rel="apple-touch-icon" sizes="76x76" href="/main_data/static/src/fav/apple-touch-icon-76x76.png"/>
-                <link rel="apple-touch-icon" sizes="114x114" href="/main_data/static/src/fav/apple-touch-icon-114x114.png"/>
-                <link rel="apple-touch-icon" sizes="120x120" href="/main_data/static/src/fav/apple-touch-icon-120x120.png"/>
-                <link rel="apple-touch-icon" sizes="144x144" href="/main_data/static/src/fav/apple-touch-icon-144x144.png"/>
-                <link rel="apple-touch-icon" sizes="152x152" href="/main_data/static/src/fav/apple-touch-icon-152x152.png"/>
-                <link rel="apple-touch-icon" sizes="180x180" href="/main_data/static/src/fav/apple-touch-icon-180x180.png"/>
-                <link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-32x32.png" sizes="32x32"/>
-                <link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-194x194.png" sizes="194x194"/>
-                <link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-96x96.png" sizes="96x96"/>
-                <link rel="icon" type="image/png" href="/main_data/static/src/fav/android-chrome-192x192.png" sizes="192x192"/>
-                <link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-16x16.png" sizes="16x16"/>
-                <link rel="manifest" href="/main_data/static/src/fav/manifest.json"/>
-                <link rel="shortcut icon" href="/main_data/static/src/fav/favicon.ico"/>
-                <meta name="msapplication-TileColor" content="#ffffff"/>
-                <meta name="msapplication-TileImage" content="/main_data/static/src/fav/mstile-144x144.png"/>
-                <meta name="msapplication-config" content="/main_data/static/src/fav/browserconfig.xml"/>
-                <meta name="theme-color" content="#ffffff"/>
-            </xpath>
-        </template>
-
-        <template id='website_layout' inherit_id="website.layout" name="cgstudiomap: Website layout">
-            <xpath expr='//head' position="replace">
-				
-				<head>
-					<meta charset="utf-8" />
-					<t t-if="main_object and 'website_meta_title' in main_object and not title">
-						<t t-set="title" t-value="main_object.website_meta_title"/>
-					</t>
-					<t t-if="main_object and 'name' in main_object and not title and not additional_title">
-						<t t-set="additional_title" t-value="main_object.name"/>
-					</t>
-					<t t-if="not title">
-						<t t-set="title"><t t-if="additional_title"><t t-raw="additional_title"/> | </t><t t-esc="(website or res_company).name"/></t>
-					</t>
-					
-					<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-					<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-					
-					<meta name="description" t-att-content="main_object and 'website_meta_description' in main_object
-						and main_object.website_meta_description or website_meta_description"/>
-					<meta name="keywords" t-att-content="main_object and 'website_meta_keywords' in main_object
-						and main_object.website_meta_keywords or website_meta_keywords"/>
-					<meta name="generator" content="Odoo"/>
-					
-					<link rel="canonical" href="http://cgstudiomap.org/" />
-						
-					<meta name="twitter:card" content="summary_large_image"/>
-					<meta name="twitter:site" content="@CGStudioMap"/>
-					<meta name="twitter:title" content="Where cg is"/>
-					<meta name="twitter:description" content="Premier directory of Computer Graphics Industry."/>
-					<meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg"/>
-					
-					<link rel="apple-touch-icon" sizes="57x57" href="/main_data/static/src/fav/apple-touch-icon-57x57.png"/>
-					<link rel="apple-touch-icon" sizes="60x60" href="/main_data/static/src/fav/apple-touch-icon-60x60.png"/>
-					<link rel="apple-touch-icon" sizes="72x72" href="/main_data/static/src/fav/apple-touch-icon-72x72.png"/>
-					<link rel="apple-touch-icon" sizes="76x76" href="/main_data/static/src/fav/apple-touch-icon-76x76.png"/>
-					<link rel="apple-touch-icon" sizes="114x114" href="/main_data/static/src/fav/apple-touch-icon-114x114.png"/>
-					<link rel="apple-touch-icon" sizes="120x120" href="/main_data/static/src/fav/apple-touch-icon-120x120.png"/>
-					<link rel="apple-touch-icon" sizes="144x144" href="/main_data/static/src/fav/apple-touch-icon-144x144.png"/>
-					<link rel="apple-touch-icon" sizes="152x152" href="/main_data/static/src/fav/apple-touch-icon-152x152.png"/>
-					<link rel="apple-touch-icon" sizes="180x180" href="/main_data/static/src/fav/apple-touch-icon-180x180.png"/>
-					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-32x32.png" sizes="32x32"/>
-					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-194x194.png" sizes="194x194"/>
-					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-96x96.png" sizes="96x96"/>
-					<link rel="icon" type="image/png" href="/main_data/static/src/fav/android-chrome-192x192.png" sizes="192x192"/>
-					<link rel="icon" type="image/png" href="/main_data/static/src/fav/favicon-16x16.png" sizes="16x16"/>
-					<link rel="manifest" href="/main_data/static/src/fav/manifest.json"/>
-					<link rel="shortcut icon" href="/main_data/static/src/fav/favicon.ico"/>
-					<meta name="msapplication-TileColor" content="#ffffff"/>
-					<meta name="msapplication-TileImage" content="/main_data/static/src/fav/mstile-144x144.png"/>
-					<meta name="msapplication-config" content="/main_data/static/src/fav/browserconfig.xml"/>
-					<meta name="theme-color" content="#ffffff"/>
-					<title>cgstudiomap</title>
-						
-
-					<t t-set="languages" t-value="website.get_languages() if website else None"/>
-					<t t-if="request and request.website_multilang and website">
-						<t t-foreach="website.get_alternate_languages(request.httprequest)" t-as="lang">
-							<link rel="alternate" t-att-hreflang="lang['hreflang']" t-att-href="lang['href']"/>
-						</t>
-
 					</t>
 				</t>
 
-				<t t-call-assets="web.assets_common" t-js="false" />
-				<t t-call-assets="website.assets_frontend" t-js="false" />
+				<t t-call-assets="web.assets_common" t-js="false"/>
+				<t t-call-assets="website.assets_frontend" t-js="false"/>
 
-				<t t-raw="head or ''" name='layout_head' />
-
+				<t t-raw="head or ''" name='layout_head'/>
 			</head>
 		</xpath>
 		<xpath expr='//body' position="replace">
-
 			<body>
+                <div id="wrapwrap" style="hidden"/>
 				<header>
-				<div class="navbar-wrapper">
+					<div class="navbar-wrapper">
 					<div class="container">
-						<nav class="navbar navbar-default navbar-static-top">
-							<div class="container">
-								<div class="navbar-header">
-									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
-										<span class="sr-only">Toggle navigation</span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-									</button>
-									<a class="navbar-brand" href="/" t-field="res_company.name" />
-								</div>
-								<div class="collapse navbar-collapse navbar-top-collapse">
-									<ul class="nav navbar-nav navbar-left" id="top_menu">
-										<t t-foreach="website.menu_id.child_id" t-as="submenu">
-											<t t-call="website.submenu" />
-										</t>
-										<li class="divider" t-ignore="true" t-if="website.user_id != user_id" />
-										<li class="dropdown" t-ignore="true" t-if="website.user_id != user_id">
-											<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-												<b>
-													<span t-esc="user_id.name"/>
-													<span class="caret"></span>
-												</b>
-											</a>
-											<ul class="dropdown-menu js_usermenu" role="menu">
-												<li><a href="/web" role="menuitem">My Account</a>
-												</li>
-												<li class="divider" />
-												<li><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</nav>
+                    <nav class="navbar navbar-default navbar-static-top">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="/" t-field="res_company.name"/>
+                            </div>
+                            <div class="collapse navbar-collapse navbar-top-collapse">
+                                <ul class="nav navbar-nav navbar-left" id="top_menu">
+                                    <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                        <t t-call="website.submenu"/>
+                                    </t>
+                                    <li class="divider" t-ignore="true" t-if="website.user_id != user_id"/>
+                                    <li class="dropdown" t-ignore="true" t-if="website.user_id != user_id">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <b>
+                                                <span t-esc="user_id.name"/>
+                                                <span class="caret"></span>
+                                            </b>
+                                        </a>
+                                        <ul class="dropdown-menu js_usermenu" role="menu">
+                                            <li><a href="/web" role="menuitem">My Account</a></li>
+                                            <li class="divider"/>
+                                            <li><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+					</nav>
+                    </div>
 					</div>
-				</div>
-				</header>
-				<main>
-					<t t-raw="0" />
-				</main>
-				<footer>
-					<div id="footer_container">
-					</div>
-				</footer>
+                </header>
+				
+                <main>
+                    <t t-raw="0"/>
+                </main>
+                <footer>
+                    <div id="footer_container">
+                    </div>
+                </footer>
 
-
-				<t t-call-assets="web.assets_common" t-css="false" />
-				<t t-call-assets="website.assets_frontend" t-css="false" />
+				<t t-call-assets="web.assets_common" t-css="false"/>
+				<t t-call-assets="website.assets_frontend" t-css="false"/>
 				<script t-if="website and website.google_analytics_key">
-					(function (i, s, o, g, r, a, m) {
-						i['GoogleAnalyticsObject'] = r;
-						i[r] = i[r] || function () {
-							(i[r].q = i[r].q || []).push(arguments)
-						}, i[r].l = 1 * new Date();
-						a = s.createElement(o),
-							m = s.getElementsByTagName(o)[0];
-						a.async = 1;
-						a.src = g;
-						m.parentNode.insertBefore(a, m)
-					})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+					(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+					})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 					ga('create', _.str.trim('<t t-esc="website.google_analytics_key"/>'), 'auto');
-					ga('send', 'pageview');
+					ga('send','pageview');
 				</script>
 			</body>
 		</xpath>
 	</template>
+    <!-- Front-end/Back-end integration -->
+    <!--As the body of the main template changed, we have to update the xpath here-->
+    <!--Sadly we can't xpath the xpath-->
+    <template id="user_navbar" inherit_id="main_data.website_layout" groups="base.group_user">
+        <xpath expr="//body/header/div[@class='navbar-wrapper']" position="before">
+            <t t-if="website and menu_data">
+                <nav id="oe_main_menu_navbar" class="navbar navbar-inverse" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#oe_applications">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <ul id="oe_applications" class="nav navbar-nav navbar-left navbar-collapse collapse">
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle hidden-xs" data-toggle="dropdown"><i class="fa fa-th-large"></i> Website<b class="caret"/></a>
+                            <ul class="dropdown-menu">
+                                <li t-foreach="menu_data['children']" t-as="menu">
+                                    <t t-call="web.menu_link"/>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul id="oe_editzone" class="nav navbar-nav hidden-xs" style="padding-left: 20px; display: none;" groups="base.group_website_publisher">
+                        <li><button type="button" data-action="edit" class="btn btn-primary btn-xs">Edit</button></li>
+                    </ul>
+
+                    <ul id="oe_systray" class="nav navbar-nav navbar-right pull-right hidden-xs">
+                        <!-- Mobile -->
+                        <li>
+                            <a data-action="show-mobile-preview" href="#">
+                                <span title="Mobile preview"><i class="fa fa-mobile"/></span>
+                            </a>
+                        </li>
+
+                        <!-- Promote -->
+                        <li groups="base.group_website_designer">
+                            <a data-action="promote-current-page" href="#">
+                                <span title="Promote page on the web">Promote</span>
+                            </a>
+                        </li>
+
+                        <!-- Content -->
+                        <li class="dropdown" groups="base.group_website_publisher">
+                            <a id="content-menu-button" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Content <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu oe_content_menu" role="menu">
+                                <li groups="base.group_website_designer"><a data-action="edit_menu" href="#"><span title="Edit Top Menu">Edit Menu</span></a></li>
+                                <li class="divider" groups="base.group_website_designer"> </li>
+                                <li groups="base.group_website_designer"><a href="#" data-action="new_page">New Page</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Customize -->
+                        <li class="dropdown" id="customize-menu" groups="base.group_website_designer">
+                            <a id="customize-menu-button" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Customize <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#advanced-view-editor" data-action='ace'>HTML Editor</a></li>
+                                <li><a href="/page/website.themes">Change Theme</a></li>
+                                <li><a href="/web#return_label=Website&amp;action=website.action_module_website">Install Apps</a></li>
+                                <li class="divider"></li>
+                            </ul>
+                        </li>
+
+                        <!-- Help -->
+                        <li class="dropdown">
+                            <a id="help-menu-button" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Help <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" id="help-menu">
+                                <li class="dropdown-header">HELP &amp; TUTORIALS</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </t>
+        </xpath>
+    </template>
 </data>
 </openerp>
