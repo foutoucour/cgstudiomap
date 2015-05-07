@@ -46,7 +46,9 @@ body {
 .navbar-wrapper .navbar .container {
   width: auto;
 }
-
+.navbar-nav > li {
+ background-color: $c-bg-logo;
+}
 
 
 .btn-primary {
