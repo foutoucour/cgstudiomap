@@ -1,5 +1,6 @@
 body {
 	overflow: hidden;
+	background-color: #E8E8E8;
 }
 
 
@@ -11,6 +12,7 @@ body {
 	text-align: center;
 	margin: 0 auto;
 	padding: 0;
+	background-color: transparent;
 }
 
 @media (max-width: 767px){
@@ -44,7 +46,9 @@ body {
 .navbar-wrapper .navbar .container {
   width: auto;
 }
-
+.navbar-nav > li {
+ background-color: $c-bg-logo;
+}
 
 
 .btn-primary {
