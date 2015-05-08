@@ -102,22 +102,13 @@
 			</head>
 		</xpath>
 		<xpath expr='//body' position="replace">
-			<body>
+			<body class="home">
 				<header>
 					<div class="navbar-wrapper">
 					<div class="container">
                     <nav class="navbar navbar-default navbar-static-top">
                         <div class="container">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <a class="navbar-brand" href="/" t-field="res_company.name"/>
-                            </div>
-                            <div class="collapse navbar-collapse navbar-top-collapse">
+
                                 <ul class="nav navbar-nav navbar-left" id="top_menu">
                                     <t t-foreach="website.menu_id.child_id" t-as="submenu">
                                         <t t-call="website.submenu"/>
@@ -137,7 +128,7 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </div>
+
                         </div>
 					</nav>
                     </div>
@@ -151,7 +142,7 @@
                     <div id="footer_container">
                     </div>
                 </footer>
-                <div id="wrapwrap" style="hidden"/>
+                <div id="wrapwrap" class="hidden"></div>
 
 				<t t-call-assets="web.assets_common" t-css="false"/>
 				<t t-call-assets="website.assets_frontend" t-css="false"/>
@@ -170,8 +161,8 @@
     <!-- Front-end/Back-end integration -->
     <!--As the body of the main template changed, we have to update the xpath here-->
     <!--Sadly we can't xpath the xpath-->
-    <template id="user_navbar" inherit_id="main_data.website_layout" groups="base.group_user">
-        <xpath expr="//body/header/div[@class='navbar-wrapper']" position="before">
+    <template id="website.user_navbar" inherit_id="main_data.website_layout" groups="base.group_user">
+        <xpath expr="//body/div[@id='wrapwrap']" position="before">
             <t t-if="website and menu_data">
                 <nav id="oe_main_menu_navbar" class="navbar navbar-inverse" role="navigation">
                     <div class="navbar-header">
