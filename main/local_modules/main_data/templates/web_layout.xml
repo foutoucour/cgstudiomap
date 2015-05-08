@@ -103,7 +103,6 @@
 		</xpath>
 		<xpath expr='//body' position="replace">
 			<body>
-                <div id="wrapwrap" style="hidden"/>
 				<header>
 					<div class="navbar-wrapper">
 					<div class="container">
@@ -152,6 +151,7 @@
                     <div id="footer_container">
                     </div>
                 </footer>
+                <div id="wrapwrap" style="hidden"/>
 
 				<t t-call-assets="web.assets_common" t-css="false"/>
 				<t t-call-assets="website.assets_frontend" t-css="false"/>

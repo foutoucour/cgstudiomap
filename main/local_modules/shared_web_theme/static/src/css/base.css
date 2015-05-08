@@ -5700,7 +5700,8 @@ button.close, .openerp .close.oe_button {
   .hidden-print {
     display: none !important; } }
 body {
-  overflow: hidden; }
+  overflow-x: hidden;
+  background-color: #E8E8E8; }
 
 /* CUSTOMIZE HOME MAP
 -------------------------------------------------- */
@@ -5709,7 +5710,8 @@ body {
   height: 750px;
   text-align: center;
   margin: 0 auto;
-  padding: 0; }
+  padding: 0;
+  background-color: transparent; }
 
 @media (max-width: 767px) {
   #geochart_div {
@@ -5735,6 +5737,9 @@ body {
 
 .navbar-wrapper .navbar .container {
   width: auto; }
+
+.navbar-nav > li {
+  background-color: #434A54; }
 
 .btn-primary, .openerp button.oe_highlight, .openerp .oe_highlight.oe_button {
   background-color: #6C7A89;
