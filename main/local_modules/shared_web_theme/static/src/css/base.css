@@ -5700,6 +5700,11 @@ button.close, .openerp .close.oe_button {
 @media print {
   .hidden-print {
     display: none !important; } }
+body, html {
+  height: 100%;
+  padding: 0;
+  margin: 0; }
+
 body {
   overflow-x: hidden;
   background-color: #ECF0F1; }
