@@ -22,8 +22,6 @@
                     map = new AmCharts.AmMap();
                     map.pathToImages = "/ammap/static/src/js/ammap_3.14.0/images/";
 
-map.panEventsEnabled = true;
-
                     map.colorSteps = 10;
                     var dataProvider = {
                         mapVar: AmCharts.maps.worldLow,
@@ -50,6 +48,8 @@ map.panEventsEnabled = true;
                         colorSolid: "<t t-esc='ammap_config.color_solid'/>",
                         // Color for country without value.
                         unlistedAreasColor: "<t t-esc='ammap_config.unlisted_areas_color'/>",
+
+                        autoZoom: false,
                         balloonText: "[[title]] ([[value]])"
 
                     };
@@ -75,9 +75,16 @@ map.panEventsEnabled = true;
                 });
                 </script>
 
+
+
+// don't use wrap diva for bootstrap and responsive layout 
+// https://github.com/ChimpStudios/AmCharts/blob/master/AmChartsWeb/ammap/plugins/responsive/examples/map.html
+
                 <div id="wrap" class="oe_structure oe_empty">
                     <div t-att-id="geochart_target"></div>
                 </div>
+
+
             </t>
         </template>
     </data>
