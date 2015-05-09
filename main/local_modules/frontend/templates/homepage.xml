@@ -22,6 +22,8 @@
                     map = new AmCharts.AmMap();
                     map.pathToImages = "/ammap/static/src/js/ammap_3.14.0/images/";
 
+map.panEventsEnabled = true;
+
                     map.colorSteps = 10;
                     var dataProvider = {
                         mapVar: AmCharts.maps.worldLow,
@@ -48,8 +50,6 @@
                         colorSolid: "<t t-esc='ammap_config.color_solid'/>",
                         // Color for country without value.
                         unlistedAreasColor: "<t t-esc='ammap_config.unlisted_areas_color'/>",
-
-                        autoZoom: false,
                         balloonText: "[[title]] ([[value]])"
 
                     };
