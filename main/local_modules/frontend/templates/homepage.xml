@@ -21,7 +21,10 @@
                 AmCharts.ready(function() {
                     map = new AmCharts.AmMap();
                     map.pathToImages = "/ammap/static/src/js/ammap_3.14.0/images/";
-
+					
+					map.panEventsEnabled = true;
+					
+					
                     map.colorSteps = 10;
                     var dataProvider = {
                         mapVar: AmCharts.maps.worldLow,
@@ -80,7 +83,7 @@
 // don't use wrap diva for bootstrap and responsive layout 
 // https://github.com/ChimpStudios/AmCharts/blob/master/AmChartsWeb/ammap/plugins/responsive/examples/map.html
 
-                <div id="wrap" class="oe_structure oe_empty">
+                <div class="jumbotron">
                     <div t-att-id="geochart_target"></div>
                 </div>
 
