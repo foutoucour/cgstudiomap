@@ -108,8 +108,10 @@
 					<div class="container">
                     <nav class="navbar navbar-default navbar-static-top">
                         <div class="container">
-
-                                <ul class="nav navbar-nav navbar-left" id="top_menu">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/" t-field="res_company.name"/>
+                            </div>
+                                <ul class="nav navbar-nav navbar-left fontCGSMregular" id="top_menu">
                                     <t t-foreach="website.menu_id.child_id" t-as="submenu">
                                         <t t-call="website.submenu"/>
                                     </t>
@@ -123,7 +125,7 @@
                                         </a>
                                         <ul class="dropdown-menu js_usermenu" role="menu">
                                             <li><a href="/web" role="menuitem">My Account</a></li>
-                                            <li class="divider"/>
+                                            <!--<li class="divider"/>-->
                                             <li><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
                                         </ul>
                                     </li>
@@ -139,9 +141,37 @@
                     <t t-raw="0"/>
                 </main>
                 <footer>
-                    <div id="footer_container">
-                    </div>
+                    <div id="footer_container"></div>
                 </footer>
+				
+				<div class="footer" id="footer">
+					<div class="container">
+						<p class="fontCGSMregular"><a class="btn btn-default" href="#" role="button">?</a></p>
+					</div>
+				</div>			
+<!--                    <nav class="navbar navbar-default navbar-static-bottom">
+                        <div class="container">
+                                <ul class="nav navbar-nav navbar-left">
+                                    <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                        <t t-call="website.submenu"/>
+                                    </t>
+                                    <li class="dropdown" t-ignore="true" t-if="website.user_id != user_id">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <b>
+                                                <span t-esc="user_id.name"/>
+                                                <span class="caret"></span>
+                                            </b>
+                                        </a>
+                                        <ul class="dropdown-menu js_usermenu" role="menu">
+                                            <li><a href="/web" role="menuitem">My Account</a></li>
+
+                                            <li><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                        </div>
+					</nav>-->
                 <div id="wrapwrap" class="hidden"></div>
 
 				<t t-call-assets="web.assets_common" t-css="false"/>

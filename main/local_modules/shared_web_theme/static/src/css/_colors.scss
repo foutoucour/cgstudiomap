@@ -3,7 +3,7 @@
 //Colors from http://bootflat.github.io/color-picker-gray.html
 //$c-cg: rgb(176,90,226);
 //LYNCH
-$c-cg: #6C7A89;
+$c-cg: #434A54;
 //$c-map: rgb(0,192,237);
 //EDWARD
 $c-map: #ABB7B7;
@@ -12,13 +12,14 @@ $c-map: #ABB7B7;
 $c-studios: #95A5A6;
 $c-cg-80opa: rgba($c-cg, 0.8);
 $c-studios-light: #EEEEEE;
+
 // BACKGROUND color
 //$c-bg-light: rgb(241,241,243);
 //PORCELAIN
 $c-bg-light: #ECF0F1;
 //$c-bg-dark: rgb(94,94,94);
 //Harbor rat
-$c-bg-dark: #757D75;
+$c-bg-dark: $c-cg;
 $c-bg-logo: #434A54;
 
 // TEXT color

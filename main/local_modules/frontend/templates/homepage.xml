@@ -3,9 +3,9 @@
     <data>
         <record id="homepage_ammap_config" model="ammap.config">
             <field name="name">homepage</field>
-            <field name="color">#FDD5B9</field>
-            <field name="color_solid">#D96511</field>
-            <field name="unlisted_areas_color">#DCE0E0</field>
+            <field name="color">#8CE6F4</field>
+            <field name="color_solid">#00C0ED</field>
+            <field name="unlisted_areas_color">#D2D2D4</field>
             <field name="description">Config of the map on the homepage.</field>
         </record>
 
