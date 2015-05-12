@@ -6302,6 +6302,34 @@ button.close, .openerp .close.oe_button {
   .hidden-print {
     display: none !important; } }
 
+@font-face {
+  font-family: 'cgsm-bold';
+  src: url('colabbol-webfont.eot');
+  src: url('colabbol-webfont.eot?#iefix') format('embedded-opentype'), url('colabbol-webfont.woff2') format('woff2'), url('colabbol-webfont.woff') format('woff'), url('colabbol-webfont.ttf') format('truetype'), url('colabbol-webfont.svg#colaborate-boldregular') format('svg');
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'cgsm-light';
+  src: url('../fonts/colablig-webfont.eot');
+  src: url('../fonts/colablig-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/colablig-webfont.woff2') format('woff2'), url('../fonts/colablig-webfont.woff') format('woff'), url('../fonts/colablig-webfont.ttf') format('truetype'), url('../fonts/colablig-webfont.svg#colaboratelightregular') format('svg');
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'cgsm-regular';
+  src: url('../fonts/colabreg-webfont.eot');
+  src: url('../fonts/colabreg-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/colabreg-webfont.woff2') format('woff2'), url('../fonts/colabreg-webfont.woff') format('woff'), url('../fonts/colabreg-webfont.ttf') format('truetype'), url('../fonts/colabreg-webfont.svg#colaborate-regularregular') format('svg');
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'cgsm-thin';
+  src: url('../fonts/colabthi-webfont.eot');
+  src: url('../fonts/colabthi-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/colabthi-webfont.woff2') format('woff2'), url('../fonts/colabthi-webfont.woff') format('woff'), url('../fonts/colabthi-webfont.ttf') format('truetype'), url('../fonts/colabthi-webfont.svg#colaborate-thinregular') format('svg');
+  font-weight: normal;
+  font-style: normal; }
+
 /* line 1, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 body, html {
   height: 100%;
@@ -6328,14 +6356,14 @@ body.home #oe_main_menu_navbar {
 /* line 25, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 #geochart_div {
   width: 100%;
-  height: 750px;
+  height: 100%;
   text-align: center;
   margin: 0 auto;
   padding: 0;
-  background-color: transparent; }
-  @media screen and (max-width: 767px) {
-    #geochart_div {
-      height: 350px; } }
+  background-color: transparent;
+  /*	@media screen and (max-width: $break-small){
+		height: 350px;
+	}*/ }
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
@@ -6525,43 +6553,47 @@ body.home #oe_main_menu_navbar {
   margin-left: -200px; }
 
 /* line 257, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+.oe_im, .oe_im_chatview {
+  z-index: 10000; }
+
+/* line 260, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 .navbar-static-top {
   background: none repeat scroll 0 0 rgba(255, 255, 255, 0); }
 
-/* line 260, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 263, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 .navbar-static-top {
   z-index: 1000;
   border-width: 0 0 0; }
 
-/* line 269, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 272, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 body {
   background: none repeat scroll 0 0 rgba(255, 255, 255, 0); }
 
-/* line 273, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 276, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 footer {
   background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
   padding: 10px; }
 
-/* line 278, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 281, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 .modal-content {
   box-shadow: none; }
 
-/* line 282, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 285, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 a {
   color: #95A5A6; }
-  /* line 284, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+  /* line 287, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
   a:hover, a:focus {
     color: #95A5A6; }
 
-/* line 289, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 292, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 .btn-link {
   color: #95A5A6; }
 
-/* line 293, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 296, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 .bg-logo-color {
   background-color: #434A54; }
 
-/* line 299, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 302, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 #map_infobox {
   bottom: -13px;
   left: 17px;
@@ -6569,53 +6601,53 @@ a {
   height: 150px;
   background-color: #ECF0F1; }
 
-/* line 307, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 310, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 .map_overlay {
   padding: 0;
   border: 1px solid #ABB7B7; }
 
-/* line 312, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 315, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 #map_info {
   height: auto;
   padding: 0; }
 
-/* line 317, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 320, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 #map_info_header {
   background-color: #ABB7B7;
   color: #ECF0F1;
   padding: 10px;
   font-size: 1.5em; }
 
-/* line 324, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 327, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 #map_info_content {
   padding: 10px 10px 10px 20px; }
 
-/* line 328, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 331, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 #map_info_footer {
   text-align: right;
   position: absolute;
   bottom: 0;
   width: 100%; }
-  /* line 334, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+  /* line 337, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
   #map_info_footer button, #map_info_footer .openerp .oe_button, .openerp #map_info_footer .oe_button {
     border: 0;
     background-color: #434A54;
     color: #ECF0F1;
     width: 100%; }
 
-/* line 343, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 346, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 .fontCGSMregular {
   font-family: 'cgsm-regular'; }
 
-/* line 346, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 349, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 .fontCGSMbold {
   font-family: 'cgsm-bold'; }
 
-/* line 349, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 352, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 .fontCGSMlight {
   font-family: 'cgsm-light'; }
 
-/* line 352, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
+/* line 355, C:/Users/Felipe/Documents/GitHub/cgstudiomap/main/local_modules/shared_web_theme/static/src/css/_custom.scss */
 .fontCGSMthin {
   font-family: 'cgsm-thin'; }
 

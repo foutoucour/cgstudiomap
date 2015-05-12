@@ -24,15 +24,15 @@ $break-small: 767px;
 
 #geochart_div {
 	width: 100%;
-	height: 750px;
+	height: 100%;
 	text-align: center;
 	margin: 0 auto;
 	padding: 0;
 	background-color: transparent;
 	
-	@media screen and (max-width: $break-small){
+/*	@media screen and (max-width: $break-small){
 		height: 350px;
-	}
+	}*/
 }
 
 
@@ -253,7 +253,10 @@ $break-small: 767px;
   width: 400px;
   margin-left: -200px;
 }
-
+.oe_im,
+.oe_im_chatview {
+	z-index: 10000;
+}
 .navbar-static-top {
   background: none repeat scroll 0 0 rgba(255, 255, 255, 0);
 }

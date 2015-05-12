@@ -15,6 +15,7 @@
                 <script src="/ammap/static/src/js/ammap_3.14.0/ammap.js" type="text/javascript"></script>
                 <!-- map file should be included after ammap.js -->
                 <script src="/ammap/static/src/js/ammap_3.14.0/maps/js/worldLow.js" type="text/javascript"></script>
+				<script src="/ammap/static/src/js/ammap_3.14.0/responsive.min.js" type="text/javascript"></script>
                 <script type="text/javascript">
                 var map;
 
@@ -36,30 +37,24 @@
                     </t>
                     dataProvider['areas'] = areas;
                     map.dataProvider = dataProvider;
-                    // make the map static. Can't be dragged.
-                    map.dragMap = false;
+                    map.dragMap = true;
 
 
                     map.areasSettings = {
                         autoZoom: true,
-                        // low value color
                         color: "<t t-esc='ammap_config.color'/>",
-                        // high value color
                         colorSolid: "<t t-esc='ammap_config.color_solid'/>",
-                        // Color for country without value.
                         unlistedAreasColor: "<t t-esc='ammap_config.unlisted_areas_color'/>",
-
                         balloonText: "[[title]] ([[value]])"
-
                     };
+					responsive = {
+						enabled: true
+					};
                     map.zoomControl = {
-                        // disable the zoom
                         zoomControlEnabled: false,
-                        // disable the pan controls.
                         panControlEnabled: false
 
 	                };
-                    // disable zoom on double click as we removed the zoom controls.
                     map.zoomOnDoubleClick = false;
 
 
@@ -68,6 +63,8 @@
                     valueLegend.minValue = "little";
                     valueLegend.maxValue = "a lot!";
                     map.valueLegend = valueLegend;
+					
+
 
 
                     map.write("<t t-esc="geochart_target"/>");
