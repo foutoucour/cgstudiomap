@@ -1,20 +1,36 @@
-body {
-	overflow: hidden;
+body,html {
+ height: 100%;
+ padding: 0;
+ margin: 0;
 }
 
+body {
+	overflow-x: hidden;
+	background-color: $c-bg-light;
+}
+body.home {
+	overflow: hidden;
+	background-color: $c-bg-light;
+}
+body.home #oe_main_menu_navbar {
+	display: none;
+	visibility: hidden;
+}
 
 /* CUSTOMIZE HOME MAP
 -------------------------------------------------- */
+$break-small: 767px;
+
+
 #geochart_div {
 	width: 100%;
 	height: 750px;
 	text-align: center;
 	margin: 0 auto;
 	padding: 0;
-}
-
-@media (max-width: 767px){
-	#geochart_div {
+	background-color: transparent;
+	
+	@media screen and (max-width: $break-small){
 		height: 350px;
 	}
 }
@@ -26,7 +42,7 @@ body {
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: absolute;
-  top: 0;
+  top: 16px;
   right: 0;
   left: 0;
   z-index: 20;
@@ -34,17 +50,41 @@ body {
 
 /* Flip around the padding for proper display in narrow viewports */
 .navbar-wrapper > .container {
-  padding-right: 0;
-  padding-left: 0;
+	padding-right: 0;
+	padding-left: 0;
 }
 .navbar-wrapper .navbar {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.navbar-wrapper .navbar .container {
+	width: auto;
+}
+.navbar-nav > li {
+	
+	padding-left: 1px;
+	padding-right: 1px;
+}
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:active,
+.navbar-default .navbar-nav > li > a:visited{
+	color: $c-txt-light;
+	background-color: $c-bg-dark;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: transparent;
+}
+.footer > .container {
   padding-right: 15px;
   padding-left: 15px;
 }
-.navbar-wrapper .navbar .container {
-  width: auto;
-}
-
 
 
 .btn-primary {
@@ -55,11 +95,18 @@ body {
     border-color: $c-cg-80opa;
   }
 }
+.btn-default, .openerp button, .openerp .oe_button {
+	color: $c-txt-light;
+	background-color: $c-bg-dark;
+	border-color: transparent;
+}
+#wrapwrap {
+	display: none;
+	visibility: hidden;
+}
+
 
 .openerp {
-  img {
-    border-radius: 0;
-  }
   button {
     @extend .btn;
     @extend .btn-default;
@@ -171,7 +218,6 @@ body {
     background-color: $c-bg-logo;
   }
   .oe_searchview {
-    border-radius: 0;
     border-color: $c-studios;
 
     .oe_focused {
@@ -183,7 +229,6 @@ body {
   //  A good example for them is the industries ot the categories
   //  of companies.
   .oe_tag {
-    border-radius: 0;
     border-color: $c-studios;
     background-color: $c-bg-light;
   }
@@ -210,7 +255,7 @@ body {
 }
 
 .navbar-static-top {
-  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0);
 }
 .navbar-static-top {
   z-index: 1000;
@@ -246,7 +291,7 @@ a {
 }
 
 .bg-logo-color {
-  background-color: $c-bg-logo;
+  background-color: $c-bg-dark;
 }
 
 // Design of the map_info overlay
@@ -292,4 +337,18 @@ a {
     color: $c-txt-light;
     width: 100%;
   }
+}
+
+
+.fontCGSMregular {
+	font-family: 'cgsm-regular';
+}
+.fontCGSMbold {
+	font-family: 'cgsm-bold';
+}
+.fontCGSMlight {
+	font-family: 'cgsm-light';
+}
+.fontCGSMthin {
+	font-family: 'cgsm-thin';
 }

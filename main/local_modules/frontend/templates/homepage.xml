@@ -3,9 +3,9 @@
     <data>
         <record id="homepage_ammap_config" model="ammap.config">
             <field name="name">homepage</field>
-            <field name="color">#FDD5B9</field>
-            <field name="color_solid">#D96511</field>
-            <field name="unlisted_areas_color">#DCE0E0</field>
+            <field name="color">#8CE6F4</field>
+            <field name="color_solid">#00C0ED</field>
+            <field name="unlisted_areas_color">#D2D2D4</field>
             <field name="description">Config of the map on the homepage.</field>
         </record>
 
@@ -21,7 +21,7 @@
                 AmCharts.ready(function() {
                     map = new AmCharts.AmMap();
                     map.pathToImages = "/ammap/static/src/js/ammap_3.14.0/images/";
-
+					map.panEventsEnabled = true;
                     map.colorSteps = 10;
                     var dataProvider = {
                         mapVar: AmCharts.maps.worldLow,
@@ -49,7 +49,6 @@
                         // Color for country without value.
                         unlistedAreasColor: "<t t-esc='ammap_config.unlisted_areas_color'/>",
 
-                        autoZoom: false,
                         balloonText: "[[title]] ([[value]])"
 
                     };
@@ -75,9 +74,11 @@
                 });
                 </script>
 
-                <div id="wrap" class="oe_structure oe_empty">
+                <div class="jumbotron">
                     <div t-att-id="geochart_target"></div>
                 </div>
+
+
             </t>
         </template>
     </data>
