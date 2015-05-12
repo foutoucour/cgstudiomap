@@ -19,7 +19,7 @@
             <field name="social_facebook"/>
             <field name="social_googleplus"/>
             <field name="social_linkedin">http://www.linkedin.com/company/cgstudiomap.com</field>
-            <field name="social_github">https://github.com/foutoucour/cgstudiomap</field>
+            <field name="social_github">https://github.com/cgstudiomap/cgstudiomap</field>
         </record>
     </data>
 </openerp>
