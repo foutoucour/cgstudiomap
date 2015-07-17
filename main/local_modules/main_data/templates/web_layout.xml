@@ -189,6 +189,10 @@
                     </nav>
                 </t>
             </xpath>
+            <xpath expr="//header//div[@class='navbar-header']" position="inside">
+                <div>cg Studio Map <span class="label label-danger">B</span></div>
+            </xpath>
         </template>
+
     </data>
 </openerp>
