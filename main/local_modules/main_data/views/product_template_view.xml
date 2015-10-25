@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="product_template_image_tree_view" model="ir.ui.view">
+            <field name="name">Product Template: Image in tree view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="image_small" widget="image" string="Logo" height="32"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

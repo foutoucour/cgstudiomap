@@ -62,6 +62,7 @@ Contributors
         'security/ir.model.access.csv',
         'views/website_blog_view.xml',
         'views/res_partner_view.xml',
+        'views/product_template_view.xml',
         'views/geo_partner_view.xml',
         'views/base_partner_merge_view.xml',
         'templates/web_layout.xml',

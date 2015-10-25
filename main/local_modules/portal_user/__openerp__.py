@@ -44,6 +44,7 @@
     'data': [
         'views/portal_items.xml',
         'views/res_partner_view.xml',
+        'views/product_template_view.xml',
         'views/website_menu.xml',
         'security/ir.model.access.csv',
         'security/base_security.xml',
