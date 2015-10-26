@@ -63,6 +63,7 @@ Contributors
         'res_partner_email_validation',
         'res_partner_email_validation_missing_details',
         'res_partner_industry',
+        'res_partner_product',
         'res_partner_location_validation',
         'res_partner_location_validation_missing_details',
         'res_partner_missing_details',

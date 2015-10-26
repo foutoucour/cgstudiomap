@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="res_partner_product_form_view" model="ir.ui.view">
+            <field name="name">Res Partner: products</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="website" position="after">
+                    <field name="product_user_ids"
+                           widget="many2many_tags"
+                           placeholder="Software used..."/>
+                    <field name="product_developer_ids"
+                           widget="many2many_tags"
+                           placeholder="Software developed..."/>
+                </field>
+            </field>
+        </record>
+        <record id="product_template_users" model="ir.ui.view">
+            <field name="name">Product Template: used by</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="sale.product_template_form_view_sale_order_button"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button class="oe_inline oe_stat_button" name="action_partner_user"
+                            type="object" icon="fa-user">
+                        <field name="partner_user_count" widget="statinfo" />
+                    </button>
+                    <button class="oe_inline oe_stat_button" name="action_partner_developer"
+                            type="object" icon="fa-laptop">
+                        <field name="partner_developer_count" widget="statinfo" />
+                    </button>
+                </xpath>
+                <notebook position="before">
+                    <group>
+                        <field name="partner_user_ids"
+                               widget="many2many_tags"
+                               placeholder="Companies using..."/>
+                        <field name="partner_developer_ids"
+                               widget="many2many_tags"
+                               placeholder="Companies developing..."/>
+                    </group>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</openerp>
