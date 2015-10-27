@@ -57,6 +57,8 @@ Contributors
         'admin_technical_features',
         # geoengine
         'geoengine_base_geolocalize',
+        # product-attribute
+        'product_brand',
         # website
         'website_blog_mgmt',
         # local modules

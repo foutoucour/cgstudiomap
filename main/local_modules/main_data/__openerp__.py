@@ -51,6 +51,7 @@ Contributors
         'web_tree_image',
         'web_widget_text_markdown',
         'res_group_archetype',
+        'product_brand',
     ],
     'data': [
         'data/company_details.xml',
