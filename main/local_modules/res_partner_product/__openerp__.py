@@ -20,34 +20,20 @@
 ##############################################################################
 
 {
-    'name': 'Portal User',
-    'version': '256',
+    'name': 'Partner Meet Product',
+    'version': '0.2',
     'author': 'cgstudiomap',
     'maintainer': 'cgstudiomap',
     'license': 'AGPL-3',
-    'category': 'Main',
-    'summary': 'Settings of portal user',
+    'category': 'Sales',
+    'summary': 'Add relation fields between products and partners',
     'depends': [
-        'account',
-        'portal',
-        'portal_sale',
-        'website_partner',
-        'website_menu_by_user_status',
-        'res_partner_industry',
-        'web_m2x_options',
-        'crm',
-        'res_partner_missing_details',
+        'product',
+        'portal_user',
+        'main_data',
     ],
-    'external_dependencies': {
-        'python': [],
-    },
     'data': [
-        'views/portal_items.xml',
         'views/res_partner_view.xml',
-        'views/product_template_view.xml',
-        'views/website_menu.xml',
-        'security/ir.model.access.csv',
-        'security/base_security.xml',
     ],
     'installable': True,
 }

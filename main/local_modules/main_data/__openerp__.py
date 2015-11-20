@@ -51,6 +51,7 @@ Contributors
         'web_tree_image',
         'web_widget_text_markdown',
         'res_group_archetype',
+        'product_brand',
     ],
     'data': [
         'data/company_details.xml',
@@ -62,6 +63,7 @@ Contributors
         'security/ir.model.access.csv',
         'views/website_blog_view.xml',
         'views/res_partner_view.xml',
+        'views/product_template_view.xml',
         'views/geo_partner_view.xml',
         'views/base_partner_merge_view.xml',
         'templates/web_layout.xml',
