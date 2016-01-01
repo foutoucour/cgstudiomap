@@ -1,3 +1,180 @@
 #map {
   height: 800px;
 }
+
+/* BOOTSTRAP media queries
+-------------------------------------------------- */
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+
+$screen-md-min: 992px;
+$screen-md-max: 991px;
+
+$screen-lg-min: 1200px;
+$screen-big: 1900px;
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+    overflow-y: hidden;
+    background-color: #F2F2F2;
+    color: #323133;
+}
+
+.jumbotron {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    background: transparent;
+}
+
+
+
+/* BOOTSTRAP Table */
+thead {
+    font-size: 1.2em;
+    font-family: 'cgsm-light';
+}
+tbody {
+    font-family: 'cgsm-thin';
+    font-size: 1.033em;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+.fixed-table-container tbody td .th-inner, .fixed-table-container thead th .th-inner {
+    padding: 8px;
+    line-height: 24px;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+.bootstrap-table .table {
+    border-bottom: 1px solid transparent;
+    border-collapse: collapse!important;
+    border-radius: 0px;
+}
+table {
+    border-spacing: 2px;
+    border-color: transparent;
+}
+.bootstrap-table h4 {
+    font-family: 'cgsm-regular';
+    font-size: 1.2em;
+	@media (max-width: $screen-xs-max) {
+		font-size: 1.6em;
+	}
+}
+
+.bootstrap-table a,
+.bootstrap-table a:hover,
+.bootstrap-table a:active{
+    color: #b05ae2;
+}
+.table>tbody>tr>td:nth-child(3) {
+    font-family: 'cgsm-regular';
+    color: rgb(226,176,90);
+    text-decoration: underline;
+}
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+    color: #979699;
+    background-color: #f1f1f3;
+    border-color: #979699;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    color: #f1f1f3;
+    background-color: #b05ae2;
+    border-color: #b05ae2;
+}
+.pagination>li>a, .pagination>li>span {
+    color: #b05ae2;
+    text-decoration: none;
+    background-color: #f1f1f3;
+    border: 1px solid #979699;
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .pagination>li>span {
+    color: #b05ae2;
+    text-decoration: none;
+    background-color: #f2f2f2;
+    border: 1px solid #b05ae2;
+}
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+    color: #f1f1f3;
+    text-decoration: none;
+    background-color: #b05ae2;
+    outline: 0;
+}
+/* ///BOOTSTRAP Table */
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 80px;
+}
+footer .row {
+    padding: 0;
+    margin: 0;
+}
+footer .name {
+    font-size: 1.6em;
+    line-height: 3.24em;
+    color: #f1f1f3;
+    display: inline-block;
+	@media (max-width: $screen-xs-max) {
+        font-size: 1.6em;
+        line-height: 2em;
+	}
+}
+footer .name ::after {
+    content: " ";
+}
+footer .catch {
+    font-size: 1em;
+    line-height: 1em;
+    color: #b05ae2;
+    text-indent: 1em;
+    display: inline-block;
+}
+
+.socials i{
+    padding: 0 15px;
+    padding-top: 20px;
+    color: #F1F1F3;
+    text-align: right;
+    list-style-type: none;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.65);
+    background-color: transparent;
+    
+	-webkit-transition: 0.2s linear;
+	-moz-transition: 0.2s linear;
+	-o-transition: 0.2s linear;
+	transition: 0.2s linear;
+	
+	@media (max-width: $screen-xs-max) {
+        padding: 0 7px;
+        padding-top: 30px;
+	}
+
+	
+}
+.socials i > a:hover{
+	cursor: pointer;
+	text-decoration: none;
+}
+.fa-github:hover{
+	color: #B05AE2;
+}
+.fa-twitter:hover{
+	color: #55ACEE;
+}
+.fa-linkedin:hover{
+	color: #0077B5;
+}

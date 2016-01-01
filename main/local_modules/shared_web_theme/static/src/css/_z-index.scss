@@ -1,4 +1,4 @@
-#navbar {
+#navbar, #footer-static {
     z-index: 999;
 }
 #stats-txt {
@@ -18,7 +18,4 @@
 #TXT-map {
 	pointer-events: none;
 	z-index: 20;
-}
-#bt-user {
-	z-index: 10000;
 }
