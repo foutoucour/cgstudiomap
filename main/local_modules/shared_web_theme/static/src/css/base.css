@@ -6602,10 +6602,7 @@ fontCGSM {
   height: 180px;
   padding-bottom: 2em;
   font-size: 1.24em;
-  line-height: 1.3em;
-  /*	i, i > a {
-  		margin: 0;
-  	}*/ }
+  line-height: 1.3em; }
   .footer .footer-name {
     font-size: 1.6em; }
   .footer .social-txt {
@@ -6713,7 +6710,7 @@ fontCGSM {
   width: 40px;
   height: 40px; }
 
-#navbar {
+#navbar, #footer-static {
   z-index: 999; }
 
 #stats-txt {
@@ -6734,12 +6731,6 @@ fontCGSM {
   pointer-events: none;
   z-index: 20; }
 
-#bt-user {
-  z-index: 10000; }
-
-/**/
-/*@import "_flatify";
-@import "_homepage";*/
 /*
 body {
   overflow: scroll;

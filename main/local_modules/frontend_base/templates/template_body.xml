@@ -188,9 +188,7 @@
         <template id="frontend_base.industry_tag" name="Industry Tag">
             <!--Uncomment this part when the directory is released!-->
             <!--<a itemprop="name" t-att-href="'/directory?search=%s' % ind.name">-->
-            <em>
                 <span class="label label-info" t-esc="ind.name"/>
-            </em>
             <!--</a>-->
         </template>
 

@@ -23,7 +23,7 @@ function get_company_count_ajax(search, status, target) {
     $.ajax({
         type: "post",
         url: '/directory/get_company_count_json',
-        data: {search: search, status: status},
+        data: {search: search, company_status: status},
         success: function (response) {
             var data = JSON.parse(response);
             console.log(data);
