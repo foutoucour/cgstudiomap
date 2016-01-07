@@ -10,6 +10,6 @@ _logger = logging.getLogger(__name__)
 class Website(models.Model):
     _inherit = 'website'
 
-    directory_menu = '/web/'
+    directory_menu = '/directory'
     shop_menu = '/shop/'
     about_menu = '/page/website.contactus'
