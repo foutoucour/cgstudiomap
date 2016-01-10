@@ -3,38 +3,39 @@
     <data>
         <!--Requirements:-->
         <!--* url-->
-        <template id="frontend_listing.pagination" name="Listing: Pagination">
-            <form t-att-action="keep(url, search=0)" method="get" t-att-class="search_class">
-                <t t-if="attrib_values">
-                    <t t-foreach="attrib_values" t-as="a">
-                        <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
-                    </t>
-                </t>
-            </form>
-        </template>
-
-        <!--Requirements:-->
-        <!--* url-->
         <template id="frontend_listing.switch" name="Listing: switch">
-            <form t-att-action="keep(url, search=0)" method="get" t-att-class="search_class">
+            <form t-att-action="keep(map_url, search=search, company_status=company_status)" method="get" >
                 <div class="input-group">
-                    <a t-att-class=" 'active' if map_url else 'disabled' " t-att-href="map_url">Map</a>
-                    <a t-att-class=" 'active' if list_url else 'disabled' " t-att-href="list_url">List</a>
-                    <!--<input type="text" name="search" class="search-query form-control" placeholder="Search..." t-att-value="search"/>-->
-                    <!--<span class="input-group-btn">-->
-                        <!--<a class="btn btn-default a-submit"><i class="fa fa-search"/></a>-->
-                    <!--</span>-->
+                    <input type="hidden" name='company_status' t-att-value="company_status"/>
+                    <input type="hidden" name='search' t-att-value="search"/>
+                    <input type='submit'
+                           t-att-class="'btn btn-default a-submit' if (url == list_url) else 'btn btn-default disabled' "
+                           value="map"/>
                 </div>
+            </form>
 
+            <form t-att-action="keep(list_url, search=search, company_status=company_status)" method="get" >
+                <div class="input-group">
+                    <input type="hidden" name='company_status' t-att-value="company_status"/>
+                    <input type="hidden" name='search' t-att-value="search"/>
+                    <input type='submit'
+                           t-att-class="'btn btn-default a-submit' if (url == map_url) else 'btn btn-default disabled' "
+                           value="list"/>
+                </div>
             </form>
         </template>
 
         <!--Requirements:-->
         <!--* url-->
         <template id="frontend_listing.search" name="Listing: search">
-            <form t-att-action="keep(url, search=0)" method="get" t-att-class="search_class">
+            <form t-att-action="keep(url, search=0, company_status=company_status)" method="get" t-att-class="search_class">
                 <div class="input-group">
-                    <input type="text" name="search" class="search-query form-control" placeholder="Search..." t-att-value="search"/>
+                    <input type="text"
+                           name="search"
+                           class="search-query form-control"
+                           placeholder="Search..."
+                           t-att-value="search"/>
+                    <input type="hidden" name='company_status' t-att-value='company_status'/>
                     <span class="input-group-btn">
                         <a class="btn btn-default a-submit"><i class="fa fa-search"/></a>
                     </span>
@@ -42,25 +43,169 @@
 
             </form>
          </template>
+		
+        <!--Template about the directory footer of the website-->
+        <template id="frontend_listing.footer" name="Listing: footer">
+			<footer class="footer">
+				<div class="container">
+				   <div class="row fontCGSM">
+						<div class="col-xs-6 col-sm-4 col-lg-4">
+							<span class="name">CG Studio Map</span>
+							<span class="catch">where cg is</span>
+						</div>
+						<div class="socials col-xs-6 col-sm-4 col-lg-4 col-sm-offset-4 col-lg-offset-4">
+							<p class="pull-right visible-lg-inline">
+								<a t-att-href="website.social_twitter"><i class="fa fa-twitter fa-3x"></i></a>
+								<a t-att-href="website.social_linkedin"><i class="fa fa-linkedin fa-3x"></i></a>
+								<a t-att-href="website.social_github"><i class="fa fa-github fa-3x"></i></a>
+							</p>
+							<p class="pull-right visible-md-inline">
+								<a t-att-href="website.social_twitter"><i class="fa fa-twitter fa-2x"></i></a>
+								<a t-att-href="website.social_linkedin"><i class="fa fa-linkedin fa-2x"></i></a>
+								<a t-att-href="website.social_github"><i class="fa fa-github fa-2x"></i></a>
+							</p>
+							<p class="pull-right visible-sm-inline">
+								<a t-att-href="website.social_twitter"><i class="fa fa-twitter fa-lg"></i></a>
+								<a t-att-href="website.social_linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+								<a t-att-href="website.social_github"><i class="fa fa-github fa-lg"></i></a>
+							</p>							
+							<p class="pull-right visible-xs-inline">
+								<a t-att-href="website.social_twitter"><i class="fa fa-twitter"></i></a>
+								<a t-att-href="website.social_linkedin"><i class="fa fa-linkedin"></i></a>
+								<a t-att-href="website.social_github"><i class="fa fa-github"></i></a>
+							</p>
+						</div>
 
+				   </div>
+
+
+				</div>
+			</footer>
+        </template>
+
+        <template id="frontend_listing.filters" name="Listing: Filters">
+            <div>
+                <form t-att-action="keep(url, search=search, company_status='open')" method="get" >
+                    <div class="input-group">
+                        <input type="hidden" name='company_status' value="open"/>
+                        <input type="hidden" name='search' t-att-value="search"/>
+                        <input type='submit'
+                               t-att-class="'btn btn-default a-submit' if (company_status != 'open') else 'btn btn-default disabled' "
+                               value="open"/>
+                    </div>
+                </form>
+
+                <form t-att-action="keep(url, search=search, company_status=company_status)" method="get" >
+                    <div class="input-group">
+                        <input type="hidden" name='company_status' value="closed"/>
+                        <input type="hidden" name='search' t-att-value="search"/>
+                        <input type='submit'
+                               t-att-class="'btn btn-default a-submit' if (company_status != 'closed') else 'btn btn-default disabled' "
+                               value="closed"/>
+                    </div>
+                </form>
+
+                <form t-att-action="keep(url, search=search, company_status=company_status)" method="get" >
+                    <div class="input-group">
+                        <input type="hidden" name='company_status' value="active"/>
+                        <input type="hidden" name='search' t-att-value="search"/>
+                        <input type='submit'
+                               t-att-class="'btn btn-default a-submit' if (company_status != 'active') else 'btn btn-default disabled' "
+                               value="all together"/>
+                    </div>
+                </form>
+
+
+            </div>
+        </template>
+
+	
         <template id="frontend_listing.base" name="Base for listing of companies">
             <t t-call="frontend_base.doctype_html"/>
             <t t-call="frontend_base.html">
 
-                <t t-call="frontend_base.full_head"/>
+                <t t-call="frontend_base.full_head">
+				<link rel="stylesheet" href="/frontend_listing/static/src/css/bootstrap-table.css" type="text/css"/>
+                <link rel="stylesheet" href="/frontend_listing/static/src/css/frontend_listing.css" type="text/css"/>
+                </t>
 
                 <t t-call="frontend_base.body">
-                    <div class="products_pager">
+                    
+                    <div class="container navDirectory">
+                        
+                        
+                        <div class="row">
+                            <div class="col-xs-10">
+
+                                
+                                <div class="row">
+                                    <div class="col-xs-9 col-xs-offset-1" style="background-color:yellow;">
+                                        <t t-call="frontend_listing.search">
+                                            <t t-set="search_class">pagination form-inline col-md-3</t>
+                                        </t>
+                                    </div>
+                                    <!--<div class="col-xs-2" style="background-color:blue;">-->
+                                        <!--<a class="btn btn-default" href="#" role="button">ADD Studio</a>-->
+                                    <!--</div>-->
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-9 col-xs-offset-1" style="background-color:red;">
+                                        <t t-call="frontend_listing.filters"/>
+                <!--                        <ol class="breadcrumb">
+                                          <li><a href="#">Home</a></li>
+                                          <li><a href="#">Library</a></li>
+                                          <li class="active">Data</li>
+                                        </ol>-->
+                                    </div>
+                                    <div class="col-xs-2" style="background-color:green;">
+                                        <t t-call="frontend_listing.switch"/>
+        <!--                                <a class="btn btn-default" href="#" role="button"><i class="fa fa-compass fa-2x"></i></a>
+                                        <a class="btn btn-default" href="#" role="button"><i class="fa fa-th-list fa-2x"></i></a>-->
+                                    </div>
+                                </div> 
+                                
+                                
+                                
+                            </div>
+                        
+                            
+                            <div class="col-xs-2">
+                                <div class="stats fontCGSM">
+                                    <t t-set="nbr" t-value="nbr_companies"/>
+                                    <t t-call="frontend_base.company_counter" />
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                    
+                    
+                    
+                    
+<!--                    <div class="products_pager">
                         <div class="row" style="width: 100%;">
                             <t t-call="frontend_listing.search">
                                 <t t-set="search_class">pagination form-inline col-md-3</t>
                             </t>
                         </div>
                     </div>
+                    <t t-call="frontend_listing.switch"/>
+                    <div class="stats stat-right fontCGSM">
+                        <t t-set="nbr" t-value="nbr_companies"/>
+                        <t t-call="frontend_base.company_counter" />
+                    </div>
+                    <t t-call="frontend_listing.filters"/>-->
 
                     <t t-raw="0"/>
-                    <t t-call="frontend_base.footer"/>
-                    <t t-call="frontend_base.engine"/>
+                    <t t-call="frontend_listing.footer"/>
+                    <t t-call="frontend_base.engine">
+                        <t t-call="frontend_base.company_counter_js"/>
+                    </t>
+                    
+                    
+                    
                 </t> <!-- closing body -->
 
             </t> <!-- closing html -->
@@ -84,51 +229,27 @@
 
         <template id="frontend_listing.list" name="Listing: List">
             <t t-call="frontend_listing.base">
-               <table data-toggle="table" class="table">
-                    <thead>
-                        <tr>
-                            <th>Logo</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Industries</th>
-                            <th>Localtion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <t t-foreach="partners" t-as="partner">
-                        <tr>
-                            <td>
-                                <img itemprop="image" class="img img-responsive" t-att-src="website.image_url(partner, 'image_small')" />
-                            </td>
-                            <td>
-                            <a itemprop="name" t-att-href="keep('/directory/company/%s' % slug(partner), page=(pager['page']['num'] if pager['page']['num']>1 else None))">
-                                <h4 t-esc="partner.name"/>
-                            </a>
-                            </td>
-                            <td><span t-esc="partner.email"/></td>
-                            <td>
-                                <t t-foreach="partner.industry_ids" t-as="ind">
-                                    <t t-call="frontend_base.industry_tag"/>
-                                </t>
-                            </td>
-                            <td>
-                                <span t-esc="partner.city"/>,
-                                <t t-if="partner.state_id">
-                                    <span t-esc="partner.state_id.name"/>,
-                                </t>
-                                <span t-esc="partner.country_id.name"/>
-                            </td>
-                        </tr>
-                        </t>
-                    </tbody>
-                </table>
-
-                <t t-call="frontend_listing.pagination">
-                    <t t-set="search_class">pagination form-inline col-md-3</t>
-                </t>
-                <t t-call="website.pager"/>
-                <t t-call="frontend_listing.switch"/>
+				<div class="jumbotron fontCGSM">
+					<div id="toolbar">
+					</div>
+                    <div id="loading-image">
+                        <img src="/frontend_base/static/ajax-loader.gif"
+                             alt="Loading... please wait"/>
+                    </div>
+                    <table id="table"
+                           data-toolbar="#toolbar"
+                           data-mobile-responsive="true"
+                           data-check-on-init="true">
+                    </table>
+				</div>
             </t>
+
+            <script type="text/javascript">
+                bootstrap_table_ajax('<t t-esc="search"/>', '<t t-raw="company_status"/>')
+            </script>
+
+
+
         </template>
     </data>
 </openerp>

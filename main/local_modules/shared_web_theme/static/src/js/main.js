@@ -8,6 +8,10 @@
 	}
 	
 	$(document).ready(function() {
+        
+        $(".footer").click(function () {
+            $(".footer").toggleClass("changeBG");
+        });
 
 		/* ---------------------------------------------- /*
 		 * SVG // snapsvg loader
@@ -22,13 +26,7 @@
         $(".stats div").each(function( index ) {
             loadSVG(this, "/shared_web_theme/static/src/svg/__stats-bg.svg");
          });
-        
-        // Socials
-		loadSVG("#twitter-svg", "/shared_web_theme/static/src/svg/__social-tw.svg");
-		loadSVG("#linkedin-svg", "/shared_web_theme/static/src/svg/__social-lin.svg");
-        loadSVG("#github-svg", "/shared_web_theme/static/src/svg/__social-git.svg");
-        
-        
+
 
 		/* ---------------------------------------------- /*
 		 * Smooth scroll / Scroll To Top

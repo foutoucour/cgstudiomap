@@ -72,7 +72,7 @@
 
                 <div class="container">
                     <div class="row fontCGSMlight">
-                        <div class="col-xs-8 col-md-5 col-lg-5" >
+                        <div class="col-xs-8 col-sm-3 col-md-5 col-lg-5" >
                             <p>
                                 <span class="footer-name fontCGSM">CG Studio Map</span> <br />
                                 powered by <a href="http://www.odoo.com/page/website-builder" target="_blank">odoo.com</a><br />
@@ -80,24 +80,36 @@
                             </p>
                         </div>
 
-					<div class="col-lg-3 hidden-xs">
+					<div class="col-sm-3 col-md-3 col-lg-3 hidden-xs">
 						<li><a t-att-href="website.directory_menu">Directory</a></li>
 						<li><a t-att-href="website.shop_menu">Shop</a></li>
 						<li><a t-att-href="website.about_menu">About</a></li>
 					</div>
 
-                        <div class="col-xs-4 col-md-4 col-lg-4">
+                        <div class="socials col-xs-4 col-sm-4 col-md-4 col-lg-4">
                             <p class="social-txt">Connect with us:</p><br />
-							<p class="visible-xs-inline">
+                            
+                            <p class="visible-lg-inline">
+								<a t-att-href="website.social_twitter"><i class="fa fa-twitter fa-3x"></i></a>
+								<a t-att-href="website.social_linkedin"><i class="fa fa-linkedin fa-3x"></i></a>
+								<a t-att-href="website.social_github"><i class="fa fa-github fa-3x"></i></a>
+                            </p>
+							<p class="visible-md-inline">
+                                <a t-att-href="website.social_twitter"><i class="fa fa-twitter fa-2x"/></a>
+                                <a t-att-href="website.social_linkedin"><i class="fa fa-linkedin fa-2x"/></a>
+                                <a t-att-href="website.social_github"><i class="fa fa-github fa-2x"/></a>
+							</p>
+							<p class="visible-sm-inline">
                                 <a t-att-href="website.social_twitter"><i class="fa fa-twitter fa-lg"/></a>
                                 <a t-att-href="website.social_linkedin"><i class="fa fa-linkedin fa-lg"/></a>
                                 <a t-att-href="website.social_github"><i class="fa fa-github fa-lg"/></a>
 							</p>
-                            <p class="hidden-xs">
-                                <a t-att-href="website.social_twitter"><span id="twitter-svg"></span></a>
-                                <a t-att-href="website.social_linkedin"><span id="linkedin-svg"></span></a>
-                                <a t-att-href="website.social_github"><span id="github-svg"></span></a>
-                            </p>
+							<p class="visible-xs-inline">
+                                <a t-att-href="website.social_twitter"><i class="fa fa-twitter"/></a>
+                                <a t-att-href="website.social_linkedin"><i class="fa fa-linkedin"/></a>
+                                <a t-att-href="website.social_github"><i class="fa fa-github"/></a>
+							</p>
+
                         </div>
                     </div>
                 </div>
@@ -188,27 +200,8 @@
         <template id="frontend_base.industry_tag" name="Industry Tag">
             <!--Uncomment this part when the directory is released!-->
             <!--<a itemprop="name" t-att-href="'/directory?search=%s' % ind.name">-->
-            <em>
                 <span class="label label-info" t-esc="ind.name"/>
-            </em>
             <!--</a>-->
-        </template>
-
-        <!--Represent the link to the company's form -->
-        <!--Requirements:-->
-        <!--* ind: partner object-->
-        <!--How To:-->
-        <!--=======-->
-        <!--<t t-set="partner" t-value="{value_for_partner}"/>-->
-        <!--<t t-call="frontend_base.company_form_link">-->
-        <!--    something that will be the link.-->
-        <!--</t>-->
-        <template id="frontend_base.company_form_link" name="Commpany Form Link">
-            <!--Uncomment this part when the directory is released!-->
-            <!--<a itemprop="name" t-att-href="keep('/directory/company/%s' % slug(partner), page=(pager['page']['num'] if pager['page']['num']>1 else None))">-->
-            <a t-attf-href="/web#return_label=Website&amp;view_type=form&amp;model=#{partner._name}&amp;id=#{partner.id}&amp;action=#{action}">
-                <t t-raw="0"/>
-            </a>
         </template>
 
         <!--Represent the logo to a company-->

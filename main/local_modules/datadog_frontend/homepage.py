@@ -21,7 +21,6 @@
 import logging
 
 from openerp.addons.web import http
-from datadog import statsd
 from openerp.addons.frontend_homepage.controllers.homepage import Homepage
 
 
@@ -29,7 +28,6 @@ _logger = logging.getLogger(__name__)
 
 
 class HomePage(Homepage):
-    @statsd.timed('odoo.frontend.index.time')
     @http.route('/', type='http', auth="public", website=True)
     def index(self, *args, **kwargs):
         """Track the time of execution for the main page"""

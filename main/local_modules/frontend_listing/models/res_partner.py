@@ -16,15 +16,18 @@ class ResPartner(models.Model):
         :param str search: string used for the search.
         :return: list
         """
+        _logger.debug('search domain')
+        _logger.debug('search: %s', search)
         domain = []
 
-        for srch in search.split(' '):
+        for sub_search in search.split(' '):
+            _logger.debug('sub search: %s', sub_search)
             domain += [
                     '|', '|', '|',
-                    ('name', 'ilike', srch),
-                    ('city', 'ilike', srch),
-                    ('country_id.name', 'ilike', srch),
-                    ('industry_ids.name', 'ilike', srch)
+                    ('name', 'ilike', sub_search),
+                    ('city', 'ilike', sub_search),
+                    ('country_id.name', 'ilike', sub_search),
+                    ('industry_ids.name', 'ilike', sub_search)
             ]
-
+        _logger.debug('domain: %s', domain)
         return domain

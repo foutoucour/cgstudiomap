@@ -3,7 +3,7 @@
     <data>
         <template id="frontend_listing.css" name="Frontend: css" inherit_id="frontend_base.css">
             <xpath expr="." position="inside">
-                <link rel="stylesheet" href="/frontend_listing/static/src/css/frontend_listing.css" type="text/css"/>
+
             </xpath>
         </template>
 

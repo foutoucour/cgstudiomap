@@ -1,5 +1,7 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_res_partner_industry_family_public","res_partner_industry_family public","model_res_industry_family","base.group_public",1,0,0,0
 "access_res_partner_industry_family_user","res_partner_industry_family user","model_res_industry_family","base.group_user",1,0,0,0
 "access_res_partner_industry_family_partner_manager","res_partner_industry_family partner_manager","model_res_industry_family","base.group_partner_manager",1,1,1,1
 "access_res_partner_industry_user","res_partner_industry user","model_res_industry","base.group_user",1,0,0,0
+"access_res_partner_industry_public","res_partner_industry public","model_res_industry","base.group_public",1,0,0,0
 "access_res_partner_industry_partner_manager","res_partner_industry partner_manager","model_res_industry","base.group_partner_manager",1,1,1,1

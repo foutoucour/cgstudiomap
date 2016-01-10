@@ -4,10 +4,10 @@ import logging
 import random
 
 from caches import clear_caches
-from openerp import api, models
+from openerp import api, models, fields
 
 _logger = logging.getLogger(__name__)
-_logger.setLevel(logging.DEBUG)
+
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
@@ -121,3 +121,42 @@ class ResPartner(models.Model):
         clear_caches()
         return super(ResPartner, self).create(vals)
 
+    partner_url = fields.Char('Partner url', compute='partner_url_link')
+
+    @api.one
+    def partner_url_link(self):
+        """Return the link to the page of the current partner."""
+        self.partner_url = (
+            '/web#id={0}&view_type=form&model=res.partner'.format(self.id)
+        )
+
+    def info_window(self, company_status='open'):
+        """Build the info window for the google map."""
+        title = '<div id="map_info_header"><h4>{0}</h4></div>'.format(
+            self.name.encode('utf8')
+        )
+        body = '<div id="map_info_content">'
+        body += '<p>{0}</p>'.format(self.location.encode('utf8'))
+        body += ' '.join(
+            [
+                ind.tag_url_link(company_status=company_status)
+                for ind in self.industry_ids
+            ]
+        )
+        body += '</div>'
+        footer = '<div id="map_info_footer"><a href="{0}">More ...</a></div>'.format(
+            self.partner_url
+        )
+        return title + body + footer
+
+    location = fields.Char('Location', compute='location_code')
+
+    @api.one
+    def location_code(self):
+        """Return the concatenation of city, state and country."""
+        self.location = ''.join([
+            self.city and '{0}, '.format(self.city.encode('utf8')) or '',
+            self.state_id and '{0}, '.format(
+                self.state_id.name.encode('utf8')) or '',
+            '{0}'.format(self.country_id.name.encode('utf8')),
+        ])

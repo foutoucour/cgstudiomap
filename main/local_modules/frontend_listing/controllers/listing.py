@@ -1,83 +1,18 @@
 # -*- coding: utf-8 -*-
 import logging
-from cachetools import cached, TTLCache
-from openerp.addons.web import http
-from openerp.addons.frontend_base.models.caches import caches
-from openerp.addons.website.controllers.main import Website
+import pprint
+
 import simplejson
+from datadog import statsd
+from openerp.addons.frontend_base.controllers.base import Base
+from openerp.addons.frontend_base.models.caches import caches
+from openerp.addons.web import http
+from openerp.addons.website.models.website import hashlib
+
 from openerp.http import request, werkzeug
 
 _logger = logging.getLogger(__name__)
-
 cache = caches.get('cache_1h')
-
-PPR = 4  # Products Per Row
-
-
-class TableCompute(object):
-    def __init__(self, partner_per_page=20):
-        self.table = {}
-        self.partner_per_page = partner_per_page
-
-    def _check_place(self, posx, posy, sizex, sizey):
-        res = True
-        for y in xrange(sizey):
-            for x in xrange(sizex):
-                if posx + x >= PPR:
-                    res = False
-                    break
-                row = self.table.setdefault(posy + y, {})
-                if row.setdefault(posx + x) is not None:
-                    res = False
-                    break
-            for x in range(PPR):
-                self.table[posy + y].setdefault(x, None)
-        return res
-
-    def process(self, products):
-        # Compute products positions on the grid
-        minpos = 0
-        index = 0
-        maxy = 0
-        for p in products:
-            x = min(max(1, 1), PPR)
-            y = min(max(1, 1), PPR)
-            if index >= self.partner_per_page:
-                x = y = 1
-
-            pos = minpos
-            while not self._check_place(pos % PPR, pos / PPR, x, y):
-                pos += 1
-            if index >= self.partner_per_page and ((pos + 1.0) / PPR) > maxy:
-                break
-
-            if x == 1 and y == 1:  # simple heuristic for CPU optimization
-                minpos = pos / PPR
-
-            for y2 in xrange(y):
-                for x2 in xrange(x):
-                    self.table[(pos / PPR) + y2][(pos % PPR) + x2] = False
-            self.table[pos / PPR][pos % PPR] = {
-                'product': p, 'x': x, 'y': y,
-                'class': " ",
-            }
-            if index <= self.partner_per_page:
-                maxy = max(maxy, y + (pos / PPR))
-            index += 1
-
-        # Format table according to HTML needs
-        rows = self.table.items()
-        rows.sort()
-        rows = map(lambda x: x[1], rows)
-        for col in xrange(len(rows)):
-            cols = rows[col].items()
-            cols.sort()
-            x += len(cols)
-            rows[col] = [
-                c for c in map(lambda x: x[1], cols) if c
-                ]
-
-        return rows
 
 
 class QueryURL(object):
@@ -102,98 +37,141 @@ class QueryURL(object):
         return path
 
 
-class Listing(Website):
+def image_url(record, field, size=None):
+    """Returns a local url that points to the image field of a given browse record."""
+    model = record._name
+    sudo_record = record.sudo()
+    id_ = '%s_%s' % (
+        record.id,
+        hashlib.sha1(
+            sudo_record.write_date or sudo_record.create_date or ''
+        ).hexdigest()[0:7]
+    )
+    size = '' if size is None else '/%s' % size
+    return '/website/image/%s/%s/%s%s' % (model, id_, field, size)
+
+
+class Listing(Base):
     """Representation of the page listing companies."""
 
-    map_url = '/directory/map'
+    map_url = '/directory'
     list_url = '/directory/list'
 
+    def get_partners(self, partner_pool, search='', company_status='open'):
+        """Wrapper to be able to cache the result of a search in the
+        partner_pool
+        """
+        return partner_pool.search(
+            self.get_company_domain(search, company_status)
+        )
+
+    @statsd.timed('odoo.frontend.ajax.get_partner',
+                  tags=['frontend', 'frontend:listing', 'ajax'])
+    @http.route('/directory/get_partners',
+                type='http', auth="public", methods=['POST'], website=True)
+    def get_partner_json(self, search='', company_status='open'):
+        """Return a json with the partner matching the search
+
+        :param str search: search to filter with
+        :return: json dumps
+        """
+        _logger.debug('search: %s', search)
+        _logger.debug('company_status: %s', company_status)
+        partners = self.get_partners(
+            request.env['res.partner'],
+            search=search,
+            company_status=company_status
+        )
+        _logger.debug('partners: %s', pprint.pformat(partners))
+
+        details = simplejson.dumps(
+            [
+                {
+                    'logo': '<img itemprop="image" '
+                            'class="img img-responsive" '
+                            'src="{0}"'
+                            '/>'.format(image_url(partner, 'image_small')),
+                    'name': '<a href="{0.partner_url}">{1}</a>'.format(
+                        partner, partner.name.encode('utf-8')
+                    ),
+                    'email': partner.email or '',
+                    'industries': ' '.join(
+                        [
+                            ind.tag_url_link(
+                                company_status=company_status,
+                                listing=True
+                            )
+                            for ind in partner.industry_ids
+                        ]
+                    ),
+                    'location': partner.location,
+                }
+                for partner in partners
+            ],
+        )
+        _logger.debug('details: %s', details)
+        return details
+
+    @statsd.timed('odoo.frontend.list.time',
+                  tags=['frontend', 'frontend:listing'])
     @http.route(map_url, type='http', auth="public", website=True)
-    def map(self, search='', **post):
+    def map(self, company_status='open', search='', **post):
         """Render the list of studio under a map."""
         url = self.map_url
-        env = request.env
-        partner_pool = env['res.partner']
-        domain = partner_pool.active_companies_domain
-
-        if search:
-            domain.extend(partner_pool.search_domain(search))
-
-        _logger.debug('Domain: %s', domain)
-        keep = QueryURL(url, search=search)
+        keep = QueryURL(url, search=search, company_status=company_status)
 
         if search:
             post["search"] = search
 
-        partners = partner_pool.search(domain)
-        geoloc = simplejson.dumps({
-            partner.name: [
-                partner.partner_latitude,
-                partner.partner_longitude,
-                partner.name
-            ]
-            for partner in partners
-        })
-        safe_search = search.replace(' ', '+')
+        partners = self.get_partners(
+            request.env['res.partner'],
+            search=search,
+            company_status=company_status
+        )
+
+        geoloc = simplejson.dumps(
+            {
+                partner.id: [
+                    partner.partner_latitude,
+                    partner.partner_longitude,
+                    partner.info_window(company_status),
+                ]
+                for partner in partners
+                }
+        )
         _logger.debug(geoloc)
         values = {
             'geoloc': geoloc,
             'search': search,
+            'company_status': company_status,
             'partners': partners,
             'keep': keep,
-            'list_url': '{}{}'.format(
-                self.list_url, safe_search and '?search={}'.format(safe_search) or ''
-            )
+            'map_url': self.map_url,
+            'list_url': self.list_url,
+            'url': self.map_url,
         }
 
         return request.website.render("frontend_listing.map", values)
 
-    @http.route([list_url, '{}/page/<int:page>'.format(list_url),
-                 ], type='http', auth="public", website=True)
-    def list(self, page=0, search='', **post):
+    @statsd.timed('odoo.frontend.map.time',
+                  tags=['frontend', 'frontend:listing'])
+    @http.route(list_url, type='http', auth="public", website=True)
+    def list(self, company_status='open', page=0, search='', **post):
         """Render the list of studio under a table."""
         url = self.list_url
-        partner_per_page = 20
-        env = request.env
-        partner_pool = env['res.partner']
-        domain = partner_pool.active_companies_domain
 
-        if search:
-            domain.extend(partner_pool.search_domain(search))
-
-        _logger.debug('Domain: %s', domain)
-        keep = QueryURL(url, search=search)
+        keep = QueryURL(url, search=search, company_status=company_status)
 
         if search:
             post["search"] = search
 
-        partner_count = partner_pool.search_count(domain)
-        pager = request.website.pager(
-            url=url,
-            total=partner_count,
-            page=page,
-            step=partner_per_page,
-            scope=7,
-            url_args=post
-        )
-
-        partners = partner_pool.search(
-            domain,
-            limit=partner_per_page,
-            offset=pager['offset'],
-        )
-        _logger.debug('search: %s', search)
-        safe_search = search.replace(' ', '+')
         values = {
             'search': search,
-            'pager': pager,
-            'partners': partners,
-            'rows': PPR,
+            'company_status': company_status,
             'keep': keep,
-            'map_url': '{}{}'.format(
-                self.map_url, safe_search and '?search={}'.format(safe_search) or ''
-            )
+            'map_url': self.map_url,
+            'list_url': self.list_url,
+            'url': self.list_url,
         }
 
         return request.website.render("frontend_listing.list", values)
-

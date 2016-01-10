@@ -29,18 +29,16 @@
 
         <!--template that build the mini card of a partner-->
         <template id="partner_card" name="Partner Card">
-            <t t-call="frontend_base.company_form_link">
+			<a t-att-href="partner.partner_url">
                 <t t-call="frontend_base.company_logo"/>
-                <t t-call="frontend_base.company_form_link">
-                    <h4 t-esc="partner.name"/>
-                </t>
+				<a t-att-href="partner.partner_url"><h4 t-esc="partner.name"/></a>
                 <p>
                     <em t-esc="'{}, {}'.format(partner.city.encode('utf8'), partner.country_id.name)"/><br />
                     <t t-foreach="partner.industry_ids" t-as="ind">
-                        <t t-call="frontend_base.industry_tag"/>
+                        <t t-raw="ind.tag_url_link()"/>
                     </t>
                 </p>
-            </t>
+			</a>
         </template>
 
         <template id="partner_box" name="Partner Box">
