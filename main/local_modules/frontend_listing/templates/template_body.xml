@@ -144,9 +144,9 @@
                                             <t t-set="search_class">pagination form-inline col-md-3</t>
                                         </t>
                                     </div>
-                                    <div class="col-xs-2" style="background-color:blue;">
-                                        <a class="btn btn-default" href="#" role="button">ADD Studio</a>
-                                    </div>
+                                    <!--<div class="col-xs-2" style="background-color:blue;">-->
+                                        <!--<a class="btn btn-default" href="#" role="button">ADD Studio</a>-->
+                                    <!--</div>-->
                                 </div>
 
                                 <div class="row">
