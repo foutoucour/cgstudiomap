@@ -16,6 +16,8 @@
             <t t-call="frontend_base.doctype_html"/>
             <t t-call="frontend_base.html">
                 <t t-call="frontend_base.full_head"/>
+				<link rel="stylesheet" href="/frontend_studio/static/css/studio.css" type="text/css"/>
+				
                 <t t-call="frontend_base.body">
                     <t t-raw="0"/>
                     <t t-call="frontend_base.footer"/>
@@ -37,42 +39,55 @@
         </template>
 
         <template id="frontend_studio.studio_header" name="Studio: Details Header">
+			
+			<h4 t-esc="partner.name"/>
             <div>
                 <t t-call="frontend_base.company_logo"/>
             </div>
-            <div>
-                <h4 t-esc="partner.name"/>
-            </div>
         </template>
-
+		
+        <template id="frontend_studio.studio_address" name="Studio: Address">
+			<div class="form-group">
+				<h3>Address</h3>
+				<p>
+					<t t-esc="partner.street" />
+					<t t-esc="partner.street2" />
+					<t t-esc="partner.city" />
+					<t t-esc="partner.zip" />
+					<t t-esc="partner.state_id.name" />
+					<t t-esc="partner.country_id.name" />
+				</p>
+			</div>
+        </template>
+		
         <template id="frontend_studio.studio_details" name="Studio: Details">
-            <div class="form-group">
-                <div class="col-md-3 col-sm-3 control-label">Address</div>
-                <div class="col-md-7 col-sm-7">
-                    <t t-esc="partner.street"/>
-                    <t t-esc="partner.street2"/>
-                    <t t-esc="partner.city"/>
-                    <t t-esc="partner.zip"/>
-                    <t t-esc="partner.state_id.name"/>
-                    <t t-esc="partner.country_id.name"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-3 col-sm-3 control-label">Website</div>
-                <div class="col-md-7 col-sm-7"><t t-esc="partner.website"/></div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-3 col-sm-3 control-label">Phone</div>
-                <div class="col-md-7 col-sm-7"><t t-esc="partner.phone"/></div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-3 col-sm-3 control-label">Mobile</div>
-                <div class="col-md-7 col-sm-7"><t t-esc="partner.mobile"/></div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-3 col-sm-3 control-label">Fax</div>
-                <div class="col-md-7 col-sm-7"><t t-esc="partner.fax"/></div>
-            </div>
+			
+			
+			<div class="row">
+				<div class="col-sm-4" style="background-color:blue;">
+					<div class="form-group">
+						<h4>Website</h4>
+						<p><t t-esc="partner.website" /></p>
+					</div>
+				</div>
+				<div class="col-sm-4" style="background-color:blue;">
+					<t t-call="frontend_studio.social_networks" />
+				</div>
+				<div class="col-sm-4" style="background-color:blue;">
+					<div class="form-group">
+						<h4>Phone</h4>
+						<p><t t-esc="partner.phone" /></p>
+					</div>
+					<div class="form-group">
+						<h4>Mobile</h4>
+						<p><t t-esc="partner.mobile" /></p>
+					</div>
+					<div class="form-group">
+						<h4>Fax</h4>
+						<p><t t-esc="partner.fax" /></p>
+					</div>
+				</div>
+			</div>
         </template>
 
         <template id="frontend_studio.social_networks" name="Studio: Social Networks">
@@ -121,15 +136,67 @@
 
         <template id="frontend_studio.view" name="Studio: view">
             <t t-call="frontend_studio.base">
+				
+				<div class="jumbotron" id="container-map-studio">
+					<t t-call="frontend_studio.map"/>
+					
+					<div class="container studio-header">
+						<div class="row">
+							<div class="col-sm-10" style="background-color:red;">
+								<t t-call="frontend_studio.studio_header"/>
+							</div>
+							
+							<div class="col-sm-2" style="background-color:green;">
+								<t t-call="frontend_studio.edit_button"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-10" style="background-color:yellow;">
+							
+							<div class="row">
+								<div class="col-sm-12">
+									<t t-call="frontend_studio.studio_address"/>
+								</div>
+							</div>
+							
+							
+							<div class="row">
+								<t t-call="frontend_studio.studio_details"/>
+							</div>
+						</div>
+						
+						<div class="col-sm-2" style="background-color:purple;">
+							<t t-call="frontend_studio.industries"/>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-12" style="background-color:orange;">
+							<t t-call="frontend_studio.same_localization"/>
+						</div>
+					</div>					
+					
+					
+
+				</div>
+				
+				
+				
+				
+				
                 <div style="margin-top:100px"></div>
-                <t t-call="frontend_studio.map"/>
-                <t t-call="frontend_studio.search_zone"/>
-                <t t-call="frontend_studio.edit_button"/>
-                <t t-call="frontend_studio.studio_header"/>
-                <t t-call="frontend_studio.studio_details"/>
+                
+<!--                <t t-call="frontend_studio.search_zone"/>
+                
+                
+                
                 <t t-call="frontend_studio.social_networks"/>
                 <t t-call="frontend_studio.industries"/>
-                <t t-call="frontend_studio.same_localization"/>
+                <t t-call="frontend_studio.same_localization"/>-->
             </t>
 
         </template>
