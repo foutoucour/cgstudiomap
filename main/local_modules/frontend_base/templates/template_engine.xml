@@ -21,9 +21,10 @@
             <script src="/web/static/lib/bootstrap/js/bootstrap.js" type="text/javascript"></script>
             <!--<script src="/shared_web_theme/static/src/js/custom.js" type="text/javascript"></script>-->
 			<script src="/shared_web_theme/static/src/js/lib/snap.svg.js" type="text/javascript"></script>
+			<script src="/shared_web_theme/static/src/js/lib/fill.box.js" type="text/javascript"></script>
 			<script src="/shared_web_theme/static/src/js/main.js" type="text/javascript"></script>
             <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-            <script src="/shared_web_theme/static/src/js/custom.js" type="text/javascript"></script>
+            <!--<script src="/shared_web_theme/static/src/js/custom.js" type="text/javascript"></script>-->
             <script src="/frontend_base/static/src/js/counters.js" type="text/javascript"></script>
             <t t-raw="0"/>
         </template>

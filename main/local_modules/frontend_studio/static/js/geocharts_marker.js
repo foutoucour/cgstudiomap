@@ -18,8 +18,12 @@ function geo_chart_marker(city_name, latitude, longitude, country_code, target) 
             keepAspectRatio: true,
             width:100 + "%",
             height:100 + '%',
-            tooltip: 'none',
-            region: country_code,
+			markerOpacity: 0.7,
+ 			tooltip: { 
+				isHtml: true,
+				textStyle: { fontName: 'cgsm-regular',fontSize: 16,color: '#ffffff',showColorCode: true}
+			},
+			region: country_code,
             displayMode: 'markers'
         };
 

@@ -210,10 +210,12 @@
         <!--<t t-set="partner" t-value="{value_for_partner}"/>-->
         <!--<t t-call="frontend_base.company_logo"/>-->
         <template id="frontend_base.company_logo" name="Company Logo">
+		<div class="logo-thumb">
             <img itemprop="image"
-                 class="img img-responsive"
-                 t-att-src="website.image_url(partner, 'image_small')"
+                 class="fill-box img-responsive"
+                 t-att-src="website.image_url(partner, 'image')"
             />
+		</div>
         </template>
 
         <template id="frontend_base.layout" name="Base for simple page">
