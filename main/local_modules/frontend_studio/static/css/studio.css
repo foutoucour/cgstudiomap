@@ -43,12 +43,7 @@
     stroke-width: 0 !important;
 }
 
-.google-visualization-tooltip {
-    position: fixed !important;
-    top: 100px !important;
-    right: 250px !important;
-    margin: 10px 0 0 400px !important;
-}
+
 .studio-header {
 	position: relative;
 	margin: 0 auto;
