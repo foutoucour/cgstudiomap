@@ -18,7 +18,7 @@ function geo_chart_marker(city_name, latitude, longitude, country_code, target) 
             keepAspectRatio: true,
             width:100 + "%",
             height:100 + '%',
-			markerOpacity: 0.7,
+			markerOpacity: 0.65,
  			tooltip: { 
 				isHtml: true,
 				textStyle: { fontName: 'cgsm-regular',fontSize: 16,color: '#ffffff',showColorCode: true}

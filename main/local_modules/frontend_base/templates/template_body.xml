@@ -213,7 +213,7 @@
 		<div class="logo-thumb">
             <img itemprop="image"
                  class="fill-box img-responsive"
-                 t-att-src="website.image_url(partner, 'image')"
+                 t-att-src="website.image_url(partner, 'image_medium', size='128x128')"
             />
 		</div>
         </template>

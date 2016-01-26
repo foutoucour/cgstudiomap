@@ -22,6 +22,7 @@
                     <t t-raw="0"/>
                     <t t-call="frontend_base.footer"/>
                     <t t-call="frontend_base.engine">
+					<script type="text/javascript" src="/frontend_studio/static/js/geocharts_marker.js"></script>
                         <script type="text/javascript">
                             geo_chart_marker('<t t-esc="partner.city"/>', <t t-esc="partner.partner_latitude"/>,<t t-esc="partner.partner_longitude"/>, '<t t-esc="partner.country_id.code"/>', 'geochart_target');
                         </script>
@@ -158,7 +159,7 @@
 				<div style="background-color:white;">
 				<div class="container studio-details fontCGSM">
 					<div class="row">
-						<div class="col-sm-10" style="background-color:yellow;">
+						<div class="col-sm-10">
 							
 							<div class="row">
 								<div class="col-sm-12">
@@ -172,7 +173,7 @@
 							</div>
 						</div>
 						
-						<div class="col-sm-2" style="background-color:purple;">
+						<div class="col-sm-2">
 							<t t-call="frontend_studio.industries"/>
 						</div>
 					</div>
