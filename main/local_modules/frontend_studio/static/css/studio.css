@@ -1,0 +1,153 @@
+/*
+#f1f1f3
+#b05ae2
+#323133
+
+#979699
+#cbcacc
+
+*/
+.jumbotron {
+	padding: 0 0;
+	margin: 0 0;
+	
+}
+#container-map-studio {
+	position: relative;
+	height: 350px;
+	z-index: 0;
+	background: url(../cgsm-pattern.svg) repeat fixed;
+}
+#geochart_target {
+	position: relative;
+	width: 350px;
+	margin: 0 auto;
+	height: 100%;
+	z-index: 1;
+}
+
+#geochart_target svg {
+	margin-top: 20px;
+	margin-left: 20px;
+	transform: scale(1.6);
+}
+
+#geochart_target path {
+	stroke-width: 0.3;
+	/* control the countries borders width */
+	stroke: #cbcacc;
+	/* choose a color for the border */
+}
+#geochart_target circle {
+    r: 5px;
+    stroke-width: 0 !important;
+}
+
+.google-visualization-tooltip {
+    position: fixed !important;
+    top: 100px !important;
+    right: 250px !important;
+    margin: 10px 0 0 400px !important;
+}
+.studio-header {
+	position: relative;
+	margin: 0 auto;
+	padding: 0;
+	margin-top: -140px;
+}
+.studio-header .btn {
+	z-index: 200;
+}
+.studio-header h2 {
+	border-bottom: 1px solid #b05ae2;
+}
+
+
+.studio-details .row {
+	margin: 1em 0;
+	padding: 0 0;
+}
+
+.studio-header .logo-thumb {
+	width: 128px;
+	height: 128px;
+	overflow: hidden;
+	border: 2px solid #cbcacc;
+	background-color: #f1f1f3;
+	border-radius: 0.1em !important;
+	-webkit-border-radius: 0.1em !important;
+	-moz-border-radius: 0.1em !important;
+}
+
+.studios .logo-thumb {
+	width: 64px !important;
+	height: 64px !important;
+}
+.label {
+	display: inline-block;
+	font-family: 'cgsm-regular';
+	padding: .3em .8em .4em;
+	margin: 0.2em 0;
+	font-size: 85%;
+	font-weight: normal;
+	line-height: 1;
+	color: #fff;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	border-radius: 0.25em !important;
+	-webkit-border-radius: 0.25em !important;
+	-moz-border-radius: 0.25em !important;
+}
+
+.btn {
+	font-size: 1.04em;
+	font-family: 'cgsm-regular';
+	padding: 14px 24px;
+	border: 0 none;
+	font-weight: normal;
+	letter-spacing: 1px;
+	text-transform: none;
+	-webkit-border-radius: 2px !important;
+	-moz-border-radius: 2px !important;
+	border-radius: 2px !important;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+	outline: 0 none;
+}
+
+.btn-edit {
+	border: 2px solid #5ae2b0;
+	color: #5ae2b0;
+	padding: 12px 22px;
+}
+
+.btn-edit:hover,
+.btn-edit:focus,
+.btn-edit:active,
+.btn-edit.active,
+.open > .dropdown-toggle.btn-edit {
+	background: #f1f1f3;
+	border-color: #5ae2b0;
+	color: #5ae2b0;
+}
+
+.btn-edit:active,
+.btn-edit.active {
+	border-color: #5ae2b0;
+	box-shadow: none;
+}
+
+.btn.outline {
+	background: none;
+	padding: 12px 22px;
+}
+.btn.outline:hover,
+.btn.outline:focus{
+	background: #5ae2b0;
+	color: #f1f1f3;
+
+}
