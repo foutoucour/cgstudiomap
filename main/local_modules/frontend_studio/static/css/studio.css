@@ -59,6 +59,11 @@
 	border-bottom: 0 solid #b05ae2;
 	color: #323133;
 }
+.studio-header h4 {
+	font-family: 'cgsm-thin';
+	font-size: 2em;
+	color: #323133;
+}
 h3:before {
 	content: "";
 	display: block;
@@ -66,13 +71,16 @@ h3:before {
 	width: 80%;
 	height: 1px;
 	position: absolute;
-	top: 36%;
+	top: 55%;
 	left: 20%;
 	z-index: 1;
 }
+.studio_industries h4 {
+	display: block;
+	border-bottom: solid 1px #cbcacc;
 
-h3 span {
-	background: #fff;
+}
+h3  {
 	padding: 0 20px;
 	position: relative;
 	z-index: 5;
@@ -104,15 +112,21 @@ h3 span {
 }
 .details-country {
 	font-family: 'cgsm-light';
-	font-size: 1.66em;
+	font-size: 1.54em;
+	background-color: #cbcacc;
+	padding: 0.1em 0.2em;
 	text-transform: uppercase;
+	float: right !important;
+	border-radius: 0.1em !important;
+	-webkit-border-radius: 0.1em !important;
+	-moz-border-radius: 0.1em !important;
 }
 .studio-header .logo-thumb {
-	width: 128px;
-	height: 128px;
+	width: 128px !important;
+	height: 128px !important;
 	overflow: hidden;
 	border: 2px solid #cbcacc;
-	background-color: #979699;
+	background-color: #fff;
 	border-radius: 0.1em !important;
 	-webkit-border-radius: 0.1em !important;
 	-moz-border-radius: 0.1em !important;
@@ -188,5 +202,34 @@ h3 span {
 .btn.outline:focus{
 	background: #5ae2b0;
 	color: #f1f1f3;
+}
+.studios h4 {
+	font-family: 'cgsm-regular';
+	margin-top: 0;
+}
 
+.studios .partner-item {
+	padding-bottom: 0.5em;
+	height: 240px;
+}
+
+.studios img {
+	padding-bottom: 0.5em;
+	height: 240px;
+}
+
+
+/*/////////////////////////////////
+        MEDIA QUERIES
+///////////////////////////////// */
+
+@media (max-width: 767px) {
+	.studios img {
+		margin: 0 auto!important;
+		text-align: center!important;
+	}
+	.studios {
+		margin: 0 auto!important;
+		text-align: center!important;
+	}
 }
