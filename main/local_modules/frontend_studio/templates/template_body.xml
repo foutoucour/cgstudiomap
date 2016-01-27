@@ -32,7 +32,21 @@
         </template>
 
         <template id="frontend_studio.search_zone" name="Studio: Search Zone">
-            <div>search</div>
+<!--		<div class="container navDirectory">
+			<div class="row">
+				<div class="col-xs-12 col-sm-10">
+					<div class="row">
+						<div class="col-sm-8">
+							<t t-call="frontend_listing.search" />
+						</div>
+						<div class="col-sm-3 col-sm-offset-1 navBtnColor">
+							<a class="btn btn-cgsm-add center-block" href="#" role="button">ADD Studio <i class="fa fa-step-forward fa-fw fa-rotate-90"/> </a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>-->
         </template>
 
         <template id="frontend_studio.map" name="Studio: Map">
@@ -49,44 +63,59 @@
 			<div class="form-group">
 				<h3>Address</h3>
 				<p>
-					<t t-esc="partner.street" />
-					<t t-esc="partner.street2" />
-					<t t-esc="partner.city" />
-					<t t-esc="partner.zip" />
-					<t t-esc="partner.state_id.name" />
-					<t t-esc="partner.country_id.name" />
+					<span class="details-street">
+						<t t-esc="partner.street" />
+						<t t-esc="partner.street2" />
+					</span>
+					
+					<span class="details-city">
+						<t t-esc="partner.city" />
+						<t t-esc="partner.zip" />
+						<t t-esc="partner.state_id.name" />
+					</span>
+					
+					<span class="details-country">
+						<h3>Industries</h3>
+						<t t-esc="partner.country_id.name" />
+					</span>
 				</p>
 			</div>
         </template>
 		
         <template id="frontend_studio.studio_details" name="Studio: Details">
-			
-			
-			<div class="row">
-				<div class="col-sm-4" style="background-color:blue;">
-					<div class="form-group">
-						<h4>Website</h4>
-						<p><t t-esc="partner.website" /></p>
-					</div>
-				</div>
-				<div class="col-sm-4" style="background-color:blue;">
-					<t t-call="frontend_studio.social_networks" />
-				</div>
-				<div class="col-sm-4" style="background-color:blue;">
-					<div class="form-group">
-						<h4>Phone</h4>
-						<p><t t-esc="partner.phone" /></p>
-					</div>
-					<div class="form-group">
-						<h4>Mobile</h4>
-						<p><t t-esc="partner.mobile" /></p>
-					</div>
-					<div class="form-group">
-						<h4>Fax</h4>
-						<p><t t-esc="partner.fax" /></p>
-					</div>
+		<div class="row">
+			<div class="col-sm-4" style="background-color:blue;">
+				<div class="form-group">
+					<h4>Website</h4>
+					<p>
+						<t t-esc="partner.website" />
+					</p>
 				</div>
 			</div>
+			<div class="col-sm-4" style="background-color:blue;">
+				<t t-call="frontend_studio.social_networks" />
+			</div>
+			<div class="col-sm-4" style="background-color:blue;">
+				<div class="form-group">
+					<h4>Phone</h4>
+					<p>
+						<t t-esc="partner.phone" />
+					</p>
+				</div>
+				<div class="form-group">
+					<h4>Mobile</h4>
+					<p>
+						<t t-esc="partner.mobile" />
+					</p>
+				</div>
+				<div class="form-group">
+					<h4>Fax</h4>
+					<p>
+						<t t-esc="partner.fax" />
+					</p>
+				</div>
+			</div>
+		</div>
         </template>
 
         <template id="frontend_studio.social_networks" name="Studio: Social Networks">
@@ -141,9 +170,13 @@
             <t t-call="frontend_studio.base">
 				
 				<div class="jumbotron" id="container-map-studio">
-					<t t-call="frontend_studio.map"/>
-					
 					<div class="container studio-header fontCGSMlight">
+						<div class="row">
+							<div class="sm-12">
+								<t t-call="frontend_studio.search_zone"/>
+							</div>
+						</div>
+
 						<div class="row">
 							<div class="col-sm-10">
 								<t t-call="frontend_studio.studio_header"/>
@@ -154,6 +187,7 @@
 							</div>
 						</div>
 					</div>
+					<t t-call="frontend_studio.map"/>
 				</div>
 				
 				<div style="background-color:white;">
@@ -178,14 +212,10 @@
 						</div>
 					</div>
 
-
 					<t t-call="frontend_studio.same_localization"/>
 				
 				</div>
 				</div>
-				
-                
-<!--                <t t-call="frontend_studio.search_zone"/>-->
             </t>
 
         </template>

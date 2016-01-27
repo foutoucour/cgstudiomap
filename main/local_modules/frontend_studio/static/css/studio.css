@@ -22,8 +22,9 @@
 	position: relative;
 	width: 350px;
 	margin: 0 auto;
+	margin-top: -300px;
 	height: 100%;
-	z-index: 1;
+	z-index: -1;
 }
 
 #geochart_target svg {
@@ -43,32 +44,75 @@
     stroke-width: 0 !important;
 }
 
-
 .studio-header {
 	position: relative;
 	margin: 0 auto;
 	padding: 0;
-	margin-top: -140px;
+
 }
 .studio-header .btn {
 	z-index: 200;
 }
 .studio-header h2 {
-	border-bottom: 1px solid #b05ae2;
+	font-family: 'cgsm-thin';
+	font-size: 2.99em;
+	border-bottom: 0 solid #b05ae2;
+	color: #323133;
+}
+h3:before {
+	content: "";
+	display: block;
+	border-top: solid 1px #979699;
+	width: 80%;
+	height: 1px;
+	position: absolute;
+	top: 36%;
+	left: 20%;
+	z-index: 1;
 }
 
+h3 span {
+	background: #fff;
+	padding: 0 20px;
+	position: relative;
+	z-index: 5;
+}
 
 .studio-details .row {
 	margin: 1em 0;
 	padding: 0 0;
 }
+.studio-details h3 {
+	font-family: 'cgsm-light';
+	font-weight: normal;
+	font-size: 2.99em;
+}
 
+.studio-details p {
+	font-weight: normal;
+}
+.studio-details span {
+	display: inline-block;
+}
+.details-street {
+	font-family: 'cgsm-thin';
+	font-size: 1.66em;
+}
+.details-city {
+	font-family: 'cgsm-thin';
+	font-size: 1.66em;
+}
+.details-country {
+	font-family: 'cgsm-light';
+	font-size: 1.66em;
+	text-transform: uppercase;
+}
 .studio-header .logo-thumb {
 	width: 128px;
 	height: 128px;
 	overflow: hidden;
 	border: 2px solid #cbcacc;
-	background-color: #f1f1f3;
+	background-color: #979699;
 	border-radius: 0.1em !important;
 	-webkit-border-radius: 0.1em !important;
 	-moz-border-radius: 0.1em !important;
