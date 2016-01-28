@@ -87,26 +87,29 @@
 					<p>
 						<a t-att-href="partner.website"><t t-esc="partner.website" /></a>
 					</p>
+					<h4>Mail</h4>
+					<p>
+						<a t-att-href="partner.email"><t t-esc="partner.email" /></a>
+					</p>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<t t-call="frontend_studio.social_networks" />
 			</div>
 			<div class="col-sm-4">
+				<h4>Phone</h4>
 				<div class="form-group details-phone">
-					<h4>Phone</h4>
-					<p>
-						<t t-esc="partner.phone" />
-					</p>
+					<!--<p><a t-att-href="tel://'partner.phone'"><t t-esc="partner.phone" /></a></p>-->
+					<p><a t-att-href="partner.phone"><t t-esc="partner.phone" /></a></p>
 				</div>
+				<h4>Mobile</h4>
 				<div class="form-group details-phone">
-					<h4>Mobile</h4>
 					<p>
 						<t t-esc="partner.mobile" />
 					</p>
 				</div>
+				<h4>Fax</h4>
 				<div class="form-group details-phone">
-					<h4>Fax</h4>
 					<p>
 						<t t-esc="partner.fax" />
 					</p>
@@ -118,21 +121,32 @@
         <template id="frontend_studio.social_networks" name="Studio: Social Networks">
 				<h4>Socials</h4>
 				<div class="form-group details-socials">
-					<a t-att-href="partner.twitter">
+					<a t-att-href="partner.twitter" title="twitter">
 						<span class="fontCGSMicons social-link--twitter">twitter</span>
 					</a>
 				</div>
-
-
+			
 				<div class="form-group details-socials">
-					<a t-att-href="partner.youtube">
+					<a t-att-href="partner.linkedin" title="linkedin">
+						<span class="fontCGSMicons social-link--linkedin">linkedin</span>
+					</a>
+				</div>
+			
+				<div class="form-group details-socials">
+					<a t-att-href="partner.youtube" title="youtube">
 						<span class="fontCGSMicons social-link--youtube">youtube</span>
 					</a>
 				</div>
-
+				<br />
 				<div class="form-group details-socials">
-					<a t-att-href="partner.vimeo">
+					<a t-att-href="partner.vimeo" title="vimeo">
 						<span class="fontCGSMicons social-link--vimeo">vimeo</span>
+					</a>
+				</div>
+			
+				<div class="form-group details-socials">
+					<a t-att-href="partner.facebook" title="facebook">
+						<span class="fontCGSMicons social-link--facebook">facebook</span>
 					</a>
 				</div>
         </template>

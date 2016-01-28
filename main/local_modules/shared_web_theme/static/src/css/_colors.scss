@@ -35,10 +35,10 @@ $social:            (twitter,   $twitter),
 
 @each $socialnetwork, $color in $social {
   .social-link--#{$socialnetwork} {
-    background-color: $color;
+    color: $color;
     &:focus, 
     &:hover {
-      background-color: darken($color,5%);
+      color: darken($color,10%);
     }    
   }
 }

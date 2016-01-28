@@ -30,7 +30,7 @@
 #geochart_target svg {
 	margin-top: 20px;
 	margin-left: 20px;
-	transform: scale(1.6);
+	transform: scale(1.5);
 }
 
 #geochart_target path {
@@ -40,8 +40,17 @@
 	/* choose a color for the border */
 }
 #geochart_target circle {
-    r: 5px;
-    stroke-width: 0 !important;
+	r: 5px;
+	stroke-width: 0 !important;
+	animation: circle 1.5s ease-out infinite;
+	opacity: 1;
+}
+
+@keyframes circle {
+	100% {
+		r: 8px;
+		opacity: 0;
+	}
 }
 
 .studio-header {
@@ -55,7 +64,8 @@
 }
 .studio-header h2 {
 	font-family: 'cgsm-thin';
-	font-size: 2.99em;
+	font-size: 3.99em;
+	margin: 0 0;
 	border-bottom: 0 solid #b05ae2;
 	color: #323133;
 }
@@ -121,30 +131,43 @@ h3  {
 	-webkit-border-radius: 0.1em !important;
 	-moz-border-radius: 0.1em !important;
 }
-.details-web a {
-	font-family: 'cgsm-thin';
+.details-web a,
+.details-web a:hover{
+	font-family: 'cgsm-regular';
 	font-size: 1.66em;
-	color: #323133;
-	background-color: #5ae2b0;
+	color: #5ae2b0;
+	background-color: #f1f1f3;
 	padding: 0.4em 0.4em;
-}
-.details-web a:hover {
-	color: #f1f1f3;
 	text-decoration: none;
 }
+
 .details-phone {
 	font-family: 'cgsm-thin';
 	font-size: 1.66em;
 }
+.details-phone a,
+.details-phone a:hover{
+	font-family: 'cgsm-regular';
+	font-size: 1.22em;
+	color: #e2b05a;
+	background-color: #f1f1f3;
+	padding: 0.4em 0.4em;
+	text-decoration: none;
+}
 .details-socials{
 	font-size: 2em;
 	padding: 0.1em;
-	color: #fff;
+	background-color: #f1f1f3;
 	display: inline-block;
 }
 .details-socials .fontCGSMicons{
-	color: #fff;
-	padding: 0.24em;
+	background-color: #f1f1f3;
+	padding: .3em;
+	cursor: pointer;
+	
+	border-radius: 0.15em !important;
+	-webkit-border-radius: 0.15em !important;
+	-moz-border-radius: 0.15em !important;
 }
 
 .studio-header .logo-thumb {
