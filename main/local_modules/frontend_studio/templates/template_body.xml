@@ -32,21 +32,25 @@
         </template>
 
         <template id="frontend_studio.search_zone" name="Studio: Search Zone">
-<!--		<div class="container navDirectory">
+		<div class="container navDirectory">
 			<div class="row">
-				<div class="col-xs-12 col-sm-10">
-					<div class="row">
-						<div class="col-sm-8">
-							<t t-call="frontend_listing.search" />
+				<div class="col-sm-8">
+					<!--<t t-call="frontend_listing.search" />-->
+					<form t-att-action="keep(url, search=0, company_status=company_status)" method="get" t-att-class="search_class">
+						<div class="input-group navSearch">
+							<input type="text" name="search" class="search-query form-control" placeholder="Search..." t-att-value="search" />
+							<input type="hidden" name='company_status' t-att-value='company_status' />
+							<span class="input-group-btn">
+											<a class="btn btn-lg a-submit"><span class="fontCGSMicons">search</span></a>
+							</span>
 						</div>
-						<div class="col-sm-3 col-sm-offset-1 navBtnColor">
-							<a class="btn btn-cgsm-add center-block" href="#" role="button">ADD Studio <i class="fa fa-step-forward fa-fw fa-rotate-90"/> </a>
-						</div>
-					</div>
-
+					</form>
+				</div>
+				<div class="col-sm-3 col-sm-offset-1 navBtnColor">
+					<a class="btn btn-cgsm-add center-block" href="#" role="button">ADD Studio <i class="fa fa-step-forward fa-fw fa-rotate-90"/> </a>
 				</div>
 			</div>
-		</div>-->
+		</div>
         </template>
 
         <template id="frontend_studio.map" name="Studio: Map">
@@ -54,9 +58,8 @@
         </template>
 
         <template id="frontend_studio.studio_header" name="Studio: Details Header">
-			
-			<h2 t-esc="partner.name"/>
-				<t t-call="frontend_base.company_logo"/>
+		<h2 t-esc="partner.name" />
+		<t t-call="frontend_base.company_logo" />
         </template>
 		
         <template id="frontend_studio.studio_address" name="Studio: Address">
@@ -96,23 +99,18 @@
 			<div class="col-sm-4">
 				<t t-call="frontend_studio.social_networks" />
 			</div>
-			<div class="col-sm-4">
-				<h4>Phone</h4>
+			<div class="col-sm-4 pull-right">
+				<h4>Calls</h4>
 				<div class="form-group details-phone">
-					<!--<p><a t-att-href="tel://'partner.phone'"><t t-esc="partner.phone" /></a></p>-->
-					<p><a t-att-href="partner.phone"><t t-esc="partner.phone" /></a></p>
+					<p>Phone : <a t-att-href='"tel://{0}".format(partner.phone)'><t t-esc="partner.phone" /></a></p>
 				</div>
-				<h4>Mobile</h4>
 				<div class="form-group details-phone">
-					<p>
-						<t t-esc="partner.mobile" />
-					</p>
+					<p>Mobile : <a href="#" title="social-add"><span class="fontCGSMicons social-link--add">marqueePlus</span></a>
+						<!--<t t-esc="partner.mobile" />--></p>
 				</div>
-				<h4>Fax</h4>
 				<div class="form-group details-phone">
-					<p>
-						<t t-esc="partner.fax" />
-					</p>
+					<p>Fax : <a href="#" title="social-add"><span class="fontCGSMicons social-link--add">marqueePlus</span></a>
+						<!--<t t-esc="partner.fax" />--></p>
 				</div>
 			</div>
 
@@ -149,6 +147,12 @@
 						<span class="fontCGSMicons social-link--facebook">facebook</span>
 					</a>
 				</div>
+			
+				<div class="form-group details-socials">
+					<a href="#" title="social-add">
+						<span class="fontCGSMicons social-link--add">marqueePlus</span>
+					</a>
+				</div>
         </template>
 
         <template id="frontend_studio.industries" name="Studio: Industries">
@@ -170,13 +174,17 @@
 			</div>
 				
 			<div class="row studios">
+				
 					<t t-foreach="partners" t-as="partner">
+						<div class="col-xs-6 col-sm-3 partner-item">
 						<a t-att-href="partner.partner_url">
 							<t t-call="frontend_base.company_logo" />
 							<a t-att-href="partner.partner_url">
 								<h4 t-esc="partner.name" /></a>
 						</a>
+						</div>
 					</t>
+				
 			</div>
 			<div class="clearfix visible-xs"></div>
 
@@ -186,14 +194,10 @@
         <template id="frontend_studio.view" name="Studio: view">
             <t t-call="frontend_studio.base">
 				
+				<!--<t t-call="frontend_studio.search_zone"/>-->
+				
 				<div class="jumbotron" id="container-map-studio">
 					<div class="container studio-header fontCGSMlight">
-						<div class="row">
-							<div class="sm-12">
-								<t t-call="frontend_studio.search_zone"/>
-							</div>
-						</div>
-
 						<div class="row">
 							<div class="col-sm-10">
 								<t t-call="frontend_studio.studio_header"/>

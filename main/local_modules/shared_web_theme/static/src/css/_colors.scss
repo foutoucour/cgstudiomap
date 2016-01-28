@@ -25,13 +25,15 @@ $youtube:           #bb0000;
 $github:			#4183c4;
 $linkedin:			#007bb6;
 $vimeo:				#aad450;
+$add:				$color-tonic;
 
 $social:            (twitter,   $twitter),
                     (facebook,  $facebook),
 					(linkedin,  $linkedin),
 					(vimeo,  	$vimeo),
 					(github,  	$github),
-                    (youtube,   $youtube);
+                    (youtube,   $youtube),
+					(add,		$add);
 
 @each $socialnetwork, $color in $social {
   .social-link--#{$socialnetwork} {

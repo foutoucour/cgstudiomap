@@ -6324,6 +6324,11 @@ body {
   .social-link--youtube:focus, .social-link--youtube:hover {
     color: #880000; }
 
+.social-link--add {
+  color: #5ae2b0; }
+  .social-link--add:focus, .social-link--add:hover {
+    color: #2fda9b; }
+
 body {
   background-color: #f2f2f2; }
 
