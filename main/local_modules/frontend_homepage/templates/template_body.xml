@@ -47,7 +47,7 @@
 					<h2>Most Popular Studios</h2>
 				</div>
 				<div class="col-md-6">
-					<p><a t-att-href="website.directory_menu">See all <i class="fa fa-angle-right fa-2x"></i></a></p>
+					<p><a t-att-href="website.directory_menu">See all </a><span class="fontCGSMicons">play</span> </p>
 				</div>
 			
 			</div>
@@ -90,7 +90,7 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="colored-boxed">
-							<a t-attf-href="/web/signup"><i class="fa fa-group"></i></a>
+							<a t-attf-href="/web/signup"><span class="fontCGSMicons">globe</span></a>
 						</div>
 						<div class="text">
 							<h3>Community</h3>
@@ -104,7 +104,7 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="colored-boxed">
-							<a t-att-href="website.social_github"><i class="fa fa-folder-open"></i></a>
+							<a t-att-href="website.social_github"><span class="fontCGSMicons">folder</span></a>
 						</div>
 						<div class="text">
 							<h3>Open source project</h3>
@@ -120,7 +120,7 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="colored-boxed">
-							<a t-attf-href="/web/signup"><i class="fa fa-cogs"></i></a>
+							<a t-attf-href="/web/signup"><span class="fontCGSMicons">cog</span></a>
 						</div>
 						<div class="text">
 							<h3>Open Data</h3>
@@ -133,7 +133,7 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="colored-boxed inv">
-							<i class="fa fa-heart"></i>
+							<span class="fontCGSMicons">heart</span>
 						</div>
 						<div class="text">
 							<h3>Support</h3>
@@ -156,6 +156,7 @@
 
 				<t t-set="title">Hompage</t>
                 <t t-call="frontend_base.full_head"/>
+				<link rel="stylesheet" href="/frontend_homepage/static/css/homepage.css" type="text/css"/>
 
                 <t t-call="frontend_base.body">
 									

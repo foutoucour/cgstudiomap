@@ -16,8 +16,8 @@
                     <input type="hidden" name='company_status' t-att-value="company_status"/>
                     <input type="hidden" name='search' t-att-value="search"/>
                     <input type='submit'
-                           t-att-class="'btn btn-lg fa fa-2x a-submit' if (url == list_url) else 'btn btn-lg fa fa-2x fa-inverse disabled' "
-                           value="&#xf14e;"/>
+                           t-att-class="'btn btn-lg fontCGSMicons a-submit' if (url == list_url) else 'btn btn-lg fontCGSMicons disabled' "
+                           value="map"/>
                 </div>
             </form>
 
@@ -26,8 +26,8 @@
                     <input type="hidden" name='company_status' t-att-value="company_status"/>
                     <input type="hidden" name='search' t-att-value="search"/>
                     <input type='submit'
-                           t-att-class="'btn btn-lg fa fa-2x a-submit' if (url == map_url) else 'btn btn-lg fa fa-2x fa-inverse disabled' "
-                           value="&#xf00b;"/>
+                           t-att-class="'btn btn-lg fontCGSMicons a-submit' if (url == map_url) else 'btn btn-lg fontCGSMicons disabled' "
+                           value="paper"/>
                 </div>
             </form>
             </div>
@@ -45,7 +45,7 @@
                            t-att-value="search"/>
                     <input type="hidden" name='company_status' t-att-value='company_status'/>
                     <span class="input-group-btn">
-                        <a class="btn btn-lg a-submit"><i class="fa fa-search fa-lg"/></a>
+                        <a class="btn btn-lg a-submit"><span class="fontCGSMicons">search</span></a>
                     </span>
                 </div>
             </form>

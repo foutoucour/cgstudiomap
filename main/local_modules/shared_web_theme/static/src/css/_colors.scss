@@ -26,6 +26,7 @@ body {
     background-color: transparent;
     background-image: none;
     border: 0px solid transparent;
+	color : $color-cgsm-light;
 }
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
     background-color: transparent;
@@ -130,17 +131,23 @@ body {
 		color: $color-cgsm;
 	}
 }
-.colored-boxed i {
+.colored-boxed i,
+.colored-boxed span {
 	background-color: transparent;
 	color: $color-cgsm;
 	border-color: $color-cgsm;
 }
-.colored-boxed i > a {
+.colored-boxed a {
+	text-decoration: none;
+}
+.colored-boxed i > a,
+.colored-boxed span > a {
 	background-color: $color-cgsm;
 	color: $color-cgsm-light;
 	border-color: $color-cgsm;
 }
-.colored-boxed.inv i {
+.colored-boxed.inv i,
+.colored-boxed.inv span {
 	background-color: $color-cgsm;
 	color: $color-cgsm-light;
 	border-color: $color-cgsm-light;

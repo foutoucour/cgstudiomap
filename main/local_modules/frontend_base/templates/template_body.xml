@@ -9,7 +9,7 @@
 						<span class="navbar-text navbar-left"><a href="/" class="navbar-link"><span id="logo-nav"></span></a></span>
 						
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span id="toggle"></span>
+							<span class="fontCGSMicons">menu</span>
                         </button>
 						
                     </div>
@@ -17,7 +17,7 @@
 					<div class="navbar-collapse collapse">
 
 						<div class="dropdown navbar-text navbar-right hidden-xs">
-							<button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-power-off fa-2x"/></button>
+							<button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">power</span></button>
 
 						  <ul class="dropdown-menu" aria-labelledby="dLabel">
                               <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>

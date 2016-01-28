@@ -111,6 +111,12 @@ input {
     padding: 0 ;
     margin: 0;
 }
+.navSearch .fontCGSMicons{
+    font-size: 1em;
+}
+.navSearch a:hover{
+    text-decoration: none;
+}
 .navSwitch .disabled {
     color: #f1f1f3;
     background-color: #b05ae2;
@@ -130,8 +136,8 @@ input {
     margin: 0;
 }
 
-.navSwitch .fa{
-    font-size: 1.6em;
+.navSwitch .fontCGSMicons{
+    font-size: 1.55em;
     padding: auto 0;
     margin: 0;
 }

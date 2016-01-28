@@ -118,33 +118,23 @@
         <template id="frontend_studio.social_networks" name="Studio: Social Networks">
 				<h4>Socials</h4>
 				<div class="form-group">
-				<a t-att-href="partner.twitter">
-					<span class="fa-stack fa-lg">
-				  <i class="fa fa-square fa-stack-2x"></i>
-				  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-				</span>
-				</a>
-				</div>
-				
-					
-				<div class="form-group">
-				<a t-att-href="partner.youtube">
-					<span class="fa-stack fa-lg">
-				  <i class="fa fa-square fa-stack-2x"></i>
-				  <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
-				</span>
-				</a>
-				</div>
-				
-				<div class="form-group">
-				<a t-att-href="partner.vimeo">
-					<span class="fa-stack fa-lg">
-				  <i class="fa fa-square fa-stack-2x"></i>
-				  <i class="fa fa-vimeo fa-stack-1x fa-inverse"></i>
-				</span>
-				</a>
+					<a t-att-href="partner.twitter">
+						<span class="fontCGSMicons">twitter</span>
+					</a>
 				</div>
 
+
+				<div class="form-group">
+					<a t-att-href="partner.youtube">
+						<span class="fontCGSMicons">youtube</span>
+					</a>
+				</div>
+
+				<div class="form-group">
+					<a t-att-href="partner.vimeo">
+						<span class="fontCGSMicons">vimeo</span>
+					</a>
+				</div>
         </template>
 
         <template id="frontend_studio.industries" name="Studio: Industries">
@@ -160,8 +150,7 @@
 				</div>
 				<div class="col-sm-6">
 					<p>
-						<a t-att-href="'/directory?search={}'.format(filter_domain)">See all <i class="fa fa-angle-right fa-2x"></i>
-									</a>
+						<a t-att-href="'/directory?search={}'.format(filter_domain)">See all  </a><span class="fontCGSMicons">play</span>
 					</p>
 				</div>
 			</div>
@@ -224,7 +213,7 @@
 						</div>
 						
 						<div class="col-sm-2 studio_industries">
-							<h4>Industries</h4>
+							<h4><span class="fontCGSMicons">tag</span> Industries</h4>
 							<t t-call="frontend_studio.industries"/>
 						</div>
 					</div>
