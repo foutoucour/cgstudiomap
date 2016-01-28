@@ -82,7 +82,7 @@
 		
         <template id="frontend_studio.studio_details" name="Studio: Details">
 			<div class="col-sm-4">
-				<div class="form-group">
+				<div class="form-group details-web">
 					<h4>Website</h4>
 					<p>
 						<a t-att-href="partner.website"><t t-esc="partner.website" /></a>
@@ -93,19 +93,19 @@
 				<t t-call="frontend_studio.social_networks" />
 			</div>
 			<div class="col-sm-4">
-				<div class="form-group">
+				<div class="form-group details-phone">
 					<h4>Phone</h4>
 					<p>
 						<t t-esc="partner.phone" />
 					</p>
 				</div>
-				<div class="form-group">
+				<div class="form-group details-phone">
 					<h4>Mobile</h4>
 					<p>
 						<t t-esc="partner.mobile" />
 					</p>
 				</div>
-				<div class="form-group">
+				<div class="form-group details-phone">
 					<h4>Fax</h4>
 					<p>
 						<t t-esc="partner.fax" />
@@ -117,22 +117,22 @@
 
         <template id="frontend_studio.social_networks" name="Studio: Social Networks">
 				<h4>Socials</h4>
-				<div class="form-group">
+				<div class="form-group details-socials">
 					<a t-att-href="partner.twitter">
-						<span class="fontCGSMicons">twitter</span>
+						<span class="fontCGSMicons social-link--twitter">twitter</span>
 					</a>
 				</div>
 
 
-				<div class="form-group">
+				<div class="form-group details-socials">
 					<a t-att-href="partner.youtube">
-						<span class="fontCGSMicons">youtube</span>
+						<span class="fontCGSMicons social-link--youtube">youtube</span>
 					</a>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group details-socials">
 					<a t-att-href="partner.vimeo">
-						<span class="fontCGSMicons">vimeo</span>
+						<span class="fontCGSMicons social-link--vimeo">vimeo</span>
 					</a>
 				</div>
         </template>

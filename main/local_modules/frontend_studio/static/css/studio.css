@@ -113,7 +113,7 @@ h3  {
 .details-country {
 	font-family: 'cgsm-light';
 	font-size: 1.54em;
-	background-color: #cbcacc;
+	background-color: #f1f1f3;
 	padding: 0.1em 0.2em;
 	text-transform: uppercase;
 	float: right !important;
@@ -121,6 +121,32 @@ h3  {
 	-webkit-border-radius: 0.1em !important;
 	-moz-border-radius: 0.1em !important;
 }
+.details-web a {
+	font-family: 'cgsm-thin';
+	font-size: 1.66em;
+	color: #323133;
+	background-color: #5ae2b0;
+	padding: 0.4em 0.4em;
+}
+.details-web a:hover {
+	color: #f1f1f3;
+	text-decoration: none;
+}
+.details-phone {
+	font-family: 'cgsm-thin';
+	font-size: 1.66em;
+}
+.details-socials{
+	font-size: 2em;
+	padding: 0.1em;
+	color: #fff;
+	display: inline-block;
+}
+.details-socials .fontCGSMicons{
+	color: #fff;
+	padding: 0.24em;
+}
+
 .studio-header .logo-thumb {
 	width: 128px !important;
 	height: 128px !important;
