@@ -15,14 +15,15 @@
         <template id="frontend_studio.base" name="Studio: base">
             <t t-call="frontend_base.doctype_html"/>
             <t t-call="frontend_base.html">
+                <t t-set="title" t-value="partner.name"/>
                 <t t-call="frontend_base.full_head"/>
-				<link rel="stylesheet" href="/frontend_studio/static/css/studio.css" type="text/css"/>
-				
+                <link rel="stylesheet" href="/frontend_studio/static/css/studio.css" type="text/css"/>
+                
                 <t t-call="frontend_base.body">
                     <t t-raw="0"/>
                     <t t-call="frontend_base.footer"/>
                     <t t-call="frontend_base.engine">
-					<script type="text/javascript" src="/frontend_studio/static/js/geocharts_marker.js"></script>
+                    <script type="text/javascript" src="/frontend_studio/static/js/geocharts_marker.js"></script>
                         <script type="text/javascript">
                             geo_chart_marker('<t t-esc="partner.city"/>', <t t-esc="partner.partner_latitude"/>,<t t-esc="partner.partner_longitude"/>, '<t t-esc="partner.country_id.code"/>', 'geochart_target');
                         </script>
@@ -32,25 +33,25 @@
         </template>
 
         <template id="frontend_studio.search_zone" name="Studio: Search Zone">
-		<div class="container navDirectory">
-			<div class="row">
-				<div class="col-sm-8">
-					<!--<t t-call="frontend_listing.search" />-->
-					<form t-att-action="keep(url, search=0, company_status=company_status)" method="get" t-att-class="search_class">
-						<div class="input-group navSearch">
-							<input type="text" name="search" class="search-query form-control" placeholder="Search..." t-att-value="search" />
-							<input type="hidden" name='company_status' t-att-value='company_status' />
-							<span class="input-group-btn">
-											<a class="btn btn-lg a-submit"><span class="fontCGSMicons">search</span></a>
-							</span>
-						</div>
-					</form>
-				</div>
-				<div class="col-sm-3 col-sm-offset-1 navBtnColor">
-					<a class="btn btn-cgsm-add center-block" href="#" role="button">ADD Studio <i class="fa fa-step-forward fa-fw fa-rotate-90"/> </a>
-				</div>
-			</div>
-		</div>
+        <div class="container navDirectory">
+            <div class="row">
+                <div class="col-sm-8">
+                    <!--<t t-call="frontend_listing.search" />-->
+                    <form t-att-action="keep(url, search=0, company_status=company_status)" method="get" t-att-class="search_class">
+                        <div class="input-group navSearch">
+                            <input type="text" name="search" class="search-query form-control" placeholder="Search..." t-att-value="search" />
+                            <input type="hidden" name='company_status' t-att-value='company_status' />
+                            <span class="input-group-btn">
+                                            <a class="btn btn-lg a-submit"><span class="fontCGSMicons">search</span></a>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-3 col-sm-offset-1 navBtnColor">
+                    <a class="btn btn-cgsm-add center-block" href="#" role="button">ADD Studio <i class="fa fa-step-forward fa-fw fa-rotate-90"/> </a>
+                </div>
+            </div>
+        </div>
         </template>
 
         <template id="frontend_studio.map" name="Studio: Map">
@@ -58,192 +59,236 @@
         </template>
 
         <template id="frontend_studio.studio_header" name="Studio: Details Header">
-		<h2 t-esc="partner.name" />
-		<t t-call="frontend_base.company_logo" />
+            <h2 t-esc="partner.name" />
+            <t t-call="frontend_base.company_logo" />
         </template>
-		
+        
         <template id="frontend_studio.studio_address" name="Studio: Address">
-			<div class="form-group">
-				<p>
-					<span class="details-street">
-						<t t-esc="partner.street" />
-						<t t-esc="partner.street2" />
-					</span>
-					
-					<span class="details-city">
-						<t t-esc="partner.city" />
-						<t t-esc="partner.zip" />
-						<t t-esc="partner.state_id.name" />
-					</span>
-					
-					<span class="details-country">
-						<t t-esc="partner.country_id.name" />
-					</span>
-				</p>
-			</div>
+            <div class="form-group">
+                <p>
+                    <span class="details-street">
+                        <t t-esc="partner.street" />,
+                        <t t-if="partner.street2"><t t-esc="partner.street2" />,</t>
+                    </span>
+                    
+                    <span class="details-city">
+                        <t t-if="partner.city"><t t-esc="partner.city"/>,</t>
+                        <t t-if="partner.zip"><t t-esc="partner.zip"/>,</t>
+                        <t t-esc="partner.state_id.name" />
+                    </span>
+                    
+                    <span class="details-country">
+                        <a t-att-href="'/directory?search={}'.format(filter_domain)">
+                            <t t-esc="partner.country_id.name" />
+                        </a>
+                    </span>
+                </p>
+            </div>
         </template>
-		
+
+        <template id="frontend_studio.marqueePlus" name="Marquee Plus">
+            <t t-if="not value">
+                <a href="#" title="social-add">
+                    <span class="fontCGSMicons social-link--add">marqueePlus</span>
+                </a>
+            </t>
+            <t t-if="value">
+                <t t-raw="display"/>
+            </t>
+        </template>
         <template id="frontend_studio.studio_details" name="Studio: Details">
-			<div class="col-sm-4">
-				<div class="form-group details-web">
-					<h4>Website</h4>
-					<p>
-						<a t-att-href="partner.website"><t t-esc="partner.website" /></a>
-					</p>
-					<h4>Mail</h4>
-					<p>
-						<a t-att-href="partner.email"><t t-esc="partner.email" /></a>
-					</p>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<t t-call="frontend_studio.social_networks" />
-			</div>
-			<div class="col-sm-4 pull-right">
-				<h4>Calls</h4>
-				<div class="form-group details-phone">
-					<p>Phone : <a t-att-href='"tel://{0}".format(partner.phone)'><t t-esc="partner.phone" /></a></p>
-				</div>
-				<div class="form-group details-phone">
-					<p>Mobile : <a href="#" title="social-add"><span class="fontCGSMicons social-link--add">marqueePlus</span></a>
-						<!--<t t-esc="partner.mobile" />--></p>
-				</div>
-				<div class="form-group details-phone">
-					<p>Fax : <a href="#" title="social-add"><span class="fontCGSMicons social-link--add">marqueePlus</span></a>
-						<!--<t t-esc="partner.fax" />--></p>
-				</div>
-			</div>
+            <div class="col-sm-4">
+                <div class="form-group details-web">
+                    <h4>Website</h4>
+                    <p>
+                        <t t-set="display">
+                            <a t-att-href="partner.website"><t t-esc="partner.website" /></a>
+                        </t>
+                        <t t-set="value" t-value="partner.website"/>
+                        <t t-call="frontend_studio.marqueePlus"/>
+                    </p>
+                    <h4>Mail</h4>
+                    <p>
+                        <t t-set="display">
+                            <a t-att-href="partner.email"><t t-esc="partner.email" /></a>
+                        </t>
+                        <t t-set="value" t-value="partner.email"/>
+                        <t t-call="frontend_studio.marqueePlus"/>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <t t-call="frontend_studio.social_networks" />
+            </div>
+            <div class="col-sm-4 pull-right">
+                <h4>Calls</h4>
+                <div class="form-group details-phone">
+                    <t t-set="display">
+                        <a t-att-href='"tel://{0}".format(partner.phone)'><t t-esc="partner.phone" /></a>
+                    </t>
+                    <t t-set="value" t-value="partner.phone"/>
+                    <p>Phone: <t t-call="frontend_studio.marqueePlus"/></p>
+                </div>
+                <div class="form-group details-phone">
+                    <t t-set="display">
+                        <a t-att-href='"tel://{0}".format(partner.mobile)'><t t-esc="partner.mobile" /></a>
+                    </t>
+                    <t t-set="value" t-value="partner.mobile"/>
+                    <p>Mobile: <t t-call="frontend_studio.marqueePlus"/></p>
+                </div>
+                <div class="form-group details-phone">
+                    <t t-set="display">
+                        <a t-att-href='"tel://{0}".format(partner.fax)'><t t-esc="partner.fax" /></a>
+                    </t>
+                    <t t-set="value" t-value="partner.fax"/>
+                    <p>Fax: <t t-call="frontend_studio.marqueePlus"/></p>
+                </div>
+            </div>
 
         </template>
 
         <template id="frontend_studio.social_networks" name="Studio: Social Networks">
-				<h4>Socials</h4>
-				<div class="form-group details-socials">
-					<a t-att-href="partner.twitter" title="twitter">
-						<span class="fontCGSMicons social-link--twitter">twitter</span>
-					</a>
-				</div>
-			
-				<div class="form-group details-socials">
-					<a t-att-href="partner.linkedin" title="linkedin">
-						<span class="fontCGSMicons social-link--linkedin">linkedin</span>
-					</a>
-				</div>
-			
-				<div class="form-group details-socials">
-					<a t-att-href="partner.youtube" title="youtube">
-						<span class="fontCGSMicons social-link--youtube">youtube</span>
-					</a>
-				</div>
-				<br />
-				<div class="form-group details-socials">
-					<a t-att-href="partner.vimeo" title="vimeo">
-						<span class="fontCGSMicons social-link--vimeo">vimeo</span>
-					</a>
-				</div>
-			
-				<div class="form-group details-socials">
-					<a t-att-href="partner.facebook" title="facebook">
-						<span class="fontCGSMicons social-link--facebook">facebook</span>
-					</a>
-				</div>
-			
-				<div class="form-group details-socials">
-					<a href="#" title="social-add">
-						<span class="fontCGSMicons social-link--add">marqueePlus</span>
-					</a>
-				</div>
+            <h4>Socials</h4>
+            <div class="form-group details-socials">
+                <t t-set="display">
+                    <a t-att-href="partner.twitter" title="twitter">
+                        <span class="fontCGSMicons social-link--twitter">twitter</span>
+                    </a>
+                </t>
+                <t t-set="value" t-value="partner.twitter"/>
+                <t t-call="frontend_studio.marqueePlus"/>
+            </div>
+
+            <div class="form-group details-socials">
+                <t t-set="display">
+                    <a t-att-href="partner.linkedin" title="linkedin">
+                        <span class="fontCGSMicons social-link--linkedin">linkedin</span>
+                    </a>
+                </t>
+                <t t-set="value" t-value="partner.linkedin"/>
+                <t t-call="frontend_studio.marqueePlus"/>
+            </div>
+
+            <div class="form-group details-socials">
+                <t t-set="display">
+                    <a t-att-href="partner.youtube" title="youtube">
+                        <span class="fontCGSMicons social-link--youtube">youtube</span>
+                    </a>
+                </t>
+                <t t-set="value" t-value="partner.youtube"/>
+                <t t-call="frontend_studio.marqueePlus"/>
+            </div>
+            <br />
+            <div class="form-group details-socials">
+                <t t-set="display">
+                    <a t-att-href="partner.vimeo" title="vimeo">
+                        <span class="fontCGSMicons social-link--vimeo">vimeo</span>
+                    </a>
+                </t>
+                <t t-set="value" t-value="partner.vimeo"/>
+                <t t-call="frontend_studio.marqueePlus"/>
+            </div>
+
+            <div class="form-group details-socials">
+                <t t-set="display">
+                    <a t-att-href="partner.facebook" title="facebook">
+                        <span class="fontCGSMicons social-link--facebook">facebook</span>
+                    </a>
+                </t>
+                <t t-set="value" t-value="partner.facebook"/>
+                <t t-call="frontend_studio.marqueePlus"/>
+            </div>
         </template>
 
         <template id="frontend_studio.industries" name="Studio: Industries">
-            <t t-foreach="partner.industry_ids" t-as="ind">
-                <t t-call="frontend_base.industry_tag"/>
+            <t t-set="display">
+                <t t-foreach="partner.industry_ids" t-as="ind">
+                    <t t-call="frontend_base.industry_tag"/>
+                </t>
             </t>
+            <t t-set="value" t-value="partner.industry_ids"/>
+            <t t-call="frontend_studio.marqueePlus"/>
         </template>
 
         <template id="frontend_studio.same_localization" name="Studio: Same Localization">
-			<div class="row bloc-studios-title fontCGSM">
-				<div class="col-sm-6">
-					<h2>Same Location</h2>
-				</div>
-				<div class="col-sm-6">
-					<p>
-						<a t-att-href="'/directory?search={}'.format(filter_domain)">See all  </a><span class="fontCGSMicons">play</span>
-					</p>
-				</div>
-			</div>
-				
-			<div class="row studios">
-				
-					<t t-foreach="partners" t-as="partner">
-						<div class="col-xs-6 col-sm-3 partner-item">
-						<a t-att-href="partner.partner_url">
-							<t t-call="frontend_base.company_logo" />
-							<a t-att-href="partner.partner_url">
-								<h4 t-esc="partner.name" /></a>
-						</a>
-						</div>
-					</t>
-				
-			</div>
-			<div class="clearfix visible-xs"></div>
-
-			
+            <div class="row bloc-studios-title fontCGSM">
+                <div class="col-sm-6">
+                    <h2>Same Location</h2>
+                </div>
+                <div class="col-sm-6">
+                    <p>
+                        <a t-att-href="'/directory?search={}'.format(filter_domain)">See all  </a><span class="fontCGSMicons">play</span>
+                    </p>
+                </div>
+            </div>
+                
+            <div class="row studios">
+                <t t-foreach="partners" t-as="partner">
+                    <div class="col-xs-6 col-sm-3 partner-item">
+                    <a t-att-href="partner.partner_url">
+                        <t t-call="frontend_base.company_logo" />
+                        <a t-att-href="partner.partner_url">
+                            <h4 t-esc="partner.name" /></a>
+                    </a>
+                    </div>
+                </t>
+            </div>
+            <div class="clearfix visible-xs"></div>
         </template>
 
         <template id="frontend_studio.view" name="Studio: view">
             <t t-call="frontend_studio.base">
-				
-				<!--<t t-call="frontend_studio.search_zone"/>-->
-				
-				<div class="jumbotron" id="container-map-studio">
-					<div class="container studio-header fontCGSMlight">
-						<div class="row">
-							<div class="col-sm-10">
-								<t t-call="frontend_studio.studio_header"/>
-							</div>
-							
-							<div class="col-sm-2">
-								<t t-call="frontend_studio.edit_button"/>
-							</div>
-						</div>
-					</div>
-					<t t-call="frontend_studio.map"/>
-				</div>
-				
-				<div style="background-color:white;">
-				<div class="container studio-details fontCGSM">
-					<div class="row">
-						<div class="col-sm-10">
-							
-							<div class="row">
-								<h3>Address</h3>
-								<div class="col-sm-12">
-									<t t-call="frontend_studio.studio_address"/>
-								</div>
-							</div>
-							
-							
-							<div class="row">
-								<h3>Connect</h3>
-								<t t-call="frontend_studio.studio_details"/>
-							</div>
-						</div>
-						
-						<div class="col-sm-2 studio_industries">
-							<h4><span class="fontCGSMicons">tag</span> Industries</h4>
-							<t t-call="frontend_studio.industries"/>
-						</div>
-					</div>
+                
+                <!--<t t-call="frontend_studio.search_zone"/>-->
+                
+                <div class="jumbotron" id="container-map-studio">
+                    <div class="container studio-header fontCGSMlight">
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <t t-call="frontend_studio.studio_header"/>
+                            </div>
+                            
+                            <div class="col-sm-2">
+                                <t t-call="frontend_studio.edit_button"/>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-call="frontend_studio.map"/>
+                </div>
+                
+                <div style="background-color:white;">
+                <div class="container studio-details fontCGSM">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            
+                            <div class="row">
+                                <h3>Address</h3>
+                                <div class="col-sm-12">
+                                    <t t-call="frontend_studio.studio_address"/>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="row">
+                                <h3>Connect</h3>
+                                <t t-call="frontend_studio.studio_details"/>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-2 studio_industries">
+                            <h4><span class="fontCGSMicons">tag</span> Industries</h4>
+                            <t t-call="frontend_studio.industries"/>
+                        </div>
+                    </div>
 
-					
-				</div>
-				</div>
-				
-				<div class="container">
-				<t t-call="frontend_studio.same_localization"/>
-				</div>
-				
+                    
+                </div>
+                </div>
+                
+                <div class="container">
+                <t t-call="frontend_studio.same_localization"/>
+                </div>
+                
             </t>
 
         </template>
