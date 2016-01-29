@@ -6,38 +6,17 @@ import time
 from datadog import statsd
 from openerp.addons.frontend_base.controllers.base import (
     Base,
-    small_image_url
+    small_image_url,
+    QueryURL,
 )
 from openerp.addons.web import http
 from cachetools import LRUCache, cached
 
-from openerp.http import request, werkzeug
+from openerp.http import request
 
 _logger = logging.getLogger(__name__)
 list_cache = LRUCache(maxsize=10)
 map_cache = LRUCache(maxsize=10)
-
-
-class QueryURL(object):
-    def __init__(self, path='', **args):
-        self.path = path
-        self.args = args
-
-    def __call__(self, path=None, **kw):
-        if not path:
-            path = self.path
-        for k, v in self.args.items():
-            kw.setdefault(k, v)
-        l = []
-        for k, v in kw.items():
-            if v:
-                if isinstance(v, list) or isinstance(v, set):
-                    l.append(werkzeug.url_encode([(k, i) for i in v]))
-                else:
-                    l.append(werkzeug.url_encode([(k, v)]))
-        if l:
-            path += '?' + '&'.join(l)
-        return path
 
 
 class Listing(Base):
