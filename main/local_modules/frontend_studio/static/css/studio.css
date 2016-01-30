@@ -15,14 +15,16 @@
 #container-map-studio {
 	position: relative;
 	height: 350px;
-	z-index: 0;
+	margin-top: -100px;
+	z-index: 1;
 	background: url(../cgsm-pattern.svg) repeat fixed;
 }
 #geochart_target {
 	position: relative;
 	width: 350px;
-	margin: 0 auto;
-	margin-top: -380px;
+	float: right;
+	margin-top: -280px;
+	margin-right: 22%;
 	height: 100%;
 	z-index: -1;
 }
@@ -30,7 +32,7 @@
 #geochart_target svg {
 	margin-top: 20px;
 	margin-left: 20px;
-	transform: scale(1.5);
+	transform: scale(1.2);
 }
 
 #geochart_target path {
@@ -57,7 +59,7 @@
 	position: relative;
 	margin: 0 auto;
 	padding: 0;
-	padding-top: 80px;
+	padding-top: 160px;
 
 }
 .studio-header .btn {
@@ -74,6 +76,9 @@
 	font-family: 'cgsm-thin';
 	font-size: 2em;
 	color: #323133;
+}
+.studio-header .col-logo {
+	width: 140px !important;
 }
 h3:before {
 	content: "";
@@ -95,6 +100,98 @@ h3  {
 	padding: 0 20px;
 	position: relative;
 	z-index: 5;
+}
+
+
+.navDirectory {
+    padding-top: 50px;
+    z-index: 1030;
+}
+.navDirectory .col-sm-12,
+.navDirectory .col-sm-8,
+.navDirectory .col-sm-2,
+.navDirectory .col-sm-3{
+    padding-left: 0;
+    padding-right: 0;
+    height: 44px;
+}
+.navDirectory .row {
+    margin: 0.25em 0;
+    margin-bottom: 0;
+}
+.navDirectory form {
+    display: inline-block;
+    margin-top: 0em;
+}
+
+.navSearch .form-control,
+.navSearch .search-query {
+    font-family: 'cgsm-light';
+    font-size: 2em;
+    display: block;
+    width: 100% !important;
+    height: 45px;
+    vertical-align: middle;
+    color: #323133;
+    background-color: #fff;
+    background-image: none;
+    border: 0 solid transparent;
+}
+.navSearch a:link,
+.navSearch a{
+    color: #323133;
+    background-color: #979699;
+}
+.navSearch a:hover,
+.navSearch a:focus{
+    color: #f1f1f3;
+    text-decoration: underline;
+    background-color: #b05ae2;
+}
+.navSearch .fa{
+    font-size: 1.6em;
+    padding: auto 0;
+    margin: 0;
+}
+.btn-cgsm-add {
+    font-family: 'cgsm-regular';
+    font-size: 1.66em;
+    line-height: 1;
+    vertical-align: baseline;
+    padding: auto 0;
+    margin: 0 auto;
+    background-color: #b05ae2;
+    color: #f1f1f3;
+	z-index: 100;
+}
+@media (max-width: 992px) {
+    .btn-cgsm-add {
+        font-size: 1.2em;
+        line-height: 2em;
+    }
+}
+@media (max-width: 767px) {
+    .btn-cgsm-add {
+        font-size: 1.66em;
+        line-height: 1.33em;
+    }
+}
+
+.navBgcolor{
+    background-color: #cbcacc;
+}
+.navBtnColor {
+    background-color: #b05ae2;
+}
+input {
+    background-color: transparent;
+}
+
+.navSearch .fontCGSMicons{
+    font-size: 1em;
+}
+.navSearch a:hover{
+    text-decoration: none;
 }
 
 .studio-details .row {
@@ -121,10 +218,14 @@ h3  {
 	font-family: 'cgsm-thin';
 	font-size: 1.66em;
 }
-.details-country {
+.details-country,
+.details-country a,
+.details-country a:hover{
 	font-family: 'cgsm-light';
-	font-size: 1.54em;
+	font-size: 1.24em;
+	color: #323133;
 	background-color: #f1f1f3;
+	text-decoration: none;
 	padding: 0.1em 0.2em;
 	text-transform: uppercase;
 	float: right !important;
@@ -175,15 +276,17 @@ h3  {
 .studio-header .logo-thumb {
 	width: 128px !important;
 	height: 128px !important;
+	margin: 0 0;
 	overflow: hidden;
-	border: 2px solid #cbcacc;
+	border: 2px solid #fff;
 	background-color: #fff;
-	border-radius: 0.1em !important;
-	-webkit-border-radius: 0.1em !important;
-	-moz-border-radius: 0.1em !important;
+	border-radius: 0.15em !important;
+	-webkit-border-radius: 0.15em !important;
+	-moz-border-radius: 0.15em !important;
 }
 
 .studios .logo-thumb {
+	background-color: #fff;
 	width: 64px !important;
 	height: 64px !important;
 }
@@ -205,7 +308,7 @@ h3  {
 }
 
 .btn {
-	font-size: 1.04em;
+	font-size: 1.5em;
 	font-family: 'cgsm-regular';
 	padding: 14px 24px;
 	border: 0 none;

@@ -11,6 +11,17 @@
                 </div>
             </form>
         </template>
+		
+        <template id="frontend_studio.flag_button" name="Studio: Flag mode">
+            <form t-att-action="'/directory/company/{}'.format(partner.id)" method="get">
+                <div class="input-group">
+                    <input type="hidden" name='mode' value="edit"/>
+                    <input type='submit'
+                           class="btn btn-edit outline fontCGSMicons a-submit"
+                           value="flag"/>
+                </div>
+            </form>
+        </template>
 
         <template id="frontend_studio.base" name="Studio: base">
             <t t-call="frontend_base.doctype_html"/>
@@ -35,14 +46,14 @@
         <template id="frontend_studio.search_zone" name="Studio: Search Zone">
         <div class="container navDirectory">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <!--<t t-call="frontend_listing.search" />-->
                     <form t-att-action="keep(url, search=0, company_status=company_status)" method="get" t-att-class="search_class">
                         <div class="input-group navSearch">
                             <input type="text" name="search" class="search-query form-control" placeholder="Search..." t-att-value="search" />
                             <input type="hidden" name='company_status' t-att-value='company_status' />
                             <span class="input-group-btn">
-                                            <a class="btn btn-lg a-submit"><span class="fontCGSMicons">search</span></a>
+                            <a class="btn btn-lg a-submit fontCGSMicons">search</a>
                             </span>
                         </div>
                     </form>
@@ -59,8 +70,17 @@
         </template>
 
         <template id="frontend_studio.studio_header" name="Studio: Details Header">
-            <h2 t-esc="partner.name" />
-            <t t-call="frontend_base.company_logo" />
+		<div class="row">
+			<div class="col-sm-3 col-logo">
+				<t t-call="frontend_base.company_logo" />
+			</div>
+			<div class="col-sm-9">
+				<h2 t-esc="partner.name" />
+				<t t-call="frontend_studio.edit_button" /> 
+				<!--<t t-call="frontend_studio.flag_button" />--> 
+
+			</div>
+		</div>
         </template>
         
         <template id="frontend_studio.studio_address" name="Studio: Address">
@@ -238,57 +258,49 @@
 
         <template id="frontend_studio.view" name="Studio: view">
             <t t-call="frontend_studio.base">
-                
-                <!--<t t-call="frontend_studio.search_zone"/>-->
-                
-                <div class="jumbotron" id="container-map-studio">
-                    <div class="container studio-header fontCGSMlight">
-                        <div class="row">
-                            <div class="col-sm-10">
-                                <t t-call="frontend_studio.studio_header"/>
-                            </div>
-                            
-                            <div class="col-sm-2">
-                                <t t-call="frontend_studio.edit_button"/>
-                            </div>
-                        </div>
-                    </div>
-                    <t t-call="frontend_studio.map"/>
-                </div>
-                
-                <div style="background-color:white;">
-                <div class="container studio-details fontCGSM">
-                    <div class="row">
-                        <div class="col-sm-10">
-                            
-                            <div class="row">
-                                <h3>Address</h3>
-                                <div class="col-sm-12">
-                                    <t t-call="frontend_studio.studio_address"/>
-                                </div>
-                            </div>
-                            
-                            
-                            <div class="row">
-                                <h3>Connect</h3>
-                                <t t-call="frontend_studio.studio_details"/>
-                            </div>
-                        </div>
-                        
-                        <div class="col-sm-2 studio_industries">
-                            <h4><span class="fontCGSMicons">tag</span> Industries</h4>
-                            <t t-call="frontend_studio.industries"/>
-                        </div>
-                    </div>
+				
+				<t t-call="frontend_studio.search_zone"/>
+				
+				<div class="jumbotron" id="container-map-studio">
+					<div class="container studio-header fontCGSMlight">
+						<t t-call="frontend_studio.studio_header"/>
+						<t t-call="frontend_studio.map"/>
+					</div>
+				</div>
+				
+				<div style="background-color:white;">
+				<div class="container studio-details fontCGSM">
+					<div class="row">
+						<div class="col-sm-10">
+							
+							<div class="row">
+								<h3>Address</h3>
+								<div class="col-sm-12">
+									<t t-call="frontend_studio.studio_address"/>
+								</div>
+							</div>
+							
+							
+							<div class="row">
+								<h3>Connect</h3>
+								<t t-call="frontend_studio.studio_details"/>
+							</div>
+						</div>
+						
+						<div class="col-sm-2 studio_industries">
+							<h4><span class="fontCGSMicons">tag</span> Industries</h4>
+							<t t-call="frontend_studio.industries"/>
+						</div>
+					</div>
 
-                    
-                </div>
-                </div>
-                
-                <div class="container">
-                <t t-call="frontend_studio.same_localization"/>
-                </div>
-                
+					
+				</div>
+				</div>
+				
+				<div class="container">
+				<t t-call="frontend_studio.same_localization"/>
+				</div>
+				
             </t>
 
         </template>
