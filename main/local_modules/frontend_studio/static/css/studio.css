@@ -102,6 +102,9 @@ h3  {
 	z-index: 5;
 }
 
+#search-studio {
+	z-index: 1040;
+}
 
 .navDirectory {
     padding-top: 50px;
@@ -160,7 +163,7 @@ h3  {
     vertical-align: baseline;
     padding: auto 0;
     margin: 0 auto;
-    background-color: #b05ae2;
+    background-color: #5ae2b0;
     color: #f1f1f3;
 	z-index: 100;
 }
@@ -278,7 +281,7 @@ input {
 	height: 128px !important;
 	margin: 0 0;
 	overflow: hidden;
-	border: 2px solid #fff;
+	border: 2px solid #cbcacc;
 	background-color: #fff;
 	border-radius: 0.15em !important;
 	-webkit-border-radius: 0.15em !important;

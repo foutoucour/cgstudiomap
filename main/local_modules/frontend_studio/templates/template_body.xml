@@ -44,9 +44,9 @@
         </template>
 
         <template id="frontend_studio.search_zone" name="Studio: Search Zone">
-        <div class="container navDirectory">
+        <div id="search-studio" class="container navDirectory">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-7">
                     <!--<t t-call="frontend_listing.search" />-->
                     <form t-att-action="keep(url, search=0, company_status=company_status)" method="get" t-att-class="search_class">
                         <div class="input-group navSearch">
@@ -58,7 +58,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-sm-3 col-sm-offset-1 navBtnColor">
+                <div class="col-sm-2 navBtnColor">
                     <a class="btn btn-cgsm-add center-block" href="#" role="button">ADD Studio <i class="fa fa-step-forward fa-fw fa-rotate-90"/> </a>
                 </div>
             </div>
