@@ -51,13 +51,11 @@
         <div class="container navDirectory">
             <div class="row">
                 <div class="col-xs-12 col-sm-9">
-                    <!--<t t-call="frontend_listing.search" />-->
-                    <form t-att-action="keep(url, search=0, company_status=company_status)" method="get" t-att-class="search_class">
+                    <form t-att-action="keep('/directory', company_status='open')" method="get" t-att-class="search_class">
                         <div class="input-group navSearch">
                             <input type="text" name="search" class="search-query form-control" placeholder="Search..." t-att-value="search" />
-                            <input type="hidden" name='company_status' t-att-value='company_status' />
                             <span class="input-group-btn">
-                            <a class="btn btn-lg a-submit"><span class="fontCGSMicons">search</span></a>
+                                <a class="btn btn-lg a-submit"><span class="fontCGSMicons">search</span></a>
                             </span>
                         </div>
                     </form>
