@@ -9,6 +9,7 @@ _logger = logging.getLogger(__name__)
 
 
 class ResPartner(models.Model):
+    """Overcharge the definition of a partner."""
     _inherit = 'res.partner'
 
     @api.model
