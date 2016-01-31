@@ -43,10 +43,10 @@
 
         <template id="partner_box" name="Partner Box">
 			<div class="row bloc-studios-title fontCGSM">
-				<div class="col-md-6">
+				<div class="col-xs-6 col-md-6">
 					<h2>Most Popular Studios</h2>
 				</div>
-				<div class="col-md-6">
+				<div class="col-xs-6 col-md-6">
 					<p><a t-att-href="website.directory_menu">See all </a><span class="fontCGSMicons">play</span> </p>
 				</div>
 			

@@ -37,7 +37,7 @@ class Studio(Base):
         country = partner.country_id
         values = {
             'partner': partner,
-            'partners': partner.get_studios_from_same_location(4),
+            'partners': partner.get_studios_from_same_location(6),
             'filter_domain': country.name,
             'mode': mode,
             'keep': keep,

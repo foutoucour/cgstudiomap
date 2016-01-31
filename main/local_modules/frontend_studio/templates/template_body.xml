@@ -44,22 +44,22 @@
         </template>
 
         <template id="frontend_studio.search_zone" name="Studio: Search Zone">
-        <div id="search-studio" class="container navDirectory">
+        <div class="container navDirectory">
             <div class="row">
-                <div class="col-sm-7">
+                <div class="col-xs-12 col-sm-9">
                     <!--<t t-call="frontend_listing.search" />-->
                     <form t-att-action="keep(url, search=0, company_status=company_status)" method="get" t-att-class="search_class">
                         <div class="input-group navSearch">
                             <input type="text" name="search" class="search-query form-control" placeholder="Search..." t-att-value="search" />
                             <input type="hidden" name='company_status' t-att-value='company_status' />
                             <span class="input-group-btn">
-                            <a class="btn btn-lg a-submit fontCGSMicons">search</a>
+                            <a class="btn btn-lg a-submit"><span class="fontCGSMicons">search</span></a>
                             </span>
                         </div>
                     </form>
                 </div>
-                <div class="col-sm-2 navBtnColor">
-                    <a class="btn btn-cgsm-add center-block" href="#" role="button">ADD Studio <i class="fa fa-step-forward fa-fw fa-rotate-90"/> </a>
+                <div class="col-xs-12 col-sm-3 navBtnColor">
+                    <a class="btn btn-cgsm-add center-block" href="#" role="button">ADD Studio <span class="fontCGSMicons">upload</span></a>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
 			</div>
 			<div class="col-sm-9">
 				<h2 t-esc="partner.name" />
-				<t t-call="frontend_studio.edit_button" /> 
+				<t t-call="frontend_studio.edit_button"/> 
 				<!--<t t-call="frontend_studio.flag_button" />--> 
 
 			</div>
@@ -117,7 +117,7 @@
             </t>
         </template>
         <template id="frontend_studio.studio_details" name="Studio: Details">
-            <div class="col-sm-4">
+            <div class="col-xs-12 col-sm-4">
                 <div class="form-group details-web">
                     <h4>Website</h4>
                     <p>
@@ -137,10 +137,10 @@
                     </p>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-xs-12 col-sm-4">
                 <t t-call="frontend_studio.social_networks" />
             </div>
-            <div class="col-sm-4 pull-right">
+            <div class="col-xs-12 col-sm-4 pull-right">
                 <h4>Calls</h4>
                 <div class="form-group details-phone">
                     <t t-set="display">
@@ -232,10 +232,10 @@
 
         <template id="frontend_studio.same_localization" name="Studio: Same Localization">
             <div class="row bloc-studios-title fontCGSM">
-                <div class="col-sm-6">
+                <div class="col-xs-6 col-sm-6">
                     <h2>Same Location</h2>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-xs-6 col-sm-6">
                     <p>
                         <a t-att-href="'/directory?search={}'.format(filter_domain)">See all  </a><span class="fontCGSMicons">play</span>
                     </p>
@@ -244,7 +244,7 @@
                 
             <div class="row studios">
                 <t t-foreach="partners" t-as="partner">
-                    <div class="col-xs-6 col-sm-3 partner-item">
+                    <div class="col-xs-6 col-sm-2 partner-item">
                     <a t-att-href="partner.partner_url">
                         <t t-call="frontend_base.company_logo" />
                         <a t-att-href="partner.partner_url">
@@ -258,10 +258,11 @@
 
         <template id="frontend_studio.view" name="Studio: view">
             <t t-call="frontend_studio.base">
-				
-				<t t-call="frontend_studio.search_zone"/>
-				
+							
 				<div class="jumbotron" id="container-map-studio">
+					
+					<t t-call="frontend_studio.search_zone"/>
+					
 					<div class="container studio-header fontCGSMlight">
 						<t t-call="frontend_studio.studio_header"/>
 						<t t-call="frontend_studio.map"/>
@@ -297,7 +298,7 @@
 				</div>
 				</div>
 				
-				<div class="container">
+				<div class="container studio-proposal">
 				<t t-call="frontend_studio.same_localization"/>
 				</div>
 				

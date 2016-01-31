@@ -15,7 +15,7 @@
 #container-map-studio {
 	position: relative;
 	height: 350px;
-	margin-top: -100px;
+	margin-top: 45px;
 	z-index: 1;
 	background: url(../cgsm-pattern.svg) repeat fixed;
 }
@@ -24,7 +24,7 @@
 	width: 350px;
 	float: right;
 	margin-top: -280px;
-	margin-right: 22%;
+	margin-right: 10%;
 	height: 100%;
 	z-index: -1;
 }
@@ -32,7 +32,7 @@
 #geochart_target svg {
 	margin-top: 20px;
 	margin-left: 20px;
-	transform: scale(1.2);
+	transform: scale(1.55);
 }
 
 #geochart_target path {
@@ -59,9 +59,10 @@
 	position: relative;
 	margin: 0 auto;
 	padding: 0;
-	padding-top: 160px;
+	padding-top: 100px;
 
 }
+
 .studio-header .btn {
 	z-index: 200;
 }
@@ -72,6 +73,7 @@
 	border-bottom: 0 solid #b05ae2;
 	color: #323133;
 }
+
 .studio-header h4 {
 	font-family: 'cgsm-thin';
 	font-size: 2em;
@@ -102,100 +104,6 @@ h3  {
 	z-index: 5;
 }
 
-#search-studio {
-	z-index: 1040;
-}
-
-.navDirectory {
-    padding-top: 50px;
-    z-index: 1030;
-}
-.navDirectory .col-sm-12,
-.navDirectory .col-sm-8,
-.navDirectory .col-sm-2,
-.navDirectory .col-sm-3{
-    padding-left: 0;
-    padding-right: 0;
-    height: 44px;
-}
-.navDirectory .row {
-    margin: 0.25em 0;
-    margin-bottom: 0;
-}
-.navDirectory form {
-    display: inline-block;
-    margin-top: 0em;
-}
-
-.navSearch .form-control,
-.navSearch .search-query {
-    font-family: 'cgsm-light';
-    font-size: 2em;
-    display: block;
-    width: 100% !important;
-    height: 45px;
-    vertical-align: middle;
-    color: #323133;
-    background-color: #fff;
-    background-image: none;
-    border: 0 solid transparent;
-}
-.navSearch a:link,
-.navSearch a{
-    color: #323133;
-    background-color: #979699;
-}
-.navSearch a:hover,
-.navSearch a:focus{
-    color: #f1f1f3;
-    text-decoration: underline;
-    background-color: #b05ae2;
-}
-.navSearch .fa{
-    font-size: 1.6em;
-    padding: auto 0;
-    margin: 0;
-}
-.btn-cgsm-add {
-    font-family: 'cgsm-regular';
-    font-size: 1.66em;
-    line-height: 1;
-    vertical-align: baseline;
-    padding: auto 0;
-    margin: 0 auto;
-    background-color: #5ae2b0;
-    color: #f1f1f3;
-	z-index: 100;
-}
-@media (max-width: 992px) {
-    .btn-cgsm-add {
-        font-size: 1.2em;
-        line-height: 2em;
-    }
-}
-@media (max-width: 767px) {
-    .btn-cgsm-add {
-        font-size: 1.66em;
-        line-height: 1.33em;
-    }
-}
-
-.navBgcolor{
-    background-color: #cbcacc;
-}
-.navBtnColor {
-    background-color: #b05ae2;
-}
-input {
-    background-color: transparent;
-}
-
-.navSearch .fontCGSMicons{
-    font-size: 1em;
-}
-.navSearch a:hover{
-    text-decoration: none;
-}
 
 .studio-details .row {
 	margin: 1em 0;
@@ -311,7 +219,7 @@ input {
 }
 
 .btn {
-	font-size: 1.5em;
+	font-size: 1.35em;
 	font-family: 'cgsm-regular';
 	padding: 14px 24px;
 	border: 0 none;
@@ -376,11 +284,136 @@ input {
 }
 
 
+
+
+.navDirectory {
+    padding-top: 8px;
+    z-index: 10;
+}
+.navDirectory .col-sm-12,
+.navDirectory .col-sm-8,
+.navDirectory .col-sm-2,
+.navDirectory .col-sm-3{
+    padding-left: 0;
+    padding-right: 0;
+    height: 44px;
+}
+.navDirectory .row {
+    margin: 0.25em 0;
+    margin-bottom: 0;
+}
+.navDirectory form {
+    display: inline-block;
+    margin-top: 0em;
+}
+
+.navSearch .form-control,
+.navSearch .search-query {
+    font-family: 'cgsm-light';
+    font-size: 2em;
+    display: block;
+    width: 100% !important;
+    height: 45px;
+    vertical-align: middle;
+    color: #323133;
+    background-color: #fff;
+    background-image: none;
+    border: 0 solid transparent;
+}
+.navSearch a:link,
+.navSearch a{
+    color: #323133;
+    background-color: #979699;
+}
+.navSearch a:hover,
+.navSearch a:focus{
+    color: #f1f1f3;
+    text-decoration: underline;
+    background-color: #b05ae2;
+}
+.navSearch .fa{
+    font-size: 1.6em;
+    padding: auto 0;
+    margin: 0;
+}
+.btn-cgsm-add {
+    font-family: 'cgsm-regular';
+    font-size: 1.66em;
+    line-height: 1;
+    vertical-align: baseline;
+    padding: auto 0;
+    margin: 0 auto;
+    background-color: #5ae2b0;
+    color: #f1f1f3;
+	z-index: 100;
+}
+@media (max-width: 992px) {
+    .btn-cgsm-add {
+        font-size: 1.2em;
+        line-height: 2em;
+    }
+}
+@media (max-width: 767px) {
+    .btn-cgsm-add {
+        font-size: 1.66em;
+        line-height: 1.33em;
+    }
+}
+
+.navBgcolor{
+    background-color: #cbcacc;
+}
+.navBtnColor {
+    background-color: transparent;
+}
+input {
+    background-color: transparent;
+}
+
+.navSearch .fontCGSMicons{
+    font-size: 1em;
+}
+.navSearch a:hover{
+    text-decoration: none;
+}
+
+.studio-proposal .row{
+	margin: 0.5em 0;
+	
+}
+.studios .partner-item {
+    padding-bottom: 0.5em;
+    height: 120px;
+}
+
 /*/////////////////////////////////
         MEDIA QUERIES
 ///////////////////////////////// */
 
 @media (max-width: 767px) {
+
+}
+
+@media (max-width: 767px) {
+	#geochart_target svg {
+		margin-top: 50px;
+		margin-left: 50px;
+		transform: scale(1);
+	}
+	.btn-cgsm-add {
+		width: 95%
+	}
+	.studio-header {
+		padding-top: 20px;
+
+	}
+	.studio-header h2 {
+		font-size: 2.5em;
+	}
+
+	.studio-header h4 {
+		font-size: 1.5em;
+	}
 	.studios img {
 		margin: 0 auto!important;
 		text-align: center!important;
@@ -388,5 +421,60 @@ input {
 	.studios {
 		margin: 0 auto!important;
 		text-align: center!important;
+	}
+	.btn {
+		font-size: 1.15em;
+	}
+	.btn.outline {
+		padding: 6px 11px;
+	}
+	.btn-edit {
+		float: right;
+	}
+	.studio-details h3 {
+		font-size: 1.99em;
+	}
+	h3:before {
+		content: "";
+		width: 50%;
+		left: 40%;
+	}
+	.details-country,
+	.details-country a,
+	.details-country a:hover{
+		float: none!important;
+	}
+	.details-street, .details-city {
+		font-size: 1.33em;
+	}
+	.details-country,
+	.details-country a,
+	.details-country a:hover{
+		font-size: 1.14em;
+	}
+
+
+}
+@media (max-width: 992px) {
+	.studio-details h3 {
+		font-size: 2.4em;
+	}
+	h3:before {
+		content: "";
+		width: 50%;
+		left: 40%;
+	}
+	.details-country,
+	.details-country a,
+	.details-country a:hover{
+		float: none!important;
+	}
+}
+@media (max-width: 1200px) {
+
+	h3:before {
+		content: "";
+		width: 40%;
+		left: 40%;
 	}
 }
