@@ -1,4 +1,6 @@
+//-------------------
 // OFFICIAL colors
+//-------------------
 $color-cgsm-light: rgb(241,241,243);
 $color-cgsm-dark: rgb(50,49,51);
 $color-cgsm: rgb(176,90,226);
@@ -12,7 +14,41 @@ $color-grey-dark: rgb(76,76,76);
 
 $bg : #f2f2f2;
 
+
+//-------------------
+// Social media name and color
+//-------------------
+
+$twitter:           #00aced;
+$facebook:          #3b5998;
+$youtube:           #bb0000;
+$github:			#4183c4;
+$linkedin:			#007bb6;
+$vimeo:				#aad450;
+$add:				$color-tonic;
+
+$social:            (twitter,   $twitter),
+                    (facebook,  $facebook),
+					(linkedin,  $linkedin),
+					(vimeo,  	$vimeo),
+					(github,  	$github),
+                    (youtube,   $youtube),
+					(add,		$add);
+
+@each $socialnetwork, $color in $social {
+  .social-link--#{$socialnetwork} {
+    color: $color;
+    &:focus, 
+    &:hover {
+      color: darken($color,10%);
+    }    
+  }
+}
+
+
+//-------------------
 // BOOTSTRAP upgrade
+//-------------------
 body {
 	background-color: $bg;
 }
@@ -26,6 +62,7 @@ body {
     background-color: transparent;
     background-image: none;
     border: 0px solid transparent;
+	color : $color-cgsm-light;
 }
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
     background-color: transparent;
@@ -89,7 +126,9 @@ body {
 }
 
 
+//-------------------
 // MAIN
+//-------------------
 #geochart_target {
 	background-color: transparent;
 }
@@ -132,17 +171,23 @@ body {
 		color: $color-cgsm;
 	}
 }
-.colored-boxed i {
+.colored-boxed i,
+.colored-boxed span {
 	background-color: transparent;
 	color: $color-cgsm;
 	border-color: $color-cgsm;
 }
-.colored-boxed i > a {
+.colored-boxed a {
+	text-decoration: none;
+}
+.colored-boxed i > a,
+.colored-boxed span > a {
 	background-color: $color-cgsm;
 	color: $color-cgsm-light;
 	border-color: $color-cgsm;
 }
-.colored-boxed.inv i {
+.colored-boxed.inv i,
+.colored-boxed.inv span {
 	background-color: $color-cgsm;
 	color: $color-cgsm-light;
 	border-color: $color-cgsm-light;
@@ -190,8 +235,12 @@ body {
 	}
 }
 
-///////////////// old SUPER backoffice
-// BASE color
+
+
+
+//-------------------
+// old SUPER backoffice
+//-------------------
 
 $c-cg: $color-tonic;
 $c-map: $color-fill;

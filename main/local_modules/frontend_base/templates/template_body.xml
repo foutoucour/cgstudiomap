@@ -9,7 +9,7 @@
 						<span class="navbar-text navbar-left"><a href="/" class="navbar-link"><span id="logo-nav"></span></a></span>
 						
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span id="toggle"></span>
+							<span class="fontCGSMicons">menu</span>
                         </button>
 						
                     </div>
@@ -17,7 +17,7 @@
 					<div class="navbar-collapse collapse">
 
 						<div class="dropdown navbar-text navbar-right hidden-xs">
-							<button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-power-off fa-2x"/></button>
+							<button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">power</span></button>
 
 						  <ul class="dropdown-menu" aria-labelledby="dLabel">
                               <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
@@ -197,10 +197,9 @@
         <!--<t t-set="ind" t-value="{value_for_ind}"/>-->
         <!--<t t-call="frontend_base.industry_tag"/>-->
         <template id="frontend_base.industry_tag" name="Industry Tag">
-            <!--Uncomment this part when the directory is released!-->
-            <!--<a itemprop="name" t-att-href="'/directory?search=%s' % ind.name">-->
+            <a itemprop="name" t-att-href="'/directory?search=%s' % ind.name">
                 <span class="label label-info" t-esc="ind.name"/>
-            <!--</a>-->
+            </a>
         </template>
 
         <!--Represent the logo to a company-->
@@ -211,10 +210,12 @@
         <!--<t t-set="partner" t-value="{value_for_partner}"/>-->
         <!--<t t-call="frontend_base.company_logo"/>-->
         <template id="frontend_base.company_logo" name="Company Logo">
+		<div class="logo-thumb">
             <img itemprop="image"
-                 class="img img-responsive"
-                 t-att-src="website.image_url(partner, 'image_small')"
+                 class="fill-box img-responsive"
+                 t-att-src="website.image_url(partner, 'image_medium', size='256x256')"
             />
+		</div>
         </template>
 
         <template id="frontend_base.layout" name="Base for simple page">

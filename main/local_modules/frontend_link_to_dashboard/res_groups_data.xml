@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="group_archetype_direct_link_to_dashboard" model="res.groups">
+            <field name="category_id" ref="res_group_archetype.module_category_cgstudiomap_archetype"/>
+            <field name="name">Link To Dashboard</field>
+            <field name="comment">Group that give a direct access to the dashboard.
+            </field>
+        </record>
+
+    </data>
+</openerp>

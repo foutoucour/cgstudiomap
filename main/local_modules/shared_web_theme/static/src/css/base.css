@@ -5755,6 +5755,444 @@ img {
   src: url("../fonts/colabthi-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/colabthi-webfont.woff2") format("woff2"), url("../fonts/colabthi-webfont.woff") format("woff"), url("../fonts/colabthi-webfont.ttf") format("truetype"), url("../fonts/colabthi-webfont.svg#colaborate-thinregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: 'cgsm-font-icons';
+  src: url("../fonts/cgsm-font-icons.eot?rfo9jj");
+  src: url("../fonts/cgsm-font-icons.eot?rfo9jj#iefix") format("embedded-opentype"), url("../fonts/cgsm-font-icons.woff2?rfo9jj") format("woff2"), url("../fonts/cgsm-font-icons.ttf?rfo9jj") format("truetype"), url("../fonts/cgsm-font-icons.woff?rfo9jj") format("woff"), url("../fonts/cgsm-font-icons.svg?rfo9jj#cgsm-font-icons") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+[class^="cgsm-icon-"], [class*=" cgsm-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'cgsm-font-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.cgsm-icon-facebook:before {
+  content: ""; }
+
+.cgsm-icon-github:before {
+  content: ""; }
+
+.cgsm-icon-instagram:before {
+  content: ""; }
+
+.cgsm-icon-linkedin:before {
+  content: ""; }
+
+.cgsm-icon-twitter:before {
+  content: ""; }
+
+.cgsm-icon-vimeo:before {
+  content: ""; }
+
+.cgsm-icon-youtube:before {
+  content: ""; }
+
+.cgsm-icon-eye:before {
+  content: ""; }
+
+.cgsm-icon-paper-clip:before {
+  content: ""; }
+
+.cgsm-icon-mail:before {
+  content: ""; }
+
+.cgsm-icon-toggle:before {
+  content: ""; }
+
+.cgsm-icon-layout:before {
+  content: ""; }
+
+.cgsm-icon-link:before {
+  content: ""; }
+
+.cgsm-icon-bell:before {
+  content: ""; }
+
+.cgsm-icon-lock:before {
+  content: ""; }
+
+.cgsm-icon-unlock:before {
+  content: ""; }
+
+.cgsm-icon-ribbon:before {
+  content: ""; }
+
+.cgsm-icon-image:before {
+  content: ""; }
+
+.cgsm-icon-signal:before {
+  content: ""; }
+
+.cgsm-icon-target:before {
+  content: ""; }
+
+.cgsm-icon-clipboard:before {
+  content: ""; }
+
+.cgsm-icon-clock:before {
+  content: ""; }
+
+.cgsm-icon-watch:before {
+  content: ""; }
+
+.cgsm-icon-air-play:before {
+  content: ""; }
+
+.cgsm-icon-camera:before {
+  content: ""; }
+
+.cgsm-icon-video:before {
+  content: ""; }
+
+.cgsm-icon-disc:before {
+  content: ""; }
+
+.cgsm-icon-printer:before {
+  content: ""; }
+
+.cgsm-icon-monitor:before {
+  content: ""; }
+
+.cgsm-icon-server:before {
+  content: ""; }
+
+.cgsm-icon-cog:before {
+  content: ""; }
+
+.cgsm-icon-heart:before {
+  content: ""; }
+
+.cgsm-icon-paragraph:before {
+  content: ""; }
+
+.cgsm-icon-align-justify:before {
+  content: ""; }
+
+.cgsm-icon-align-left:before {
+  content: ""; }
+
+.cgsm-icon-align-center:before {
+  content: ""; }
+
+.cgsm-icon-align-right:before {
+  content: ""; }
+
+.cgsm-icon-book:before {
+  content: ""; }
+
+.cgsm-icon-layers:before {
+  content: ""; }
+
+.cgsm-icon-stack:before {
+  content: ""; }
+
+.cgsm-icon-stack-2:before {
+  content: ""; }
+
+.cgsm-icon-paper:before {
+  content: ""; }
+
+.cgsm-icon-paper-stack:before {
+  content: ""; }
+
+.cgsm-icon-search:before {
+  content: ""; }
+
+.cgsm-icon-zoom-in:before {
+  content: ""; }
+
+.cgsm-icon-zoom-out:before {
+  content: ""; }
+
+.cgsm-icon-reply:before {
+  content: ""; }
+
+.cgsm-icon-circle-plus:before {
+  content: ""; }
+
+.cgsm-icon-circle-minus:before {
+  content: ""; }
+
+.cgsm-icon-circle-check:before {
+  content: ""; }
+
+.cgsm-icon-circle-cross:before {
+  content: ""; }
+
+.cgsm-icon-square-plus:before {
+  content: ""; }
+
+.cgsm-icon-square-minus:before {
+  content: ""; }
+
+.cgsm-icon-square-check:before {
+  content: ""; }
+
+.cgsm-icon-square-cross:before {
+  content: ""; }
+
+.cgsm-icon-microphone:before {
+  content: ""; }
+
+.cgsm-icon-record:before {
+  content: ""; }
+
+.cgsm-icon-skip-back:before {
+  content: ""; }
+
+.cgsm-icon-rewind:before {
+  content: ""; }
+
+.cgsm-icon-play:before {
+  content: ""; }
+
+.cgsm-icon-pause:before {
+  content: ""; }
+
+.cgsm-icon-stop:before {
+  content: ""; }
+
+.cgsm-icon-fast-forward:before {
+  content: ""; }
+
+.cgsm-icon-skip-forward:before {
+  content: ""; }
+
+.cgsm-icon-shuffle:before {
+  content: ""; }
+
+.cgsm-icon-repeat:before {
+  content: ""; }
+
+.cgsm-icon-folder:before {
+  content: ""; }
+
+.cgsm-icon-umbrella:before {
+  content: ""; }
+
+.cgsm-icon-moon:before {
+  content: ""; }
+
+.cgsm-icon-thermometer:before {
+  content: ""; }
+
+.cgsm-icon-drop:before {
+  content: ""; }
+
+.cgsm-icon-sun:before {
+  content: ""; }
+
+.cgsm-icon-cloud:before {
+  content: ""; }
+
+.cgsm-icon-cloud-upload:before {
+  content: ""; }
+
+.cgsm-icon-cloud-download:before {
+  content: ""; }
+
+.cgsm-icon-upload:before {
+  content: ""; }
+
+.cgsm-icon-download:before {
+  content: ""; }
+
+.cgsm-icon-location:before {
+  content: ""; }
+
+.cgsm-icon-location-2:before {
+  content: ""; }
+
+.cgsm-icon-map:before {
+  content: ""; }
+
+.cgsm-icon-battery:before {
+  content: ""; }
+
+.cgsm-icon-head:before {
+  content: ""; }
+
+.cgsm-icon-briefcase:before {
+  content: ""; }
+
+.cgsm-icon-speech-bubble:before {
+  content: ""; }
+
+.cgsm-icon-anchor:before {
+  content: ""; }
+
+.cgsm-icon-globe:before {
+  content: ""; }
+
+.cgsm-icon-box:before {
+  content: ""; }
+
+.cgsm-icon-reload:before {
+  content: ""; }
+
+.cgsm-icon-share:before {
+  content: ""; }
+
+.cgsm-icon-marquee:before {
+  content: ""; }
+
+.cgsm-icon-marquee-plus:before {
+  content: ""; }
+
+.cgsm-icon-marquee-minus:before {
+  content: ""; }
+
+.cgsm-icon-tag:before {
+  content: ""; }
+
+.cgsm-icon-power:before {
+  content: ""; }
+
+.cgsm-icon-command:before {
+  content: ""; }
+
+.cgsm-icon-alt:before {
+  content: ""; }
+
+.cgsm-icon-esc:before {
+  content: ""; }
+
+.cgsm-icon-bar-graph:before {
+  content: ""; }
+
+.cgsm-icon-bar-graph-2:before {
+  content: ""; }
+
+.cgsm-icon-pie-graph:before {
+  content: ""; }
+
+.cgsm-icon-star:before {
+  content: ""; }
+
+.cgsm-icon-arrow-left:before {
+  content: ""; }
+
+.cgsm-icon-arrow-right:before {
+  content: ""; }
+
+.cgsm-icon-arrow-up:before {
+  content: ""; }
+
+.cgsm-icon-arrow-down:before {
+  content: ""; }
+
+.cgsm-icon-volume:before {
+  content: ""; }
+
+.cgsm-icon-mute:before {
+  content: ""; }
+
+.cgsm-icon-content-right:before {
+  content: ""; }
+
+.cgsm-icon-content-left:before {
+  content: ""; }
+
+.cgsm-icon-grid:before {
+  content: ""; }
+
+.cgsm-icon-grid-2:before {
+  content: ""; }
+
+.cgsm-icon-columns:before {
+  content: ""; }
+
+.cgsm-icon-loader:before {
+  content: ""; }
+
+.cgsm-icon-bag:before {
+  content: ""; }
+
+.cgsm-icon-ban:before {
+  content: ""; }
+
+.cgsm-icon-flag:before {
+  content: ""; }
+
+.cgsm-icon-trash:before {
+  content: ""; }
+
+.cgsm-icon-expand:before {
+  content: ""; }
+
+.cgsm-icon-contract:before {
+  content: ""; }
+
+.cgsm-icon-maximize:before {
+  content: ""; }
+
+.cgsm-icon-minimize:before {
+  content: ""; }
+
+.cgsm-icon-plus:before {
+  content: ""; }
+
+.cgsm-icon-minus:before {
+  content: ""; }
+
+.cgsm-icon-check:before {
+  content: ""; }
+
+.cgsm-icon-cross:before {
+  content: ""; }
+
+.cgsm-icon-move:before {
+  content: ""; }
+
+.cgsm-icon-delete:before {
+  content: ""; }
+
+.cgsm-icon-menu:before {
+  content: ""; }
+
+.cgsm-icon-archive:before {
+  content: ""; }
+
+.cgsm-icon-inbox:before {
+  content: ""; }
+
+.cgsm-icon-outbox:before {
+  content: ""; }
+
+.cgsm-icon-file:before {
+  content: ""; }
+
+.cgsm-icon-file-add:before {
+  content: ""; }
+
+.cgsm-icon-file-subtract:before {
+  content: ""; }
+
+.cgsm-icon-help:before {
+  content: ""; }
+
+.cgsm-icon-open:before {
+  content: ""; }
+
+.cgsm-icon-ellipsis:before {
+  content: ""; }
+
 body {
   margin: 0;
   padding: 0; }
@@ -5801,7 +6239,7 @@ body {
   position: relative;
   float: right;
   padding: 0 0;
-  margin-top: 0;
+  margin-top: 0.24em;
   margin-right: 1.4em;
   margin-bottom: 0;
   border-radius: 0; }
@@ -5856,6 +6294,41 @@ body {
     margin: 0;
     margin-bottom: 0; } }
 
+.social-link--twitter {
+  color: #00aced; }
+  .social-link--twitter:focus, .social-link--twitter:hover {
+    color: #0087ba; }
+
+.social-link--facebook {
+  color: #3b5998; }
+  .social-link--facebook:focus, .social-link--facebook:hover {
+    color: #2d4373; }
+
+.social-link--linkedin {
+  color: #007bb6; }
+  .social-link--linkedin:focus, .social-link--linkedin:hover {
+    color: #005983; }
+
+.social-link--vimeo {
+  color: #aad450; }
+  .social-link--vimeo:focus, .social-link--vimeo:hover {
+    color: #93c130; }
+
+.social-link--github {
+  color: #4183c4; }
+  .social-link--github:focus, .social-link--github:hover {
+    color: #3269a0; }
+
+.social-link--youtube {
+  color: #bb0000; }
+  .social-link--youtube:focus, .social-link--youtube:hover {
+    color: #880000; }
+
+.social-link--add {
+  color: #5ae2b0; }
+  .social-link--add:focus, .social-link--add:hover {
+    color: #2fda9b; }
+
 body {
   background-color: #f2f2f2; }
 
@@ -5868,7 +6341,8 @@ body {
 .navbar-toggle {
   background-color: transparent;
   background-image: none;
-  border: 0px solid transparent; }
+  border: 0px solid transparent;
+  color: #f1f1f3; }
 
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
   background-color: transparent; }
@@ -5942,17 +6416,23 @@ body {
 .stats p:nth-child(2) {
   color: #b05ae2; }
 
-.colored-boxed i {
+.colored-boxed i,
+.colored-boxed span {
   background-color: transparent;
   color: #b05ae2;
   border-color: #b05ae2; }
 
-.colored-boxed i > a {
+.colored-boxed a {
+  text-decoration: none; }
+
+.colored-boxed i > a,
+.colored-boxed span > a {
   background-color: #b05ae2;
   color: #f1f1f3;
   border-color: #b05ae2; }
 
-.colored-boxed.inv i {
+.colored-boxed.inv i,
+.colored-boxed.inv span {
   background-color: #b05ae2;
   color: #f1f1f3;
   border-color: #f1f1f3; }
@@ -6378,8 +6858,33 @@ body {
 .fontCGSMlight {
   font-family: 'cgsm-light', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
+.fontCGSMicons {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'cgsm-font-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
 .btn-connect {
-  padding: auto 0; }
+  padding: auto 0;
+  font-size: 24px !important; }
+
+.navbar-toggle {
+  font-size: 28px !important; }
 
 .dropdown-menu .divider {
   height: 1px;
@@ -6546,16 +7051,18 @@ body {
 
 .colored-boxed {
   text-align: left; }
-  .colored-boxed i {
+  .colored-boxed i, .colored-boxed span {
+    padding: 0.5em 0.5em;
     width: 70px;
     height: 70px;
     line-height: 70px;
     text-align: center;
-    border: 1px solid;
+    border: 2px solid;
     border-radius: .25em !important;
     -webkit-border-radius: .25em !important;
-    -moz-border-radius: .25em !important;
-    font-size: 30px; }
+    -moz-border-radius: .25em !important; }
+  .colored-boxed .inv span {
+    border: 0 solid; }
   .colored-boxed h3 {
     font-size: 16px;
     font-weight: 600;
@@ -6609,6 +7116,11 @@ body {
   .studios {
     margin: 0 auto !important;
     text-align: center !important; } }
+
+.studios .logo-thumb {
+  width: 64px  !important;
+  height: 64px  !important;
+  overflow: hidden  !important; }
 
 .bloc-signup {
   margin-bottom: -1.4em;

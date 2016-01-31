@@ -24,9 +24,35 @@ body {
 .fontCGSMlight {
     font-family: 'cgsm-light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+.fontCGSMicons {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'cgsm-font-icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    
+    /* Enable Ligatures ================ */
+    letter-spacing: 0;
+    -webkit-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga=1";
+    -moz-font-feature-settings: "liga";
+    -ms-font-feature-settings: "liga" 1;
+    -o-font-feature-settings: "liga";
+    font-feature-settings: "liga";
 
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 .btn-connect {
 	padding: auto 0;
+	font-size: 24px !important;
+}
+.navbar-toggle {
+	font-size: 28px !important;
 }
 .dropdown-menu .divider {
     height: 1px;
@@ -233,17 +259,22 @@ body {
 
 .colored-boxed {
 	text-align: left;
-	i {
+	i, span {
+		padding: 0.5em 0.5em;
 		width: 70px;
 		height: 70px;
 		line-height: 70px;
 		text-align: center;
-		border: 1px solid;
+		border: 2px solid;
 
 		border-radius: .25em !important;
 		-webkit-border-radius: .25em !important;
 		-moz-border-radius: .25em !important;
-		font-size: 30px;
+	}
+	.inv {
+		span {
+			border: 0 solid;
+		}
 	}
 	h3 {
 		font-size: 16px;
@@ -318,7 +349,11 @@ body {
 	}
 }
 
-
+.studios  .logo-thumb {
+  width: 64px  !important;
+  height: 64px  !important;
+  overflow: hidden  !important;
+}
 
 
 .bloc-signup {
