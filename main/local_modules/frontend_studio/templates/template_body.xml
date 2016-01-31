@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+        <template id="frontend_studio.studio_closed" name="Studio: Closed mode">
+			<div class="corner-ribbon bottom-left sticky"><span class="fontCGSMicons">ban</span> Closed</div>
+        </template>
+		
         <template id="frontend_studio.edit_button" name="Studio: Edit mode">
             <form t-att-action="'/directory/company/{}'.format(partner.id)" method="get">
                 <div class="input-group">
@@ -267,6 +271,11 @@
 						<t t-call="frontend_studio.studio_header"/>
 						<t t-call="frontend_studio.map"/>
 					</div>
+					
+				<!-- STUDIO Closed -->
+				<t t-call="frontend_studio.studio_closed"/>
+					
+					
 				</div>
 				
 				<div style="background-color:white;">

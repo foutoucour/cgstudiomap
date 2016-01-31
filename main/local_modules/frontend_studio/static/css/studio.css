@@ -372,6 +372,7 @@ input {
 
 .navSearch .fontCGSMicons{
     font-size: 1em;
+	color: #323133;
 }
 .navSearch a:hover{
     text-decoration: none;
@@ -385,6 +386,85 @@ input {
     padding-bottom: 0.5em;
     height: 120px;
 }
+
+
+
+
+
+
+/*/////////////////////////////////
+        STUDIO CLOSED
+///////////////////////////////// */
+.corner-ribbon {
+	font-family: 'cgsm-regular';
+	width: 200px;
+	background: #e43;
+	position: absolute;
+	top: 25px;
+	left: -50px;
+	text-align: center;
+	line-height: 50px;
+	letter-spacing: 1px;
+	color: #f1f1f3;
+	transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.sticky {
+	position: fixed;
+}
+
+.corner-ribbon.top-left {
+	top: 25px;
+	left: -50px;
+	transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.top-right {
+	top: 25px;
+	right: -50px;
+	left: auto;
+	transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-left {
+	top: auto;
+	bottom: 25px;
+	left: -50px;
+	transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-right {
+	top: auto;
+	right: -50px;
+	bottom: 25px;
+	left: auto;
+	transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*/////////////////////////////////
         MEDIA QUERIES
