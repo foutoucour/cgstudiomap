@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data noupdate="0">
-        <template id="backend_web_theme" name="Backend Web Theme" inherit_id="web.assets_backend">
-            <xpath expr="." position="inside">
-                <link rel="stylesheet" href="/shared_web_theme/static/src/css/base.css"/>
-            </xpath>
-        </template>
         <template id="assets_frontend" name="Frontend Web Theme" inherit_id="website.theme">
             <xpath expr="." position="inside">
                 <link rel="stylesheet" href="/shared_web_theme/static/src/css/base.css"/>
