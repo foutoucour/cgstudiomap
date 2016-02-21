@@ -11,9 +11,6 @@
                     <field name="is_portal_user" invisible="1"/>
                     <!--<field name="is_portal_user"/>-->
                 </field>
-                <field name="state_id" position="attributes">
-                    <attribute name="readonly">True</attribute>
-                </field>
                 <field name="street2" position="attributes">
                     <attribute name="placeholder">Bureau, suite, office #</attribute>
                 </field>
