@@ -239,7 +239,19 @@ body {
 	}
 }
 
-
+.thumbnail {
+    background-color: $color-cgsm-dark;
+    border: 0px solid transparent;
+	h3 {
+		color: $color-cgsm-light;
+	}
+	h4 {
+		color: $color-cgsm;
+	}
+	span {
+		color: $color-cgsm-light;
+	}
+}
 
 
 //-------------------

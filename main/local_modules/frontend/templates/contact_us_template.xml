@@ -1,28 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+        <!--Hide the footer.-->
+        <!--The footer is not sticked to the bottom so it distrub our design for now.-->
+        <template id="Wrap Layout" inherit_id="website.layout"
+                  name="Main layout: Hidden Footer">
+            <xpath expr="//footer" position="attributes">
+                <attribute name="class">hidden</attribute>
+            </xpath>
+        </template>
+		
         <template id="website.contactus" name="Contact us single form" page="True">
             <t t-call="frontend_base.base">
 
 				<div class="container" style="margin-top:30px;">
 					<div class="row">
 						<div class="col-md-6">
-							<img class="img-responsive" src="http://placehold.it/750x450" />
+							<img class="img-responsive" src="/frontend/static/src/img/photo001.jpg" />
 						</div>
-						<div class="col-md-6">
-							<h2>CG Studio Map</h2>
+						<div class="col-md-6 fontCGSM">
+							<h2 class="fontCGSM">CG Studio Map</h2>
 							<p>We believe that People should know more about any CG studio. We designed the premier open-data center of computer graphics' industry. Come in and update, share, or simply read content.</p>
 							<p>We live on planet earth with us.</p>
+							
+							<ul class="list-inline about">
+								<li>
+									<a t-att-href="website.social_linkedin" target="_blank"><span class="cgsm-icon-linkedin" /></a>
+								</li>
+								<li>
+									<a t-att-href="website.social_twitter" target="_blank"><span class="cgsm-icon-twitter" /></a>
+								</li>
+								<li>
+									<a t-att-href="website.social_github" target="_blank"><span class="cgsm-icon-github" /></a>
+								</li>
+								<li>
+									<a href="#" target="_blank"><span class="cgsm-icon-mail" /></a>
+								</li>
+							</ul>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-lg-12">
-							<h2 class="page-header">Our Team</h2>
+							<h2 class="page-header fontCGSM">We make CG Studio Map</h2>
 						</div>
-						<div class="col-md-4 text-center">
+						<div class="col-xs-6 col-sm-3 col-md-3 text-center fontCGSM">
 							<div class="thumbnail">
-								<img class="img-responsive" src="http://placehold.it/750x450" />
+								<img class="img-responsive" src="/frontend/static/src/img/about-jordi.gif" />
 								<div class="caption">
 									<h3>Jordi Riera</h3>
 									<h4>Coding man</h4>
@@ -40,9 +64,9 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 text-center">
+						<div class="col-xs-6 col-sm-3 col-md-3 text-center fontCGSM">
 							<div class="thumbnail">
-								<img class="img-responsive" src="http://placehold.it/750x450" />
+								<img class="img-circle img-responsive" src="/frontend/static/src/img/about-edith.gif" />
 								<div class="caption">
 									<h3>Edith Courtal</h3>
 									<h4>Social Woman</h4>
@@ -57,9 +81,9 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 text-center">
+						<div class="col-xs-6 col-sm-3 col-md-3 text-center fontCGSM">
 							<div class="thumbnail">
-								<img class="img-responsive" src="http://placehold.it/750x450" />
+								<img class="img-circle img-responsive" src="/frontend/static/src/img/about-david.gif" />
 								<div class="caption">
 									<h3>David Mazeau</h3>
 									<h4>Designer Man</h4>
@@ -78,9 +102,9 @@
 							</div>
 						</div>
 						
-						<div class="col-md-4 text-center">
+						<div class="col-xs-6 col-sm-3 col-md-3 text-center fontCGSM">
 							<div class="thumbnail">
-								<img class="img-responsive" src="http://placehold.it/750x450" />
+								<img class="img-circle img-responsive" src="/frontend/static/src/img/about-jazz.gif" />
 								<div class="caption">
 									<h3>Jazz</h3>
 									<h4>Super Dog</h4>
@@ -99,28 +123,18 @@
 							</div>
 						</div>
 						
-						<div class="col-md-4 text-center">
+<!--						<div class="col-xs-6 col-sm-4 col-md-4 text-center">
 							<div class="thumbnail">
 								<img class="img-responsive" src="http://placehold.it/750x450" />
 								<div class="caption">
 									<h3>YOU</h3>
 									<h4>How do you help us ?</h4>
 
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste saepe et quisquam nesciunt maxime.</p>
-									<ul class="list-inline">
-										<li>
-											<a href="#"><span class="cgsm-icon-linkedin" /></a>
-										</li>
-										<li>
-											<a href="#"><span class="cgsm-icon-twitter" /></a>
-										</li>
-										<li>
-											<a href="#"><span class="cgsm-icon-vimeo" /></a>
-										</li>
-									</ul>
+									<p>We need you !!</p>
+
 								</div>
 							</div>
-						</div>
+						</div>-->
 					</div>
 				</div>
 				

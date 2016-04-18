@@ -6306,6 +6306,12 @@ body {
     margin: 0;
     margin-bottom: 0; } }
 
+.thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857; }
+
 .social-link--twitter {
   color: #00aced; }
   .social-link--twitter:focus, .social-link--twitter:hover {
@@ -6480,6 +6486,16 @@ body {
 .scroll-up a:hover, .scroll-up a:active {
   background-color: rgba(176, 90, 226, 0.9);
   color: #f1f1f3; }
+
+.thumbnail {
+  background-color: #323133;
+  border: 0px solid transparent; }
+  .thumbnail h3 {
+    color: #f1f1f3; }
+  .thumbnail h4 {
+    color: #b05ae2; }
+  .thumbnail span {
+    color: #f1f1f3; }
 
 .navbar-right .btn, .navbar-right .openerp button, .openerp .navbar-right button, .navbar-right .openerp .oe_button, .openerp .navbar-right .oe_button {
   font-family: 'cgsm-regular';
@@ -6892,6 +6908,16 @@ body {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.about span {
+  font-size: 2.33em; }
+.about a {
+  text-decoration: none; }
+
+.thumbnail span {
+  font-size: 1.66em; }
+.thumbnail a {
+  text-decoration: none; }
 
 .btn-connect {
   padding: auto 0;
