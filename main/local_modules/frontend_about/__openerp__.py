@@ -20,36 +20,24 @@
 ##############################################################################
 
 {
-    'name': 'Frontend',
+    'name': 'Frontend About',
     'version': 'beta',
     'author': 'cgstudiomap',
     'maintainer': 'cgstudiomap',
     'license': 'AGPL-3',
     'category': 'Web',
-    'summary': 'Frontend pages',
+    'summary': 'Module that build the page that talk about contributors.',
     'depends': [
-        'web',
         'website',
-        'portal',
-        'auth_signup',
-        'auditlog',
-        'website_menu_by_user_status',
-        'res_partner_industry',
-        'main_data',
-        # frontend modules
         'frontend_base',
-        'frontend_homepage',
-        'frontend_link_to_dashboard',
-        'frontend_listing',
-        'frontend_shop',
-        'frontend_studio',
-        'frontend_about',
+        'res_group_archetype',  # for contributor group.
     ],
     'data': [
-        'data/website_menus.xml',
-        'templates/login_template.xml',
-        'templates/events.xml',
-        'templates/website_partner.xml',
+        # 'templates/template_body.xml',
+        # 'templates/template_body_edit_mode.xml',
+        # 'templates/template_engine.xml',
+        # 'views/website_views.xml',
+        'templates/template_body.xml',
     ],
     'installable': True,
 }

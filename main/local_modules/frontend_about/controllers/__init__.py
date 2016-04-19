@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    This module copyright (C)  cgstudiomap <cgstudiomap@gmail.com>
+#    This module copyright (C)  Jordi Riera <kender.jr@gmail.com>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,37 +19,4 @@
 #
 ##############################################################################
 
-{
-    'name': 'Frontend',
-    'version': 'beta',
-    'author': 'cgstudiomap',
-    'maintainer': 'cgstudiomap',
-    'license': 'AGPL-3',
-    'category': 'Web',
-    'summary': 'Frontend pages',
-    'depends': [
-        'web',
-        'website',
-        'portal',
-        'auth_signup',
-        'auditlog',
-        'website_menu_by_user_status',
-        'res_partner_industry',
-        'main_data',
-        # frontend modules
-        'frontend_base',
-        'frontend_homepage',
-        'frontend_link_to_dashboard',
-        'frontend_listing',
-        'frontend_shop',
-        'frontend_studio',
-        'frontend_about',
-    ],
-    'data': [
-        'data/website_menus.xml',
-        'templates/login_template.xml',
-        'templates/events.xml',
-        'templates/website_partner.xml',
-    ],
-    'installable': True,
-}
+from . import about

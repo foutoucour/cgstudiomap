@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_website_studio_details_settings" model="ir.ui.view">
+            <field name="name">Website: Partner Explanation Details</field>
+            <field name="model">website.config.settings</field>
+            <field name="inherit_id" ref="website.view_website_config_settings"/>
+            <field name="arch" type="xml">
+                <group string="Menu" position="after">
+                    <group string="Explanation Details">
+                        <field name="studio_common_details"/>
+                        <field name="studio_location_details"/>
+                        <field name="studio_links_details"/>
+                        <field name="studio_socials_details"/>
+                        <field name="studio_calls_details"/>
+                        <field name="studio_industries_details"/>
+                    </group>
+                </group>
+            </field>
+        </record>
+    </data>
+</openerp>
