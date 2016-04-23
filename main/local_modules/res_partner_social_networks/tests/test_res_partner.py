@@ -38,6 +38,7 @@ class TestResPartner(common.TransactionCase):
         self.youtube_url = 'https://www.youtube.com/mpcvfx'
         self.vimeo_url = 'https://vimeo.com/mpcvfx'
         self.linkedin_url = 'https://www.linkedin.com/company/cgstudiomap-com'
+        self.linkedin_url_user = 'https://ca.linkedin.com/in/jordirieracg'
         self.facebook_url = 'https://www.facebook.com/Moving.Picture.Company/'
         self.wikipedia_url = 'https://en.wikipedia.org/wiki/Sony_Pictures_Imageworks'
         self.partner = self.partner_pool.create({'name': 'tname'})
@@ -96,6 +97,10 @@ class TestResPartner(common.TransactionCase):
             {'name': 'tname', 'linkedin': self.linkedin_url}
         )
         self.assertEqual(partner.linkedin, self.linkedin_url)
+        partner_user = self.partner_pool.create(
+            {'name': 'tname', 'linkedin': self.linkedin_url_user}
+        )
+        self.assertEqual(partner_user.linkedin, self.linkedin_url_user)
 
     def test_linkedin_value(self):
         """Test the method _validate_linkedin_url raise Error if the

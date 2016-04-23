@@ -47,7 +47,10 @@ class ResPartner(models.Model):
         '\nA twitter account should be something '
         'like https://www.twitter.com/cgstudiomap'
     )
-    _linkedin_regex = r'https?://(www\.)?linkedin\.com/company/[\w-]+'
+    _linkedin_regex = (
+        r'https?://(?P<domain>.*\.)?linkedin\.com/'
+        r'(?P<type>company|in)/(?P<entity>[\w-]+)(?P<options>\?.*)?'
+    )
     _linkedin_error_message = _(
         'The entry for LinkedIn seems not to be correct.'
         '\nA linkedin account should be something '
