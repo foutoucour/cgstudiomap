@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Suite of methods common operation on res.users."""
+"""Suite of methods common operation on website."""
 import logging
 
 from openerp import models
@@ -8,8 +8,7 @@ _logger = logging.getLogger(__name__)
 
 
 class Website(models.Model):
+    """Redefine the url used for the about page."""
     _inherit = 'website'
 
-    directory_menu = '/directory'
-    shop_menu = '/shop/'
-    about_menu = '/contactus/'
+    about_menu = '/aboutus'
