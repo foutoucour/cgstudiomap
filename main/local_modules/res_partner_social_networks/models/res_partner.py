@@ -39,8 +39,7 @@ class ResPartner(models.Model):
     linkedin = fields.Char('Linkedin')
     facebook = fields.Char('Facebook')
     wikipedia = fields.Char('Wikipedia')
-
-    # art_of_vfx = fields.Char('Art of VFX')
+    github = fields.Char('Github')
 
     _twitter_regex = r'https?://(www\.)?twitter\.com/\w+'
     _twitter_error_message = _(
@@ -72,6 +71,13 @@ class ResPartner(models.Model):
         '\nA vimeo account should start by '
         'https://www.vimeo.com followed by the account name.'
     )
+    _github_regex = r'https?://(www\.)?github\.com/\w+'
+    _github_error_message = _(
+        'The entry for Github seems not to be correct.'
+        '\nA twitter account should be something '
+        'like https://www.github.com/cgstudiomap'
+    )
+
 
     @api.model
     def _validate_social_network_url(self, url, regex, err_msg):
@@ -197,6 +203,26 @@ class ResPartner(models.Model):
             cls._url_validation(url)
             if not re.match(regex, url):
                 err_msg = cls._vimeo_error_message
+                raise ValidationError(err_msg)
+
+    @api.one
+    @api.constrains('github')
+    def _validate_github_url_constrains(self):
+        """Add a constrains to the github field."""
+        self._validate_github_url(self.github)
+
+    @classmethod
+    def _validate_github_url(cls, value):
+        """Test against the given url against RFC requirements.
+
+        :param str value: url to check. Can be False.
+        """
+        url = cls.__strip_value(value)
+        regex = cls._github_regex
+        if url:
+            cls._url_validation(url)
+            if not re.match(regex, url):
+                err_msg = cls._github_error_message
                 raise ValidationError(err_msg)
 
     @staticmethod
