@@ -1,4 +1,0 @@
-python-stdnum
-
-[suds]
-suds
