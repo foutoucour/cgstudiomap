@@ -1,0 +1,25 @@
+version: "2"
+services:
+  base_pgsql:
+    image: cgstudiomap/docker-postgis-unaccent
+    volumes:
+      - ~/.containers/cgstudiomap-pgsql-9.4:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: cgstudiomap
+      POSTGRES_PASSWORD: cgstudiomap
+
+  base_odoo:
+    # The name of the container is referenced in .travis.yml file. Be careful when
+    # changing this value.
+    container_name: odoo
+    image: cgstudiomap/docker-odoo
+    ports:
+      - "localhost:8069:8069"
+      - "localhost:8072:8072"
+    environment:
+      SLACK_WEBHOOK_MODERATION: https://hooks.slack.com/services/t0gu8tqtw/b0nak7h5x/8c9i1llztffhszeykzaz8kks
+    volumes:
+      - ./main:/opt/cgstudiomap
+      - ./main/module_manager.sh:/opt/cgstudiomap/module_manager.sh
+      - ./openerp_serverrc:/home/cgstudiomap/.openerp_serverrc
+

@@ -29,7 +29,6 @@
     'summary': 'Main Module, that install data, views etc.',
     'depends': [
         'crm',
-        'auditlog',
         'website',
         'website_blog',
         'website_crm',
@@ -47,7 +46,6 @@
         'data/company_details.xml',
         'data/res_groups_data.xml',
         'data/res_users_data.xml',
-        'data/auditlog_res_partner.xml',
         'security/ir.model.access.csv',
         'security/ir_rules.xml',
         'views/website_blog_view.xml',

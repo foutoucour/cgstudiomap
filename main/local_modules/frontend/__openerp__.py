@@ -32,7 +32,6 @@
         'website',
         'portal',
         'auth_signup',
-        'auditlog',
         'website_menu_by_user_status',
         'res_partner_industry',
         'main_data',

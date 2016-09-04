@@ -1,0 +1,17 @@
+version: "2"
+services:
+
+  pgsql:
+    extends:
+      file: services.yml
+      service: base_pgsql
+
+  odoo:
+    extends:
+      file: services.yml
+      service: base_odoo
+    depends_on:
+      - pgsql
+    links:
+      - "pgsql:pgsql-server"
+    command: /opt/cgstudiomap/parts/odoo/openerp-server -c /opt/cgstudiomap/etc/odoo.cfg --unaccent

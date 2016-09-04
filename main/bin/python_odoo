@@ -1,10 +1,8 @@
-#! /usr/bin/env python
+#!/usr/bin/python2
+
 import sys
-from utilities import set_sys_path, get_root
-set_sys_path()
-root = get_root()
-from anybox.recipe.odoo.runtime.session import Session
-session = Session('{0}/etc/odoo_server.cfg'.format(root), root)
+from session import Session
+session = Session('/opt/cgstudiomap/etc/odoo.cfg', '/opt/cgstudiomap')
 if len(sys.argv) <= 1:
     print('To start the OpenERP working session, just do:')
     print('    session.open(db=DATABASE_NAME)')

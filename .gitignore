@@ -1,7 +1,7 @@
 main/.*
 #main/bin
 main/develop-eggs
-#main/eggs
+main/eggs
 #main/etc
 #main/parts
 

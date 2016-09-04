@@ -1,0 +1,4 @@
+[options]
+admin_passwd = admin
+db_password = cgstudiomap
+
