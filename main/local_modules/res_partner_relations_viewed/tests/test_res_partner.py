@@ -20,21 +20,41 @@
 ##############################################################################
 import logging
 
+import datetime
+
 from openerp.tests import common
 
 _logger = logging.getLogger(__name__)
 
 
 class TestResPartner(common.TransactionCase):
-    """Test suites to make sure the model is set has wanted."""
+    """Test suites skip_uniqueness feature in res.partner.relation."""
 
     def setUp(self):
+        """Overcharge the default setUp to expose the partner_relation_pool."""
         super(TestResPartner, self).setUp()
         self.partner_pool = self.env['res.partner']
 
-    def test_field_visit_count(self):
-        """Double check the field is here and accepts integers."""
-        partner = self.partner_pool.create({'name': 'tname', 'visit_count': 1})
-        self.assertEqual(1, partner.visit_count)
-        partner.write({'visit_count': 666})
-        self.assertEqual(666, partner.visit_count)
+    def test_add_viewedby_relation(self):
+        """Check the method creates the relation viewed between the partners."""
+        viewed_relation_type = self.env['ir.model.data'].get_object(
+            'res_partner_relations_viewed', 'rel_type_viewed'
+        )
+        partner_company = self.partner_pool.create(
+            {'name': 'company', 'is_company': True}
+        )
+        partner = self.partner_pool.create(
+            {'name': 'person'}
+        )
+        partner_company.add_viewed_by_relation(partner)
+        relations = partner.relation_ids
+
+        self.assertEqual(1, len(relations))
+        relation = relations[0]
+        self.assertEqual(
+            viewed_relation_type, relation.type_id,
+            msg="The type of the relation is not a viewed/viewed_by"
+        )
+        today = str(datetime.date.today())
+        self.assertEqual(today, relation.date_start)
+        self.assertEqual(today, relation.date_end)

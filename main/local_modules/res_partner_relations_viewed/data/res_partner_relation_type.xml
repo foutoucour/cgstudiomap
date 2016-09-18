@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="rel_type_viewed" model="res.partner.relation.type">
+            <field name="name">Viewed by</field>
+            <field name="name_inverse">Viewed</field>
+            <field name="contact_type_left">c</field>
+            <field name="contact_type_right">p</field>
+            <field name="skip_uniqueness">1</field>
+        </record>
+    </data>
+</openerp>

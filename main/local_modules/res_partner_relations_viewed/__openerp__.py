@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
@@ -18,4 +18,22 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from . import test_res_partner
+
+{
+    'name': 'Res Partner Relations Viewed',
+    'version': 'beta',
+    'author': 'cgstudiomap',
+    'maintainer': 'cgstudiomap',
+    'license': 'AGPL-3',
+    "category": "Customer Relationship Management",
+    'summary': 'Add the relation Viewed/Viewed by.',
+    'depends': [
+        'partner_relations',
+        'res_partner_relations_skip_uniqueness',
+    ],
+    'external_dependencies': {},
+    'data': [
+        'data/res_partner_relation_type.xml',
+    ],
+    'installable': True,
+}

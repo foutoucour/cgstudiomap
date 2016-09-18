@@ -96,12 +96,6 @@ class ResPartner(models.Model):
     def write(self, vals):
         """Overcharge to add notification to slack."""
         ret = super(ResPartner, self).write(vals)
-        # We don't want the moderation channel to be spammed every time some one see
-        # a studio. We are though interested if another value is modified in addition
-        # of visit_count.
-        if vals.keys() == ['visit_count']:
-            return ret
-
         user = self.env['res.users'].browse(self._uid)
         if self.conditions_for_logging(user, self):
             message = ''.join([

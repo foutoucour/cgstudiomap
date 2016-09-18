@@ -22,6 +22,7 @@ import logging
 
 import mock
 from openerp.tests import common
+# required for mocking.
 import openerp.addons.res_partner_moderator_supervision.res_partner as rp
 
 _logger = logging.getLogger(__name__)
@@ -110,47 +111,6 @@ class TestResPartner(common.TransactionCase):
         partner.write({'name': 'tupdate'})
         self.assertEqual('tupdate', partner.name)
         self.assertEqual(2, mock_log.info.call_count)
-
-    @mock.patch(
-        '{module_name}._slack_logger'.format(module_name=module_name), name='mock_log'
-    )
-    @mock.patch(
-        '{module_name}.ResPartner.conditions_for_logging'.format(
-            module_name=module_name
-        ),
-        name='mock_condition_for_logging', return_value=True,
-    )
-    def test_update_onlyVisitCountUpdatedPlusSomethingElse(self,
-                                                            mock_condition_for_logging,
-                                                            mock_log):
-        """Check that if visit_count and another value is updated, we log call from
-        the create and from the update.
-        """
-        del mock_condition_for_logging
-        partner = self.partner_pool.create({'name': 'tname'})
-        self.assertEqual('tname', partner.name)
-        partner.write({'visit_count': 2, 'name': 'tupdate'})
-        self.assertEqual(2, mock_log.info.call_count)
-
-    @mock.patch(
-        '{module_name}._slack_logger'.format(module_name=module_name), name='mock_log'
-    )
-    @mock.patch(
-        '{module_name}.ResPartner.conditions_for_logging'.format(
-            module_name=module_name
-        ),
-        name='mock_condition_for_logging', return_value=True,
-    )
-    def test_update_onlyVisitCountUpdated(self, mock_condition_for_logging, mock_log):
-        """Check that if the only val updated is visit_count, we skip the logging for
-        the update.
-        """
-        del mock_condition_for_logging
-        partner = self.partner_pool.create({'name': 'tname'})
-        self.assertEqual('tname', partner.name)
-        partner.write({'visit_count': 2})
-        # it is actually called during the create.
-        self.assertEqual(1, mock_log.info.call_count)
 
     @mock.patch('{module_name}._slack_logger'.format(module_name=module_name), True)
     def test_condition_for_logging(self):

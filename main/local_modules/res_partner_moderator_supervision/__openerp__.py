@@ -29,7 +29,6 @@
     'summary': 'Give supervision tools to moderators.',
     'depends': [
         'frontend_base',  # for partner.partner_url
-        'res_partner_visit_count',  # for partner.visit_count
         'res_group_archetype',
     ],
     'external_dependencies': {

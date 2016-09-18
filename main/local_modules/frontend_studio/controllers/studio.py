@@ -28,6 +28,7 @@ class Studio(Base):
     def view(self, partner, **dummy):
         """Render the page of a studio in view mode.
 
+        During the process a relation viewed/viewed by is created.
         :param object partner: record of a res.partner.
         :param dummy: implemented to dodge the 500 error described in
             https://github.com/cgstudiomap/cgstudiomap/issues/631
@@ -52,8 +53,8 @@ class Studio(Base):
             'partners': partner.get_random_studios_from_same_location(6),
             'filter_domain': partner.country_id.name,
         })
-        partner.visit_count += 1
-        logger.debug('partner visit count: %s', partner.visit_count)
+        user_partner = request.env['res.users'].browse(request.uid).partner_id
+        partner.add_viewed_by_relation(user_partner)
         return request.website.render('frontend_studio.view', values)
 
     @statsd.timed(
