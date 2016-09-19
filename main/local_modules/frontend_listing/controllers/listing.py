@@ -61,7 +61,7 @@ class Listing(Base):
         search_domain = self.get_company_domain(search, company_status)
         return partner_pool.search(
             search_domain.search,
-            order= search_domain.order,
+            order=search_domain.order,
             limit=search_domain.limit
         )
 

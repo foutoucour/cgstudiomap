@@ -37,6 +37,8 @@
         'templates/template_engine.xml',
         'templates/template_head.xml',
         'templates/template_html.xml',
+        'security/ir.model.access.csv',
+        'views/website_iframe_host.xml',
     ],
     'installable': True,
 }

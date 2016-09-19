@@ -1,0 +1,62 @@
+<openerp>
+    <data>
+        <record id="form_website_iframe_host" model="ir.ui.view">
+            <field name="model">website.iframe.host</field>
+            <field name="name">form_website_iframe_host</field>
+            <field type="xml" name="arch">
+                <form string="Website Iframe Hosts">
+                    <group name="Details">
+                        <field name="host"/>
+                        <field name="search_domain"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_website_iframe_host" model="ir.ui.view">
+            <field name="model">website.iframe.host</field>
+            <field name="name">tree_website_iframe_host</field>
+            <field name="arch" type="xml">
+                <tree string="Website Iframe Hosts">
+                    <field name="host"/>
+                    <field name="search_domain"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_website_iframe_host" model="ir.actions.act_window">
+            <field name="name">Website Iframe Host listing</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">website.iframe.host</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="tree_website_iframe_host"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Add a host that will be allowed to embed our listing.
+                </p>
+            </field>
+        </record>
+
+        <record id="action_website_iframe_host_form" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="form_website_iframe_host"/>
+            <field name="act_window_id" ref="action_website_iframe_host"/>
+        </record>
+
+        <record id="action_website_iframe_host_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_website_iframe_host"/>
+            <field name="act_window_id" ref="action_website_iframe_host"/>
+        </record>
+
+
+        <menuitem
+                id="menu_website_iframe_host"
+                parent="base.menu_config"
+                sequence="91"
+                action="action_website_iframe_host"/>
+
+    </data>
+</openerp>

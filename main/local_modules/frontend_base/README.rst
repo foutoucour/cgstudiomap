@@ -1,6 +1,6 @@
 Frontend Base
 =============
-Module regrouping base skeleton for our frontend page.
+Module regrouping base skeleton for our frontend pages.
 
 
 Contributors
