@@ -25,7 +25,7 @@
         </record>
 
         <record id="action_website_iframe_host" model="ir.actions.act_window">
-            <field name="name">Website Iframe Host listing</field>
+            <field name="name">Website Iframe Host Listing</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">website.iframe.host</field>
             <field name="view_type">form</field>

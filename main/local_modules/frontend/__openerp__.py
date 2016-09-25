@@ -44,6 +44,8 @@
         'frontend_shop',
         'frontend_studio',
         'frontend_about',
+        # website
+        'website_iframe_host',
     ],
     'data': [
         'data/website_menus.xml',
