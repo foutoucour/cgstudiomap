@@ -11,3 +11,4 @@ class WebsiteIframeHost(models.Model):
         'Search Domain',
         help='Domain that will be injected in searches for the given host.'
     )
+    header = fields.Boolean('Display header?', default=False)

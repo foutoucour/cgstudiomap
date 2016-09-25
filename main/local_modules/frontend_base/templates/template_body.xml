@@ -4,6 +4,7 @@
 
         <template id="frontend_base.navbar" name="Base: body navbar">
             <nav class="navbar navbar-inverse navbar-fixed-top fontCGSM" role="navigation">
+                <div style="display: none;">
                     <div class="navbar-header">
 						
 						<span class="navbar-text navbar-left"><a href="/" class="navbar-link"><span id="logo-nav"></span></a></span>
@@ -22,11 +23,7 @@
 						  <ul class="dropdown-menu" aria-labelledby="dLabel">
                               <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
                               <li groups="base.group_public" class="divider"/>
-                              <!--<li groups="base.group_public">Already have an account?</li>-->
                               <li groups="base.group_public"><a t-attf-href="/web/login">or <b>Sign in</b></a></li>
-
-                              <!--<li t-ignore="true" t-if="website.user_id != user_id"><a href="/web" role="menuitem">My Account</a></li>-->
-
                               <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
 						  </ul>
 						</div>	
@@ -41,12 +38,12 @@
 								<li groups="base.group_public"><a t-attf-href="/web/signup">Sign up</a></li>
 								<li groups="base.group_public"><a t-attf-href="/web/login">Sign in</a></li>
 								<li t-ignore="true" t-if="website.user_id != user_id" class="divider"/>
-                                <!--<li t-ignore="true" t-if="website.user_id != user_id"><a t-att-href="user_menu" role="menuitem">My Account</a></li>-->
                                 <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
 							</div>
 							
 						</ul>
 					</div>
+                </div>
 			</nav>
 
         </template>
