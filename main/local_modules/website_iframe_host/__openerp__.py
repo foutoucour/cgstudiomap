@@ -29,6 +29,7 @@
     'summary': 'Allow another website to host an iframe from us.',
     'depends': [
         'website',
+        'res_group_archetype',  # needed for security rules.
         'frontend_base',  # the module extends templates of frontend_base.
         'frontend_listing',  # update the controller.
     ],
