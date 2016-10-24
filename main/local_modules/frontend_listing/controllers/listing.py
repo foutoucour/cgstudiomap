@@ -134,20 +134,16 @@ class Listing(Base):
         _logger.debug('dump timing: %s', time.time() - t1)
         return details
 
-    @statsd.timed('odoo.frontend.map.time',
-                  tags=['frontend', 'frontend:listing'])
-    @http.route(map_url, type='http', auth="public", website=True)
-    def map(self,
-            company_status='open',
-            search='',
-            force_cache_reset=False,
-            **post):
-        """Render the list of studio under a map.
-
+    def get_map_data(self,
+                     company_status='open',
+                     search='',
+                     force_cache_reset=False,
+                     **post):
+        """Get the data to render the map.
         :param bool force_cache_reset: if the cache of the
-            page needs to be reset.
+                                       page needs to be reset.
+        :rtype: dict
         """
-
         _logger.debug('force_cache_reset: %s', force_cache_reset)
         if self.map_cache is None or force_cache_reset:
             _logger.debug('Reset the cache map_cache')
@@ -201,22 +197,25 @@ class Listing(Base):
             'list_url': self.list_url,
             'url': self.map_url,
         }
+        return values
 
+    @statsd.timed('odoo.frontend.map.time',
+                  tags=['frontend', 'frontend:listing'])
+    @http.route(map_url, type='http', auth="public", website=True)
+    def map(self, *args, **kwargs):
+        """Render the list of studio under a map."""
+        values = self.get_map_data(*args, **kwargs)
         return request.website.render("frontend_listing.map", values)
 
-    @statsd.timed('odoo.frontend.list.time',
-                  tags=['frontend', 'frontend:listing'])
-    @http.route(list_url, type='http', auth="public", website=True)
-    def list(self,
-             company_status='open',
-             page=0,
-             search='',
-             force_cache_reset=False,
-             **post):
-        """Render the list of studio under a table.
-
+    def get_list_data(self,
+                      company_status='open',
+                      page=0,
+                      search='',
+                      force_cache_reset=False,
+                      **post):
+        """
         :param bool force_cache_reset: if the cache of the
-            page needs to be reset.
+                                       page needs to be reset.
         """
         _logger.debug('force_cache_reset: %s', force_cache_reset)
 
@@ -239,5 +238,13 @@ class Listing(Base):
             'list_url': self.list_url,
             'url': self.list_url,
         }
+        return values
 
+
+    @statsd.timed('odoo.frontend.list.time',
+                  tags=['frontend', 'frontend:listing'])
+    @http.route(list_url, type='http', auth="public", website=True)
+    def list(self, *args, **kwargs):
+        """Render the list of studio under a table."""
+        values = self.get_list_data(*args, **kwargs)
         return request.website.render("frontend_listing.list", values)

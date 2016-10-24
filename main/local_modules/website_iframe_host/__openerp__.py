@@ -29,10 +29,13 @@
     'summary': 'Allow another website to host an iframe from us.',
     'depends': [
         'website',
+        'frontend_base',  # the module extends templates of frontend_base.
+        'frontend_listing',  # update the controller.
     ],
     'data': [
         'security/ir.model.access.csv',
         'views/website_iframe_host.xml',
+        'templates/template_body.xml',
     ],
     'installable': True,
 }

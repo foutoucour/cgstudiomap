@@ -4,45 +4,43 @@
 
         <template id="frontend_base.navbar" name="Base: body navbar">
             <nav class="navbar navbar-inverse navbar-fixed-top fontCGSM" role="navigation">
-                <div style="display: none;">
-                    <div class="navbar-header">
-						
-						<span class="navbar-text navbar-left"><a href="/" class="navbar-link"><span id="logo-nav"></span></a></span>
-						
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="fontCGSMicons">menu</span>
-                        </button>
-						
+                <div class="navbar-header">
+
+                    <span class="navbar-text navbar-left"><a href="/" class="navbar-link"><span id="logo-nav"></span></a></span>
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="fontCGSMicons">menu</span>
+                    </button>
+
+                </div>
+
+                <div class="navbar-collapse collapse">
+
+                    <div class="dropdown navbar-text navbar-right hidden-xs">
+                        <button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">power</span></button>
+
+                      <ul class="dropdown-menu" aria-labelledby="dLabel">
+                          <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
+                          <li groups="base.group_public" class="divider"/>
+                          <li groups="base.group_public"><a t-attf-href="/web/login">or <b>Sign in</b></a></li>
+                          <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+                      </ul>
                     </div>
-				
-					<div class="navbar-collapse collapse">
 
-						<div class="dropdown navbar-text navbar-right hidden-xs">
-							<button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">power</span></button>
+                    <ul class="nav navbar-nav navbar-center">
 
-						  <ul class="dropdown-menu" aria-labelledby="dLabel">
-                              <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
-                              <li groups="base.group_public" class="divider"/>
-                              <li groups="base.group_public"><a t-attf-href="/web/login">or <b>Sign in</b></a></li>
-                              <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
-						  </ul>
-						</div>	
+                        <li><a t-att-href="website.directory_menu">Directory</a></li>
+                        <li><a t-att-href="website.shop_menu">Shop</a></li>
+                        <li><a t-att-href="website.about_menu">About</a></li>
+                        <div class="navbar-nav visible-xs-inline">
+                            <li groups="base.group_public" class="divider"/>
+                            <li groups="base.group_public"><a t-attf-href="/web/signup">Sign up</a></li>
+                            <li groups="base.group_public"><a t-attf-href="/web/login">Sign in</a></li>
+                            <li t-ignore="true" t-if="website.user_id != user_id" class="divider"/>
+                            <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+                        </div>
 
-						<ul class="nav navbar-nav navbar-center">
-							
-							<li><a t-att-href="website.directory_menu">Directory</a></li>
-                			<li><a t-att-href="website.shop_menu">Shop</a></li>
-							<li><a t-att-href="website.about_menu">About</a></li>
-							<div class="navbar-nav visible-xs-inline">
-								<li groups="base.group_public" class="divider"/>
-								<li groups="base.group_public"><a t-attf-href="/web/signup">Sign up</a></li>
-								<li groups="base.group_public"><a t-attf-href="/web/login">Sign in</a></li>
-								<li t-ignore="true" t-if="website.user_id != user_id" class="divider"/>
-                                <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
-							</div>
-							
-						</ul>
-					</div>
+                    </ul>
                 </div>
 			</nav>
 

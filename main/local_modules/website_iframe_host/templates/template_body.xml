@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--Hide the navbar depending on the setup of website-->
+        <template id="website_iframe_host.navbar"
+                  inherit_id="frontend_base.navbar"
+                  name="Website Iframe Host: navbar">
+            <xpath expr="//nav[@role='navigation']" position="attributes">
+                <attribute name="t-att-style">'display:none' if not display_navbar else ''</attribute>
+            </xpath>
+        </template>
+    </data>
+</openerp>

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
 import os
-import ast
 import simplejson
 from datadog import statsd
 from openerp.addons.web import http
@@ -68,68 +67,8 @@ class FrontendBaseError(Exception):
     pass
 
 
-class NotAllowHostFrontendBaseError(FrontendBaseError):
-    """Exception that should be raised if the host name is not allowed to
-    display the iframe.
-    """
-
-    def __init__(self, host_name):
-        super(NotAllowHostFrontendBaseError, self).__init__(
-            'The host "{host_name}" is not allowed to display the iframe.'.format(
-                host_name=host_name
-            )
-        )
-
-
-class NotCompatibleSearchDomainFrontendBaseError(FrontendBaseError):
-    """Exception that should be raised when the search domain from website.iframe.host
-    is not compatible and cannot be turned into list/tuple.
-    """
-
-    def __init__(self, search_domain):
-        super(NotCompatibleSearchDomainFrontendBaseError, self).__init__(
-            '"{search_domain}" cannot be turned into a search domain.'.format(
-                search_domain=search_domain)
-        )
-
-
 class Base(Website):
     """Representation of the homepage of the website."""
-
-    __config = None
-    __iframe_host = None
-
-    def get_config(self):
-        """Lazily get the config file of the module.
-
-        :rtype: simplejson.JSONDecoder
-        """
-        if self.__config is None:
-            current_folder = os.path.dirname(__file__)
-            with open(os.path.join(current_folder, '..', 'static', 'config.json'),
-                      'r') as file_:
-                self.__config = simplejson.load(file_)
-
-        return self.__config
-
-    def get_iframe_host(self):
-        """Find if the host has a special SearchDomain.
-
-        :rtype: Record
-        """
-        if self.__iframe_host is None:
-            host_name = request.httprequest.host
-            website_iframe_host_pool = request.env['website.iframe.host']
-            iframe_host = website_iframe_host_pool.search(
-                [('host', '=', host_name)], limit=1
-            )
-
-            if not iframe_host and host_name not in self.config['whitelisted_hosts']:
-                raise NotAllowHostFrontendBaseError(host_name)
-
-            self.__iframe_host = iframe_host
-
-        return self.__iframe_host
 
     def get_company_domain(self, search, company_status='open'):
         """get the domain to use for the given parameters.
@@ -150,18 +89,6 @@ class Base(Website):
         search_domain = search_domains[company_status]
         if search:
             search_domain.search.extend(partner_pool.search_domain(search))
-
-        iframe_host = self.get_iframe_host()
-
-        if iframe_host:
-            additional_search_domain = ast.literal_eval(iframe_host.search_domain)
-
-            if not isinstance(additional_search_domain, (tuple, list)):
-                raise NotCompatibleSearchDomainFrontendBaseError(
-                    additional_search_domain
-                )
-
-            search_domain.search.extend(additional_search_domain)
 
         return search_domain
 

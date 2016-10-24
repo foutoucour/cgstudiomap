@@ -1,6 +1,12 @@
 from openerp import models, fields
 
 
+class Website(models.Model):
+    _inherit = 'website'
+
+    navbar = True
+
+
 class WebsiteIframeHost(models.Model):
     """Represent the name of a host that can embed our listing."""
     _name = 'website.iframe.host'
@@ -11,4 +17,4 @@ class WebsiteIframeHost(models.Model):
         'Search Domain',
         help='Domain that will be injected in searches for the given host.'
     )
-    header = fields.Boolean('Display header?', default=False)
+    navbar = fields.Boolean('Display navbar?', default=False)
