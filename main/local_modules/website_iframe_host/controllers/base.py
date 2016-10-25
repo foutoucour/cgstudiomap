@@ -13,14 +13,14 @@ class IframeHostError(FrontendBaseError):
     pass
 
 
-class NotAllowHostFrontendBaseError(IframeHostError):
-    """Exception that should be raised if the host name is not allowed to
+class NotAuthorizedHostFrontendBaseError(FrontendBaseError):
+    """Exception that should be raised if the host name is not authorized to
     display the iframe.
     """
 
     def __init__(self, host_name):
-        super(NotAllowHostFrontendBaseError, self).__init__(
-            'The host "{host_name}" is not allowed to display the iframe.'.format(
+        super(NotAuthorizedHostFrontendBaseError, self).__init__(
+            'The host "{host_name}" is not authorized to display the iframe.'.format(
                 host_name=host_name
             )
         )
@@ -40,16 +40,6 @@ class NotCompatibleSearchDomainFrontendBaseError(IframeHostError):
 
 class WebsiteIframe(Base):
 
-    def get_config(self):
-        """Lazily get the config file of the module.
-
-        :rtype: dict
-        """
-        current_folder = os.path.dirname(__file__)
-        with open(os.path.join(current_folder, '..', 'static', 'config.json'),
-                  'r') as file_:
-            return simplejson.load(file_)
-
     def get_iframe_host(self):
         """Find if the host has a special SearchDomain.
 
@@ -60,12 +50,8 @@ class WebsiteIframe(Base):
         iframe_host = website_iframe_host_pool.search(
             [('host', '=', host_name)], limit=1
         )
-        # TODO: put the whitelisted_hosts in the database.
-        valid_host = (not iframe_host == website_iframe_host_pool) and \
-                     (host_name not in self.get_config()['whitelisted_hosts'])
-
-        if not valid_host:
-            raise NotAllowHostFrontendBaseError(host_name)
+        if not iframe_host:
+            raise NotAuthorizedHostFrontendBaseError(host_name)
 
         logger.debug('get_iframe_host: %s', iframe_host)
         return iframe_host
