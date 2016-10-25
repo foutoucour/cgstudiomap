@@ -53,7 +53,7 @@ class Studio(Base):
             'filter_domain': partner.country_id.name,
         })
         user_partner = request.env['res.users'].browse(request.uid).partner_id
-        user_partner.add_count_view(partner)
+        user_partner.add_count_view(partner, request)
         return request.website.render('frontend_studio.view', values)
 
     @statsd.timed(

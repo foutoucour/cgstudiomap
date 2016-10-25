@@ -33,7 +33,8 @@ class ResPartnerCountView(models.Model):
 
     active_partner_id = fields.Many2one('res.partner', string='Viewer')
     passive_partner_id = fields.Many2one('res.partner', string='Viewed')
-    # datetime = fields.Datetime('Date', default=fields.Datetime.now())
+    ip = fields.Char('IP of the viewer')
+    host = fields.Char('Host the viewer used')
 
 
 class ResPartner(models.Model):
@@ -41,15 +42,17 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     @api.model
-    def add_count_view(self, viewed_partner):
+    def add_count_view(self, viewed_partner, request):
         """Add an entry res.partner.count.view.
 
         :param viewed_partner: The visited partner.
+        :param werkzeug.local.LocalStack request: request the view has been done with.
         :return: the new res.partner.count.view entry.
         """
         counter_pool = self.env['res.partner.count.view']
         return counter_pool.create({
             'active_partner_id': self.id,
             'passive_partner_id': viewed_partner.id,
-            # 'datetime': datetime.datetime.now(),
+            'ip': request.httprequest.remote_addr,
+            'host': request.httprequest.host,
         })

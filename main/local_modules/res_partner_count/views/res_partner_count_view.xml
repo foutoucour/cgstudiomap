@@ -8,6 +8,8 @@
                 <form string="Partner Count Views">
                     <sheet>
                         <field name="active_partner_id" />
+                        <field name="ip"/>
+                        <field name="host"/>
                         <field name="passive_partner_id" />
                         <field name="create_date" />
                     </sheet>
@@ -20,6 +22,8 @@
             <field name="arch" type="xml">
                 <tree string="Partner Count Views">
                     <field name="active_partner_id" />
+                    <field name="ip"/>
+                    <field name="host"/>
                     <field name="passive_partner_id" />
                     <field name="create_date" />
                 </tree>
@@ -31,6 +35,8 @@
             <field name="arch" type="xml">
                 <search string="Search Relations">
                     <field name="active_partner_id" />
+                    <field name="ip"/>
+                    <field name="host"/>
                     <field name="passive_partner_id" />
                     <field name="create_date" />
                 </search>
