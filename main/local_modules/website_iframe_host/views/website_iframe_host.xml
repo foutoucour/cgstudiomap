@@ -8,7 +8,8 @@
                     <group name="Details">
                         <field name="host"/>
                         <field name="search_domain"/>
-                        <field name="navbar"/>
+                        <field name="hide_navbar"/>
+                        <field name="light_hosting"/>
                     </group>
                 </form>
             </field>
@@ -21,7 +22,8 @@
                 <tree string="Website Iframe Hosts">
                     <field name="host"/>
                     <field name="search_domain"/>
-                    <field name="navbar"/>
+                    <field name="hide_navbar"/>
+                    <field name="light_hosting"/>
                 </tree>
             </field>
         </record>

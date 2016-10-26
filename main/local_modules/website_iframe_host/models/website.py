@@ -4,7 +4,7 @@ from openerp import models, fields
 class Website(models.Model):
     _inherit = 'website'
 
-    navbar = True
+    hide_navbar = False
 
 
 class WebsiteIframeHost(models.Model):
@@ -17,4 +17,11 @@ class WebsiteIframeHost(models.Model):
         'Search Domain',
         help='Domain that will be injected in searches for the given host.'
     )
-    navbar = fields.Boolean('Display navbar?', default=False)
+    hide_navbar = fields.Boolean('Hide Navbar?', default=False)
+    light_hosting = fields.Boolean(
+        'Light Hosting?', default=False,
+        help=(
+            'If checked the page like "edit studio" or "add studio" will be redirected'
+            'to cgstudiomap.org'
+        )
+    )

@@ -5,13 +5,15 @@
         <record id="localhost" model="website.iframe.host">
             <field name="host">localhost:8069</field>
             <field name="search_domain">[]</field>
-            <field name="navbar">True</field>
+            <field name="hide_navbar">False</field>
+            <field name="light_hosting">False</field>
         </record>
         <!--Set so the website work for us :)-->
         <record id="cgstudiomap" model="website.iframe.host">
             <field name="host">cgstudiomap.org</field>
             <field name="search_domain">[]</field>
-            <field name="navbar">True</field>
+            <field name="hide_navbar">False</field>
+            <field name="light_hosting">False</field>
         </record>
     </data>
 </openerp>

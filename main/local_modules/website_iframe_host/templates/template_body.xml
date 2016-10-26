@@ -6,7 +6,15 @@
                   inherit_id="frontend_base.navbar"
                   name="Website Iframe Host: navbar">
             <xpath expr="//nav[@role='navigation']" position="attributes">
-                <attribute name="t-att-style">'display:none' if not display_navbar else ''</attribute>
+                <attribute name="t-att-style">'display:none' if hide_navbar else ''</attribute>
+            </xpath>
+        </template>
+        <!--change the href of the button add studio-->
+        <template id="website_iframe_host.add_studio_button"
+                  inherit_id="frontend_listing.base"
+                  name="Website Iframe Host: add studio">
+            <xpath expr="//a[@role='button']" position="attributes">
+                <attribute name="t-att-target">'_blank' if light_hosting else 'self'</attribute>
             </xpath>
         </template>
     </data>
