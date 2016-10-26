@@ -36,6 +36,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/website_iframe_host.xml',
+        'data/website_iframe_host_data.xml',
         'templates/template_body.xml',
     ],
     'installable': True,

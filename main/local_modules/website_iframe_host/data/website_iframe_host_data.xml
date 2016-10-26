@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--Set so developers can work easily-->
+        <record id="localhost" model="website.iframe.host">
+            <field name="host">localhost:8069</field>
+            <field name="search_domain">[]</field>
+            <field name="navbar">True</field>
+        </record>
+        <!--Set so the website work for us :)-->
+        <record id="cgstudiomap" model="website.iframe.host">
+            <field name="host">cgstudiomap.org</field>
+            <field name="search_domain">[]</field>
+            <field name="navbar">True</field>
+        </record>
+    </data>
+</openerp>
