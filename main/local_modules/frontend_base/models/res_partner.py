@@ -14,6 +14,7 @@ class SearchDomain(object):
     It has been set to be able to pass all the data needed to do a search or a
     search_count.
     """
+
     def __init__(self, search, order='', limit=None):
         """
 
@@ -133,14 +134,13 @@ class ResPartner(models.Model):
 
         return super(ResPartner, self).write(vals)
 
+    partner_url_pattern = '/directory/company/{0}'
     partner_url = fields.Char('Partner url', compute='partner_url_link')
 
     @api.one
     def partner_url_link(self):
         """Return the link to the page of the current partner."""
-        self.partner_url = (
-            '/directory/company/{0}'.format(self.id)
-        )
+        self.partner_url = self.partner_url_pattern.format(self.id)
 
     def info_window(self, company_status='open'):
         """Build the info window for the google map."""
@@ -164,17 +164,41 @@ class ResPartner(models.Model):
 
         return title + body + footer
 
+    def info_window_details(self,
+                             id_,
+                             name,
+                             industries,
+                             company_status,
+                             city=None, state=None, country=None):
+        """Build the info window for the google map."""
+        industry_pool = self.env['res.industry']
+        partner_url = self.partner_url_pattern.format(id_)
+        title = (
+            '<div id="iw-container">'
+            '<div class="iw-title"><a href="{0}">{1}</a></div>'
+        ).format(partner_url, name.encode('utf8'))
+        body = '<div class="iw-content">'
+        location = self.get_location(city, state, country)
+        body += '<p>{0}</p>'.format(location.encode('utf8'))
+        body += ' '.join(
+            [
+                industry_pool.tag_url_link_details(ind_name_, company_status)
+                for ind_name_ in industries
+                ]
+        )
+        body += '</div>'
+        footer = (
+            '<div id="map_info_footer"><a href="{0}">More ...</a></div></div>'
+        ).format(partner_url)
+        return title + body + footer
+
     small_image_url = fields.Char('Url to the small image of the partner.')
 
-    location = fields.Char('Location', compute='location_code')
-
-    @api.one
-    def location_code(self):
+    @staticmethod
+    def get_location(city=None, state=None, country=None):
         """Return the concatenation of city, state and country."""
         elements = []
-        if self.city:
-            elements.append(self.city)
-        for element in (self.state_id, self.country_id):
+        for element in (city, state, country):
             if element:
-                elements.append(element.name)
-        self.location = ', '.join(elements)
+                elements.append(element)
+        return ', '.join(elements)

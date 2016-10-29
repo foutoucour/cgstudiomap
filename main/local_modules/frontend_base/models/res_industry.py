@@ -13,14 +13,33 @@ class ResIndustry(models.Model):
     def tag_url_link(self,
                      company_status='open',
                      listing=False):
+        """build the tag of an industry from an indutry record.
+
+        For more details see tag_url_link_details.
+        """
+        return self.tag_url_link_details(self.name, company_status, listing)
+
+    @staticmethod
+    def tag_url_link_details(ind_name,
+                             company_status='open',
+                             listing=False
+                             ):
+        """Build the tag of an industry from the given name.
+
+        :param str ind_name: name of the industry the tag is related to.
+        :param str company_status: status of the search related to the tag
+        :param bool listing: if the tag should point to the list (True). Default: False.
+        :return: html  code to build the tag.
+        :rtype: str
+        """
         url = '/directory'
         url += listing and '/list' or ''
         url += '?company_status={0}'.format(company_status)
-        url += '&search={0}'.format(self.name)
+        url += '&search={0}'.format(ind_name)
 
         return (
             '<a itemprop="name" href="{1}">'
-            '<span class="label label-info">{0.name}</span></a>'.format(
-                self, url
+            '<span class="label label-info">{0}</span></a>'.format(
+                ind_name, url
             )
         )

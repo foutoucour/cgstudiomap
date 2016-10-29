@@ -144,30 +144,64 @@ class Listing(Base):
                                        page needs to be reset.
         :rtype: dict
         """
-        _logger.debug('force_cache_reset: %s', force_cache_reset)
-        if self.map_cache is None or force_cache_reset:
-            _logger.debug('Reset the cache map_cache')
-            self.map_cache = reset_cache()
-
-        @cached(self.map_cache)
         def build_details(partners):
             """Gather details from partners to be displayed on the map.
 
             :param recordset partners: partners to gather the details from.
             :return: json dump.
             """
-            statsd.gauge(
-                'odoo.frontend.map_cache.currsize',
-                self.map_cache.currsize
-            )
+            sql_request = """
+            SELECT
+              rp.id,
+              rp.partner_latitude,
+              rp.partner_longitude,
+              rp.name,
+              rp.id,
+              rp.city as city_name,
+              res_country_state.name as state_name,
+              res_country.name as country_name,
+              ind.name as ind_name
+            FROM res_partner as rp
+            INNER JOIN res_country_state
+              ON rp.state_id=res_country_state.id
+            INNER JOIN res_country
+              ON rp.country_id=res_country.id
+            INNER JOIN res_industry_res_partner_rel AS rpr
+              ON rpr.res_partner_id = rp.id
+            INNER JOIN res_industry as ind
+              ON ind.id = rpr.res_industry_id
+            WHERE
+              rp.id IN ({})
+            """.format(','.join(str(p.id) for p in partners))
+            cr = partners.env.cr
+            cr.execute(sql_request)
+            details = {}
+
+            # Unify the list of partner and gather the industries
+            for partner in cr.dictfetchall():
+
+                if partner['id'] not in details:
+                    details[partner['id']] = partner
+
+                details[partner['id']].setdefault('industries', []).append(
+                    partner['ind_name'])
+
             return simplejson.dumps(
                 {
-                    partner.id: [
-                        partner.partner_latitude,
-                        partner.partner_longitude,
-                        partner.info_window(company_status),
+                    partner['id']: [
+                        partner['partner_latitude'],
+                        partner['partner_longitude'],
+                        partners.info_window_details(
+                            partner['id'],
+                            partner['name'],
+                            partner['industries'],
+                            company_status,
+                            city=partner['city_name'],
+                            state=partner['state_name'],
+                            country=partner['country_name']
+                        ),
                     ]
-                    for partner in partners
+                    for partner in details.itervalues()
                     }
             )
 
@@ -177,8 +211,9 @@ class Listing(Base):
         if search:
             post["search"] = search
 
+        partner_pool = request.env['res.partner']
         partners = self.get_partners(
-            request.env['res.partner'],
+            partner_pool,
             search=search,
             company_status=company_status
         )
@@ -239,7 +274,6 @@ class Listing(Base):
             'url': self.list_url,
         }
         return values
-
 
     @statsd.timed('odoo.frontend.list.time',
                   tags=['frontend', 'frontend:listing'])

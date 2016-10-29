@@ -31,3 +31,4 @@ class ResPartner(models.Model):
             ]
         _logger.debug('domain: %s', domain)
         return domain
+
