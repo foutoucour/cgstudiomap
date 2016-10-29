@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 import logging
-import os
 import simplejson
 from datadog import statsd
 from openerp.addons.web import http
 from openerp.addons.website.controllers.main import Website
-from openerp.addons.website.models.website import hashlib
 
 from openerp.http import request, werkzeug
 
@@ -36,30 +34,6 @@ class QueryURL(object):
         if l:
             path += '?' + '&'.join(l)
         return path
-
-
-def small_image_url(record, field):
-    """Returns a local url that points to the image field of a
-    given browse record.
-
-    :param object record: Record the image is linked to.
-    :param str field: name of the field the image is in.
-
-    :return: str, url of the image.
-    """
-    if not record.small_image_url:
-        _logger.debug('No small image url for %s', record.id)
-        model = record._name
-        sudo_record = record.sudo()
-        id_ = '%s_%s' % (
-            record.id,
-            hashlib.sha1(
-                sudo_record.write_date or sudo_record.create_date or ''
-            ).hexdigest()[0:7]
-        )
-        record.small_image_url = '/website/image/%s/%s/%s' % (model, id_, field)
-
-    return record.small_image_url
 
 
 class FrontendBaseError(Exception):

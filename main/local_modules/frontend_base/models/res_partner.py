@@ -4,6 +4,7 @@ import logging
 import random
 from copy import deepcopy
 from openerp import api, models, fields
+from openerp.addons.website.models.website import hashlib
 
 _logger = logging.getLogger(__name__)
 
@@ -193,6 +194,37 @@ class ResPartner(models.Model):
         return title + body + footer
 
     small_image_url = fields.Char('Url to the small image of the partner.')
+
+    @api.model
+    def get_small_image_url(self):
+        """Returns a local url that points to the image field of a
+        given browse record.
+
+        :return: str, url of the image.
+        """
+        model = self._name
+        sudo_record = self.sudo()
+        id_ = '%s_%s' % (
+            self.id,
+            hashlib.sha1(
+                sudo_record.write_date or sudo_record.create_date or ''
+            ).hexdigest()[0:7]
+        )
+        return '/website/image/%s/%s/%s' % (model, id_, 'image_small')
+
+    @api.model
+    def create(self, vals):
+        """Make sure the small_url is set when a new partner."""
+        ret = super(ResPartner, self).write(vals)
+        if not ret.small_image_url:
+            ret.small_image_url = ret.get_small_image_url()
+        return ret
+
+    @api.one
+    def write(self, vals):
+        """Make sure the small_url is set when a partner is updated."""
+        vals['small_image_url'] = self.get_small_image_url()
+        return super(ResPartner, self).write(vals)
 
     @staticmethod
     def get_location(city=None, state=None, country=None):

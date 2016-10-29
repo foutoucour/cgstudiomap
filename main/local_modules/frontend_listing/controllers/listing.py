@@ -5,11 +5,7 @@ import time
 import simplejson
 from cachetools import TTLCache, cached
 from datadog import statsd
-from openerp.addons.frontend_base.controllers.base import (
-    Base,
-    small_image_url,
-    QueryURL,
-)
+from openerp.addons.frontend_base.controllers.base import (Base, QueryURL)
 from openerp.addons.web import http
 
 from openerp.http import request
@@ -30,25 +26,7 @@ def reset_cache(max_size=10, ttl=10800):
 
 
 class Listing(Base):
-    """Representation of the page listing companies.
-
-    Pages of listing are cached using list_cache and map_cache. That is
-    because there is a lot of data to load and many because of the build of
-    the list object from this data.
-
-    To manage the cache, the attribute `force_reset_cache` has been set.
-    It allows a user to force to rebuild the cache if for example a massive
-    update on data has been operated.
-
-    To use the force_cache_reset the url should look like:
-    * to reset the cache of the map
-        /directory?force_cache_reset=1
-    * to reset the cache of the list
-        /directory/list?force_cache_reset=1
-    """
-    # the cache are set to None so they are set at the first call of the pages.
-    list_cache = None
-    map_cache = None
+    """Representation of the page listing companies."""
     map_url = '/directory'
     list_url = '/directory/list'
 
@@ -77,61 +55,42 @@ class Listing(Base):
         :return: json dumps
         :rtype: dict
         """
-
-        @cached(self.list_cache)
-        def build_details(partners):
-            """Gather the details to build later the table of companies.
-
-            :param list partners: recordsets of partner to gather the details
-                from.
-            :return: json dump.
-            """
-            return simplejson.dumps(
-                [
-                    {
-                        'logo': '<img itemprop="image" '
-                                'class="img img-responsive" '
-                                'src="{0}"'
-                                '/>'.format(
-                            small_image_url(partner, 'image_small')),
-                        'name': '<a href="{0.partner_url}">{1}</a>'.format(
-                            partner, partner.name.encode('utf-8')
-                        ),
-                        'email': partner.email or '',
-                        'industries': ' '.join(
-                            [
-                                ind.tag_url_link(
-                                    company_status=company_status,
-                                    listing=True
-                                )
-                                for ind in partner.industry_ids
-                                ]
-                        ),
-                        'city': partner.city,
-                        'state_name': partner.state_id.name,
-                        'country_name': partner.country_id.name,
-                    }
-                    for partner in partners
-                    ],
-            )
-
         _logger.debug('search: %s', search)
         _logger.debug('company_status: %s', company_status)
-        t1 = time.time()
+        partner_pool = request.env['res.partner']
         partners = self.get_partners(
-            request.env['res.partner'],
-            search=search,
-            company_status=company_status
+            partner_pool, search=search, company_status=company_status
         )
-        _logger.debug('Query time: %s', time.time() - t1)
         t1 = time.time()
-        details = build_details(partners)
-        _logger.debug(
-            'cache.currsize: %s', self.list_cache.currsize
-        )
-        statsd.gauge(
-            'odoo.frontend.list_cache_currsize',
-            self.list_cache.currsize
+        ids = (p.id for p in partners)
+        industry_pool = request.env['res.industry']
+        details = simplejson.dumps(
+            [
+                {
+                    'logo': '<img itemprop="image" '
+                            'class="img img-responsive" '
+                            'src="{0}"'
+                            '/>'.format(
+                        partner_dict.get('small_image_url', '')
+                    ),
+                    'name': '<a href="{0}">{1}</a>'.format(
+                        partner_pool.partner_url_pattern.format(partner_dict['id']),
+                        partner_dict['name'].encode('utf-8')
+
+                    ),
+                    'email': partner_dict.get('email', ''),
+                    'industries': ' '.join(
+                        industry_pool.tag_url_link_details(
+                            ind_name_, company_status, listing=True
+                        )
+                        for ind_name_ in partner_dict['industries']
+                    ),
+                    'city': partner_dict.get('city_name', ''),
+                    'state_name': partner_dict.get('state_name', ''),
+                    'country_name': partner_dict.get('country_name', ''),
+                }
+                for partner_dict in partner_pool.get_list_partners_dict(ids)
+                ],
         )
         _logger.debug('dump timing: %s', time.time() - t1)
         return details
@@ -144,46 +103,6 @@ class Listing(Base):
 
         :rtype: dict
         """
-        def build_details(partners):
-            """Gather details from partners to be displayed on the map.
-
-
-            Use direct sql request to do a select of a set of fields instead of
-            using search() that grab only id.
-            The query decreased from several secs to less than 10th of a sec.
-
-            :param recordset partners: partners to gather the details from.
-            :return: json dump.
-            :rtype: dict
-            """
-            details = {}
-            # Unify the list of partner and gather the industries
-            for partner_dict in partners.get_map_partners_dict((p.id for p in partners)):
-
-                if partner_dict['id'] not in details:
-                    details[partner_dict['id']] = partner_dict
-
-                details[partner_dict['id']].setdefault('industries', []).append(
-                    partner_dict['ind_name'])
-
-            return simplejson.dumps(
-                {
-                    partner_dict['id']: [
-                        partner_dict['partner_latitude'],
-                        partner_dict['partner_longitude'],
-                        partners.info_window_details(
-                            partner_dict['id'],
-                            partner_dict['name'],
-                            partner_dict['industries'],
-                            company_status,
-                            city=partner_dict['city_name'],
-                            state=partner_dict['state_name'],
-                            country=partner_dict['country_name']
-                        ),
-                    ]
-                    for partner_dict in details.itervalues()
-                    }
-            )
 
         url = self.map_url
         keep = QueryURL(url, search=search, company_status=company_status)
@@ -193,13 +112,29 @@ class Listing(Base):
 
         partner_pool = request.env['res.partner']
         partners = self.get_partners(
-            partner_pool,
-            search=search,
-            company_status=company_status
+            partner_pool, search=search, company_status=company_status
         )
 
         t1 = time.time()
-        geoloc = build_details(partners)
+        ids = (partner.id for partner in partners)
+        geoloc = simplejson.dumps(
+            {
+                partner_dict['id']: [
+                    partner_dict['partner_latitude'],
+                    partner_dict['partner_longitude'],
+                    partners.info_window_details(
+                        partner_dict['id'],
+                        partner_dict['name'],
+                        partner_dict['industries'],
+                        company_status,
+                        city=partner_dict['city_name'],
+                        state=partner_dict['state_name'],
+                        country=partner_dict['country_name']
+                    ),
+                ]
+                for partner_dict in partner_pool.get_map_partners_dict(ids)
+                }
+        )
         _logger.debug('dump timing: %s', time.time() - t1)
 
         values = {
@@ -226,20 +161,8 @@ class Listing(Base):
                       company_status='open',
                       page=0,
                       search='',
-                      force_cache_reset=False,
                       **post):
-        """
-        :param bool force_cache_reset: if the cache of the
-                                       page needs to be reset.
-        """
-        _logger.debug('force_cache_reset: %s', force_cache_reset)
-
-        if self.list_cache is None or force_cache_reset:
-            _logger.debug('Reset the cache list_cache')
-            self.list_cache = reset_cache()
-
         url = self.list_url
-
         keep = QueryURL(url, search=search, company_status=company_status)
 
         if search:
