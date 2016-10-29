@@ -73,7 +73,9 @@ class Listing(Base):
         """Return a json with the partner matching the search
 
         :param str search: search to filter with
+        :param str company_status: status the search will be done with. Default: open.
         :return: json dumps
+        :rtype: dict
         """
 
         @cached(self.list_cache)
@@ -137,71 +139,49 @@ class Listing(Base):
     def get_map_data(self,
                      company_status='open',
                      search='',
-                     force_cache_reset=False,
                      **post):
         """Get the data to render the map.
-        :param bool force_cache_reset: if the cache of the
-                                       page needs to be reset.
+
         :rtype: dict
         """
         def build_details(partners):
             """Gather details from partners to be displayed on the map.
 
+
+            Use direct sql request to do a select of a set of fields instead of
+            using search() that grab only id.
+            The query decreased from several secs to less than 10th of a sec.
+
             :param recordset partners: partners to gather the details from.
             :return: json dump.
+            :rtype: dict
             """
-            sql_request = """
-            SELECT
-              rp.id,
-              rp.partner_latitude,
-              rp.partner_longitude,
-              rp.name,
-              rp.id,
-              rp.city as city_name,
-              res_country_state.name as state_name,
-              res_country.name as country_name,
-              ind.name as ind_name
-            FROM res_partner as rp
-            INNER JOIN res_country_state
-              ON rp.state_id=res_country_state.id
-            INNER JOIN res_country
-              ON rp.country_id=res_country.id
-            INNER JOIN res_industry_res_partner_rel AS rpr
-              ON rpr.res_partner_id = rp.id
-            INNER JOIN res_industry as ind
-              ON ind.id = rpr.res_industry_id
-            WHERE
-              rp.id IN ({})
-            """.format(','.join(str(p.id) for p in partners))
-            cr = partners.env.cr
-            cr.execute(sql_request)
             details = {}
-
             # Unify the list of partner and gather the industries
-            for partner in cr.dictfetchall():
+            for partner_dict in partners.get_map_partners_dict((p.id for p in partners)):
 
-                if partner['id'] not in details:
-                    details[partner['id']] = partner
+                if partner_dict['id'] not in details:
+                    details[partner_dict['id']] = partner_dict
 
-                details[partner['id']].setdefault('industries', []).append(
-                    partner['ind_name'])
+                details[partner_dict['id']].setdefault('industries', []).append(
+                    partner_dict['ind_name'])
 
             return simplejson.dumps(
                 {
-                    partner['id']: [
-                        partner['partner_latitude'],
-                        partner['partner_longitude'],
+                    partner_dict['id']: [
+                        partner_dict['partner_latitude'],
+                        partner_dict['partner_longitude'],
                         partners.info_window_details(
-                            partner['id'],
-                            partner['name'],
-                            partner['industries'],
+                            partner_dict['id'],
+                            partner_dict['name'],
+                            partner_dict['industries'],
                             company_status,
-                            city=partner['city_name'],
-                            state=partner['state_name'],
-                            country=partner['country_name']
+                            city=partner_dict['city_name'],
+                            state=partner_dict['state_name'],
+                            country=partner_dict['country_name']
                         ),
                     ]
-                    for partner in details.itervalues()
+                    for partner_dict in details.itervalues()
                     }
             )
 
