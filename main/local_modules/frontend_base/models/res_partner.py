@@ -212,18 +212,15 @@ class ResPartner(models.Model):
         )
         return '/website/image/%s/%s/%s' % (model, id_, 'image_small')
 
-    @api.model
-    def create(self, vals):
-        """Make sure the small_url is set when a new partner."""
-        ret = super(ResPartner, self).write(vals)
-        if not ret.small_image_url:
-            ret.small_image_url = ret.get_small_image_url()
-        return ret
-
-    @api.one
+    @api.multi
     def write(self, vals):
         """Make sure the small_url is set when a partner is updated."""
-        vals['small_image_url'] = self.get_small_image_url()
+        if 'small_image_url' not in vals:
+            vals['small_image_url'] = self.get_small_image_url()
+
+        if vals.get('image', None) is False:
+            vals['small_image_url'] = False
+
         return super(ResPartner, self).write(vals)
 
     @staticmethod
