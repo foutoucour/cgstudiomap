@@ -78,12 +78,11 @@
 			
 			<div id="present" class="container">
 				<div class="row txt-present fontCGSM">
-					<div class="col-xs-12 col-sm-12">
-                        <h2>Because everyone should be familiar with the cg industry</h2>
-					</div>
 					<div class="col-xs-12 col-md-12">
-						<p>CG Studio Map is the premier open-data center of the computer graphic industry.
-		Come in: update, share or simply read the content.</p>
+						<p>What is computer graphics?</p>
+						<p>Computer graphics (CG) are graphical elements created using a computer.</p>
+						<p>You probably heard about 3D animated feature film, visual effects (VFX) and video game but there are many more areas where CG may be found: print design, web design or interactive mediums such as digital signage. This is why CG Studio Map has decided to gather them all in one place!</p>
+						<h3>We are the premier open-data center of the computer graphic industry where everyone can update, share or simply read the content.</h3>
 					</div>
 				</div>
 			</div>
