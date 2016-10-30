@@ -121,3 +121,10 @@ class TestResPartner(common.TransactionCase):
             ),
             res
         )
+
+    def test_linkToStudioPage_returnValue(self):
+        """check the value returned by the method link_to_studio_page."""
+        self.assertEqual(
+            '<a href="http://www.example.com">tname</a>',
+            self.partner_pool.link_to_studio_page('http://www.example.com', 'tname')
+        )

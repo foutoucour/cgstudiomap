@@ -36,6 +36,17 @@ class Studio(Base):
         :return: request.render
         """
         del dummy  # not used.
+        values = self.get_studio_data(partner)
+        user_partner = request.env['res.users'].browse(request.uid).partner_id
+        user_partner.add_count_view(partner, request)
+        return request.website.render('frontend_studio.view', values)
+
+    def get_studio_data(self, partner):
+        """Get the data to render the card.
+
+        :param record partner: partner to render the page of.
+        :rtype: dict
+        """
         values = self.common_values()
         values['partner'] = partner
         partner_values = partner.get_partner_values()
@@ -52,9 +63,7 @@ class Studio(Base):
             'partners': partner.get_random_studios_from_same_location(6),
             'filter_domain': partner.country_id.name,
         })
-        user_partner = request.env['res.users'].browse(request.uid).partner_id
-        user_partner.add_count_view(partner, request)
-        return request.website.render('frontend_studio.view', values)
+        return values
 
     @statsd.timed(
         'odoo.frontend.studio.edit.time',
@@ -153,6 +162,7 @@ class Studio(Base):
 
 class StudioPost(Studio):
     """Control of POST methods for the studio page."""
+
     @statsd.timed(
         'odoo.frontend.studio.save.time',
         tags=['frontend', 'frontend:studio', 'POST']
@@ -192,7 +202,6 @@ class StudioPost(Studio):
             'map_url': Listing.map_url,
         }
         return request.website.render('frontend_studio.thank_you', values)
-
 
     @statsd.timed(
         'odoo.frontend.studio.save_new.time',

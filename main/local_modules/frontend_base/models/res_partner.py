@@ -143,6 +143,18 @@ class ResPartner(models.Model):
         """Return the link to the page of the current partner."""
         self.partner_url = self.partner_url_pattern.format(self.id)
 
+    def link_to_studio_page(self, partner_url, link_text):
+        """build the html tag to use to have a link to the page studio of a partner.
+
+        :param str partner_url: url to the page of a partner.
+        :param str|unicode link_text: text displayed as the link.
+        :return: <a> tag
+        :rtype: str
+        """
+        _logger.debug('partner_url: %s', partner_url)
+        _logger.debug('link_text: %s', link_text)
+        return '<a href="{0}">{1}</a>'.format(partner_url, link_text.encode('utf8'))
+
     def info_window(self, company_status='open'):
         """Build the info window for the google map."""
         title = (
@@ -176,8 +188,8 @@ class ResPartner(models.Model):
         partner_url = self.partner_url_pattern.format(id_)
         title = (
             '<div id="iw-container">'
-            '<div class="iw-title"><a href="{0}">{1}</a></div>'
-        ).format(partner_url, name.encode('utf8'))
+            '<div class="iw-title">{0}</div>'
+        ).format(self.link_to_studio_page(partner_url, name))
         body = '<div class="iw-content">'
         location = self.get_location(city, state, country)
         body += '<p>{0}</p>'.format(location.encode('utf8'))
@@ -189,8 +201,8 @@ class ResPartner(models.Model):
         )
         body += '</div>'
         footer = (
-            '<div id="map_info_footer"><a href="{0}">More ...</a></div></div>'
-        ).format(partner_url)
+            '<div id="map_info_footer">{0}</div></div>'
+        ).format(self.link_to_studio_page(partner_url, 'More ...'))
         return title + body + footer
 
     small_image_url = fields.Char('Url to the small image of the partner.')

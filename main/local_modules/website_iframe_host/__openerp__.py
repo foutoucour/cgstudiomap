@@ -30,8 +30,8 @@
     'depends': [
         'website',
         'res_group_archetype',  # needed for security rules.
-        'frontend_base',  # the module extends templates of frontend_base.
-        'frontend_listing',  # update the controller.
+        'frontend_base',  # the module extends templates of frontend_base and res_partner.
+        'frontend_listing',  # update the controller and template.
     ],
     'data': [
         'security/ir.model.access.csv',

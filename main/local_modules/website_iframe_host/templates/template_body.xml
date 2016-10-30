@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+        <!--frontend_base-->
         <!--Hide the navbar depending on the setup of website-->
         <template id="website_iframe_host.navbar"
                   inherit_id="frontend_base.navbar"
@@ -9,13 +10,16 @@
                 <attribute name="t-att-style">'display:none' if hide_navbar else ''</attribute>
             </xpath>
         </template>
-        <!--change the href of the button add studio-->
-        <template id="website_iframe_host.add_studio_button"
+
+        <!--frontend_listing-->
+        <!--change the href of the button add studio in listing pages-->
+        <template id="website_iframe_host.add_studio_button_listing"
                   inherit_id="frontend_listing.base"
-                  name="Website Iframe Host: add studio">
+                  name="Website Iframe Host: add studio button listing">
             <xpath expr="//a[@role='button']" position="attributes">
                 <attribute name="t-att-target">'_blank' if light_hosting else 'self'</attribute>
             </xpath>
         </template>
+
     </data>
 </openerp>

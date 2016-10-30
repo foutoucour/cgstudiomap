@@ -1,6 +1,4 @@
 import logging
-import os
-import simplejson
 import ast
 from openerp.addons.frontend_base.controllers.base import Base, FrontendBaseError
 from openerp.http import request
@@ -121,9 +119,11 @@ class WebsiteIframe(Base):
         return values
 
     def get_map_data(self, *args, **kwargs):
+        """Add the host settings to the map."""
         values = super(WebsiteIframe, self).get_map_data(*args, **kwargs)
         return self.add_host_settings(values)
 
     def get_list_data(self, *args, **kwargs):
+        """Add the host settings to the listing."""
         values = super(WebsiteIframe, self).get_list_data(*args, **kwargs)
         return self.add_host_settings(values)

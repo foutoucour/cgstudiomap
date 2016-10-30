@@ -70,13 +70,10 @@ class Listing(Base):
                     'logo': '<img itemprop="image" '
                             'class="img img-responsive" '
                             'src="{0}"'
-                            '/>'.format(
-                        partner_dict.get('small_image_url', '')
-                    ),
-                    'name': '<a href="{0}">{1}</a>'.format(
+                            '/>'.format( partner_dict.get('small_image_url', '')),
+                    'name': partner_pool.link_to_studio_page(
                         partner_pool.partner_url_pattern.format(partner_dict['id']),
-                        partner_dict['name'].encode('utf-8')
-
+                        partner_dict['name']
                     ),
                     'email': partner_dict.get('email', ''),
                     'industries': ' '.join(
