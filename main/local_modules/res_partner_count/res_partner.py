@@ -33,7 +33,6 @@ class ResPartnerCountView(models.Model):
 
     active_partner_id = fields.Many2one('res.partner', string='Viewer')
     passive_partner_id = fields.Many2one('res.partner', string='Viewed')
-    ip = fields.Char('IP of the viewer')
     host = fields.Char('Host the viewer used')
 
 
@@ -53,6 +52,5 @@ class ResPartner(models.Model):
         return counter_pool.create({
             'active_partner_id': self.id,
             'passive_partner_id': viewed_partner.id,
-            'ip': request.httprequest.remote_addr,
             'host': request.httprequest.host,
         })

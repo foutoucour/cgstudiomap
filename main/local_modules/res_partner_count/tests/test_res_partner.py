@@ -37,10 +37,8 @@ class TestResPartner(common.TransactionCase):
     def test_add_count_view(self):
         """Test the entry res.partner.count.view is created."""
         request = mock.MagicMock(name='mock_request')
-        request.httprequest.remote_addr = ip = '127.0.0.666'
         request.httprequest.host = host = 'travis'
         res = self.partner1.add_count_view(self.partner2, request)
         self.assertEqual(self.partner1, res.active_partner_id)
         self.assertEqual(self.partner2, res.passive_partner_id)
         self.assertEqual(host, res.host)
-        self.assertEqual(ip, res.ip)
