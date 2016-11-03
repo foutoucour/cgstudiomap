@@ -62,15 +62,16 @@ class Listing(Base):
             partner_pool, search=search, company_status=company_status
         )
         t1 = time.time()
-        ids = (p.id for p in partners)
-        industry_pool = request.env['res.industry']
-        details = simplejson.dumps(
-            [
+        ids = [p.id for p in partners]
+        details = []
+        if ids:
+            industry_pool = request.env['res.industry']
+            details = [
                 {
                     'logo': '<img itemprop="image" '
                             'class="img img-responsive" '
                             'src="{0}"'
-                            '/>'.format( partner_dict.get('small_image_url', '')),
+                            '/>'.format(partner_dict.get('small_image_url', '')),
                     'name': partner_pool.link_to_studio_page(
                         partner_pool.partner_url_pattern.format(partner_dict['id']),
                         partner_dict['name']
@@ -87,10 +88,10 @@ class Listing(Base):
                     'country_name': partner_dict.get('country_name', ''),
                 }
                 for partner_dict in partner_pool.get_list_partners_dict(ids)
-                ],
-        )
+                ]
+
         _logger.debug('dump timing: %s', time.time() - t1)
-        return details
+        return simplejson.dumps(details)
 
     def get_map_data(self,
                      company_status='open',
@@ -113,25 +114,27 @@ class Listing(Base):
         )
 
         t1 = time.time()
-        ids = (partner.id for partner in partners)
-        geoloc = simplejson.dumps(
-            {
-                partner_dict['id']: [
-                    partner_dict['partner_latitude'],
-                    partner_dict['partner_longitude'],
-                    partners.info_window_details(
-                        partner_dict['id'],
-                        partner_dict['name'],
-                        partner_dict['industries'],
-                        company_status,
-                        city=partner_dict['city_name'],
-                        state=partner_dict['state_name'],
-                        country=partner_dict['country_name']
-                    ),
-                ]
-                for partner_dict in partner_pool.get_map_partners_dict(ids)
-                }
-        )
+        ids = [partner.id for partner in partners]
+        geoloc = {}
+        if ids:
+            geoloc = simplejson.dumps(
+                {
+                    partner_dict['id']: [
+                        partner_dict['partner_latitude'],
+                        partner_dict['partner_longitude'],
+                        partners.info_window_details(
+                            partner_dict['id'],
+                            partner_dict['name'],
+                            partner_dict['industries'],
+                            company_status,
+                            city=partner_dict['city_name'],
+                            state=partner_dict['state_name'],
+                            country=partner_dict['country_name']
+                        ),
+                    ]
+                    for partner_dict in partner_pool.get_map_partners_dict(ids)
+                    }
+            )
         _logger.debug('dump timing: %s', time.time() - t1)
 
         values = {
