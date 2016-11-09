@@ -163,6 +163,26 @@ class Studio(Base):
 class StudioPost(Studio):
     """Control of POST methods for the studio page."""
 
+    @http.route(
+        '{0}/<model("res.partner"):partner>/flagged_closed'.format(partner_url),
+        type='http', auth="public", methods=['POST'], website=True
+    )
+    def flagged_closed(self, partner, **kwargs):
+        """Update the status of the partner to closed.
+
+        :param object partner: record of a res.partner.
+        :param dict kwargs: list of fields to update.
+        :return: request.render
+        """
+        partner.state = 'closed'
+        values = {
+            'partner': partner,
+            'partner_url': '/'.join([partner_url, str(partner.id)]),
+            'map_url': Listing.map_url,
+        }
+
+        return request.website.render('frontend_studio.thank_you', values)
+
     @statsd.timed(
         'odoo.frontend.studio.save.time',
         tags=['frontend', 'frontend:studio', 'POST']
