@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700");
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -6909,7 +6910,8 @@ $color-grey: rgb(151,150,153);
 $color-grey-dark: rgb(76,76,76);
 */
 body {
-  overflow-y: auto; }
+  overflow-y: auto;
+  font-family: 'Noto Sans', sans-serif; }
 
 .fontCGSM {
   font-family: 'cgsm-regular', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
