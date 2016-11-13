@@ -19,8 +19,8 @@
         <!--template used to go to the sign up page.-->
         <template id="frontend_homepage.signup_button" name="Homepage: Signup button">
             <t t-if="request.uid == 3" >
-				<div class="jumbotron bloc-signup fontCGSM">
-					<h1 class="fontCGSMbold"><a t-attf-href="/web/signup">Sign-up</a></h1>
+				<div class="jumbotron bloc-signup">
+					<h1><a t-attf-href="/web/signup">Sign-up</a></h1>
 					<p>It's free</p>
 				</div>
             </t>
@@ -44,7 +44,7 @@
         <template id="partner_box" name="Partner Box">
             <!--See https://github.com/cgstudiomap/cgstudiomap/issues/598-->
 			<t t-if="partners">
-                <div class="row bloc-studios-title fontCGSM">
+                <div class="row bloc-studios-title">
                     <div class="col-xs-6 col-md-6">
                         <h2>Most Popular Studios</h2>
                     </div>
@@ -76,19 +76,26 @@
 
         <template id="promotional_text_box" name="Promotional Text Box">
 			
-			<div id="present" class="container">
-				<div class="row txt-present fontCGSM">
+			<div id="present1" class="container hidden-xs">
+				<div class="row txt-present">
 					<div class="col-xs-12 col-md-12">
-						<p>What is computer graphics?</p>
-						<p>Computer graphics (CG) are graphical elements created using a computer.</p>
-						<p>You probably heard about 3D animated feature film, visual effects (VFX) and video game but there are many more areas where CG may be found: print design, web design or interactive mediums such as digital signage. This is why CG Studio Map has decided to gather them all in one place!</p>
-						<h3>We are the premier open-data center of the computer graphic industry where everyone can update, share or simply read the content.</h3>
+						<a href="#present1"><h2>What is computer graphics?</h2></a>
 					</div>
+					<div class="col-xs-12 col-md-12 colored-boxed">
+						<p>Computer graphics <span class="label label-info">CG</span> are graphical elements created using a computer.</p>
+						<p>You probably heard about 3D animated feature film, visual effects (VFX) and video game but there are many more areas where CG may be found: print design, web design or interactive mediums such as digital signage.</p> 
+						<p>This is why CG Studio Map has decided to gather them all in one place!</p>
+					</div>
+
 				</div>
+			</div>
+			<div id="present2" class="inv-full-box">
+				<h3>The <b>1<SUP>st</SUP></b> open-data center of the <b>CG</b> industry</h3>
+				<h3>where <b>YOU</b> can update, share or simply read the content.</h3>
 			</div>
 			
             <!--center heading end-->
-			<div class="container fontCGSM">
+			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="colored-boxed">
@@ -176,7 +183,7 @@
                         <h1>CG Studio Map</h1>
                         <p>where cg is</p>
                         <p>
-                            <a href="#present" class="hidden-xs"><span id="arrow-down"></span></a>
+                            <a href="#present2"><span id="arrow-down"></span></a>
                         </p>
 						
 						<div class="stats stat-left fontCGSMlight">
