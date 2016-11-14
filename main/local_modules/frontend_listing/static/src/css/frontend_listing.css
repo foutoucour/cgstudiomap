@@ -244,7 +244,7 @@ input {
 ///////////////////////////////// */
 
 .bootstrap-table {
-
+	margin-top: -20px;
 }
 .bootstrap-table .row {
     margin: 0;
@@ -258,6 +258,7 @@ thead {
 	font-family: 'Noto Sans', sans-serif !important;
     font-size: 1.2em;
 	letter-spacing: 0.15em;
+	padding: 2em;
 	color: #cbcacc;
 }
 
