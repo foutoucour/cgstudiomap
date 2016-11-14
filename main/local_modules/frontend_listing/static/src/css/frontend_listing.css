@@ -246,6 +246,9 @@ input {
 .bootstrap-table {
 	margin-top: -20px;
 }
+.fixed-table-pagination {
+	margin-top: 16.9px;
+}
 .bootstrap-table .row {
     margin: 0;
     padding: 0;
