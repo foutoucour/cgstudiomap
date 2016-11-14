@@ -223,7 +223,7 @@
             <t t-set="title">List</t>
             <t t-call="frontend_listing.base">
                 
-				<div class="jumbotron fontCGSM">
+				<div class="jumbotron">
 					<div id="toolbar"></div>
                     
                     <t t-call="frontend_listing.loading"/>
