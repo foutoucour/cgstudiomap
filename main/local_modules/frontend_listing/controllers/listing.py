@@ -87,7 +87,7 @@ class Listing(Base):
                     'state_name': partner_dict.get('state_name', ''),
                     'country_name': partner_dict.get('country_name', ''),
                 }
-                for partner_dict in partner_pool.get_list_partners_dict(ids)
+                for partner_dict in partner_pool.get_partners_dict(ids)
                 ]
 
         _logger.debug('dump timing: %s', time.time() - t1)
@@ -117,8 +117,7 @@ class Listing(Base):
         ids = [partner.id for partner in partners]
         geoloc = {}
         if ids:
-            geoloc = simplejson.dumps(
-                {
+            geoloc = {
                     partner_dict['id']: [
                         partner_dict['partner_latitude'],
                         partner_dict['partner_longitude'],
@@ -132,13 +131,12 @@ class Listing(Base):
                             country=partner_dict['country_name']
                         ),
                     ]
-                    for partner_dict in partner_pool.get_map_partners_dict(ids)
+                    for partner_dict in partner_pool.get_partners_dict(ids)
                     }
-            )
         _logger.debug('dump timing: %s', time.time() - t1)
 
         values = {
-            'geoloc': geoloc,
+            'geoloc': simplejson.dumps(geoloc),
             'search': search,
             'company_status': company_status,
             'partners': partners,
