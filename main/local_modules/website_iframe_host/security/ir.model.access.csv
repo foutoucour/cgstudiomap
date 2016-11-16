@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_website_iframe_host_public,access_website_iframe_host_public,model_website_iframe_host,"base.group_public",1,0,0,0
+access_website_iframe_host_public,access_website_iframe_host_public,model_website_iframe_host,,1,0,0,0
 access_website_iframe_host_user,access_website_iframe_host_user,model_website_iframe_host,"base.group_user",1,0,0,0
 access_website_iframe_host_admin,access_website_iframe_host_admin,model_website_iframe_host,"res_group_archetype.group_archetype_admin",1,1,1,1
