@@ -6,7 +6,15 @@
             <nav class="navbar navbar-inverse navbar-fixed-top fontCGSM" role="navigation">
                 <div class="navbar-header">
 
-                    <span class="navbar-text navbar-left"><a href="/" class="navbar-link"><span id="logo-nav"></span></a></span>
+                    <span class="navbar-text navbar-left">
+						<a href="/" class="navbar-link"><span id="logo-nav"></span></a>
+						<a t-att-href="website.directory_menu">Search for</a>
+						<a t-att-href="website.shop_menu">Contribute</a>
+						<a t-att-href="website.about_menu">About</a>
+
+						
+
+					</span>
 
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="fontCGSMicons">menu</span>
@@ -28,10 +36,11 @@
                     </div>
 
                     <ul class="nav navbar-nav navbar-center">
-
+<!--
                         <li><a t-att-href="website.directory_menu">Directory</a></li>
                         <li><a t-att-href="website.shop_menu">Shop</a></li>
                         <li><a t-att-href="website.about_menu">About</a></li>
+-->
                         <div class="navbar-nav visible-xs-inline">
                             <li groups="base.group_public" class="divider"/>
                             <li groups="base.group_public"><a t-attf-href="/web/signup">Sign up</a></li>
