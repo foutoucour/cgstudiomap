@@ -12,8 +12,6 @@
 						<a t-att-href="website.shop_menu">Contribute</a>
 						<a t-att-href="website.about_menu">About</a>
 
-						
-
 					</span>
 
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -25,7 +23,7 @@
                 <div class="navbar-collapse collapse">
 
                     <div class="dropdown navbar-text navbar-right hidden-xs">
-                        <button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">power</span></button>
+                        <button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">head</span></button>
 
                       <ul class="dropdown-menu" aria-labelledby="dLabel">
                           <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
