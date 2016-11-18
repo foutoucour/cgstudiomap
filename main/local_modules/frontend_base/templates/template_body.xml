@@ -8,10 +8,6 @@
 
                     <span class="navbar-text navbar-left">
 						<a href="/" class="navbar-link"><span id="logo-nav"></span></a>
-						<a t-att-href="website.directory_menu">Search for</a>
-						<a t-att-href="website.shop_menu">Contribute</a>
-						<a t-att-href="website.about_menu">About</a>
-
 					</span>
 
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,8 +17,32 @@
                 </div>
 
                 <div class="navbar-collapse collapse">
+					<form class="navbar-form">
+						<div class="form-group">
+							<div class="input-group">
+								<input class="form-control" type="text" placeholder="Search for..." /> <span class="input-group-addon"><span class="fontCGSMicons">search</span></span>
+							</div>
+						</div>
+					</form>
+                    <ul class="nav navbar-nav navbar-left">
+<!--                        <li><a t-att-href="website.directory_menu">Directory</a></li>-->
 
+                        <li><a t-att-href="website.about_menu">About</a></li>
+
+                        <div class="navbar-nav visible-xs-inline">
+                            <li groups="base.group_public" class="divider"/>
+                            <li groups="base.group_public"><a t-attf-href="/web/signup">Sign up</a></li>
+                            <li groups="base.group_public"><a t-attf-href="/web/login">Sign in</a></li>
+                            <li t-ignore="true" t-if="website.user_id != user_id" class="divider"/>
+                            <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+                        </div>
+                    </ul>
+					
                     <div class="dropdown navbar-text navbar-right hidden-xs">
+
+						
+						<a t-att-href="website.shop_menu" class="btn btn-connect" title="Contribute" role="button"><span class="fontCGSMicons" alt="Contribute">bag</span></a>
+
                         <button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">head</span></button>
 
                       <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -32,22 +52,7 @@
                           <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
                       </ul>
                     </div>
-
-                    <ul class="nav navbar-nav navbar-center">
-<!--
-                        <li><a t-att-href="website.directory_menu">Directory</a></li>
-                        <li><a t-att-href="website.shop_menu">Shop</a></li>
-                        <li><a t-att-href="website.about_menu">About</a></li>
--->
-                        <div class="navbar-nav visible-xs-inline">
-                            <li groups="base.group_public" class="divider"/>
-                            <li groups="base.group_public"><a t-attf-href="/web/signup">Sign up</a></li>
-                            <li groups="base.group_public"><a t-attf-href="/web/login">Sign in</a></li>
-                            <li t-ignore="true" t-if="website.user_id != user_id" class="divider"/>
-                            <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
-                        </div>
-
-                    </ul>
+	
                 </div>
 			</nav>
 
