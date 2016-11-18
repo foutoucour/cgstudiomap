@@ -17,18 +17,22 @@
                 </div>
 
                 <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav navbar-left">
+<!--                        <li><a t-att-href="website.directory_menu">Directory</a></li>-->
 					<form class="navbar-form">
-						<div class="form-group">
+						<div class="form-group" style="display:inline;">
 							<div class="input-group">
-								<input class="form-control" type="text" placeholder="Search for..." /> <span class="input-group-addon"><span class="fontCGSMicons">search</span></span>
+								<input class="form-control" type="text" placeholder="Search for..." />
+								<span class="input-group-addon">
+									<span class="fontCGSMicons">search</span>
+								</span>
 							</div>
 						</div>
 					</form>
-                    <ul class="nav navbar-nav navbar-left">
-<!--                        <li><a t-att-href="website.directory_menu">Directory</a></li>-->
-
                         <li><a t-att-href="website.about_menu">About</a></li>
-
+                        <li><a t-att-href="website.about_menu">Contribute</a></li>
+						
                         <div class="navbar-nav visible-xs-inline">
                             <li groups="base.group_public" class="divider"/>
                             <li groups="base.group_public"><a t-attf-href="/web/signup">Sign up</a></li>
@@ -41,7 +45,7 @@
                     <div class="dropdown navbar-text navbar-right hidden-xs">
 
 						
-						<a t-att-href="website.shop_menu" class="btn btn-connect" title="Contribute" role="button"><span class="fontCGSMicons" alt="Contribute">bag</span></a>
+<!--						<a t-att-href="website.shop_menu" class="btn btn-connect" title="Contribute" role="button"><span class="fontCGSMicons" alt="Contribute">bag</span></a>-->
 
                         <button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">head</span></button>
 
