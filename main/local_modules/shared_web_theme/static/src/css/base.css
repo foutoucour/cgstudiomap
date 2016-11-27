@@ -6966,6 +6966,9 @@ body {
 .navbar-toggle {
   font-size: 28px !important; }
 
+.navbar .navbar-collapse {
+  text-align: left; }
+
 .divider {
   height: 1px;
   margin: 9px 0;

@@ -20,16 +20,17 @@
 
                     <ul class="nav navbar-nav navbar-left">
 <!--                        <li><a t-att-href="website.directory_menu">Directory</a></li>-->
-					<form class="navbar-form">
-						<div class="form-group" style="display:inline;">
-							<div class="input-group">
-								<input class="form-control" type="text" placeholder="Search for..." />
-								<span class="input-group-addon">
-									<span class="fontCGSMicons">search</span>
-								</span>
-							</div>
-						</div>
-					</form>
+						<li>
+							<form class="navbar-form">
+								<div class="form-group" style="display:inline;">
+									<div class="input-group">
+										<input class="form-control" type="text" placeholder="Search for..." />
+										<span class="input-group-addon">
+										<span class="fontCGSMicons">search</span></span>
+									</div>
+								</div>
+							</form>
+						</li>
                         <li><a t-att-href="website.about_menu">About</a></li>
                         <li><a t-att-href="website.about_menu">Contribute</a></li>
 						
