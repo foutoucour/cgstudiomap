@@ -13,17 +13,20 @@ $color-grey-dark: rgb(76,76,76);
 
 body {
 	overflow-y: auto;
-	font-family: 'Noto Sans', sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", 
+    "Fira Sans", "Droid Sans", "Helvetica Neue", 
+    sans-serif;
 }
 
 .fontCGSM {
-    font-family: 'cgsm-regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'cgsm-regular', sans-serif;
 }
 .fontCGSMbold {
-    font-family: 'cgsm-bold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'cgsm-bold', sans-serif;
 }
 .fontCGSMlight {
-    font-family: 'cgsm-light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'cgsm-light', sans-serif;
 }
 .fontCGSMicons {
     /* use !important to prevent issues with browser extensions that change fonts */
