@@ -23,6 +23,7 @@
 			checkScroll();
 		});
 	}
+	$('[data-toggle="tooltip"]').tooltip()
 	
 	$(".fill-box").fillBox();
 	

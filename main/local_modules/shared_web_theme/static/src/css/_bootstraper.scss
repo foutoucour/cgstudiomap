@@ -26,32 +26,11 @@ body {
 
 
 .navbar-nav>li>a{
-
+	font-size: 1.05em;
 	font-weight: normal;
-	
 	line-height: 1.4em;
-	letter-spacing: 0px;
-	text-transform: uppercase;
-	
-	@media (max-width: $screen-xs-max) {
-		font-size: 1.3em;
-		line-height: 1em;
-	}
-	@media (min-width: $screen-md-min) {
-		padding-left: 3em;
-		padding-right: 3em;
-		font-size: 1.1em;
-	}
-	@media (min-width: $screen-lg-min) {
-		padding-left: 4em;
-		padding-right: 4em;
-		font-size: 1.33em;
-	}
-	@media (min-width: $screen-big) {
-		padding-left: 8em;
-		padding-right: 8em;
-		font-size: 1.4em;
-	}
+	letter-spacing: 0.075em;
+	text-transform: capitalize;
 }
 
 .navbar-toggle {
@@ -73,9 +52,11 @@ body {
         margin-left: 0;
 	}
 }
-
+.navbar-header {
+	margin-left: 1em;
+}
 .navbar-right {
-    margin-right: 4em;
+    margin-right: 0;
 	
 	#dLabel {
 /*		font-size: 1.1em;
@@ -86,30 +67,34 @@ body {
 	}
 	
 	@media (min-width: $screen-lg-min) {
-		margin-right: 10em;
+		margin-right: 0;
 	}
 }
 .navbar-left {
-    margin-left: 4em;
+    margin-left: 0; /* space after logo */
 	
 	@media (max-width: $screen-xs-max) {
 		margin-left: 1.4em;
 	}
-	@media (min-width: $screen-lg-min) {
-		margin-left: 10em;
-	}
+
 }
-.navbar .navbar-nav {
-	@media (max-width: $screen-xs-max) {
-		margin: 0 auto;
-		display: inline-block;
-		float: none;
+.navbar-form {
+	.input-group {
+		display: inline-table;
+		vertical-align: middle;
+		width: 99.9%;
 	}
-	@media (min-width: $screen-xs-min) {
-		display: inline-block;
-		float: none;
+	.input-group > .form-control {
+		width: 100%;
+		border: 0;
 	}
+	button {
+		width: 100%;
+		background-color: transparent;
+	}	
 }
+
+
 .navbar .navbar-collapse {
 	@media (max-width: 480px) {
 		text-align: center;

@@ -269,7 +269,7 @@
         </template>
 
         <template id="frontend_studio.same_localization" name="Studio: Same Localization">
-            <div class="row bloc-studios-title fontCGSM">
+            <div class="row bloc-studios-title">
                 <div class="col-xs-6 col-sm-6">
                     <h2>Same Location</h2>
                 </div>
@@ -362,7 +362,7 @@
                 <t t-call="frontend_base.body">
                     <t t-raw="0"/>
 
-					<div class="full-thanks v-align fontCGSMlight">
+					<div class="full-thanks v-align">
 						<div class="container">
 							<div class="row">
 								<div class="col-xs-12">

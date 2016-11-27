@@ -54,10 +54,10 @@
         <!--Template about the directory footer of the website-->
         <template id="frontend_listing.footer_base" name="Listing: footer">
 				<div class="container">
-				   <div class="row fontCGSM">
+				   <div class="row">
 						<div class="col-xs-6 col-sm-4 col-lg-4">
-							<span class="name">CG Studio Map</span>
-							<span class="catch">where cg is</span>
+							<span class="name fontCGSM">CG Studio Map</span>
+							<span class="catch fontCGSM">where cg is</span>
 						</div>
 						<div class="socials col-xs-6 col-sm-4 col-lg-4 col-sm-offset-4 col-lg-offset-4">
 							<p class="pull-right visible-lg-inline">

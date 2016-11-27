@@ -238,7 +238,7 @@
 
                 <t t-call="frontend_studio.save_form">
 
-                        <div class="container studio-edit fontCGSM">
+                        <div class="container studio-edit">
 
                             <div class="row">
                                 <div class="col-xs-12">

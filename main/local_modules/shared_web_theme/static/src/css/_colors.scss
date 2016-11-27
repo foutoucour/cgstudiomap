@@ -68,7 +68,7 @@ body{
 		background-color: $bg;
 	}
 	@media (min-width: $screen-xs-min) {
-		background-color: $bg;
+		background-color: transparent;
 	}
 }
 .navbar-nav>li>a{
@@ -129,7 +129,12 @@ body{
 
 	}
 }
-
+.input-group-addon {
+    color: #555555;
+    background-color: #dddddd;
+    border: 0px solid #ccc;
+	@include border-radius(0);
+}
 .jumbotron {
     background-color: transparent;
 }

@@ -84,7 +84,7 @@ body {
 
 .btn-connect {
 	padding: auto 0;
-	font-size: 24px !important;
+	font-size: 1.4em !important;
 }
 
 .navbar-toggle {
@@ -92,6 +92,9 @@ body {
 }
 .navbar .navbar-collapse {
     text-align: left;
+}
+.header-search {
+	width: 360px;
 }
 .divider {
     height: 1px;
@@ -334,7 +337,6 @@ body {
 .text {
 	
 	h3 {
-		font-family: 'cgsm-light';
 		font-size : 1.99em;
 	}
 	p {
@@ -374,7 +376,6 @@ body {
 
 .studios {
 	h4 {
-		font-family: 'cgsm-regular';
 		margin-top: 0;
 	}
 	.partner-item {
@@ -560,7 +561,6 @@ body {
 	z-index: 100000 !important;
 }
 .corner-ribbon {
-	font-family: 'cgsm-regular';
 	width: 200px;
 	background: $danger;
 	position: absolute;
