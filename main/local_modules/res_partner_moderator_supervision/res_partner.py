@@ -19,13 +19,13 @@
 #
 ##############################################################################
 
-import os
 import logging
 import socket
 import getpass
 
 from slack_log_handler import SlackLogHandler
 
+import openerp.tools.config as config
 from openerp import models, api
 
 _logger = logging.getLogger(__name__)
@@ -33,8 +33,8 @@ _logger = logging.getLogger(__name__)
 # see https://cgstudiomap.slack.com/apps/manage/A0F7XDUAZ-incoming-webhooks
 # for the url.
 # Use test_hook url webhook for tests
-WEBHOOK_URL = os.getenv('SLACK_WEBHOOK_MODERATION', '')
-_logger.debug('WEBHOOK_URL: %s', WEBHOOK_URL)
+MAIN_SLACK_WEBHOOK_URL = config.get('SLACK_WEBHOOK_MODERATION', '').strip()
+_logger.debug('WEBHOOK_URL: %s', MAIN_SLACK_WEBHOOK_URL)
 
 
 
@@ -67,11 +67,28 @@ def get_slack_logger(name, hook):
     return slack_logger
 
 
-if WEBHOOK_URL:
-    _slack_logger = get_slack_logger(__name__, WEBHOOK_URL)
+if MAIN_SLACK_WEBHOOK_URL:
+    main_slack_logger = get_slack_logger(__name__, MAIN_SLACK_WEBHOOK_URL)
 else:
-    _logger.warning('No value for SLACK_WEBHOOK_MODERATION. No moderation.')
-    _slack_logger = None
+    _logger.warning('No value for MAIN_SLACK_WEBHOOK_URL. No moderation.')
+    main_slack_logger = None
+
+
+class ResUsers(models.Model):
+    _inherit = 'res.users'
+
+    @api.model
+    def is_contributor(self):
+        """Found out if the given user is a part of the contributor group.
+
+        :rtype: bool
+        :return: True if the user is part of the contributor group.
+        """
+        ir_model_data = self.env['ir.model.data']
+        contributor_group = ir_model_data.xmlid_to_object(
+            'res_group_archetype.group_archetype_contributor'
+        )
+        return contributor_group.id in (group.id for group in self.groups_id)
 
 
 class ResPartner(models.Model):
@@ -90,27 +107,22 @@ class ResPartner(models.Model):
         """
         # id > 3 so admin, template and public actions are not logged
         # we only care about updated companies, not about people.
-        return _slack_logger and user.id > 3 and partner.is_company
+        return main_slack_logger and user.id > 3 and partner.is_company
+
 
     @api.multi
     def write(self, vals):
         """Overcharge to add notification to slack."""
         ret = super(ResPartner, self).write(vals)
         user = self.env['res.users'].browse(self._uid)
+        message = ''.join([
+            '<http://www.cgstudiomap.org%s|%s> (id: %s) has been *updated*. ',
+            'Update done by %s (id: %s).'
+        ])
         if self.conditions_for_logging(user, self):
-            message = ''.join([
-                '<http://www.cgstudiomap.org%s|%s> '
-                '(id: %s) has been *updated*. ',
-                'Update done by %s (id: %s).'
-            ])
-            _slack_logger.info(
-                message,
-                self.partner_url,
-                self.name.encode('utf8'),
-                str(self.id),
-                user.login,
-                str(user.id)
-            )
+            args = self.partner_url, self.name.encode('utf8'), str(self.id), user.login, str(user.id)
+            if not user.is_contributor():
+                main_slack_logger.info(message, *args)
 
         return ret
 
@@ -122,12 +134,11 @@ class ResPartner(models.Model):
         if self.conditions_for_logging(user, ret):
             message = '. '.join([
                 'A new company has been *added*: '
-                '<http://www.cgstudiomap.org%s|%s> '
-                '(id: %s). ',
-                'Update done by %s (id: %s).'
+                '<http://www.cgstudiomap.org%s|%s> (id: %s). ',
+                'Addition done by %s (id: %s).'
             ])
 
-            _slack_logger.info(
+            main_slack_logger.info(
                 message,
                 ret.partner_url,
                 ret.name.encode('utf8'),
