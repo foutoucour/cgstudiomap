@@ -4,6 +4,7 @@
 
         <template id="frontend_base.navbar" name="Base: body navbar">
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container">
                 <div class="navbar-header">
 
                     <span class="navbar-text navbar-left">
@@ -45,23 +46,46 @@
                             <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
                         </div>
                     </ul>
+
 					
-                    <div class="dropdown navbar-text navbar-right hidden-xs">
+                    <ul class="nav navbar-nav navbar-right">
 
+                        <li><a class="btn-cgsm-add" href="/directory/company/create">
+							ADD Studio <span class="fontCGSMicons">upload</span>
+							</a>
+						</li>
+                        <li class="dropdown">
+							<a id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">head</span>
+							</a>
+							  <ul class="dropdown-menu" aria-labelledby="dLabel">
+								  <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
+								  <li groups="base.group_public" class="divider"/>
+								  <li groups="base.group_public"><a t-attf-href="/web/login">or <b>Sign in</b></a></li>
+								  <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+							  </ul>
+						</li>
+
+                    </ul>				
+					
+					
+					
+<!--					<div class="navbar-text navbar-right hidden-xs">
+						<a class="btn btn-cgsm-add" href="/directory/company/create" role="button">ADD Studio <span class="fontCGSMicons">upload</span></a>
 						
-<!--						<a t-att-href="website.shop_menu" class="btn btn-connect" title="Contribute" role="button"><span class="fontCGSMicons" alt="Contribute">bag</span></a>-->
+						<div class="dropdown">
+							<button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">head</span></button>
 
-                        <button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">head</span></button>
-
-                      <ul class="dropdown-menu" aria-labelledby="dLabel">
-                          <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
-                          <li groups="base.group_public" class="divider"/>
-                          <li groups="base.group_public"><a t-attf-href="/web/login">or <b>Sign in</b></a></li>
-                          <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
-                      </ul>
-                    </div>
+						  <ul class="dropdown-menu" aria-labelledby="dLabel">
+							  <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
+							  <li groups="base.group_public" class="divider"/>
+							  <li groups="base.group_public"><a t-attf-href="/web/login">or <b>Sign in</b></a></li>
+							  <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+						  </ul>
+						</div>
+					</div>-->
 	
                 </div>
+				</div>
 			</nav>
 
         </template>

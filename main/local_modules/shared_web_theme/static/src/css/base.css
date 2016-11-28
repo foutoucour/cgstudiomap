@@ -6975,6 +6975,30 @@ body {
   margin: 9px 0;
   overflow: hidden; }
 
+.btn-cgsm-add {
+  font-family: 'cgsm-regular';
+  font-size: 1.66em;
+  line-height: 1;
+  vertical-align: baseline;
+  padding: auto 0;
+  margin: 0 auto;
+  background-color: #5ae2b0;
+  color: #f1f1f3; }
+  @media (max-width: 992px) {
+    .btn-cgsm-add {
+      font-size: 1.2em;
+      line-height: 2em; } }
+  @media (max-width: screen-xs-max) {
+    .btn-cgsm-add {
+      font-size: 1.66em;
+      line-height: 1.33em; } }
+
+.btn-cgsm-add:after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%; }
+
 #container-map {
   position: relative;
   top: 0;
