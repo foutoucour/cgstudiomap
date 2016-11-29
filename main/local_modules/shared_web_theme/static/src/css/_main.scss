@@ -106,22 +106,28 @@ body {
     margin: 9px 0;
     overflow: hidden;
 }
-.btn-cgsm-add {
-    font-family: 'cgsm-regular';
-    font-size: 1.66em;
+.navbar-nav .btn-cgsm-add {
+    font-size: 1em;
     line-height: 1;
     vertical-align: baseline;
-    padding: auto 0;
-    margin: 0 auto;
-    background-color: #5ae2b0;
-    color: #f1f1f3;
+    padding: 0.66em;
+    margin: 0.33em auto;
+    background-color: transparent;
+    color: $color-cgsm !important;
+	border: $color-cgsm 1px solid;
+	@include border-radius(2px);
+	
+	&:hover {
+		background-color: $color-tonic;
+		color: $color-cgsm-dark;
+	}
 	
 	@media (max-width: $screen-md-min) {
-			font-size: 1.2em;
+			font-size: 0.9em;
 			line-height: 2em;
 	}
 	@media (max-width: screen-xs-max) {
-			font-size: 1.66em;
+			font-size: 0.8em;
 			line-height: 1.33em;
 	}
 }

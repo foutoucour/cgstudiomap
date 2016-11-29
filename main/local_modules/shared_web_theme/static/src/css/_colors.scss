@@ -70,6 +70,9 @@ body{
 	@media (min-width: $screen-xs-min) {
 		background-color: transparent;
 	}
+	@media (max-width: $screen-xs-max) {
+		background-color: $bg;
+	}
 }
 .navbar-nav>li>a{
 	color: $color-cgsm;
@@ -107,18 +110,23 @@ body{
 .navbar-inverse .navbar-nav > .active > a:focus,
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
-.navbar-inverse .navbar-nav > .open > a:focus {
+.navbar-inverse .navbar-nav > .open > a:focus{
 	color: $color-cgsm;
 	background-color: $bg;
 }
 
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+	color: $color-cgsm;
+	background-color: transparent;
+}
 .navbar-center li a {
 	color: $color-cgsm !important;
 	background: transparent;
 }
 .navbar-center li a:hover,
 .navbar-center li a:focus{
-	background: $bg;
+	background: $color-cgsm;
 }
 .navbar-right {
 
