@@ -6244,7 +6244,7 @@ body {
 .navbar-right {
   margin-right: 0; }
   .navbar-right #dLabel {
-    /*		font-size: 1.1em;
+    /*		font-size: 1em;
     		vertical-align: middle;
     		padding: 1.8em;
     		margin-top: -0.4em;
@@ -6533,7 +6533,6 @@ body {
     color: #f1f1f3; }
 
 .navbar-right .btn, .navbar-right .openerp button, .openerp .navbar-right button, .navbar-right .openerp .oe_button, .openerp .navbar-right .oe_button {
-  font-family: 'cgsm-regular';
   font-size: 1.04em;
   padding: 14px 24px;
   border: 0 none;
@@ -6963,7 +6962,9 @@ body {
 
 .btn-connect {
   padding: auto 0;
-  font-size: 1.4em !important; }
+  font-size: 1.4em !important;
+  margin-top: -0.05em !important;
+  margin-left: 0.2em !important; }
 
 .navbar-toggle {
   font-size: 28px !important; }
@@ -6989,7 +6990,7 @@ body {
   line-height: 1;
   vertical-align: baseline;
   padding: 0.66em;
-  margin: 0.33em auto;
+  margin: 0.66em auto;
   background-color: transparent;
   color: #b05ae2 !important;
   border: #b05ae2 1px solid;

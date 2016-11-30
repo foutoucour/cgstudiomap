@@ -18,7 +18,19 @@
                 </div>
 
                 <div class="navbar-collapse collapse">
+					<div class="navbar-text navbar-right hidden-xs">
+						
+						<div class="dropdown">
+							<button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">head</span></button>
 
+						  <ul class="dropdown-menu" aria-labelledby="dLabel">
+							  <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
+							  <li groups="base.group_public" class="divider"/>
+							  <li groups="base.group_public"><a t-attf-href="/web/login">or <b>Sign in</b></a></li>
+							  <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+						  </ul>
+						</div>
+					</div>
                     <ul class="nav navbar-nav navbar-left">
 						<!--<li><a t-att-href="website.directory_menu">Directory</a></li>-->
 						<li class="header-search">
@@ -48,43 +60,16 @@
                     </ul>
 
 					
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right hidden-xs">
 
                         <li><a class="btn-cgsm-add" href="/directory/company/create">
 							ADD Studio <span class="fontCGSMicons">upload</span>
 							</a>
 						</li>
-                        <li class="dropdown">
-							<a id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">head</span>
-							</a>
-							  <ul class="dropdown-menu" aria-labelledby="dLabel">
-								  <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
-								  <li groups="base.group_public" class="divider"/>
-								  <li groups="base.group_public"><a t-attf-href="/web/login">or <b>Sign in</b></a></li>
-								  <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
-							  </ul>
-						</li>
-
                     </ul>				
-					
-					
-					
-<!--					<div class="navbar-text navbar-right hidden-xs">
-						<a class="btn btn-cgsm-add" href="/directory/company/create" role="button">ADD Studio <span class="fontCGSMicons">upload</span></a>
-						
-						<div class="dropdown">
-							<button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">head</span></button>
 
-						  <ul class="dropdown-menu" aria-labelledby="dLabel">
-							  <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
-							  <li groups="base.group_public" class="divider"/>
-							  <li groups="base.group_public"><a t-attf-href="/web/login">or <b>Sign in</b></a></li>
-							  <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
-						  </ul>
-						</div>
-					</div>-->
-	
                 </div>
+
 				</div>
 			</nav>
 
