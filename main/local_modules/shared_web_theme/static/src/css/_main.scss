@@ -95,6 +95,17 @@ body {
 .navbar .navbar-collapse {
     text-align: left;
 }
+.navbar-center > li > a {
+    font-size: 1.1em;
+    font-weight: normal;
+    text-transform: capitalize;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	@media (max-width: screen-xs-max) {
+			font-size: 2em;
+
+	}
+}
 .header-search {
 	width: 360px;
 }
@@ -114,19 +125,13 @@ body {
     vertical-align: baseline;
     padding: 0.66em;
     margin: 0.66em auto;
-    background-color: transparent;
-    color: $color-cgsm !important;
-	border: $color-cgsm 1px solid;
+
 	@include border-radius(2px);
-	
-	&:hover {
-		background-color: $color-tonic;
-		color: $color-cgsm-dark;
-	}
 	
 	@media (max-width: $screen-md-min) {
 			font-size: 0.9em;
 			line-height: 2em;
+			border: 0 solid;
 	}
 	@media (max-width: screen-xs-max) {
 			font-size: 0.8em;
@@ -139,6 +144,8 @@ body {
     vertical-align: middle;
     height: 100%;
 }
+
+
 #container-map {
 	position: relative;
 	top: 0;

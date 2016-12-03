@@ -10,12 +10,35 @@
                     <span class="navbar-text navbar-left">
 						<a href="/" class="navbar-link"><span id="logo-nav"></span></a>
 					</span>
-
+                    <ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
+						<li class="header-search">
+							<form class="navbar-form">
+								<div class="form-group" style="display:inline;">
+									<div class="input-group">
+										<input class="form-control" type="text" placeholder="Search in CG Studio Map..." />
+										<span class="input-group-addon">
+											<button type="button" data-toggle="tooltip" data-placement="bottom" title="Search for">
+												<span class="fontCGSMicons">search</span>
+											</button>
+										</span>
+									</div>
+								</div>
+							</form>
+						</li>
+					</ul>
+                    <ul class="nav navbar-nav navbar-center visible-xs-inlne">
+						<li>
+							<a t-att-href="website.directory_menu">
+								<span class="fontCGSMicons">search</span>
+							</a>
+						</li>
+                    </ul>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="fontCGSMicons">menu</span>
                     </button>
 
                 </div>
+
 
                 <div class="navbar-collapse collapse">
 					<div class="navbar-text navbar-right hidden-xs">
@@ -33,20 +56,6 @@
 					</div>
                     <ul class="nav navbar-nav navbar-left">
 						<!--<li><a t-att-href="website.directory_menu">Directory</a></li>-->
-						<li class="header-search">
-							<form class="navbar-form">
-								<div class="form-group" style="display:inline;">
-									<div class="input-group">
-										<input class="form-control" type="text" placeholder="Search in CG Studio Map..." />
-										<span class="input-group-addon">
-											<button type="button" data-toggle="tooltip" data-placement="bottom" title="Search for">
-												<span class="fontCGSMicons">search</span>
-											</button>
-										</span>
-									</div>
-								</div>
-							</form>
-						</li>
                         <li><a t-att-href="website.about_menu">About</a></li>
                         <li><a t-att-href="website.about_menu">Contribute</a></li>
 						
@@ -63,7 +72,7 @@
                     <ul class="nav navbar-nav navbar-right hidden-xs">
 
                         <li><a class="btn-cgsm-add" href="/directory/company/create">
-							ADD Studio <span class="fontCGSMicons">upload</span>
+							<span class="hidden-sm">ADD Studio </span><span class="fontCGSMicons">upload</span>
 							</a>
 						</li>
                     </ul>				

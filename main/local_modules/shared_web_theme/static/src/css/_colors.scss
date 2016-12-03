@@ -100,7 +100,7 @@ body{
     color: $color-cgsm;
 }
 .navbar-inverse .navbar-nav > li > a{
-    color: $color-cgsm;
+    color: $color-cgsm-dark;
 }
 
 .navbar-inverse .navbar-nav > a,
@@ -135,6 +135,16 @@ body{
 	
 	@media (min-width: $screen-lg-min) {
 
+	}
+}
+.navbar-nav .btn-cgsm-add {
+    background-color: transparent;
+    color: $color-cgsm !important;
+	border: $color-cgsm 1px solid;
+	
+	&:hover {
+		background-color: $color-tonic;
+		color: $color-cgsm-dark;
 	}
 }
 .input-group-addon {
