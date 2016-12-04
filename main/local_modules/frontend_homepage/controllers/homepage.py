@@ -59,7 +59,6 @@ class Homepage(Website):
 
             return by_countries_
 
-        keep = QueryURL('/directory', search=search, company_status=company_status)
 
         _logger.debug('index_public_user')
         page = 'homepage'
@@ -78,7 +77,6 @@ class Homepage(Website):
                 for country, value in by_countries.items()
             ],
             'partners': partner_pool.get_most_popular_studios(8),
-            'keep': keep
         }
         return request.render('frontend_homepage.homepage', values)
 
