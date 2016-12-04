@@ -1,9 +1,14 @@
 import logging
 import ast
+
+from cachetools import cached, LRUCache
+
 from openerp.addons.frontend_base.controllers.base import Base, FrontendBaseError
 from openerp.http import request
 
+
 logger = logging.getLogger(__name__)
+cache = LRUCache(maxsize=100)
 
 
 class IframeHostError(FrontendBaseError):
@@ -45,7 +50,27 @@ class WebsiteIframe(Base):
 
         :rtype: Record
         """
-        host_name = request.httprequest.host
+        @cached(cache)
+        def get_host_from_session(session_id):
+            """Get the hostname for the session and cache it to keep the same session
+            under the same host, even if the view is done through an iframe.
+
+            See: https://github.com/cgstudiomap/cgstudiomap/issues/759
+
+            :param int session_id: id of a session.
+                                   see: https://en.wikipedia.org/wiki/Session_(computer_science)  # noqa
+            :return: name of the hostname
+            :rtype: str
+            """
+            logger.debug('session_id: %s', session_id)
+            host = request.httprequest.referrer
+            if host:
+                return host.split('/')[2]
+            else:
+                return request.httprequest.host
+
+        host_name = get_host_from_session(request.session_id)
+        logger.debug('host_name: %s', host_name)
         website_iframe_host_pool = request.env['website.iframe.host']
         iframe_host = website_iframe_host_pool.search(
             [('host', '=', host_name)], limit=1
@@ -75,7 +100,7 @@ class WebsiteIframe(Base):
         :return: if the redirection to cgstudiomap should be activated (True).
         """
         iframe_host = self.get_iframe_host()
-        logger.debug('iframe_host.hide_navbar; %s', iframe_host.light_hosting)
+        # logger.debug('iframe_host.hide_navbar; %s', iframe_host.light_hosting)
         return iframe_host.light_hosting if iframe_host else False
 
     def is_website_navbar_hidden(self):
@@ -86,7 +111,7 @@ class WebsiteIframe(Base):
         :return: if the navbar will be hidden (True) or not.
         """
         iframe_host = self.get_iframe_host()
-        logger.debug('iframe_host.hide_navbar; %s', iframe_host.hide_navbar)
+        # logger.debug('iframe_host.hide_navbar; %s', iframe_host.hide_navbar)
         return iframe_host.hide_navbar if iframe_host else False
 
     def get_additional_search_domain(self, host):
@@ -104,7 +129,7 @@ class WebsiteIframe(Base):
                 additional_search_domain
             )
 
-        logger.debug('get_company_domain extension: %s', additional_search_domain)
+        # logger.debug('get_company_domain extension: %s', additional_search_domain)
         return additional_search_domain
 
     def add_host_settings(self, values):
@@ -115,9 +140,9 @@ class WebsiteIframe(Base):
         :rtype: dict
         """
         values['hide_navbar'] = self.is_website_navbar_hidden()
-        logger.debug('hide navbar? %s', values['hide_navbar'])
+        # logger.debug('hide navbar? %s', values['hide_navbar'])
         values['light_hosting'] = self.is_website_light_hosting()
-        logger.debug('Light hosting? %s', values['light_hosting'])
+        # logger.debug('Light hosting? %s', values['light_hosting'])
         return values
 
     def get_map_data(self, *args, **kwargs):
