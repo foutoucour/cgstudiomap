@@ -12,12 +12,23 @@
 					</span>
                     <ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
 						<li class="header-search">
-							<form class="navbar-form">
+                            <form t-att-action="keep(url, search=0, company_status=company_status)"
+                                  method="post"
+                                  t-att-class="search_class">
 								<div class="form-group" style="display:inline;">
 									<div class="input-group">
-										<input class="form-control" type="text" placeholder="Search in CG Studio Map..." />
+                                        <input type="text"
+                                               name="search"
+                                               class="search-query form-control"
+                                               placeholder="Search in CG Studio Map..."
+                                               t-att-value="search"/>
+                                        <input type="hidden" name='company_status'
+                                               t-att-value='company_status'/>
 										<span class="input-group-addon">
-											<button type="button" data-toggle="tooltip" data-placement="bottom" title="Search for">
+											<button type="button"
+                                                    data-toggle="tooltip"
+                                                    data-placement="bottom"
+                                                    title="Search for">
 												<span class="fontCGSMicons">search</span>
 											</button>
 										</span>
@@ -42,40 +53,71 @@
 
                 <div class="navbar-collapse collapse">
 					<div class="navbar-text navbar-right hidden-xs">
-						
+
 						<div class="dropdown">
-							<button id="dLabel" class="btn btn-connect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fontCGSMicons">head</span></button>
+							<button id="dLabel"
+                                    class="btn btn-connect"
+                                    type="button"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                                <span class="fontCGSMicons">head</span>
+                            </button>
 
 						  <ul class="dropdown-menu" aria-labelledby="dLabel">
-							  <li groups="base.group_public"><a t-attf-href="/web/signup"><h4>Sign up</h4></a></li>
+							  <li groups="base.group_public">
+                                  <a t-attf-href="/web/signup"><h4>Sign up</h4></a>
+                              </li>
 							  <li groups="base.group_public" class="divider"/>
-							  <li groups="base.group_public"><a t-attf-href="/web/login">or <b>Sign in</b></a></li>
-							  <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
-						  </ul>
-						</div>
-					</div>
+							  <li groups="base.group_public">
+                                  <a t-attf-href="/web/login">or <b>Sign in</b></a>
+                              </li>
+							  <li t-ignore="true" t-if="website.user_id != user_id" >
+                                  <a t-attf-href="/web/session/logout?redirect=/"
+                                     role="menuitem">Logout</a>
+                              </li>
+                          </ul>
+                        </div>
+                    </div>
                     <ul class="nav navbar-nav navbar-left">
-						<!--<li><a t-att-href="website.directory_menu">Directory</a></li>-->
-                        <li><a t-att-href="website.about_menu">About</a></li>
-                        <li><a t-att-href="website.about_menu">Contribute</a></li>
-						
+                        <!--<li><a t-att-href="website.directory_menu">Directory</a></li>-->
+                        <li>
+                            <a t-att-href="website.about_menu">About</a>
+                        </li>
+                        <li>
+                            <a t-att-href="website.about_menu">Contribute</a>
+                        </li>
+
                         <div class="navbar-nav visible-xs-inline">
                             <li groups="base.group_public" class="divider"/>
-                            <li groups="base.group_public"><a t-attf-href="/web/signup">Sign up</a></li>
-                            <li groups="base.group_public"><a t-attf-href="/web/login">Sign in</a></li>
-                            <li t-ignore="true" t-if="website.user_id != user_id" class="divider"/>
-                            <li t-ignore="true" t-if="website.user_id != user_id" ><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+                            <li groups="base.group_public">
+                                <a t-attf-href="/web/signup">Sign up</a>
+                            </li>
+                            <li groups="base.group_public">
+                                <a t-attf-href="/web/login">Sign in</a>
+                            </li>
+                            <li t-ignore="true" t-if="website.user_id != user_id"
+                                class="divider"/>
+                            <li t-ignore="true" t-if="website.user_id != user_id">
+                                <a t-attf-href="/web/session/logout?redirect=/"
+                                   role="menuitem">Logout
+                                </a>
+                            </li>
                         </div>
                     </ul>
 
-					
+
                     <ul class="nav navbar-nav navbar-right hidden-xs">
 
-                        <li><a class="btn-cgsm-add" href="/directory/company/create">
-							<span class="hidden-sm">ADD Studio </span><span class="fontCGSMicons">upload</span>
-							</a>
-						</li>
-                    </ul>				
+                        <li>
+                            <a class="btn-cgsm-add"
+                               href="/directory/company/create"
+                                role="button">
+                                <span class="hidden-sm">ADD Studio</span>
+                                <span class="fontCGSMicons">upload</span>
+                            </a>
+                        </li>
+                    </ul>
 
                 </div>
 
@@ -119,7 +161,7 @@
 
                         <div class="socials col-xs-4 col-sm-4 col-md-4 col-lg-4">
                             <p class="social-txt">Connect with us:</p><br />
-                            
+
                             <p class="visible-lg-inline">
 								<a t-att-href="website.social_twitter"><i class="fa fa-twitter fa-3x"></i></a>
 								<a t-att-href="website.social_linkedin"><i class="fa fa-linkedin fa-3x"></i></a>
@@ -235,7 +277,7 @@
                         <span class="fontCGSMicons">ban</span>
                     </div>
 				</t>
-				
+
                 <img itemprop="image"
                      class="fill-box img-responsive"
                      t-att-src="image_url"

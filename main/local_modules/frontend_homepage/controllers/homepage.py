@@ -7,6 +7,7 @@ from datadog import statsd
 from cachetools import TTLCache, cached
 from openerp.addons.web import http
 from openerp.addons.website.controllers.main import Website
+from openerp.addons.frontend_base.controllers.base import QueryURL
 from openerp.http import request
 
 _logger = logging.getLogger(__name__)
@@ -33,7 +34,7 @@ class Homepage(Website):
         else:
             return self.index_public_user(**kw)
 
-    def index_public_user(self, **kw):
+    def index_public_user(self, search='', company_status='open', **kw):
         """Build the homepage for a public user.
         This homepage is aimed to attract the user to login.
         """
@@ -58,6 +59,8 @@ class Homepage(Website):
 
             return by_countries_
 
+        keep = QueryURL('/directory', search=search, company_status=company_status)
+
         _logger.debug('index_public_user')
         page = 'homepage'
         env = request.env
@@ -75,6 +78,7 @@ class Homepage(Website):
                 for country, value in by_countries.items()
             ],
             'partners': partner_pool.get_most_popular_studios(8),
+            'keep': keep
         }
         return request.render('frontend_homepage.homepage', values)
 
