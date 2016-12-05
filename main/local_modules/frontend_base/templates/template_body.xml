@@ -27,25 +27,13 @@
                                                t-att-value='company_status'/>
 										<span class="input-group-addon">
                                             <a class="a-submit" type="button" data-toggle="tooltip" data-placement="bottom" title="Search for"><span class="fontCGSMicons">search</span></a>
-											<!--<button type="button"-->
-                                                    <!--data-toggle="tooltip"-->
-                                                    <!--data-placement="bottom"-->
-                                                    <!--title="Search for">-->
-												<!--<span class="fontCGSMicons">search</span>-->
-											<!--</button>-->
 										</span>
 									</div>
 								</div>
 							</form>
 						</li>
 					</ul>
-<!--                    <ul class="nav navbar-nav navbar-center visible-xs-inline">
-						<li>
-							<a t-att-href="website.directory_menu">
-								<span class="fontCGSMicons">search</span>
-							</a>
-						</li>
-                    </ul>-->
+
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="fontCGSMicons">menu</span>
                     </button>
@@ -82,12 +70,11 @@
                         </div>
                     </div>
                     <ul class="nav navbar-nav navbar-left">
-                        <!--<li><a t-att-href="website.directory_menu">Directory</a></li>-->
                         <li>
-                            <a t-att-href="website.about_menu">About</a>
+                            <a t-att-href="website.about_menu" toggle="tooltip" data-placement="bottom" title="Who is behind">About</a>
                         </li>
                         <li>
-                            <a t-att-href="website.about_menu">Contribute</a>
+                            <a t-att-href="website.about_menu" toggle="tooltip" data-placement="bottom" title="Support us with goodies">Contribute</a>
                         </li>
 
                         <div class="navbar-nav visible-xs-inline">

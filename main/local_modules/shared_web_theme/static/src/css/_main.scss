@@ -108,6 +108,14 @@ body {
 }
 .header-search {
 	width: 360px;
+
+	@media (max-width: $screen-sm-min) {
+		top: -16px;
+		width: 220px;
+	}
+	@media (max-width: $screen-xsmall) {
+		width: 160px;
+	}
 }
 .divider {
     height: 1px;
