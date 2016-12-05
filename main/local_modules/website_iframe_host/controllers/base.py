@@ -59,7 +59,7 @@ def get_host_from_session(session_id):
     host = request.httprequest.referrer
     try:
         host = host.split('/')[2]
-    except IndexError:
+    except (IndexError, AttributeError):
         host = request.httprequest.host
 
     # excluded the subdomain from the hostname to ease the maintains.
@@ -86,6 +86,27 @@ def get_iframe_host():
     return iframe_host
 
 
+def is_website_light_hosting():
+    """Check if the host is expecting to have the redirections.
+
+    :rtype: bool
+    :return: if the redirection to cgstudiomap should be activated (True).
+    """
+    iframe_host = get_iframe_host()
+    return iframe_host.light_hosting if iframe_host else False
+
+
+def is_website_navbar_hidden():
+    """Set up the hide of the navbar according to the settings of the current
+    host.
+
+    :rtype: bool
+    :return: if the navbar will be hidden (True) or not.
+    """
+    iframe_host = get_iframe_host()
+    return iframe_host.hide_navbar if iframe_host else False
+
+
 class WebsiteIframe(Base):
 
     def get_company_domain(self, search, company_status='open'):
@@ -99,27 +120,6 @@ class WebsiteIframe(Base):
             search_domain.search.extend(self.get_additional_search_domain(iframe_host))
 
         return search_domain
-
-    def is_website_light_hosting(self):
-        """Check if the host is expecting to have the redirections.
-
-        :rtype: bool
-        :return: if the redirection to cgstudiomap should be activated (True).
-        """
-        iframe_host = get_iframe_host()
-        # logger.debug('iframe_host.hide_navbar; %s', iframe_host.light_hosting)
-        return iframe_host.light_hosting if iframe_host else False
-
-    def is_website_navbar_hidden(self):
-        """Set up the hide of the navbar according to the settings of the current
-        host.
-
-        :rtype: bool
-        :return: if the navbar will be hidden (True) or not.
-        """
-        iframe_host = get_iframe_host()
-        # logger.debug('iframe_host.hide_navbar; %s', iframe_host.hide_navbar)
-        return iframe_host.hide_navbar if iframe_host else False
 
     def get_additional_search_domain(self, host):
         """Extend the current search_domain according to the settings of the current
@@ -136,7 +136,6 @@ class WebsiteIframe(Base):
                 additional_search_domain
             )
 
-        # logger.debug('get_company_domain extension: %s', additional_search_domain)
         return additional_search_domain
 
     def add_host_settings(self, values):
@@ -146,10 +145,8 @@ class WebsiteIframe(Base):
         :return: values with additional keys/values
         :rtype: dict
         """
-        values['hide_navbar'] = self.is_website_navbar_hidden()
-        # logger.debug('hide navbar? %s', values['hide_navbar'])
-        values['light_hosting'] = self.is_website_light_hosting()
-        # logger.debug('Light hosting? %s', values['light_hosting'])
+        values['hide_navbar'] = is_website_navbar_hidden()
+        values['light_hosting'] = is_website_light_hosting()
         return values
 
     def get_map_data(self, *args, **kwargs):
