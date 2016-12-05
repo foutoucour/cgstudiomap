@@ -13,18 +13,6 @@ from openerp.http import request
 _logger = logging.getLogger(__name__)
 
 
-def reset_cache(max_size=10, ttl=10800):
-    """Reset the given cache.
-
-    :param int max_size: the max number of caches. Default: 10
-    :param int ttl: The time max the cache lives. The cache
-        will reset itself after this time. Default: 10800 (3hrs)
-
-    :return: cachetools.TTLCache instance.
-    """
-    return TTLCache(max_size, ttl)
-
-
 class Listing(Base):
     """Representation of the page listing companies."""
     map_url = '/directory'
@@ -118,21 +106,21 @@ class Listing(Base):
         geoloc = {}
         if ids:
             geoloc = {
-                    partner_dict['id']: [
-                        partner_dict['partner_latitude'],
-                        partner_dict['partner_longitude'],
-                        partners.info_window_details(
-                            partner_dict['id'],
-                            partner_dict['name'],
-                            partner_dict['industries'],
-                            company_status,
-                            city=partner_dict['city_name'],
-                            state=partner_dict['state_name'],
-                            country=partner_dict['country_name']
-                        ),
-                    ]
-                    for partner_dict in partner_pool.get_partners_dict(ids)
-                    }
+                partner_dict['id']: [
+                    partner_dict['partner_latitude'],
+                    partner_dict['partner_longitude'],
+                    partners.info_window_details(
+                        partner_dict['id'],
+                        partner_dict['name'],
+                        partner_dict['industries'],
+                        company_status,
+                        city=partner_dict['city_name'],
+                        state=partner_dict['state_name'],
+                        country=partner_dict['country_name']
+                    ),
+                ]
+                for partner_dict in partner_pool.get_partners_dict(ids)
+                }
         _logger.debug('dump timing: %s', time.time() - t1)
 
         values = {
