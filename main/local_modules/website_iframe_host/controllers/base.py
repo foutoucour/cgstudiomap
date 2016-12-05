@@ -43,50 +43,57 @@ class NotCompatibleSearchDomainFrontendBaseError(IframeHostError):
         )
 
 
+@cached(cache)
+def get_host_from_session(session_id):
+    """Get the hostname for the session and cache it to keep the same session
+    under the same host, even if the view is done through an iframe.
+
+    See: https://github.com/cgstudiomap/cgstudiomap/issues/759
+
+    :param int session_id: id of a session.
+                           see: https://en.wikipedia.org/wiki/Session_(computer_science)  # noqa
+    :return: name of the hostname
+    :rtype: str
+    """
+    logger.debug('session_id: %s', session_id)
+    host = request.httprequest.referrer
+    try:
+        host = host.split('/')[2]
+    except IndexError:
+        host = request.httprequest.host
+
+    # excluded the subdomain from the hostname to ease the maintains.
+    # see https://github.com/cgstudiomap/cgstudiomap/issues/730
+    host = '.'.join(host.split('.')[-2:])
+    return host
+
+
+def get_iframe_host():
+    """Find if the host has a special SearchDomain.
+
+    :rtype: Record
+    """
+    host_name = get_host_from_session(request.session_id)
+    logger.debug('host_name: %s', host_name)
+    website_iframe_host_pool = request.env['website.iframe.host']
+    iframe_host = website_iframe_host_pool.search(
+        [('host', '=', host_name)], limit=1
+    )
+    if not iframe_host:
+        raise NotAuthorizedHostFrontendBaseError(host_name)
+
+    logger.debug('get_iframe_host: %s', iframe_host)
+    return iframe_host
+
+
 class WebsiteIframe(Base):
-
-    def get_iframe_host(self):
-        """Find if the host has a special SearchDomain.
-
-        :rtype: Record
-        """
-        @cached(cache)
-        def get_host_from_session(session_id):
-            """Get the hostname for the session and cache it to keep the same session
-            under the same host, even if the view is done through an iframe.
-
-            See: https://github.com/cgstudiomap/cgstudiomap/issues/759
-
-            :param int session_id: id of a session.
-                                   see: https://en.wikipedia.org/wiki/Session_(computer_science)  # noqa
-            :return: name of the hostname
-            :rtype: str
-            """
-            logger.debug('session_id: %s', session_id)
-            host = request.httprequest.referrer
-            if host:
-                return host.split('/')[2]
-            else:
-                return request.httprequest.host
-
-        host_name = get_host_from_session(request.session_id)
-        logger.debug('host_name: %s', host_name)
-        website_iframe_host_pool = request.env['website.iframe.host']
-        iframe_host = website_iframe_host_pool.search(
-            [('host', '=', host_name)], limit=1
-        )
-        if not iframe_host:
-            raise NotAuthorizedHostFrontendBaseError(host_name)
-
-        logger.debug('get_iframe_host: %s', iframe_host)
-        return iframe_host
 
     def get_company_domain(self, search, company_status='open'):
         search_domain = super(WebsiteIframe, self).get_company_domain(
             search, company_status=company_status
         )
 
-        iframe_host = self.get_iframe_host()
+        iframe_host = get_iframe_host()
 
         if iframe_host:
             search_domain.search.extend(self.get_additional_search_domain(iframe_host))
@@ -99,7 +106,7 @@ class WebsiteIframe(Base):
         :rtype: bool
         :return: if the redirection to cgstudiomap should be activated (True).
         """
-        iframe_host = self.get_iframe_host()
+        iframe_host = get_iframe_host()
         # logger.debug('iframe_host.hide_navbar; %s', iframe_host.light_hosting)
         return iframe_host.light_hosting if iframe_host else False
 
@@ -110,7 +117,7 @@ class WebsiteIframe(Base):
         :rtype: bool
         :return: if the navbar will be hidden (True) or not.
         """
-        iframe_host = self.get_iframe_host()
+        iframe_host = get_iframe_host()
         # logger.debug('iframe_host.hide_navbar; %s', iframe_host.hide_navbar)
         return iframe_host.hide_navbar if iframe_host else False
 
