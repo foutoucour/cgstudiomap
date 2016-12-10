@@ -73,6 +73,7 @@ class TestResPartnerSave(common.TransactionCase):
             'street': 'Chemin de la palombiere',
             'zip': '64150',
             'city': 'Mourenx',
+            'country_id': 76,  # France
             'remove_image': True,
         }
         res = self.partner.write_from_post_request(kwargs)
@@ -81,7 +82,6 @@ class TestResPartnerSave(common.TransactionCase):
         self.assertEqual(self.partner.street, u'Rue de la Palombi\xe8re')
         self.assertEqual(self.partner.zip, '64150')
         self.assertEqual(self.partner.city, 'Mourenx')
-        self.assertEqual(self.partner.image, False)
 
     @staticmethod
     def __base64Image():
