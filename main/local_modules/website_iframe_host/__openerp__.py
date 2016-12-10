@@ -38,6 +38,7 @@
         'views/website_iframe_host.xml',
         'data/website_iframe_host_data.xml',
         'templates/template_body.xml',
+        'templates/template_head.xml',
     ],
     'installable': True,
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--frontend_base-->
+        <!--Hide the navbar depending on the setup of website-->
+        <!--Using head so the css is explicitly added in the DOM-->
+        <template id="website_iframe_host.head"
+                  name="Frontend: CSS to hide the navbar under condition."
+                  inherit_id="frontend_base.head">
+            <xpath expr="." position="inside">
+                <t t-if="hide_navbar">
+                    <link rel="stylesheet"
+                          href="/website_iframe_host/static/src/css/navbar-off.css"
+                          type="text/css"/>
+                </t>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>
