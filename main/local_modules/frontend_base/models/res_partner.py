@@ -178,11 +178,13 @@ class ResPartner(models.Model):
         return title + body + footer
 
     def info_window_details(self,
-                             id_,
-                             name,
-                             industries,
-                             company_status,
-                             city=None, state=None, country=None):
+                            id_,
+                            name,
+                            industries,
+                            company_status,
+                            city=None,
+                            state=None,
+                            country=None):
         """Build the info window for the google map."""
         industry_pool = self.env['res.industry']
         partner_url = self.partner_url_pattern.format(id_)
