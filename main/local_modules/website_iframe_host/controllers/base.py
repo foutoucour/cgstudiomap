@@ -48,8 +48,11 @@ def get_host_from_session(session_id):
     """Get the hostname for the session and cache it to keep the same session
     under the same host, even if the view is done through an iframe.
 
-    See: https://github.com/cgstudiomap/cgstudiomap/issues/759
+    Referrers look like _http(s)://(subdomain).(domain)/(route)_
+    Hosts look like _(subdomain).(domain)_
 
+    See: https://github.com/cgstudiomap/cgstudiomap/issues/759
+    See: https://github.com/cgstudiomap/cgstudiomap/issues/766
     :param int session_id: id of a session.
                            see: https://en.wikipedia.org/wiki/Session_(computer_science)  # noqa
     :return: name of the hostname
@@ -59,7 +62,16 @@ def get_host_from_session(session_id):
     host = request.httprequest.referrer
     try:
         host = host.split('/')[2]
-    except (IndexError, AttributeError):
+        if 'google' in host:
+            msg = (
+                'Special fallback for google.'
+                ' See https://github.com/cgstudiomap/cgstudiomap/issues/766'
+            )
+            raise AttributeError(msg)
+    except (IndexError, AttributeError) as err:
+        logger.warning(
+            'Referrer does not seems to reliable. Fallback to host. Error: %s', err
+        )
         host = request.httprequest.host
 
     # excluded the subdomain from the hostname to ease the maintains.
