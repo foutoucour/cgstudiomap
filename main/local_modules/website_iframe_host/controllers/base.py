@@ -82,11 +82,12 @@ def get_host_from_session(session_id):
                 'referrer': referrer,
                 'request_host': request_host,
                 'host': host,
+                'iframe_host': str(iframe_host),
                 'iframe_host.host': iframe_host.host
             }
         )
     )
-    return host
+    return iframe_host
 
 
 def get_iframe_host():

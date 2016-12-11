@@ -58,11 +58,11 @@ class TestGetHostFromSessions(common.TransactionCase):
                 mock_request.httprequest.referrer = referrer
                 ret = self.func(time.time())
                 self.assertEqual(
-                    self.host.host, ret,
+                    self.host.host, ret.host,
                     msg=(
                         'The hostname was not extracted as expected from referrer {}: '
                         'expected: {}, returned {}'.format(
-                            referrer, self.host.host, ret
+                            referrer, self.host.host, ret.host
                         )
                     )
                 )
@@ -76,24 +76,26 @@ class TestGetHostFromSessions(common.TransactionCase):
                 mock_request.httprequest.host = hostname
                 ret = self.func(time.time())
                 self.assertEqual(
-                    self.host.host, ret,
+                    self.host.host, ret.host,
                     msg=(
                         'The hostname was not extracted as expected from host {}: '
                         'expected: {}, returned {}'.format(
-                            hostname, self.host.host, ret
+                            hostname, self.host.host, ret.host
                         )
                     )
                 )
 
     def test_whenCalledSeveralTimesWithDifferentSessionID_requestValuesAreUsed(self):
-        """Test that the cache does not work if the session id change"""
+        """Test that the cache does not work if the session id change.
+        """
         with self.mock_patch_request() as mock_request:
             mock_request.env = self.env
             referrer = self.referrers[0]
             mock_request.httprequest.referrer = referrer
             ret = self.func(time.time())
             self.assertEqual(
-                self.host.host, ret, msg='Return should be {}, not {}'.format(self.host.host, ret)
+                self.host.host, ret.host,
+                msg='Return should be {}, not {}'.format(self.host.host, ret.host)
             )
             referrer = 'http://example.com'
             expected = 'example.com'
@@ -104,7 +106,8 @@ class TestGetHostFromSessions(common.TransactionCase):
             mock_request.httprequest.referrer = referrer
             ret = self.func(time.time())
             self.assertEqual(
-                host_example.host, ret, msg='Return should be {}, not {}'.format(expected, ret)
+                host_example.host, ret.host,
+                msg='Return should be {}, not {}'.format(expected, ret)
             )
 
     def test_whenCalledSeveralTimesWithSameSessionID_cachedValueUsed(self):
@@ -117,14 +120,15 @@ class TestGetHostFromSessions(common.TransactionCase):
             mock_request.httprequest.referrer = referrer
             ret = self.func(session_id)
             self.assertEqual(
-                self.host.host, ret, msg='Return should be {}, not {}'.format(self.host.host, ret)
+                self.host.host, ret.host,
+                msg='Return should be {}, not {}'.format(self.host.host, ret.host)
             )
             referrer = 'http://example.com'
             mock_request.httprequest.referrer = referrer
             ret = self.func(session_id)
             self.assertEqual(
-                self.host.host, ret,
-                msg='Return should be {}, not {}'.format(self.host.host, ret)
+                self.host.host, ret.host,
+                msg='Return should be {}, not {}'.format(self.host.host, ret.host)
             )
 
     def test_whenUnknownReferrer_fallbackToCgstudiomap(self):
@@ -150,6 +154,24 @@ class TestGetHostFromSessions(common.TransactionCase):
                 mock_request.httprequest.referrer = referrer
                 ret = self.func(time.time())
                 self.assertEqual(
-                    self.host.host, ret,
-                    msg='Return should be {}, not {}'.format(self.host.host, ret)
+                    self.host.host, ret.host,
+                    msg='Return should be {}, not {}'.format(self.host.host, ret.host)
+                )
+
+    def test_whenReferrerIsNotCgstudiomapButExists_returnIframeHostOfTheOtherHost(self):
+        """Test that we can have different iframe.host than cgstudiomap."""
+        with self.mock_patch_request() as mock_request:
+            mock_request.env = self.env
+            referrer = 'http://example.com'
+            expected = 'example.com'
+
+            host_example = self.website_iframe_host_pool.create(
+                {'host': expected, 'search_domain': []}
             )
+            mock_request.httprequest.referrer = referrer
+            ret = self.func(time.time())
+            self.assertEqual(
+                host_example.host, ret.host,
+                msg='Return should be {}, not {}'.format(expected, ret)
+            )
+            self.assertNotEqual(self.host.host, ret.host)
