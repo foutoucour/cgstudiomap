@@ -19,19 +19,6 @@ class IframeHostError(FrontendBaseError):
         super(IframeHostError, self).__init__(message)
 
 
-class NotAuthorizedHostFrontendBaseError(FrontendBaseError):
-    """Exception that should be raised if the host name is not authorized to
-    display the iframe.
-    """
-
-    def __init__(self, host_name):
-        super(NotAuthorizedHostFrontendBaseError, self).__init__(
-            'The host "{host_name}" is not authorized to display the iframe.'.format(
-                host_name=host_name
-            )
-        )
-
-
 class NotCompatibleSearchDomainFrontendBaseError(IframeHostError):
     """Exception that should be raised when the search domain from website.iframe.host
     is not compatible and cannot be turned into list/tuple.
