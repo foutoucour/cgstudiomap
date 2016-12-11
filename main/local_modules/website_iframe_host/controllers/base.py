@@ -1,6 +1,7 @@
 import logging
 import ast
 
+import simplejson
 from cachetools import cached, LRUCache
 
 from openerp.addons.frontend_base.controllers.base import Base, FrontendBaseError
@@ -48,23 +49,41 @@ def get_host_from_session(session_id):
     """Get the hostname for the session and cache it to keep the same session
     under the same host, even if the view is done through an iframe.
 
-    See: https://github.com/cgstudiomap/cgstudiomap/issues/759
+    Referrers look like _http(s)://(subdomain).(domain)/(route)_
+    Hosts look like _(subdomain).(domain)_
 
+    See: https://github.com/cgstudiomap/cgstudiomap/issues/759
+    See: https://github.com/cgstudiomap/cgstudiomap/issues/766
     :param int session_id: id of a session.
                            see: https://en.wikipedia.org/wiki/Session_(computer_science)  # noqa
     :return: name of the hostname
     :rtype: str
     """
     logger.debug('session_id: %s', session_id)
-    host = request.httprequest.referrer
+    referrer = request.httprequest.referrer
+    request_host = request.httprequest.host
     try:
-        host = host.split('/')[2]
-    except (IndexError, AttributeError):
-        host = request.httprequest.host
+        host = referrer.split('/')[2]
+        if 'google' in host:
+            msg = (
+                'Special fallback for google.'
+                ' See https://github.com/cgstudiomap/cgstudiomap/issues/766'
+            )
+            raise AttributeError(msg)
+    except (IndexError, AttributeError) as err:
+        logger.warning(
+            'Referrer does not seems to reliable. Fallback to host. Error: %s', err
+        )
+        host = request_host
 
     # excluded the subdomain from the hostname to ease the maintains.
     # see https://github.com/cgstudiomap/cgstudiomap/issues/730
     host = '.'.join(host.split('.')[-2:])
+    logger.info(
+        simplejson.dumps(
+            {'referrer': referrer, 'request_host': request_host, 'host': host}
+        )
+    )
     return host
 
 

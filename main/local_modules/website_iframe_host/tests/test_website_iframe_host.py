@@ -111,3 +111,24 @@ class TestGetHostFromSessions(unittest.TestCase):
         self.assertEqual(
             self.host, ret, msg='Return should be {}, not {}'.format(self.host, ret)
         )
+
+    @mock_patch_request()
+    def test_whenGoogleIsReferrer_cgstudiomapIsReturned(self, mock_request):
+        """We want to allow google to be the referrer for some call.
+
+        For some reason, we have 500 pages because of google is referrer.
+        We do not really have figured out when the case appears but for now we
+        set up a fallback for the case so the 500 disappear.
+
+        See: https://github.com/cgstudiomap/cgstudiomap/issues/766
+        """
+        google_referrers = (
+            'http://www.google.ca', 'https://www.google.de'
+        )
+        mock_request.httprequest.host = self.host
+        for referrer in google_referrers:
+            mock_request.httprequest.referrer = referrer
+            ret = self.func(time.time())
+            self.assertEqual(
+                self.host, ret, msg='Return should be {}, not {}'.format(self.host, ret)
+        )
