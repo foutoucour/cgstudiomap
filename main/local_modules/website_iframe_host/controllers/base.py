@@ -1,6 +1,7 @@
 import logging
 import ast
 
+import simplejson
 from cachetools import cached, LRUCache
 
 from openerp.addons.frontend_base.controllers.base import Base, FrontendBaseError
@@ -59,9 +60,10 @@ def get_host_from_session(session_id):
     :rtype: str
     """
     logger.debug('session_id: %s', session_id)
-    host = request.httprequest.referrer
+    referrer = request.httprequest.referrer
+    request_host = request.httprequest.host
     try:
-        host = host.split('/')[2]
+        host = referrer.split('/')[2]
         if 'google' in host:
             msg = (
                 'Special fallback for google.'
@@ -72,11 +74,16 @@ def get_host_from_session(session_id):
         logger.warning(
             'Referrer does not seems to reliable. Fallback to host. Error: %s', err
         )
-        host = request.httprequest.host
+        host = request_host
 
     # excluded the subdomain from the hostname to ease the maintains.
     # see https://github.com/cgstudiomap/cgstudiomap/issues/730
     host = '.'.join(host.split('.')[-2:])
+    logger.info(
+        simplejson.dumps(
+            {'referrer': referrer, 'request_host': request_host, 'host': host}
+        )
+    )
     return host
 
 
