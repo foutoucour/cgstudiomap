@@ -46,42 +46,57 @@ class NotCompatibleSearchDomainFrontendBaseError(IframeHostError):
 
 @cached(cache)
 def get_host_from_session(session_id):
-    """Get the hostname for the session and cache it to keep the same session
-    under the same host, even if the view is done through an iframe.
+    """Get the website.iframe.host related to the hostname/referrer
+    for the session and cache it to keep the same session under the same host,
+     even if the view is done through an iframe.
 
     Referrers look like _http(s)://(subdomain).(domain)/(route)_
     Hosts look like _(subdomain).(domain)_
 
     See: https://github.com/cgstudiomap/cgstudiomap/issues/759
     See: https://github.com/cgstudiomap/cgstudiomap/issues/766
+
     :param int session_id: id of a session.
                            see: https://en.wikipedia.org/wiki/Session_(computer_science)  # noqa
     :return: name of the hostname
     :rtype: str
     """
+    # excluded the subdomain from the hostname to ease the maintains.
+    # see https://github.com/cgstudiomap/cgstudiomap/issues/730
+    exclude_subdomain = lambda host: '.'.join(host.split('.')[-2:])
+    website_iframe_host_pool = request.env['website.iframe.host']
+    get_website_iframe_host = lambda host_name: website_iframe_host_pool.search(
+        [('host', '=', host_name)], limit=1
+    )
     logger.debug('session_id: %s', session_id)
     referrer = request.httprequest.referrer
     request_host = request.httprequest.host
     try:
-        host = referrer.split('/')[2]
-        if 'google' in host:
-            msg = (
-                'Special fallback for google.'
-                ' See https://github.com/cgstudiomap/cgstudiomap/issues/766'
+        host = exclude_subdomain(referrer.split('/')[2])
+        iframe_host = get_website_iframe_host(host)
+
+        if iframe_host == website_iframe_host_pool:
+            raise AttributeError(
+                'The referrer "{host}" is not a special case of iframe. '
+                'Fallback to host.'.format(host=referrer)
             )
-            raise AttributeError(msg)
+
     except (IndexError, AttributeError) as err:
         logger.warning(
             'Referrer does not seems to reliable. Fallback to host. Error: %s', err
         )
-        host = request_host
+        host = exclude_subdomain(request_host)
+        iframe_host = get_website_iframe_host(host)
 
-    # excluded the subdomain from the hostname to ease the maintains.
-    # see https://github.com/cgstudiomap/cgstudiomap/issues/730
-    host = '.'.join(host.split('.')[-2:])
+    logger.info('iframe_host: %s', iframe_host)
     logger.info(
         simplejson.dumps(
-            {'referrer': referrer, 'request_host': request_host, 'host': host}
+            {
+                'referrer': referrer,
+                'request_host': request_host,
+                'host': host,
+                'iframe_host.host': iframe_host.host
+            }
         )
     )
     return host
@@ -92,17 +107,8 @@ def get_iframe_host():
 
     :rtype: Record
     """
-    host_name = get_host_from_session(request.session_id)
-    logger.debug('host_name: %s', host_name)
-    website_iframe_host_pool = request.env['website.iframe.host']
-    iframe_host = website_iframe_host_pool.search(
-        [('host', '=', host_name)], limit=1
-    )
-    if not iframe_host:
-        raise NotAuthorizedHostFrontendBaseError(host_name)
-
-    logger.debug('get_iframe_host: %s', iframe_host)
-    return iframe_host
+    # call to allow the cache to be tested against the session id.
+    return get_host_from_session(request.session_id)
 
 
 def is_website_light_hosting():
