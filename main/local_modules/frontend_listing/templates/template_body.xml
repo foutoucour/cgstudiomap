@@ -33,7 +33,24 @@
             </div>
         </template>
 
-		
+	<!--Requirements:-->
+	<!--* url-->
+	<template id="frontend_listing.search" name="Listing: search">
+		<form t-att-action="keep(url, search=0, company_status=company_status)" method="get" t-att-class="search_class">
+			<div class="input-group navSearch">
+				<input type="text"
+				name="search"
+				class="search-query form-control"
+				placeholder="Search..."
+				t-att-value="search"/>
+				<input type="hidden" name='company_status' t-att-value='company_status'/>
+				<span class="input-group-btn">
+					<a class="btn btn-lg a-submit"><span class="fontCGSMicons">search</span></a>
+				</span>
+			</div>
+		</form>
+	</template>
+	
         <!--Template about the directory footer of the website-->
         <template id="frontend_listing.footer_base" name="Listing: footer">
 				<div class="container">
@@ -132,9 +149,19 @@
 					<t t-call="frontend_listing.force_cache_reset_button"/>
                     <div class="container navDirectory">
                         <div class="row">
-                            <div class="col-xs-12 col-sm-10">
+                            <div class="col-xs-12 col-sm-12">				<!-- CLEAN TO DO -->
 
-
+				<div class="row hidden">				<!-- CLEAN TO DO -->
+					<div class="col-sm-8">
+						<t t-call="frontend_listing.search"/>
+					</div>
+					<div class="col-sm-3 col-sm-offset-1 navBtnColor">
+						<a class="btn btn-cgsm-add center-block"
+						href="/directory/company/create"
+						role="button">ADD Studio <span class="fontCGSMicons">upload</span>
+						</a>
+					</div>
+				</div>
                                 <div class="row">
                                     <div class="col-sm-12 navBgcolor">
                                         <t t-call="frontend_listing.filters"/>
@@ -143,8 +170,8 @@
                                 </div> 
                             </div>
 
-                            <div class="col-sm-2 hidden-xs">
-                                <div class="stats stats-resume fontCGSM">
+                            <div class="col-sm-2 hidden-xs hidden">			<!-- CLEAN TO DO -->
+                                <div class="stats stats-resume fontCGSM hidden">	<!-- CLEAN TO DO -->
                                     <t t-set="nbr" t-value="nbr_companies"/>
                                     <t t-call="frontend_base.company_counter" />
                                 </div>
