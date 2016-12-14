@@ -60,7 +60,7 @@ class Base(Website):
             'latest_created': partner_pool.latest_created_companies_domain,
         }
 
-        search_domain = search_domains[company_status]
+        search_domain = search_domains.get(company_status, search_domains['open'])
         if search:
             search_domain.search.extend(partner_pool.search_domain(search))
 
