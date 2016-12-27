@@ -69,7 +69,7 @@ def get_host_from_session(session_id):
             )
 
     except (IndexError, AttributeError) as err:
-        logger.warning(
+        logger.info(
             'Referrer does not seems to reliable. Fallback to host. Error: %s', err
         )
         host = exclude_subdomain(request_host)
