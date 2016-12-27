@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 import logging
-
 import simplejson
 from datadog import statsd
 from openerp.addons.web import http
 from openerp.addons.website.controllers.main import Website
-from openerp.addons.website.models.website import hashlib
 
 from openerp.http import request, werkzeug
 
@@ -38,31 +36,9 @@ class QueryURL(object):
         return path
 
 
-def small_image_url(record, field):
-    """Returns a local url that points to the image field of a
-    given browse record.
-
-    :param object record: Record the image is linked to.
-    :param str field: name of the field the image is in.
-
-    :return: str, url of the image.
-    """
-    if not record.small_image_url:
-        _logger.debug('No small image url for %s', record.id)
-        model = record._name
-        sudo_record = record.sudo()
-        id_ = '%s_%s' % (
-            record.id,
-            hashlib.sha1(
-                sudo_record.write_date or sudo_record.create_date or ''
-            ).hexdigest()[0:7]
-        )
-        record.small_image_url = '/website/image/%s/%s/%s' % (
-        model, id_, field)
-        # else:
-        # _logger.debug('Great found small image url for %s!', record.id)
-
-    return record.small_image_url
+class FrontendBaseError(Exception):
+    """Base exception for the module."""
+    pass
 
 
 class Base(Website):
@@ -72,21 +48,23 @@ class Base(Website):
         """get the domain to use for the given parameters.
 
         :param str search: search to filter with
-        :param str status: main status of the companies to filter out.
-        :return: domain lise dict.
+        :param str company_status: main status of the companies to filter out.
+        :rtype: SearchDomain instance
         """
         partner_pool = request.env['res.partner']
-        domains = {
+        search_domains = {
             'active': partner_pool.active_companies_domain,
             'open': partner_pool.open_companies_domain,
             'closed': partner_pool.closed_companies_domain,
+            'latest_updated': partner_pool.latest_updated_companies_domain,
+            'latest_created': partner_pool.latest_created_companies_domain,
         }
 
-        domain = domains[company_status]
+        search_domain = search_domains[company_status]
         if search:
-            domain.extend(partner_pool.search_domain(search))
-        _logger.debug('Domain: %s', domain)
-        return domain
+            search_domain.search.extend(partner_pool.search_domain(search))
+
+        return search_domain
 
     @statsd.timed('odoo.frontend.ajax.get_user_count_json',
                   tags=['frontend', 'frontend:base', 'ajax'])
@@ -109,14 +87,16 @@ class Base(Website):
         """Return a json with the count of companies for the search criteria.
 
         :param str search: search to filter with
-        :param str status: main status of the companies to filter out.
+        :param str company_status: main status of the companies to filter out.
         :return: json dumps
         """
         partner_pool = request.env['res.partner']
+        search_domain = self.get_company_domain(search, company_status)
         return simplejson.dumps(
             {
-                'counter': partner_pool.search_count(
-                    self.get_company_domain(search, company_status)
+                'counter': (
+                    search_domain.limit and search_domain.limit or
+                    partner_pool.search_count(search_domain.search)
                 )
             }
         )

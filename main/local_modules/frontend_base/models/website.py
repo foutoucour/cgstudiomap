@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Suite of methods common operation on res.users."""
+"""Definition for website constants."""
 import logging
 
-from openerp import models
+from openerp import models, fields
 
 _logger = logging.getLogger(__name__)
 

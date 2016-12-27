@@ -47,6 +47,7 @@ Contributors
         'res_partner_social_networks',
         'res_partner_url_validation',
         'res_partner_moderator_supervision',
+        'res_partner_count',
         # partner-contact
         'partner_relations',
     ],

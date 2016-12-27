@@ -579,7 +579,7 @@ iframe {
 		padding-bottom: 0.5em;
 		height: 240px;
 	}
-	img {
+	img, .logo-thumb {
 		@media (max-width: $screen-xs-max) {
 			margin: 0 auto!important;
 			text-align: center!important;

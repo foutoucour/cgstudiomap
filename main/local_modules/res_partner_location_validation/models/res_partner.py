@@ -208,6 +208,7 @@ class ResPartner(models.Model):
         # we then takes the sublocality value to avoid to have a None value.
         city = (
             geocode.city
+            or geocode.postal_town
             or geocode.sublocality
             or geocode.administrative_area_level_1
         )

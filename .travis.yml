@@ -3,6 +3,9 @@ sudo: required
 services:
   - docker
 
+notifications:
+  slack: cgstudiomap:M6UODn2Bz8HspWEx8UB25Kyb
+
 env:
     global:
         - DOCKER_VERSION=1.11.1-0~trusty

@@ -21,6 +21,5 @@
 from . import (
     test_res_partner_save,
     test_res_partner_edition,
-    # test_res_partner_get_studios,
     test_res_partner_location,
 )

@@ -69,7 +69,7 @@
             <field name="quantity">5</field>
             <field name="account_id" ref="a_sale"/>
         </record>
-        <workflow action="invoice_open" model="account.invoice" ref="invoice_1"/>
+        <!--<workflow action="invoice_open" model="account.invoice" ref="invoice_1"/>-->
         
         <record id="invoice_2" model="account.invoice">
             <field name="currency_id" ref="base.EUR"/>
@@ -95,7 +95,7 @@
             <field name="quantity">20</field>
             <field name="account_id" ref="a_sale"/>
         </record>
-        <workflow action="invoice_open" model="account.invoice" ref="invoice_2"/>
+        <!--<workflow action="invoice_open" model="account.invoice" ref="invoice_2"/>-->
         
         <record id="invoice_3" model="account.invoice">
             <field name="currency_id" ref="base.EUR"/>
@@ -121,7 +121,7 @@
             <field name="quantity">5</field>
             <field name="account_id" ref="a_sale"/>
         </record>
-        <workflow action="invoice_open" model="account.invoice" ref="invoice_3"/>
+        <!--<workflow action="invoice_open" model="account.invoice" ref="invoice_3"/>-->
 
         <record id="invoice_4" model="account.invoice">
             <field name="currency_id" ref="base.EUR"/>
@@ -147,7 +147,7 @@
             <field name="quantity">5</field>
             <field name="account_id" ref="a_sale"/>
         </record>
-        <workflow action="invoice_open" model="account.invoice" ref="invoice_4"/>
+        <!--<workflow action="invoice_open" model="account.invoice" ref="invoice_4"/>-->
 
         <record id="invoice_5" model="account.invoice">
             <field name="currency_id" ref="base.EUR"/>
@@ -173,6 +173,6 @@
             <field name="quantity">5</field>
             <field name="account_id" ref="a_sale"/>
         </record>
-        <workflow action="invoice_open" model="account.invoice" ref="invoice_5"/>
+        <!--<workflow action="invoice_open" model="account.invoice" ref="invoice_5"/>-->
     </data>
 </openerp>

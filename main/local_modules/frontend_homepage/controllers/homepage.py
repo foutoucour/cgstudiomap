@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+from copy import deepcopy
 from collections import defaultdict
 
 from datadog import statsd
@@ -41,18 +42,16 @@ class Homepage(Website):
         def get_partners_by_country(countries):
             """Method to be memorized that return the number of partner in a country.
 
-            :param instance country: record of a country
-            :return: dict {country instance: count of partners in the country}
-
+            :param instance countries: record of a country
+            :return: country instance: count of partners in the country
+            :rtype: dict
             """
             by_countries_ = defaultdict(int)
 
+            search_domain = deepcopy(partner_pool.open_companies_domain)
             for country_ in countries:
-                # by_countries.update(get_partners_by_country(country_))
                 number_partners = partner_pool.search_count(
-                    partner_pool.open_companies_domain + [
-                        ('country_id', '=', country_.id)
-                    ],
+                    search_domain.search + [('country_id', '=', country_.id)]
                 )
                 if number_partners:
                     by_countries_[country_] = number_partners

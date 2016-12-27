@@ -87,33 +87,34 @@
 
         <template id="frontend_listing.filters" name="Listing: Filters">
             <div class="filters">
-                <form t-att-action="keep(url, search=search, company_status=company_status)" method="get" >
-                    <div class="input-group navFilters ">
-                        <input type="hidden" name='company_status' value="active"/>
-                        <input type="hidden" name='search' t-att-value="search"/>
-                        <input type='submit'
-                               t-att-class="'a-submit' if (company_status != 'active') else 'disabled' "
-                               value="all"/>
-                    </div>
-                </form>
-                
                 <form t-att-action="keep(url, search=search, company_status='open')" method="get" >
                     <div class="input-group navFilters ">
                         <input type="hidden" name='company_status' value="open"/>
                         <input type="hidden" name='search' t-att-value="search"/>
                         <input type='submit'
                                t-att-class="'a-submit' if (company_status != 'open') else 'disabled' "
-                               value="open"/>
+                               value="all"/>
                     </div>
                 </form>
 
                 <form t-att-action="keep(url, search=search, company_status=company_status)" method="get" >
                     <div class="input-group navFilters ">
-                        <input type="hidden" name='company_status' value="closed"/>
+                        <input type="hidden" name='company_status' value="latest_created"/>
                         <input type="hidden" name='search' t-att-value="search"/>
                         <input type='submit'
-                               t-att-class="'a-submit' if (company_status != 'closed') else 'disabled' "
-                               value="closed"/>
+                               title="See the 20 newly added studios."
+                               t-att-class="'a-submit' if (company_status != 'latest_created') else 'disabled' "
+                               value="latest"/>
+                    </div>
+                </form>
+                <form t-att-action="keep(url, search=search, company_status=company_status)" method="get" >
+                    <div class="input-group navFilters ">
+                        <input type="hidden" name='company_status' value="latest_updated"/>
+                        <input type="hidden" name='search' t-att-value="search"/>
+                        <input type='submit'
+                               title="Magnify on the 20 most recently updated studios."
+                               t-att-class="'a-submit' if (company_status != 'latest_updated') else 'disabled' "
+                               value="trending"/>
                     </div>
                 </form>
             </div>
@@ -222,7 +223,7 @@
             <t t-set="title">List</t>
             <t t-call="frontend_listing.base">
                 
-				<div class="jumbotron fontCGSM">
+				<div class="jumbotron">
 					<div id="toolbar"></div>
                     
                     <t t-call="frontend_listing.loading"/>

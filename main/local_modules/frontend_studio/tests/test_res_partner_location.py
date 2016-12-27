@@ -6,12 +6,12 @@ from openerp.tests import common
 _logger = logging.getLogger(__name__)
 
 
-class TestResPartnerSave(common.TransactionCase):
-    """Test Suite for the Studio controller."""
+class TestResPartnerLocation(common.TransactionCase):
+    """Test Suite for the methods that set location for the partner."""
 
     def setUp(self):
         """Build the partners for each tests."""
-        super(TestResPartnerSave, self).setUp()
+        super(TestResPartnerLocation, self).setUp()
 
         self.partner_pool = self.env['res.partner']
         # to avoid to have google checks to be triggered.

@@ -1,7 +1,7 @@
 main/.*
 #main/bin
 main/develop-eggs
-main/eggs
+#main/eggs
 #main/etc
 #main/parts
 
@@ -9,6 +9,7 @@ __pycache__/
 *.py[cod]
 *.pyc
 *.css.map
+.sass-cache
 
 pip-log.txt
 pip-delete-this-directory.txt

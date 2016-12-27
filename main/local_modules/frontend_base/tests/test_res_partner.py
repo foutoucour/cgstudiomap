@@ -53,59 +53,35 @@ class TestResPartner(common.TransactionCase):
 
     def test_location_return(self):
         """Check the return of the method with city, state and country."""
-        partner = self.partner_pool.create({
-            'name': 'tpartner',
-            'street': '8017 Avenue Chateaubriand',
-            'zip': 'H2R 2M7',
-            'city': 'Montreal',
-            'state_id': 1,
-            'country_id': self.canada.id,
-        })
         self.assertEqual(
-            partner.location,
-            'Montreal, Australian Capital Territory, Canada'
+            'Montréal, Québec, Canada',
+            self.partner_pool.get_location(
+                city='Montréal', state='Québec', country='Canada'
+            )
         )
 
     def test_location_returnNoCity(self):
         """Check the return of the method with state, country and no city."""
-        partner = self.partner_pool.create({
-            'name': 'tpartner',
-            'street': '8017 Avenue Chateaubriand',
-            'zip': 'H2R 2M7',
-            'state_id': 1,
-            'country_id': self.canada.id,
-        })
         self.assertEqual(
-            partner.location, 'Australian Capital Territory, Canada'
+            'Québec, Canada',
+            self.partner_pool.get_location(state='Québec', country='Canada')
         )
 
     def test_location_returnNoState(self):
         """Check the return of the method with city, country and no state."""
-        partner = self.partner_pool.create({
-            'name': 'tpartner',
-            'street': '8017 Avenue Chateaubriand',
-            'zip': 'H2R 2M7',
-            'city': 'Montreal',
-            'country_id': self.canada.id,
-        })
         self.assertEqual(
-            partner.location, 'Montreal, Canada'
+            'Montréal, Canada',
+            self.partner_pool.get_location(city='Montréal', country='Canada')
         )
 
     def test_location_returnNoCountry(self):
         """Check the return of the method with city, state and no country."""
-        partner = self.partner_pool.create({
-            'name': 'tpartner',
-            'street': '8017 Avenue Chateaubriand',
-            'zip': 'H2R 2M7',
-            'city': 'Montreal',
-            'state_id': 1,
-        })
         self.assertEqual(
-            partner.location, 'Montreal, Australian Capital Territory'
+            'Montréal, Québec',
+            self.partner_pool.get_location(city='Montréal', state='Québec')
         )
 
-    def test_infoWindow_return(self):
+    def test_infoWindowDetails_return(self):
         """Check the template the method returns."""
         partner = self.partner_pool.create({
             'name': 'tpartner',
@@ -127,10 +103,28 @@ class TestResPartner(common.TransactionCase):
             '<a itemprop="name" href="/directory?company_status=open&search=Animation">'
             '<span class="label label-info">Animation</span>'
             '</a> '
-            '<a itemprop="name" href="/directory?company_status=open&search=Broadcast Media">'
-            '<span class="label label-info">Broadcast Media</span></a>'
+            '<a itemprop="name" href="/directory?company_status=open&search=Advertising">'
+            '<span class="label label-info">Advertising</span></a>'
             '</div>'
             '<div id="map_info_footer"><a href="{0.partner_url}">More ...</a></div></div>'.format(
                 partner)
         )
-        self.assertEqual(partner.info_window(), res)
+        self.assertEqual(
+            partner.info_window_details(
+                partner.id,
+                partner.name,
+                [i.name for i in partner.industry_ids],
+                'open',
+                partner.city,
+                partner.state_id.name,
+                partner.country_id.name
+            ),
+            res
+        )
+
+    def test_linkToStudioPage_returnValue(self):
+        """check the value returned by the method link_to_studio_page."""
+        self.assertEqual(
+            '<a href="http://www.example.com">tname</a>',
+            self.partner_pool.link_to_studio_page('http://www.example.com', 'tname')
+        )

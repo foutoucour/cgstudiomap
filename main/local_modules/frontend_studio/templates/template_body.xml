@@ -42,12 +42,12 @@
         </template>
 		
         <template id="frontend_studio.closed_button" name="Studio: Closed mode">
-            <form t-att-action="'/directory/company/{}/flagged_closed'.format(partner.id)" method="get">
+            <form t-att-action="'/directory/company/{}/flagged_closed'.format(partner.id)" method="post">
                 <div class="input-group btn btn-edit outline ">
                     <input type='submit'
                            class="fontCGSMicons a-submit"
 						   id="studio-closed"
-						   title="Click to alert wrongs details of the company."
+						   title="Click to flag the company as out of business."
                            value="ban"/>
 					<label for="studio-closed">Close</label>
                 </div>

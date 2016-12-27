@@ -244,23 +244,29 @@ input {
 ///////////////////////////////// */
 
 .bootstrap-table {
-
+	margin-top: -20px;
+}
+.fixed-table-pagination {
+	margin-top: 16.9px;
 }
 .bootstrap-table .row {
     margin: 0;
     padding: 0;
 }
 .bootstrap-table .table:not(.table-condensed), .bootstrap-table .table:not(.table-condensed) > tbody > tr > th, .bootstrap-table .table:not(.table-condensed) > tfoot > tr > th, .bootstrap-table .table:not(.table-condensed) > thead > tr > td, .bootstrap-table .table:not(.table-condensed) > tbody > tr > td, .bootstrap-table .table:not(.table-condensed) > tfoot > tr > td {
-    padding: 4px !important;
+    padding: 0 !important;
 }
 
 thead {
+	font-family: 'Noto Sans', sans-serif !important;
     font-size: 1.2em;
-    font-family: 'cgsm-light';
+	letter-spacing: 0.15em;
+	padding: 2em;
+	color: #cbcacc;
 }
 
 tbody {
-    font-family: 'cgsm-thin';
+	font-family: 'Noto Sans', sans-serif !important;
     font-size: 1.033em;
     padding-left: 2em;
 }
@@ -279,17 +285,23 @@ tbody {
     white-space: nowrap;
     text-transform: uppercase;
 }
-
+/* TABLE col img */
 .fixed-table-container tbody td:nth-child(2) img {
     width: 40px;
     height: 40px;
 }
+
 .fixed-table-container tbody td{
 	vertical-align: middle !important;
 }
+
+/* TABLE col studio name */
 .fixed-table-container tbody td:nth-child(3) {
-    font-family: 'cgsm-regular';
-    font-size: 1.3em;
+    font-size: 1.05em;
+	font-weight: bold;
+}
+.fixed-table-container tbody td:nth-child(3) a{
+	padding: 0.65em;
 }
 .fixed-table-container tbody td:nth-child(3) a:hover{
     text-decoration: none;
@@ -300,13 +312,18 @@ tbody {
     text-decoration: none;
 	background-color: transparent;
 }
+
+/* TABLE col city COUNTRY */
 .fixed-table-container tbody td:nth-child(6),
-.fixed-table-container tbody td:nth-child(8){
-	font-family: 'cgsm-regular' !important;
+.fixed-table-container tbody td:nth-child(7){
 	font-kerning: normal;
 }
-.fixed-table-container tbody td:nth-child(8){
+.fixed-table-container tbody td:nth-child(6){
+	font-size: 0.88em
+}
+.fixed-table-container tbody td:nth-child(7){
 	text-transform: uppercase !important;
+	font-size: 1em
 }
 .fixed-table-container tbody tr:hover {
     background-color: #fff;
@@ -327,7 +344,7 @@ table {
 }
 
 .bootstrap-table h4 {
-    font-family: 'cgsm-regular';
+    font-family: 'Noto Sans', sans-serif !important;
     font-size: 1.2em;
 }
 
@@ -344,7 +361,6 @@ table {
 }
 
 .table>tbody>tr>td:nth-child(4) {
-    font-family: 'cgsm-regular';
     font-size: 1.11em;
     color: rgb(226, 176, 90);
     text-decoration: underline;
@@ -412,7 +428,7 @@ table {
 }
 .fixed-table-pagination .page-list,
 .fixed-table-pagination .pagination a{
-    font-family: 'cgsm-regular';
+    /*font-family: 'cgsm-regular';*/
 }
 .fixed-table-pagination div.pagination, .fixed-table-pagination .pagination-detail {
     margin-top: 0;
@@ -447,9 +463,8 @@ table {
     text-align: left !important;
 }
 .card-view {
-	font-size: 1.22em;
-	text-align: center;
-	margin: 0 auto;
+	font-size: 1.0em;
+	text-align: left;
 }
 .card-view a:hover,
 .card-view a:focus{
@@ -457,12 +472,24 @@ table {
 }
 
 .card-view img {
-	text-align: center;
-	margin: 0 auto;
+	text-align: left;
 	width: 80px;
 	height: 80px;
 }
-
+.table>tbody>tr>td>.card-view:nth-child(1),
+.table>tbody>tr>td>.card-view:nth-child(2){
+	float: left;
+	display: block;
+	padding: .5em;
+}
+.table>tbody>tr>td>.card-view:nth-child(5){
+	float: right !important;
+}
+.table>tbody>tr>td>.card-view:nth-child(7)>.value{
+	display: inline;
+	font-weight: bold;
+	text-transform: uppercase;
+}
 
 /*/////////////////////////////////
         INFO windows Studios
@@ -561,16 +588,9 @@ table {
 }
 
 
-
-
-
-
-
-
-
 .label {
     display: inline;
-	font-family: 'cgsm-regular';
+
     padding: .2em .6em .3em;
     font-size: 78%;
     font-weight: normal;

@@ -13,6 +13,7 @@ $color-grey-dark: rgb(76,76,76);
 
 body {
 	overflow-y: auto;
+	font-family: 'Noto Sans', sans-serif;
 }
 
 .fontCGSM {
@@ -380,7 +381,7 @@ body {
 	  height: 64px  !important;
 	  overflow: hidden  !important;
 	}
-	img, logo-thumb {
+	img, .logo-thumb {
 		@media (max-width: $screen-xs-max) {
 			margin: 0 auto!important;
 			text-align: center!important;

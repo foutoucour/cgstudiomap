@@ -15,6 +15,11 @@ class ResPartnerGetStudios(models.Model):
     from the location of the partner.
     """
     _inherit = 'res.partner'
+    visit_count = fields.Integer(
+        'Number of visit for this partner',
+        readonly=True,
+        help='Number increased each time the frontend  page of the studio is opened.'
+    )
 
     @api.model
     def get_studios_from_same_location(self):
@@ -35,7 +40,7 @@ class ResPartnerGetStudios(models.Model):
         # search return a recordset and we cannot do len() on it.
         partners = [
             partner for partner in self.search(
-                self.open_companies_domain +
+                self.open_companies_domain.search +
                 [
                     ('id', '!=', company.partner_id.id),
                     ('image', '!=', False),
