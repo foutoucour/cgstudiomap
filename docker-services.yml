@@ -14,10 +14,7 @@ services:
     ports:
       - "localhost:8069:8069"
       - "localhost:8072:8072"
-    environment:
-      SLACK_WEBHOOK_MODERATION: https://hooks.slack.com/services/t0gu8tqtw/b0nak7h5x/8c9i1llztffhszeykzaz8kks
     volumes:
       - ./main:/opt/cgstudiomap
-      - ./main/module_manager.sh:/opt/cgstudiomap/module_manager.sh
       - ./openerp_serverrc:/home/cgstudiomap/.openerp_serverrc
 

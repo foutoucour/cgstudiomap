@@ -3,15 +3,15 @@ services:
 
   pgsql:
     extends:
-      file: services.yml
+      file: docker-services.yml
       service: base_pgsql
 
   cgstudiomap:
     extends:
-      file: services.yml
+      file: docker-services.yml
       service: base_cgstudiomap
     depends_on:
       - pgsql
     links:
       - "pgsql:pgsql-server"
-    command: /opt/cgstudiomap/parts/odoo/openerp-server -c /opt/cgstudiomap/etc/odoo.cfg --workers=0
+    command: /opt/cgstudiomap/parts/odoo/openerp-server -c /opt/cgstudiomap/etc/odoo.cfg --unaccent
