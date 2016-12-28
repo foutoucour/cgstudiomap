@@ -1,0 +1,6 @@
+
+[VIES]
+suds
+
+[VIES-ALT]
+PySimpleSOAP

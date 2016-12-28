@@ -5,7 +5,7 @@ services:
     volumes:
       - ~/.containers/cgstudiomap-pgsql-9.4:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: cgstudiomap
+      POSTGRES_USER: odoo8dev
       POSTGRES_PASSWORD: cgstudiomap
 
   base_cgstudiomap:

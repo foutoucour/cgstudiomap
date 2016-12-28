@@ -17,4 +17,4 @@ services:
     volumes:
       - /home/cgstudiomap/.openerp_serverrc:/home/cgstudiomap/.openerp_serverrc
       - /home/cgstudiomap/odoo_server.cfg:/home/cgstudiomap/odoo_server.cfg
-    command: /opt/cgstudiomap/parts/odoo/openerp-server -c /home/cgstudiomap/odoo_server.cfg --unaccent
+    command: /opt/cgstudiomap/bin/start_odoo -c /home/cgstudiomap/odoo_server.cfg --unaccent

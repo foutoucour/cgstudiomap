@@ -1,0 +1,61 @@
+#!/home/foutoucour/virtualenvs/cgstudiomap/bin/python2
+
+import sys
+sys.path[0:0] = [
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/num2words-0.5.3-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/vatnumber-1.2-py2.7.egg',
+  '/home/foutoucour/virtualenvs/cgstudiomap/lib/python2.7/site-packages',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/pyPdf-1.13-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/geojson-1.3.1-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/pygeocoder-1.2.5-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/phonenumbers-7.1.1-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/Shapely-1.5.13-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/Django-1.8.6-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/PyChart-1.39-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/anybox.recipe.odoo-1.9.1-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/Babel-2.1.1-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/docutils-0.12-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/feedparser-5.2.1-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/gevent-1.0.2-py2.7-linux-x86_64.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/Jinja2-2.8-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/lxml-3.5.0-py2.7-linux-x86_64.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/Mako-1.0.3-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/mock-1.3.0-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/passlib-1.6.5-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/Pillow-3.0.0-py2.7-linux-x86_64.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/psutil-3.2.2-py2.7-linux-x86_64.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/psycogreen-1.0-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/psycopg2-2.6.1-py2.7-linux-x86_64.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/Python_Chart-1.39-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/pydot-1.0.28-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/pyparsing-1.5.7-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/pyserial-2.7-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/python_dateutil-2.4.2-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/python_ldap-2.4.22-py2.7-linux-x86_64.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/python_openid-2.2.5-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/pytz-2015.7-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/pyusb-1.0.0b2-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/PyYAML-3.11-py2.7-linux-x86_64.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/qrcode-5.1-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/reportlab-3.2.0-py2.7-linux-x86_64.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/vobject-0.6.6-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/Werkzeug-0.11.2-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/xlwt-1.0.0-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/parts/odoo',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/python_stdnum-1.2-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/argparse-1.4.0-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/funcsigs-0.4-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/pbr-1.8.1-py2.7.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/MarkupSafe-0.23-py2.7-linux-x86_64.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/greenlet-0.4.9-py2.7-linux-x86_64.egg',
+  '/home/foutoucour/projects/cgstudiomap/main/eggs/zc.recipe.egg-2.0.3-py2.7.egg',
+  ]
+
+
+from anybox.recipe.odoo.runtime.session import Session
+session = Session('/home/foutoucour/projects/cgstudiomap/main/etc/odoo.cfg', '/home/foutoucour/projects/cgstudiomap/main')
+
+import anybox.recipe.odoo.runtime.upgrade
+
+if __name__ == '__main__':
+    sys.exit(anybox.recipe.odoo.runtime.upgrade.upgrade('/home/foutoucour/projects/cgstudiomap/main/upgrade.py', 'run', '/home/foutoucour/projects/cgstudiomap/main/etc/odoo.cfg', '/home/foutoucour/projects/cgstudiomap/main'))
