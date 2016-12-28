@@ -14,4 +14,7 @@ services:
       - pgsql
     links:
       - "pgsql:pgsql-server"
-    command: /opt/cgstudiomap/parts/odoo/openerp-server -c /opt/cgstudiomap/etc/odoo.cfg --unaccent
+    volumes:
+      - /home/cgstudiomap/.openerp_serverrc:/home/cgstudiomap/.openerp_serverrc
+      - /home/cgstudiomap/odoo_server.cfg:/home/cgstudiomap/odoo_server.cfg
+    command: /opt/cgstudiomap/parts/odoo/openerp-server -c /home/cgstudiomap/odoo_server.cfg --unaccent

@@ -16,5 +16,4 @@ services:
       - "localhost:8072:8072"
     volumes:
       - ./main:/opt/cgstudiomap
-      - ./openerp_serverrc:/home/cgstudiomap/.openerp_serverrc
 

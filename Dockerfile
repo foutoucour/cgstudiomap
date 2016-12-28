@@ -20,14 +20,7 @@ RUN apt-get update && \
 RUN rm /usr/bin/python && \
     ln -s /usr/bin/python2.7 /usr/bin/python
 
-ADD requirements_pip.txt /
-ADD ./main/parts/odoo/requirements.txt /
-
 RUN pip install pip --upgrade
-# the second round of pips needs to happen after the upgrade of pip.
-RUN pip install zc.buildout && \
-    pip install -r requirements.txt --no-cache-dir && \
-    pip install -r requirements_pip.txt --no-cache-dir
 
 RUN useradd -m -s /bin/bash cgstudiomap
 EXPOSE 8069 8072
