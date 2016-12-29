@@ -13,3 +13,4 @@ class Website(models.Model):
     directory_menu = '/directory'
     shop_menu = '/shop/'
     about_menu = '/contactus/'
+    contribute = 'https://github.com/cgstudiomap/cgstudiomap'
