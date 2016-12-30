@@ -105,29 +105,6 @@
             </t> <!-- closing html -->
         </template>
 
-        <template id="frontend_studio.search_zone" name="Studio: Search Zone">
-        <div class="container navDirectory">
-            <div class="row">
-                <div class="col-xs-12 col-sm-9">
-                    <form t-att-action="keep('/directory', company_status='open')" method="get" t-att-class="search_class">
-                        <div class="input-group navSearch">
-                            <input type="text" name="search" class="search-query form-control" placeholder="Search..." t-att-value="search" />
-                            <span class="input-group-btn">
-                                <a class="btn btn-lg a-submit"><span class="fontCGSMicons">search</span></a>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-xs-12 col-sm-3 navBtnColor">
-                    <a class="btn btn-cgsm-add center-block"
-                       href="/directory/company/create"
-                       role="button">ADD Studio <span class="fontCGSMicons">upload</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        </template>
-
         <template id="frontend_studio.map" name="Studio: Map">
             <div id="geochart_target"></div>
         </template>
@@ -302,8 +279,7 @@
 
 				<div class="jumbotron" id="container-map-studio">
 					
-					<t t-call="frontend_studio.search_zone"/>
-					
+
 					<div class="container studio-header fontCGSMlight">
 						<t t-call="frontend_studio.studio_header"/>
 						<t t-call="frontend_studio.map"/>
