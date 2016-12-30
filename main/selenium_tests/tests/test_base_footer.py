@@ -11,7 +11,7 @@ from . import constants
 import helpers
 
 
-class TestFooterHomePage(helpers.SeleniumChromeTestCase):
+class TestFooterHomePage(helpers.SeleniumTestCase):
     """Test suite for the footer of the homepage."""
 
     def test_whenDirectoryLinkIsClicked_thenThePageDirectoryIsOpened(self):
@@ -20,7 +20,7 @@ class TestFooterHomePage(helpers.SeleniumChromeTestCase):
         When he clicks the "directory" link
         Then the page directory (map) is opened
         """
-        self.assertTrue(False)
+        self.assertTrue(False, msg="test in WIP")
 
     def test_whenAboutLinkIsClicked_thenTheAboutPageIsOpened(self):
         """
@@ -28,7 +28,7 @@ class TestFooterHomePage(helpers.SeleniumChromeTestCase):
         When he clicks the "About" link
         Then the page About is opened
         """
-        self.assertTrue(False)
+        self.assertTrue(False, msg="test in WIP")
 
     def test_whenContributeLinkIsClicked_thenTheGithubPageIsOpened(self):
         """
@@ -36,7 +36,7 @@ class TestFooterHomePage(helpers.SeleniumChromeTestCase):
         When he clicks the "Contribute" link
         Then the github page of cgstudiomap is opened
         """
-        self.assertTrue(False)
+        self.assertTrue(False, msg="test in WIP")
 
     def test_whenTheTwitterIconIsClicked_thenOurTwitterPageIsOpened(self):
         """
@@ -44,7 +44,7 @@ class TestFooterHomePage(helpers.SeleniumChromeTestCase):
         When he clicks the "Twitter" icon
         Then the twitter page of cgstudiomap is opened
         """
-        self.assertTrue(False)
+        self.assertTrue(False, msg="test in WIP")
 
     def test_whenTheLinkedinIconIsClicked_thenOurLinkedinPageIsOpened(self):
         """
@@ -52,7 +52,7 @@ class TestFooterHomePage(helpers.SeleniumChromeTestCase):
         When he clicks the "Linkedin" icon
         Then the linkedin page of cgstudiomap is opened
         """
-        self.assertTrue(False)
+        self.assertTrue(False, msg="test in WIP")
 
     def test_whenTheGithubIconIsClicked_thenOurGithubPageIsOpened(self):
         """
@@ -60,4 +60,4 @@ class TestFooterHomePage(helpers.SeleniumChromeTestCase):
         When he clicks the "Github" icon
         Then the Github page of cgstudiomap is opened
         """
-        self.assertTrue(False)
+        self.assertTrue(False, msg="test in WIP")

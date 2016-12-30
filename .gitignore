@@ -10,6 +10,7 @@ __pycache__/
 *.pyc
 *.css.map
 .sass-cache
+.cache
 
 pip-log.txt
 pip-delete-this-directory.txt
