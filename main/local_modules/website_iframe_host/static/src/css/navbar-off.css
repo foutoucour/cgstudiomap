@@ -1,3 +1,12 @@
-.navbar {
-    background-color: red !important;
+.navbar div.navbar-collapse div.navbar-right, /*Hide the button to sign in, log in*/
+div.navbar-header span.navbar-left, /*Hide the icon to our homepage*/
+.navbar div.navbar-collapse ul.navbar-left /*Hide all the additional link that can be in the navbar*/
+{
+    display: none;
 }
+
+/*Remove the padding of the search form to align it with the rest of the website*/
+form.navbar-form {
+    padding-left: 0;
+}
+
