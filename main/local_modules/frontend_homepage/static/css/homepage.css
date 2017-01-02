@@ -57,3 +57,7 @@ b {
     vertical-align: baseline;
     border-radius: .25em;
 }
+
+#geochart_target path {
+	cursor: pointer !important;
+}
