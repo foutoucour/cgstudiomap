@@ -67,6 +67,7 @@
 .studio-header {
 	position: relative;
 	margin: 0 auto;
+	text-align: center;
 	padding: 0;
 	padding-top: 165px;
 }
@@ -77,7 +78,6 @@
 	z-index: 200;
 }
 .studio-header h2 {
-	font-family: 'cgsm-thin';
 	font-size: 3.99em;
 	margin: 0 0;
 	border-bottom: 0 solid #b05ae2;
@@ -85,7 +85,6 @@
 }
 
 .studio-header h4 {
-	font-family: 'cgsm-thin';
 	font-size: 2em;
 	color: #323133;
 }
@@ -120,7 +119,6 @@ h3  {
 	padding: 0 0;
 }
 .studio-details h3 {
-	font-family: 'cgsm-light';
 	font-weight: normal;
 	font-size: 2.99em;
 }
@@ -132,17 +130,14 @@ h3  {
 	display: inline-block;
 }
 .details-street {
-	font-family: 'cgsm-thin';
 	font-size: 1.66em;
 }
 .details-city {
-	font-family: 'cgsm-thin';
 	font-size: 1.66em;
 }
 .details-country,
 .details-country a,
 .details-country a:hover{
-	font-family: 'cgsm-light';
 	font-size: 1.24em;
 	color: #f2f2f2;
 	background-color: #5bc0de;;
@@ -155,7 +150,6 @@ h3  {
 }
 .details-web a,
 .details-web a:hover{
-	font-family: 'cgsm-regular';
 	font-size: 1.33em;
 	color: #e2b05a;
 	background-color: #f1f1f3;
@@ -164,12 +158,10 @@ h3  {
 }
 
 .details-phone {
-	font-family: 'cgsm-thin';
 	font-size: 1.2em;
 }
 .details-phone a,
 .details-phone a:hover{
-	font-family: 'cgsm-regular';
 	font-size: 1.22em;
 	color: #e2b05a;
 	background-color: #f1f1f3;
@@ -215,7 +207,6 @@ h3  {
 }
 .label {
 	display: inline-block;
-	font-family: 'cgsm-regular';
 	padding: .3em .8em .4em;
 	margin: 0.2em 0;
 	font-size: 85%;
@@ -232,7 +223,6 @@ h3  {
 
 
 .studios h4 {
-	font-family: 'cgsm-regular';
 	margin-top: 0;
 }
 
@@ -272,7 +262,6 @@ h3  {
 
 .navSearch .form-control,
 .navSearch .search-query {
-    font-family: 'cgsm-light';
     font-size: 2em;
     display: block;
     width: 100% !important;
@@ -308,11 +297,9 @@ h3  {
 	max-width: 100px;
 	display: inline !important;
 	height: 55px;
-	font-family: 'cgsm-thin';
 }
 
 .btn {
-	font-family: 'cgsm-regular';
 	border: 0 none;
 	font-weight: normal;
 	letter-spacing: 1px;
@@ -363,7 +350,6 @@ h3  {
 	color: #f1f1f3;
 }
 .btn-cgsm-add {
-    font-family: 'cgsm-regular';
     font-size: 1.66em;
 	height: 45px;
     line-height: normal;
@@ -424,7 +410,6 @@ input {
 ///////////////////////////////// */
 
 .col-logo .corner-ribbon {
-	font-family: 'cgsm-regular';
 	width: 128px;
 	background: #e43;
 	position: relative;
