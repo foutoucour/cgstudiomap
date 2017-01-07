@@ -36,7 +36,7 @@
                 </div>
             </form>-->
 			
-			<button type="button" class="btn btn-edit outline fontCGSMthin" data-toggle="modal" data-target="#myModal">
+			<button type="button" class="btn btn-edit outline" data-toggle="modal" data-target="#myModal">
 				<span class="fontCGSMicons">flag</span>Alert
 			</button>
         </template>
@@ -280,7 +280,7 @@
 				<div class="jumbotron" id="container-map-studio">
 					
 
-					<div class="container studio-header fontCGSMlight">
+					<div class="container studio-header">
 						<t t-call="frontend_studio.studio_header"/>
 						<t t-call="frontend_studio.map"/>
 					</div>
@@ -288,7 +288,7 @@
 				</div>
 				
 				<div id="studioDetails" class="bg-block">
-				<div class="container studio-details fontCGSM">
+				<div class="container studio-details">
 					<div class="row">
 						<div class="col-sm-10">
 							
