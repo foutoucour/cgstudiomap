@@ -172,14 +172,15 @@
                         <t t-call="frontend_studio.marqueePlus_placeholder"/>
                     </p>
                 </div>
-                <h4>Calls</h4>
+
                 <div class="form-group details-phone">
                     <t t-set="display">
                         <a t-att-href='"tel://{0}".format(partner.phone)'><t t-esc="partner.phone" /></a>
                     </t>
                     <t t-set="tab">#05</t>
                     <t t-set="value" t-value="partner.phone"/>
-                    <p><t t-esc="fields['phone']['string']"/>: <t t-call="frontend_studio.marqueePlus_placeholder"/></p>
+                    <p><t t-esc="fields['phone']['string']"/></p>
+					<p><t t-call="frontend_studio.marqueePlus_placeholder"/></p>
                 </div>
                 <div class="form-group details-phone">
                     <t t-set="display">
@@ -187,7 +188,8 @@
                     </t>
                     <t t-set="tab">#05</t>
                     <t t-set="value" t-value="partner.mobile"/>
-                    <p><t t-esc="fields['mobile']['string']"/>: <t t-call="frontend_studio.marqueePlus_placeholder"/></p>
+                    <p><t t-esc="fields['mobile']['string']"/></p>
+					<p><t t-call="frontend_studio.marqueePlus_placeholder"/></p>
                 </div>
                 <div class="form-group details-phone">
                     <t t-set="display">
@@ -195,7 +197,8 @@
                     </t>
                     <t t-set="tab">#05</t>
                     <t t-set="value" t-value="partner.fax"/>
-                    <p><t t-esc="fields['fax']['string']"/>: <t t-call="frontend_studio.marqueePlus_placeholder"/></p>
+                    <p><t t-esc="fields['fax']['string']"/></p>
+					<p><t t-call="frontend_studio.marqueePlus_placeholder"/></p>
                 </div>
 
         </template>
