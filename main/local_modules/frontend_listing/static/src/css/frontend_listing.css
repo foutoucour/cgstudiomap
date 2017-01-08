@@ -12,7 +12,7 @@ body {
 }
 
 .navDirectory {
-    padding-top: 50px;
+    padding-top: 45px;
     z-index: 10;
     overflow: hidden;
 }
@@ -208,7 +208,7 @@ input {
 
 #map {
     position: absolute;
-    top: 105px;
+    top: 110px;
 	border-top: 1px solid rgba(176,90,226,0.25);
     margin: 0 auto;
     padding: 0;
@@ -812,7 +812,9 @@ footer .name{
 	}
 	.navDirectory {
 		padding-bottom: 0;
+		padding-top: 50px;
 	}
+	
 	.navSearch .form-control,
 	.navSearch .search-query {
 		font-size: 1em;
