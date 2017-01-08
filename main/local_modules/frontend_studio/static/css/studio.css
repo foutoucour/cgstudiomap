@@ -15,7 +15,7 @@
 }
 #studioDetails {
 	position: relative;
-	z-index: 1000;
+	z-index: 500;
 	margin: 0 0;
 	padding: 0 0;
 	width: 100%;
@@ -24,15 +24,18 @@
 }
 #container-map-studio {
 	position: relative;
-	height: 290px;
+	height: 200px;
 	margin-top: 45px;
-	z-index: 1;
+	z-index: 600;
+}
+#studio-logo {
+	z-index: 1000;
 }
 #geochart_target {
 	position: relative;
 	width: 350px;
 	float: right;
-	margin-top: -280px;
+	margin-top: -300px;
 	margin-right: 10%;
 	height: 100%;
 	z-index: -1;
@@ -41,7 +44,7 @@
 #geochart_target svg {
 	margin-top: 20px;
 	margin-left: 20px;
-	transform: scale(1.55);
+	transform: scale(1.15);
 }
 
 #geochart_target path {
@@ -69,7 +72,8 @@
 	margin: 0 auto;
 	text-align: center;
 	padding: 0;
-	padding-top: 165px;
+	padding-top: 34px;
+
 }
 .studio-header .row {
 	margin: 0 0;
@@ -88,8 +92,9 @@
 	font-size: 2em;
 	color: #323133;
 }
-.studio-header .col-logo {
+.studio-header .col-logo span {
 	width: 140px !important;
+	padding-top: 30px;
 }
 h3:before {
 	content: "";
@@ -198,6 +203,8 @@ h3  {
 	border-radius: 0.15em !important;
 	-webkit-border-radius: 0.15em !important;
 	-moz-border-radius: 0.15em !important;
+	
+	position: absolute;
 }
 
 .studios .logo-thumb {
@@ -294,9 +301,7 @@ h3  {
 }
 .navEdit form,
 .navEdit .input-group{
-	max-width: 100px;
-	display: inline !important;
-	height: 55px;
+	
 }
 
 .btn {
@@ -304,9 +309,9 @@ h3  {
 	font-weight: normal;
 	letter-spacing: 1px;
 	text-transform: none;
-	-webkit-border-radius: 2px !important;
-	-moz-border-radius: 2px !important;
-	border-radius: 2px !important;
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
 }
 .btn:hover {
 	color: #f1f1f3;
@@ -402,7 +407,9 @@ input {
 
 
 
-
+label {
+	font-weight: normal !important;
+}
 
 
 /*/////////////////////////////////

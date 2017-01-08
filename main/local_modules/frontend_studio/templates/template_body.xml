@@ -10,48 +10,23 @@
         </template>
 		
         <template id="frontend_studio.edit_button" name="Studio: Edit mode">
-            <form t-att-action="'/directory/company/{}/edit'.format(partner.id)" method="get">
-                <div class="input-group btn btn-edit outline ">
-                    <input type='submit'
-                           class="fontCGSMicons a-submit"
-						   id="studio-edit"
-                           title="Click to edit the details of the company."
-                           value="cog"/>
-					<label for="studio-edit">Edit</label>
-                </div>
-            </form>
+				<form t-att-action="'/directory/company/{}/edit'.format(partner.id)" method="get">
+					<div class="input-group btn btn-edit outline">
+						<input type='submit'
+							   class="fontCGSMicons a-submit"
+							   id="studio-edit"
+							   title="Click to edit the details of the company."
+							   value="cog"/>
+						<label for="studio-edit" class="hidden-xs">Edit</label>
+					</div>
+            	</form>
         </template>
 		
         <template id="frontend_studio.flag_button" name="Studio: Flag mode">
-<!--            <form t-att-action="'/directory/company/{}/flagged_missing_details'.format(partner.id)" method="get">
-                <div class="input-group btn btn-edit outline ">
-                    <input type='submit'
-						   data-toggle="modal" 
-						   data-target="#myModal"
-                           class="fontCGSMicons a-submit"
-						   id="studio-flag"
-						   title="Click to alert wrongs details of the company."
-                           value="flag"/>
-					<label for="studio-flag">Alert</label>
-                </div>
-            </form>-->
 			
 			<button type="button" class="btn btn-edit outline" data-toggle="modal" data-target="#myModal">
-				<span class="fontCGSMicons">flag</span>Alert
+				<span class="fontCGSMicons">flag</span><label class="hidden-xs">  Alert</label>
 			</button>
-        </template>
-		
-        <template id="frontend_studio.closed_button" name="Studio: Closed mode">
-            <form t-att-action="'/directory/company/{}/flagged_closed'.format(partner.id)" method="post">
-                <div class="input-group btn btn-edit outline ">
-                    <input type='submit'
-                           class="fontCGSMicons a-submit"
-						   id="studio-closed"
-						   title="Click to flag the company as out of business."
-                           value="ban"/>
-					<label for="studio-closed">Close</label>
-                </div>
-            </form>
         </template>
 		
 		
@@ -111,17 +86,27 @@
 
         <template id="frontend_studio.studio_header" name="Studio: Details Header">
 		<div class="row">
-			<div class="col-sm-3 col-logo">
-				<t t-call="frontend_base.company_logo_website" />
-			</div>
-			<div class="col-sm-9">
+			<div class="col-sm-12">
 				<h2 t-esc="partner.name" />
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-sm-12 col-logo">
+				<span class="center-block" id="studio-logo">
+					<t t-call="frontend_base.company_logo_website" />
+				</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
 				<div class="navEdit">
 				<t t-call="frontend_studio.edit_button"/>
-				<t t-call="frontend_studio.flag_button" />
-				<t t-call="frontend_studio.closed_button" />
 				</div>
-
+			</div>
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="navEdit pull-right">
+				<t t-call="frontend_studio.flag_button" />
+				</div>
 			</div>
 		</div>
         </template>
@@ -278,11 +263,9 @@
 				<t t-call="frontend_studio.studio_closed"/>
 
 				<div class="jumbotron" id="container-map-studio">
-					
 
 					<div class="container studio-header">
 						<t t-call="frontend_studio.studio_header"/>
-						<t t-call="frontend_studio.map"/>
 					</div>
 
 				</div>
