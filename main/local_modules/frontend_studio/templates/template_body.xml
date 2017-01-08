@@ -92,7 +92,7 @@
 		</div>	
 		<div class="row">
 			<div class="col-sm-12 col-logo">
-				<span class="center-block" id="studio-logo">
+				<span class="center-block hidden-xs" id="studio-logo">
 					<t t-call="frontend_base.company_logo_website" />
 				</span>
 			</div>
@@ -101,10 +101,14 @@
 			<div class="col-sm-4">
 				<div class="navEdit">
 				<t t-call="frontend_studio.edit_button"/>
+					
+					<span class="visible-xs-inline">
+						<t t-call="frontend_studio.flag_button" />
+					</span>
 				</div>
 			</div>
 			<div class="col-sm-4 col-sm-offset-4">
-				<div class="navEdit pull-right">
+				<div class="navEdit pull-right hidden-xs">
 				<t t-call="frontend_studio.flag_button" />
 				</div>
 			</div>

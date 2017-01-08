@@ -489,6 +489,10 @@ label {
 		margin-left: 50px;
 		transform: scale(1);
 	}
+	#container-map-studio {
+		height: 117px;
+		margin-top: 45px;
+	}
 	.btn-cgsm-add {
 		width: 95%
 	}
