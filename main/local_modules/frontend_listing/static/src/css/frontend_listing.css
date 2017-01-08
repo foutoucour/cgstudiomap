@@ -35,7 +35,6 @@ body {
 
 .navSearch .form-control,
 .navSearch .search-query {
-    font-family: 'cgsm-light';
     font-size: 2em;
     display: block;
     width: 100% !important;
@@ -72,7 +71,6 @@ input {
     background-color: transparent;
 }
 .filters {
-    font-family: 'cgsm-regular';
     font-size: 1.2em;
     line-height: 2.7em;
     height: 45px;
@@ -118,7 +116,7 @@ input {
 .navSwitch .fontCGSMicons{
     font-size: 1.55em;
     padding: auto 0;
-    height: 44px
+    height: 44px;
     margin: 0;
 }
 .navSwitch .btn{
@@ -675,7 +673,6 @@ footer .name{
 	z-index: 10000;
 }
 #admin-toolbox p {
-	font-family: 'cgsm-regular';
 	font-size: 0.66em;
 	text-transform: uppercase;
 }
