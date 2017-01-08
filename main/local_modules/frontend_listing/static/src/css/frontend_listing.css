@@ -208,7 +208,7 @@ input {
 
 #map {
     position: absolute;
-    top: 115px;
+    top: 105px;
 	border-top: 1px solid rgba(176,90,226,0.25);
     margin: 0 auto;
     padding: 0;
@@ -799,7 +799,7 @@ footer .name{
 		margin-bottom: 0.65em;
     }
 	#map {
-		top: 165px;
+		top: 95px;
 	}
 	.btn {
 		height: 28px;
