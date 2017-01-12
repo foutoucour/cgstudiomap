@@ -636,8 +636,8 @@ footer .catch {
     -o-transition: 0.2s linear;
     transition: 0.2s linear;
 	text-shadow: 
-		1px 1px 1px rgba(50, 49, 51, 0.2),
-		-1px -1px 1px rgba(50, 49, 51, 0.2);
+		1px 1px 1px rgba(50, 49, 51, 0.3),
+		-1px -1px 1px rgba(50, 49, 51, 0.3);
 }
 
 .socials i,
