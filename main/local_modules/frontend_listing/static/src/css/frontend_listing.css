@@ -359,17 +359,18 @@ table {
 .pagination>.active>span,
 .pagination>.active>span:focus,
 .pagination>.active>span:hover {
-    color: #f1f1f3;
-    background-color: #b05ae2;
-    border-color: #b05ae2;
+    color: #b05ae2;
+    background-color: transparent;
+	border: 0;
+    border-bottom: 1px solid #b05ae2;
 }
 
 .pagination>li>a,
 .pagination>li>span {
-    color: #b05ae2;
+    color: #323133;
     text-decoration: none;
-    background-color: #323133;
-    border: 1px solid #323133;
+    background-color: transparent;
+	border: 0;
 }
 
 .pagination>li>a:focus,
@@ -377,10 +378,10 @@ table {
 .pagination>li>span:focus,
 .pagination>li>span:hover,
 .pagination>li>span {
-    color: #f1f1f3;
+    color: #b05ae2;
     text-decoration: none;
-    background-color: #b05ae2;
-    border: 1px solid #b05ae2;
+    background-color: transparent;
+    border: 0;
 }
 
 .dropdown-menu>.active>a,
@@ -778,7 +779,10 @@ footer .name{
     margin: -15px 0 -15px;
 }
 
-
+.jumbotron > .clearfix {
+    background-color: transparent;
+    border-top: 1px solid #dddddd;
+}
 
 /*/////////////////////////////////
         MEDIA QUERIES
