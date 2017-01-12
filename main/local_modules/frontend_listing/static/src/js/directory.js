@@ -36,37 +36,40 @@ function bootstrap_table_ajax(search, status) {
                 columns: [
                     {
                         field: 'state',
-                        title: ''
+                        title: '',
+						sortable: false
 
                     },
                     {
                         field: 'logo',
-                        title: 'Logo'
+                        title: 'Logo',
+						sortable: false
 
                     },
                     {
                         field: 'name',
                         title: 'Name',
-                        sortable: true
+						sortable: true
                     },
                     {
                         field: 'email',
-                        title: 'Email'
+                        title: 'Email',
+						sortable: false
                     },
                     {
                         field: 'industries',
                         title: 'Industries',
-                        sortable: true
+						sortable: false
                     },
                     {
                         field: 'city',
                         title: 'City',
-                        sortable: true
+						sortable: false
                     },
                     {
                         field: 'country_name',
                         title: 'Country',
-                        sortable: true
+						sortable: false
                     }
                 ],
                 data: data
