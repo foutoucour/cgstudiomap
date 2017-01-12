@@ -602,7 +602,7 @@ footer .name {
     font-family: 'cgsm-regular';
     font-size: 1.4em;
     line-height: 3.4em;
-    color: #f1f1f3;
+    color: #323133;
     display: inline-block;
 }
 
@@ -612,7 +612,7 @@ footer .name::after {
 
 footer .catch {
     font-family: 'cgsm-regular';
-    font-size: 1em;
+    font-size: 1.06em;
     line-height: 1em;
     color: #b05ae2;
     text-indent: 1em;
@@ -623,7 +623,7 @@ footer .catch {
 .socials i {
     padding: 0 15px;
     padding-top: 20px!important;
-    color: #f1f1f3;
+    color: #C5C4CC;
     text-align: right;
     list-style-type: none;
     background-color: transparent;
@@ -636,7 +636,11 @@ footer .catch {
 .socials i,
 footer .catch,
 footer .name{
-    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.75);
+    text-shadow: 
+		1px 0 0		rgba(241, 241, 243, 0.9),
+		-1px 0 0	rgba(241, 241, 243, 0.9),
+		0 1px 0		rgba(241, 241, 243, 0.9),
+		0 -1px 0	rgba(241, 241, 243, 0.9);
 }
 
 
