@@ -77,7 +77,7 @@
 
     $.extend($.fn.bootstrapTable.defaults, {
         mobileResponsive: false,
-        minWidth: 767,
+        minWidth: 562,
         minHeight: undefined,
         heightThreshold: 100, // just slightly larger than mobile chrome's auto-hiding toolbar
         checkOnInit: true,
@@ -96,6 +96,11 @@
 
         if (!this.options.minWidth) {
             return;
+        }
+
+        if (this.options.minWidth < 100 && this.options.resizable) {
+            console.log("The minWidth when the resizable extension is active should be greater or equal than 100");
+            this.options.minWidth = 100;
         }
 
         var that = this,

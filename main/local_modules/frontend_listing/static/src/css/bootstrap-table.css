@@ -1,6 +1,6 @@
 /**
  * @author zhixin wen <wenzhixin2010@gmail.com>
- * version: 1.8.1
+ * version: 1.11.0
  * https://github.com/wenzhixin/bootstrap-table/
  */
 
@@ -17,12 +17,16 @@
 .bootstrap-table .table:not(.table-condensed) > thead > tr > td,
 .bootstrap-table .table:not(.table-condensed) > tbody > tr > td,
 .bootstrap-table .table:not(.table-condensed) > tfoot > tr > td {
-    padding: 8px !important;
+    padding: 8px;
 }
 
 .bootstrap-table .table.table-no-bordered > thead > tr > th,
 .bootstrap-table .table.table-no-bordered > tbody > tr > td {
     border-right: 2px solid transparent;
+}
+
+.bootstrap-table .table.table-no-bordered > tbody > tr > td:last-child {
+    border-right: none;
 }
 
 .fixed-table-container {
@@ -64,6 +68,10 @@
     border-left: 1px solid #dddddd;
 }
 
+.fixed-table-container thead th:focus {
+    outline: 0 solid transparent;
+}
+
 .fixed-table-container thead th:first-child {
     border-left: none;
     border-top-left-radius: 4px;
@@ -89,7 +97,7 @@
 }
 
 .fixed-table-container thead th .both {
-/*    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAQAAADYWf5HAAAAkElEQVQoz7X QMQ5AQBCF4dWQSJxC5wwax1Cq1e7BAdxD5SL+Tq/QCM1oNiJidwox0355mXnG/DrEtIQ6azioNZQxI0ykPhTQIwhCR+BmBYtlK7kLJYwWCcJA9M4qdrZrd8pPjZWPtOqdRQy320YSV17OatFC4euts6z39GYMKRPCTKY9UnPQ6P+GtMRfGtPnBCiqhAeJPmkqAAAAAElFTkSuQmCC');*/
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAQAAADYWf5HAAAAkElEQVQoz7X QMQ5AQBCF4dWQSJxC5wwax1Cq1e7BAdxD5SL+Tq/QCM1oNiJidwox0355mXnG/DrEtIQ6azioNZQxI0ykPhTQIwhCR+BmBYtlK7kLJYwWCcJA9M4qdrZrd8pPjZWPtOqdRQy320YSV17OatFC4euts6z39GYMKRPCTKY9UnPQ6P+GtMRfGtPnBCiqhAeJPmkqAAAAAElFTkSuQmCC');
 }
 
 .fixed-table-container thead th .asc {
@@ -188,7 +196,7 @@
     line-height: 1.428571429;
 }
 
-.fixed-table-toolbar .bars,
+.fixed-table-toolbar .bs-bars,
 .fixed-table-toolbar .search,
 .fixed-table-toolbar .columns {
     position: relative;
@@ -274,6 +282,7 @@
 .bootstrap-table .fixed-table-footer .table {
     border-bottom: none;
     border-radius: 0;
+    padding: 0 !important;
 }
 
 .pull-right .dropdown-menu {
