@@ -246,7 +246,9 @@ tbody {
     font-size: 1.033em;
     padding-left: 2em;
 }
-
+.fixed-table-container thead th .both {
+    background-image: url();
+}
 .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #ececec;
 }
@@ -467,6 +469,7 @@ table {
 	font-weight: bold;
 	text-transform: uppercase;
 }
+
 
 /*/////////////////////////////////
         INFO windows Studios
