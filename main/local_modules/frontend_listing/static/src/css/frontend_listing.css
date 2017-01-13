@@ -407,12 +407,25 @@ table {
 }
 .fixed-table-pagination .page-list,
 .fixed-table-pagination .pagination a{
-    /*font-family: 'cgsm-regular';*/
+
 }
 .fixed-table-pagination div.pagination, .fixed-table-pagination .pagination-detail {
     margin-top: 0;
     margin-bottom: 0;
 }
+
+
+.fixed-table-pagination .page-list, .fixed-table-pagination .pagination-detail {
+    display: none;
+}
+.fixed-table-pagination .pull-right {
+	float: none !important;
+
+}
+.fixed-table-pagination .pagination-md {
+
+}
+
 ::-webkit-scrollbar {
     width: 3px;
 }
