@@ -455,16 +455,16 @@ table {
 	width: 80px;
 	height: 80px;
 }
-.table>tbody>tr>td>.card-view:nth-child(1),
-.table>tbody>tr>td>.card-view:nth-child(2){
+.table>tbody>tr>td>.card-views>.card-view:nth-child(1),
+.table>tbody>tr>td>.card-views>.card-view:nth-child(2){
 	float: left;
 	display: block;
 	padding: .5em;
 }
-.table>tbody>tr>td>.card-view:nth-child(5){
+.table>tbody>tr>td>.card-views>.card-view:nth-child(5){
 	float: right !important;
 }
-.table>tbody>tr>td>.card-view:nth-child(7)>.value{
+.table>tbody>tr>td>.card-views>.card-view:nth-child(7)>.value{
 	display: inline;
 	font-weight: bold;
 	text-transform: uppercase;
