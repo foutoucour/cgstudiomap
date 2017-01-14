@@ -38,7 +38,6 @@
         'main_data',
         # frontend modules
         'frontend_base',
-        'frontend_homepage',
         'frontend_link_to_dashboard',
         'frontend_listing',
         'frontend_shop',

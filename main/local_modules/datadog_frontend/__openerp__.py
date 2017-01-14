@@ -20,25 +20,15 @@
 ##############################################################################
 
 {
-    'name': 'Datadog frontend',
+    'name': 'Datadog frontend Deprecrated',
     'version': 'beta',
     'author': 'cgstudiomap',
     'maintainer': 'cgstudiomap',
     'license': 'AGPL-3',
     'category': 'Main',
     'summary': 'Track activity around frontend module.',
-    'description': """
-Datadog frontend
-================
-Track activity of frontend module with datadog.
-
-Contributors
-------------
-* Jordi Riera <kender.jr@gmail.com>
-
-""",
-    'depends': [
-    ],
+    'description': """Deprecated.""",
+    'depends': [],
     'data': [],
     'installable': True,
 }
