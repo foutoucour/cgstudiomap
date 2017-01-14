@@ -3,7 +3,6 @@ import logging
 import time
 
 import simplejson
-from cachetools import TTLCache, cached
 from datadog import statsd
 from openerp.addons.frontend_base.controllers.base import (Base, QueryURL)
 from openerp.addons.web import http
