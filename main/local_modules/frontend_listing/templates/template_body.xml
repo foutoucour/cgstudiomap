@@ -184,7 +184,7 @@
 
         <template id="frontend_listing.map" name="Listing: Map">
 
-            <t t-set="title">Directory</t>
+            <t t-set="title">Home</t>
             <t t-call="frontend_listing.base">
                 <div id="map"></div>
                 <footer id="footer_map" class="footer">

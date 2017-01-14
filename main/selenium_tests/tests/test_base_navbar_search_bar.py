@@ -22,7 +22,7 @@ class TestSearchBarToDirectory(helpers.SeleniumTestCase):
     operational, or the tests will fall to the database selector.
     """
 
-    def test_whenAStudioIsSearchedFromTheHomepage_thenDirectoryPageIsLoaded(self):
+    def test_whenAStudioIsSearchedFromTheHomepage_thenHomePageIsLoaded(self):
         """
         Given the homepage is opened
         When a studio is searched
@@ -30,21 +30,13 @@ class TestSearchBarToDirectory(helpers.SeleniumTestCase):
         """
         self._test_searchThroughSearchBar('/')
 
-    def test_whenAStudioIsSearchedFromTheAboutPage_thenDirectoryPageIsLoaded(self):
+    def test_whenAStudioIsSearchedFromTheAboutPage_thenHomePageIsLoaded(self):
         """
         Given the about page is opened
         When a studio is searched
         Then the page of the map listing is opened.
         """
         self._test_searchThroughSearchBar('/aboutus')
-
-    def test_whenAStudioIsSearchedFromTheDirectoryPage_thenDirectortPageIsLoaded(self):
-        """
-        Given the directory page is opened
-        When a studio is searched
-        Then the page of the map listing is opened.
-        """
-        self._test_searchThroughSearchBar('/directory')
 
     def test_whenAStudioIsSearchedFromAStudioPage_thenDirectortPageIsLoaded(self):
         """
@@ -71,4 +63,4 @@ class TestSearchBarToDirectory(helpers.SeleniumTestCase):
         WebDriverWait(driver, self.delay).until(
             EC.presence_of_element_located((By.ID, 'footer_map'))
         )
-        self.assertEqual(constants.titles['/directory'], driver.title)
+        self.assertEqual(constants.titles['/'], driver.title)

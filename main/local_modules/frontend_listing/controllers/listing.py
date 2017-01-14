@@ -6,6 +6,7 @@ import simplejson
 from datadog import statsd
 from openerp.addons.frontend_base.controllers.base import (Base, QueryURL)
 from openerp.addons.web import http
+import werkzeug.utils
 
 from openerp.http import request
 
@@ -136,7 +137,6 @@ class Listing(Base):
 
     @statsd.timed('odoo.frontend.map.time',
                   tags=['frontend', 'frontend:listing'])
-    @http.route(map_url, type='http', auth="public", website=True)
     def map(self, *args, **kwargs):
         """Render the list of studio under a map."""
         values = self.get_map_data(*args, **kwargs)
@@ -170,3 +170,31 @@ class Listing(Base):
         """Render the list of studio under a table."""
         values = self.get_list_data(*args, **kwargs)
         return request.website.render("frontend_listing.list", values)
+
+    @http.route('/', type='http', auth="public", website=True)
+    def index(self, **kw):
+        """Dispatch between homepage depending on the status of the user."""
+        return self.map(**kw)
+
+
+    @http.route('/directory', type='http', auth="public", website=True)
+    def directory_to_root(self, **kw):
+        """Redirect the /directory route to /
+
+        :Related Ticket:
+            * https://github.com/cgstudiomap/cgstudiomap/issues/781
+
+        :param dict kw: keywords arguments of the routing
+        :return: redirection to '/'
+        """
+        search = kw.get('search', '')
+        company_status = kw.get('conpany_search', '')
+        keep = QueryURL('/', search=search, company_status=company_status)
+        to_url = keep()
+        _logger.info({
+            'source': '/direction',
+            'target': to_url,
+            'search': search,
+            'company_status': company_status
+        })
+        return werkzeug.utils.redirect(to_url)
