@@ -419,10 +419,11 @@ table {
     display: none;
 }
 .fixed-table-pagination .pull-right {
-	float: none !important;
+	position: relative;
+	right: calc(50% - 60px);
 
 }
-.fixed-table-pagination .pagination-md {
+.fixed-table-pagination .pagination {
 
 }
 
