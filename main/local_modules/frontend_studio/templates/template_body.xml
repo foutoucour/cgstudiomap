@@ -123,7 +123,7 @@
                     </span>
 
                     <span class="details-country">
-                        <a t-att-href="'/directory?search={}'.format(filter_domain)">
+                        <a t-att-href="'/?search={}'.format(filter_domain)">
                             <t t-esc="partner.country_id.name" />
                         </a>
                     </span>

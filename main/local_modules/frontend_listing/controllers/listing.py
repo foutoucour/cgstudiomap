@@ -15,7 +15,7 @@ _logger = logging.getLogger(__name__)
 
 class Listing(Base):
     """Representation of the page listing companies."""
-    map_url = '/directory'
+    map_url = '/'
     list_url = '/directory/list'
 
     def get_partners(self, partner_pool, search='', company_status='open'):
