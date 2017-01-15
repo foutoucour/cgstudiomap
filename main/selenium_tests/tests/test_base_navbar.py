@@ -29,7 +29,7 @@ class TestNavBarLinks(helpers.SeleniumTestCase):
         Then the home page is opened
         """
         xpath = '//*[@id="home"]/nav/div/div[1]/span/a'
-        self.check_link('/aboutus', xpath, 'geochart_target', constants.titles['/'])
+        self.check_link('/aboutus', xpath, 'footer_map', constants.titles['/'])
 
     def test_whenClickOnContributeLink_thenCgstudiomapGithubPage(self):
         """
