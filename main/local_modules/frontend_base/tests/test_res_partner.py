@@ -100,14 +100,14 @@ class TestResPartner(common.TransactionCase):
             '</div>'
             '<div class="iw-content">'
             '<p>Montreal, Canada</p>'
-            '<a itemprop="name" href="/directory?company_status=open&search=Animation">'
+            '<a itemprop="name" href="?company_status=open&search=Animation">'
             '<span class="label label-info">Animation</span>'
             '</a> '
-            '<a itemprop="name" href="/directory?company_status=open&search=Advertising">'
+            '<a itemprop="name" href="?company_status=open&search=Advertising">'
             '<span class="label label-info">Advertising</span></a>'
             '</div>'
-            '<div id="map_info_footer"><a href="{0.partner_url}">More ...</a></div></div>'.format(
-                partner)
+            '<div id="map_info_footer"><a href="{0.partner_url}">'
+            'More ...</a></div></div>'.format(partner)
         )
         self.assertEqual(
             partner.info_window_details(
