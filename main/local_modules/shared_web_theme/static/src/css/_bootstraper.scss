@@ -83,10 +83,12 @@ body {
 }
 .navbar-left {
     margin-left: 0; /* space after logo */
-	
+	@media (max-width: $screen-sm-min) {
+		width: calc(100% - 200px);
+	}	
 	@media (max-width: $screen-xs-max) {
 		margin-left: 1.4em;
-		width: calc(100% - 200px);
+		width: calc(100% - 180px);
 	}
 
 }
@@ -95,10 +97,14 @@ body {
 		display: inline-table;
 		vertical-align: middle;
 		width: 99.9%;
+		background-color: white;
+		
+		@include border-radius(0.5em !important);
 	}
 	.input-group > .form-control {
 		width: 100%;
 		border: 0;
+		background-color: transparent;
 		
 		@media (max-width: $screen-xsmall) {
 		font-size: 0.8em;
@@ -110,7 +116,9 @@ body {
 		background-color: transparent;
 	}
 }
-
+.input-group-addon {
+    font-size: 1.8em;
+}
 .navbar .navbar-collapse {
 	@media (max-width: 480px) {
 		text-align: center;

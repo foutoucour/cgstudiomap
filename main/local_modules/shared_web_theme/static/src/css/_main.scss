@@ -141,7 +141,7 @@ body {
 			line-height: 2em;
 			border: 0 solid;
 	}
-	@media (max-width: screen-xs-max) {
+	@media (max-width: $screen-xs-max) {
 			font-size: 0.8em;
 			line-height: 1.33em;
 	}
