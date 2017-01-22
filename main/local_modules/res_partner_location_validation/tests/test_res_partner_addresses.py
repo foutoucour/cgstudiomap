@@ -17,6 +17,33 @@ class TestResPartner(common.TransactionCase):
         """Overcharge the default setUp to expose the partner_pool."""
         super(TestResPartner, self).setUp()
         self.partner_pool = self.env['res.partner']
+        self.country_state = self.env['res.country.state']
+        self.country = self.env['res.country']
+
+    def test_issue791(self):
+        """
+        Given there is already a state with a close name
+        When another state is created
+        Then the correct state is registered
+
+        See: https://github.com/cgstudiomap/cgstudiomap/issues/791
+        """
+        # Set up a state with a really close name that reveal the bug
+        self.country_state.create({
+            'name': 'Comunidad Valenciana', 'code': 'Com', 'country_id': 69,  # spain
+        })
+
+        self.__test_create({
+            'street': '11 Calle de Genova',
+            'city': 'Madrid',
+            'zip': '28004',
+            'country_id': 76,
+            'country_name': 'Spain',
+            'street2': '',
+            'name': 'Home Sweet Home',
+            'state_id': False,
+            'state_name': 'Comunidad de Madrid',
+        })
 
     def test_france(self):
         """Test a create for a partner in France."""

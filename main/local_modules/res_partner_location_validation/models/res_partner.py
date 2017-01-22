@@ -236,7 +236,8 @@ class ResPartner(models.Model):
             state_pool = self.env['res.country.state']
             state = state_pool.search(
                 [
-                    ('code', '=', geocode.state__short_name),
+                    # See: https://github.com/cgstudiomap/cgstudiomap/issues/763
+                    ('name', '=', geocode.state__long_name),
                     ('country_id', '=', country.id)
                 ],
                 limit=1
