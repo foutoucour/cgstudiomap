@@ -6247,6 +6247,9 @@ body {
 
 .navbar-header {
   margin-left: 1em; }
+  @media (max-width: 384px) {
+    .navbar-header {
+      height: 50px; } }
 
 .navbar-right {
   margin-right: 0; }
@@ -6263,20 +6266,37 @@ body {
 .navbar-left {
   margin-left: 0;
   /* space after logo */ }
+  @media (max-width: 768px) {
+    .navbar-left {
+      width: calc(100% - 200px); } }
   @media (max-width: 767px) {
     .navbar-left {
-      margin-left: 1.4em; } }
+      margin-left: 1.4em;
+      width: calc(100% - 180px); } }
 
 .navbar-form .input-group {
   display: inline-table;
   vertical-align: middle;
-  width: 99.9%; }
+  width: 99.9%;
+  background-color: white;
+  border-radius: 5px !important;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important; }
 .navbar-form .input-group > .form-control {
   width: 100%;
-  border: 0; }
+  border: 0;
+  background-color: transparent; }
+  @media (max-width: 384px) {
+    .navbar-form .input-group > .form-control {
+      font-size: 0.8em; } }
 .navbar-form button, .navbar-form .openerp .oe_button, .openerp .navbar-form .oe_button {
   width: 100%;
   background-color: transparent; }
+
+.input-group-addon {
+  font-size: 1.8em; }
 
 @media (max-width: 480px) {
   .navbar .navbar-collapse {
@@ -6424,12 +6444,12 @@ body {
   color: #b05ae2 !important;
   border: #b05ae2 1px solid; }
   .navbar-nav .btn-cgsm-add:hover {
-    background-color: #5ae2b0;
-    color: #323133; }
+    background-color: #b05ae2 !important;
+    color: #f1f1f3 !important; }
 
 .input-group-addon {
   color: #555555;
-  background-color: #dddddd;
+  background-color: transparent;
   border: 0px solid #ccc;
   border-radius: 0;
   -webkit-border-radius: 0;
@@ -7015,10 +7035,10 @@ body {
   @media (max-width: 768px) {
     .header-search {
       top: -16px;
-      width: 220px; } }
+      width: auto; } }
   @media (max-width: 384px) {
     .header-search {
-      width: 160px; } }
+      width: auto; } }
 
 .divider {
   height: 1px;
@@ -7036,17 +7056,17 @@ body {
   vertical-align: baseline;
   padding: 0.66em;
   margin: 0.66em auto;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px; }
+  border-radius: 5px !important;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important; }
   @media (max-width: 992px) {
     .navbar-nav .btn-cgsm-add {
       font-size: 0.9em;
       line-height: 2em;
       border: 0 solid; } }
-  @media (max-width: screen-xs-max) {
+  @media (max-width: 767px) {
     .navbar-nav .btn-cgsm-add {
       font-size: 0.8em;
       line-height: 1.33em; } }

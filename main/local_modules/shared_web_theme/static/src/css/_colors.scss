@@ -147,8 +147,8 @@ body{
 	border: $color-cgsm 1px solid;
 	
 	&:hover {
-		background-color: $color-tonic;
-		color: $color-cgsm-dark;
+		background-color: $color-cgsm !important;
+		color: $color-cgsm-light !important;
 	}
 }
 .input-group-addon {

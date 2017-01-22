@@ -128,22 +128,26 @@ body {
     overflow: hidden;
 }
 .navbar-nav .btn-cgsm-add {
-    font-size: 1em;
-    line-height: 1;
-    vertical-align: baseline;
-    padding: 0.66em;
-    margin: 0.66em auto;
-
-	@include border-radius(2px);
+	font-size: 1em;
+	line-height: 1;
+	vertical-align: baseline;
+	padding: 0.66em;
+	margin: 0.66em auto;
+	
+	border-radius: 5px !important;
+	-webkit-border-radius: 5px !important;
+	-moz-border-radius: 5px !important;
+	-ms-border-radius: 5px !important;
+	-o-border-radius: 5px !important;
 	
 	@media (max-width: $screen-md-min) {
-			font-size: 0.9em;
-			line-height: 2em;
-			border: 0 solid;
+		font-size: 0.9em;
+		line-height: 2em;
+		border: 0 solid;
 	}
 	@media (max-width: $screen-xs-max) {
-			font-size: 0.8em;
-			line-height: 1.33em;
+		font-size: 0.8em;
+		line-height: 1.33em;
 	}
 }
 .btn-cgsm-add:after {

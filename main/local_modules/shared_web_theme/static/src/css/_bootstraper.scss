@@ -99,7 +99,11 @@ body {
 		width: 99.9%;
 		background-color: white;
 		
-		@include border-radius(0.5em !important);
+		border-radius: 5px !important;
+		-webkit-border-radius: 5px !important;
+		-moz-border-radius: 5px !important;
+		-ms-border-radius: 5px !important;
+		-o-border-radius: 5px !important;
 	}
 	.input-group > .form-control {
 		width: 100%;
