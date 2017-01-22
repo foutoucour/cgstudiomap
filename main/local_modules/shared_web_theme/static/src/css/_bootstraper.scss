@@ -86,6 +86,7 @@ body {
 	
 	@media (max-width: $screen-xs-max) {
 		margin-left: 1.4em;
+		width: calc(100% - 200px);
 	}
 
 }

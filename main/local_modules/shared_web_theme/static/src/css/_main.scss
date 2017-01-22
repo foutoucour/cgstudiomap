@@ -111,10 +111,10 @@ body {
 
 	@media (max-width: $screen-sm-min) {
 		top: -16px;
-		width: 220px;
+		width: auto;
 	}
 	@media (max-width: $screen-xsmall) {
-		width: 160px;
+		width: auto;
 	}
 }
 .divider {
