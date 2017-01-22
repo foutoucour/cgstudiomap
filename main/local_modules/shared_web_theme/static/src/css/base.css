@@ -6582,14 +6582,11 @@ body {
 
 .navbar-right .btn, .navbar-right .openerp button, .openerp .navbar-right button, .navbar-right .openerp .oe_button, .openerp .navbar-right .oe_button {
   font-size: 1.04em;
-  padding: 14px 24px;
+  padding: 12px 20px;
   border: 0 none;
   font-weight: normal;
   letter-spacing: 1px;
-  text-transform: uppercase;
-  -webkit-border-radius: 2px !important;
-  -moz-border-radius: 2px !important;
-  border-radius: 2px !important; }
+  text-transform: uppercase; }
 .navbar-right .btn:focus, .navbar-right .openerp button:focus, .openerp .navbar-right button:focus, .navbar-right .openerp .oe_button:focus, .openerp .navbar-right .oe_button:focus,
 .navbar-right .btn:active:focus,
 .navbar-right .openerp button:active:focus,
