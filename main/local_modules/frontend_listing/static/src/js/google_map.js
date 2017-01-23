@@ -12,7 +12,8 @@ function initialize(geoloc) {
 
     var mapCanvas = document.getElementById('map');
     var mapOptions = {
-		minZoom: 3, 
+		minZoom: 3,
+		gestureHandling: 'greedy',
 
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControl: false,
