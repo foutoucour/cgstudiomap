@@ -625,7 +625,7 @@ footer .catch {
 .footer .socials i {
     padding: 0 15px;
     padding-top: 20px!important;
-    color: #E8E8E8;
+    color: #7f7d82;
     text-align: right;
     list-style-type: none;
     background-color: transparent;
@@ -633,11 +633,17 @@ footer .catch {
     -moz-transition: 0.2s linear;
     -o-transition: 0.2s linear;
     transition: 0.2s linear;
-	text-shadow: 
-		1px 1px 1px rgba(50, 49, 51, 0.3),
-		-1px -1px 1px rgba(50, 49, 51, 0.3);
+	text-shadow:
+		1px 1px 1px rgba(50, 49, 51, 0.1),
+		-1px -1px 1px rgba(50, 49, 51, 0.1);
 }
+.footer .socials i ::after{
+	position: relative;
 
+	width: 64px;
+	height: 64px;
+	background-color: red;
+}
 .socials i,
 footer .catch,
 footer .name{
