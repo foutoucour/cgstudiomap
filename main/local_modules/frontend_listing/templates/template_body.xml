@@ -15,7 +15,7 @@
                 <div class="input-group navSwitch">
                     <input type="hidden" name='company_status' t-att-value="company_status"/>
                     <input type="hidden" name='search' t-att-value="search"/>
-                    <input type='submit'
+                    <input type='submit' data-toggle='tooltip' data-placement='top' title='Map view'
                            t-att-class="'btn btn-lg fontCGSMicons a-submit' if (url == list_url) else 'btn btn-lg fontCGSMicons disabled' "
                            value="map"/>
                 </div>
@@ -25,7 +25,7 @@
                 <div class="input-group navSwitch">
                     <input type="hidden" name='company_status' t-att-value="company_status"/>
                     <input type="hidden" name='search' t-att-value="search"/>
-                    <input type='submit'
+                    <input type='submit' data-toggle='tooltip' data-placement='top' title='Listing view'
                            t-att-class="'btn btn-lg fontCGSMicons a-submit' if (url == map_url) else 'btn btn-lg fontCGSMicons disabled' "
                            value="paper"/>
                 </div>
