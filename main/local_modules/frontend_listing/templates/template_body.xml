@@ -87,10 +87,6 @@
 
         <template id="frontend_listing.filters" name="Listing: Filters">
 			
-			<div id="try">
-				<button onclick="getLocation()">CLICK</button>
-			</div>
-			
             <div class="filters">
                 <form t-att-action="keep(url, search=search, company_status='open')" method="get" >
                     <div class="input-group navFilters ">
