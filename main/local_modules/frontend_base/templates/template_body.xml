@@ -31,12 +31,13 @@
 									</div>
 								</div>
 							</form>
+							
 						</li>
-						<li id="btGetLocation">
+						<li class="hidden-xs" id="btGetLocation">
 							<button onclick="getLocation()" class="fontCGSMicons">location2</button>
 						</li>
 					</ul>
-
+					
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="fontCGSMicons">menu</span>
                     </button>

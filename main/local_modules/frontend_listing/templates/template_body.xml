@@ -187,6 +187,9 @@
 
             <t t-set="title">Home</t>
             <t t-call="frontend_listing.base">
+				<div class="visible-xs-inline" id="btGetLocation2">
+					<button onclick="getLocation()" class="fontCGSMicons">location2</button>
+				</div>
                 <div id="map"></div>
                 <footer id="footer_map" class="footer">
                     <t t-call="frontend_listing.footer_base"/>

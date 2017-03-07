@@ -92,7 +92,7 @@ function initialize(geoloc) {
 
 function getLocation() {
 	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(showPosition);
+		navigator.geolocation.watchPosition(showPosition);
 	} else {
 		x.innerHTML = "Geolocation is not supported by this browser.";
 	}
@@ -105,13 +105,10 @@ function showPosition(position) {
 	var userLocations = [['Your location', position.coords.latitude, position.coords.longitude], ];
 
 
-	var mapCanvas = new google.maps.Map(document.getElementById('map'), {
-		zoom: 5,
-		scrollwheel: false,
-		center: resultx,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
+	var mapCanvasCustom = new google.maps.Map(document.getElementById('map'), {
+		zoom: 6,
+		center: resultx
 	});
-
-
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+
