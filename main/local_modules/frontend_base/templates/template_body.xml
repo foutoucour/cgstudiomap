@@ -73,9 +73,6 @@
                         <li>
                             <a t-att-href="website.about_menu" toggle="tooltip" data-placement="bottom" title="Who is behind">About</a>
                         </li>
-                        <li>
-                            <a t-att-href="website.contribute" toggle="tooltip" data-placement="bottom" title="Contribute to the project!">Contribute</a>
-                        </li>
 
                         <div class="navbar-nav visible-xs-inline">
                             <li groups="base.group_public" class="divider"/>

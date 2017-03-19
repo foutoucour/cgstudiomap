@@ -63,22 +63,18 @@
 							<p class="pull-right visible-lg-inline">
 								<a t-att-href="website.social_twitter"><i class="fa fa-twitter fa-3x"></i></a>
 								<a t-att-href="website.social_linkedin"><i class="fa fa-linkedin fa-3x"></i></a>
-								<a t-att-href="website.social_github"><i class="fa fa-github fa-3x"></i></a>
 							</p>
 							<p class="pull-right visible-md-inline">
 								<a t-att-href="website.social_twitter"><i class="fa fa-twitter fa-2x"></i></a>
 								<a t-att-href="website.social_linkedin"><i class="fa fa-linkedin fa-2x"></i></a>
-								<a t-att-href="website.social_github"><i class="fa fa-github fa-2x"></i></a>
 							</p>
 							<p class="pull-right visible-sm-inline">
 								<a t-att-href="website.social_twitter"><i class="fa fa-twitter fa-lg"></i></a>
 								<a t-att-href="website.social_linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
-								<a t-att-href="website.social_github"><i class="fa fa-github fa-lg"></i></a>
 							</p>
 							<p class="pull-right visible-xs-inline">
 								<a t-att-href="website.social_twitter"><i class="fa fa-twitter"></i></a>
 								<a t-att-href="website.social_linkedin"><i class="fa fa-linkedin"></i></a>
-								<a t-att-href="website.social_github"><i class="fa fa-github"></i></a>
 							</p>
 						</div>
 				   </div>

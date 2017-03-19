@@ -8,9 +8,9 @@ _logger = logging.getLogger(__name__)
 
 
 class Website(models.Model):
+    """References for the url of pages."""
     _inherit = 'website'
 
     directory_menu = '/directory'
     shop_menu = '/shop/'
     about_menu = '/contactus/'
-    contribute = 'https://github.com/cgstudiomap/cgstudiomap'
