@@ -16,22 +16,22 @@ body {
     z-index: 10;
     overflow: hidden;
 }
-.navDirectory .col-sm-12,
-.navDirectory .col-sm-8,
-.navDirectory .col-sm-2,
-.navDirectory .col-sm-3{
-    padding-left: 0;
-    padding-right: 0;
-    height: 45px;
-}
-.navDirectory .row {
-    margin: 0.25em 0;
-    margin-bottom: 0.45em;
-}
-.navDirectory form {
-    display: inline-block;
-    margin-top: 0em;
-}
+	.navDirectory .col-sm-12,
+	.navDirectory .col-sm-8,
+	.navDirectory .col-sm-2,
+	.navDirectory .col-sm-3{
+		padding-left: 0;
+		padding-right: 0;
+		height: 45px;
+	}
+	.navDirectory .row {
+		margin: 0.25em 0;
+		margin-bottom: 0.45em;
+	}
+	.navDirectory form {
+		display: inline-block;
+		margin-top: 0em;
+	}
 
 .navSearch .form-control,
 .navSearch .search-query {
@@ -45,18 +45,18 @@ body {
     background-image: none;
     border: 1px solid #cbcacc;
 }
-.navSearch a:link,
-.navSearch a{
-    color: #323133;
-    background-color: #cbcacc;
-    border: 1px solid #cbcacc;
-}
-.navSearch a:hover,
-.navSearch a:focus{
-    color: #f1f1f3;
-    text-decoration: underline;
-    background-color: #b05ae2;
-}
+	.navSearch a:link,
+	.navSearch a{
+		color: #323133;
+		background-color: #cbcacc;
+		border: 1px solid #cbcacc;
+	}
+	.navSearch a:hover,
+	.navSearch a:focus{
+		color: #f1f1f3;
+		text-decoration: underline;
+		background-color: #b05ae2;
+	}
 
 #btGetLocation {
 	background-color: transparent;
@@ -65,25 +65,35 @@ body {
 	margin-left: -1.2em;
 
 }
+	#btGetLocation button {
+		background-color: #b05ae2;
+		padding: 0.6em 0.8em;
+		font-size: 1.25em;
+
+		-webkit-border-top-right-radius: 5px !important;
+		-webkit-border-bottom-right-radius: 5px !important;
+		-moz-border-radius-topright: 5px !important;
+		-moz-border-radius-bottomright: 5px !important;
+		border-top-right-radius: 5px !important;
+		border-bottom-right-radius: 5px !important;
+	}
 #btGetLocation2 {
 	position: absolute;
-	left: 0px;
-	top: 400px;
+	left: 10px;
+	top: 50%;
+	background-color: transparent;
 	z-index: 10000;
 
 }
-#btGetLocation button {
-	background-color: #b05ae2;
-	padding: 0.6em 0.8em;
-	font-size: 1.25em;
-	
-	-webkit-border-top-right-radius: 5px !important;
-	-webkit-border-bottom-right-radius: 5px !important;
-	-moz-border-radius-topright: 5px !important;
-	-moz-border-radius-bottomright: 5px !important;
-	border-top-right-radius: 5px !important;
-	border-bottom-right-radius: 5px !important;
-}
+	#btGetLocation2 button {
+		background-color: rgb(255, 255, 255);
+		padding: 0.48em;
+		font-size: 1em;
+		font-weight: 700;
+		color: rgba(49, 50, 51, 0.85);
+	}
+
+
 .navBgcolor{
     background-color: #f8f8f8;
     border: 0 solid #b05ae2;
@@ -113,52 +123,52 @@ input {
     padding: 0 ;
     margin: 0;
 }
-.navSearch .fontCGSMicons{
-    font-size: 1em;
-}
-.navSearch a:hover{
-    text-decoration: none;
-}
-.navSwitch .disabled {
-    color: #f1f1f3;
-    background-color: #b05ae2;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    filter: alpha(opacity=100);
-    -moz-opacity: 1;
-    -khtml-opacity: 1;
-    opacity: 1;
-}
-.navSwitch .a-submit{
-    color: #323133;
-    background-color: #f8f8f8;
-}
-.navSwitch {
-    font-size: 1em;
-    padding: 0;
-    margin: 0;
-}
+	.navSearch .fontCGSMicons{
+		font-size: 1em;
+	}
+	.navSearch a:hover{
+		text-decoration: none;
+	}
+	.navSwitch .disabled {
+		color: #f1f1f3;
+		background-color: #b05ae2;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		filter: alpha(opacity=100);
+		-moz-opacity: 1;
+		-khtml-opacity: 1;
+		opacity: 1;
+	}
+	.navSwitch .a-submit{
+		color: #323133;
+		background-color: #f8f8f8;
+	}
+	.navSwitch {
+		font-size: 1em;
+		padding: 0;
+		margin: 0;
+	}
 
-.navSwitch .fontCGSMicons{
-    font-size: 1.55em;
-    padding: auto 0;
-    height: 44px;
-    margin: 0;
-}
-.navSwitch .btn{
-    line-height: 1;
-    border-radius: 0;
-}
-.navFilters .disabled {
-    color: #b05ae2;
-}
-.navFilters .a-submit:hover,
-.navFilters .a-submit:focus{
-    text-decoration: underline;
-    text-decoration-color: #b05ae2;
-}
-.navFilters::after {
-    content:" /";
-}
+	.navSwitch .fontCGSMicons{
+		font-size: 1.55em;
+		padding: auto 0;
+		height: 44px;
+		margin: 0;
+	}
+	.navSwitch .btn{
+		line-height: 1;
+		border-radius: 0;
+	}
+	.navFilters .disabled {
+		color: #b05ae2;
+	}
+	.navFilters .a-submit:hover,
+	.navFilters .a-submit:focus{
+		text-decoration: underline;
+		text-decoration-color: #b05ae2;
+	}
+	.navFilters::after {
+		content:" /";
+	}
 
 .pagination {
     display: inline-block;
@@ -187,14 +197,14 @@ input {
     max-height: 150px;
     text-align: center;
 }
-.stats p {
-    font-size: 1.4em;
-    line-height: 1em;
-}
-.stats p:nth-child(2) {
-    font-size: 1.2em;
-    line-height: 3.5em;
-}
+	.stats p {
+		font-size: 1.4em;
+		line-height: 1em;
+	}
+	.stats p:nth-child(2) {
+		font-size: 1.2em;
+		line-height: 3.5em;
+	}
 #stats-txt {
     position: absolute;
 	top: 15px;
