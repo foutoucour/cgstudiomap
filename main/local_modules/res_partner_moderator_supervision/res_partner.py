@@ -20,8 +20,10 @@
 ##############################################################################
 
 import logging
+import os
 import socket
 import getpass
+import ConfigParser
 
 from slack_log_handler import SlackLogHandler
 
@@ -60,12 +62,7 @@ def get_slack_logger(name, hook):
     slack_handler.EMOJIS[logging.ERROR] = ':jazz:'
     slack_logger = logging.getLogger(name)
     slack_logger.addHandler(slack_handler)
-    slack_logger.info(
-        'Jazz Ready for action! (From: {0}@{1})'.format(
-            getpass.getuser(), socket.gethostname(),
-        )
-
-    )
+    slack_logger.info('Jazz Ready for action! (From: {0}@{1})'.format(getpass.getuser(), socket.gethostname()))
     return slack_logger
 
 
@@ -76,6 +73,20 @@ else:
         'No value found for %s in config file. No moderation.', SLACK_WEBHOOK_MODERATION
     )
     main_slack_logger = None
+
+
+def get_config():
+    """Get the config related to this module.
+
+    :return: config with the messages for the logger
+    :rtype:
+    """
+    config_parser = ConfigParser.ConfigParser()
+    current_folder = os.path.dirname(os.path.realpath(__file__))
+    config_file_path = os.path.join(current_folder, 'messages.ini')
+    with open(config_file_path, 'r') as config_file:
+        config_parser.readfp(config_file)
+    return config_parser
 
 
 class ResUsers(models.Model):
@@ -113,20 +124,17 @@ class ResPartner(models.Model):
         # we only care about updated companies, not about people.
         return main_slack_logger and user.id > 3 and partner.is_company
 
-
     @api.multi
     def write(self, vals):
         """Overcharge to add notification to slack."""
         ret = super(ResPartner, self).write(vals)
         user = self.env['res.users'].browse(self._uid)
-        message = ''.join([
-            '<http://www.cgstudiomap.org%s|%s> (id: %s) has been *updated*. ',
-            'Update done by %s (id: %s).'
-        ])
+        message = get_config().get('messages', 'update')
         if self.conditions_for_logging(user, self):
-            args = self.partner_url, self.name.encode('utf8'), str(self.id), user.login, str(user.id)
             if not user.is_contributor():
-                main_slack_logger.info(message, *args)
+                main_slack_logger.info(
+                    message, self.partner_url, self.name.encode('utf8'), str(self.id), user.login, str(user.id)
+                )
 
         return ret
 
@@ -136,19 +144,9 @@ class ResPartner(models.Model):
         ret = super(ResPartner, self).create(vals)
         user = self.env['res.users'].browse(self._uid)
         if self.conditions_for_logging(user, ret):
-            message = '. '.join([
-                'A new company has been *added*: '
-                '<http://www.cgstudiomap.org%s|%s> (id: %s). ',
-                'Addition done by %s (id: %s).'
-            ])
-
+            message = get_config().get('messages', 'create')
             main_slack_logger.info(
-                message,
-                ret.partner_url,
-                ret.name.encode('utf8'),
-                str(ret.id),
-                user.login,
-                str(user.id)
+                message, ret.partner_url, ret.name.encode('utf8'), str(ret.id), user.login, str(user.id)
             )
 
         return ret

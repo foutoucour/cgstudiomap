@@ -46,6 +46,10 @@ class TestResPartner(common.TransactionCase):
     def test_create_noValidConditions(self, mock_condition_for_logging, mock_log):
         """Check that log is emit if the condition of logging are not met
         during a create of a partner.
+
+        :param mock.MagicMock mock_log: mock to supervise the action around the log.
+        :type mock_log: mock.MagicMock
+        :param mock.MagicMock mock_condition_for_logging: control the context for the log.
         """
         del mock_condition_for_logging
         partner = self.partner_pool.create({'name': 'tname'})
@@ -55,11 +59,19 @@ class TestResPartner(common.TransactionCase):
     @mock.patch(path_main_slack_logger)
     @mock.patch(path_conditions_for_logging, return_value=True)
     def test_create_validConditions(self, mock_condition_for_logging, mock_log):
-        """Check that log is emit if the condition of logging are met."""
+        """Check that log is emit if the condition of logging are met.
+
+        :param mock.MagicMock mock_log: mock to supervise the action around the log.
+        :param mock.MagicMock mock_condition_for_logging: control the context for the log.
+        """
         del mock_condition_for_logging
         partner = self.partner_pool.create({'name': 'tname'})
         self.assertEqual('tname', partner.name)
         self.assertEqual(1, mock_log.info.call_count)
+        message = (
+            'A new company has been *added*: <https://www.cgstudiomap.org%s|%s> (id: %s). Addition done by %s (id: %s).'
+        )
+        self.assertEqual(message, mock_log.info.call_args_list[0][0][0])
 
     @mock.patch(path_main_slack_logger)
     @mock.patch(path_conditions_for_logging, return_value=False)
@@ -77,8 +89,10 @@ class TestResPartner(common.TransactionCase):
     @mock.patch(path_main_slack_logger)
     @mock.patch(path_conditions_for_logging, return_value=True)
     def test_update_validCondition(self, mock_condition_for_logging, mock_log):
-        """Check that log is emit if the condition of logging are met
-        during an update of a partner.
+        """Check that log is emit if the condition of logging are met during an update of a partner.
+
+        :param mock.MagicMock mock_log: mock to supervise the action around the log.
+        :param mock.MagicMock mock_condition_for_logging: control the context for the log.
         """
         del mock_condition_for_logging
         partner = self.partner_pool.create({'name': 'tname'})
@@ -86,6 +100,8 @@ class TestResPartner(common.TransactionCase):
         partner.write({'name': 'tupdate'})
         self.assertEqual('tupdate', partner.name)
         self.assertEqual(2, mock_log.info.call_count)
+        message = '<https://www.cgstudiomap.org%s|%s> (id: %s) has been *updated*. Update done by %s (id: %s).'
+        self.assertEqual(message, mock_log.info.call_args_list[1][0][0])
 
     @mock.patch('{0}.ResUsers.is_contributor'.format(module_name), return_value=True)
     @mock.patch(path_main_slack_logger)
