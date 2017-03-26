@@ -52,19 +52,7 @@ class Base(Website):
         :rtype: SearchDomain instance
         """
         partner_pool = request.env['res.partner']
-        search_domains = {
-            'active': partner_pool.active_companies_domain,
-            'open': partner_pool.open_companies_domain,
-            'closed': partner_pool.closed_companies_domain,
-            'latest_updated': partner_pool.latest_updated_companies_domain,
-            'latest_created': partner_pool.latest_created_companies_domain,
-        }
-
-        search_domain = search_domains.get(company_status, search_domains['open'])
-        if search:
-            search_domain.search.extend(partner_pool.search_domain(search))
-
-        return search_domain
+        return partner_pool.get_company_domain(search, company_status)
 
     @statsd.timed('odoo.frontend.ajax.get_user_count_json',
                   tags=['frontend', 'frontend:base', 'ajax'])

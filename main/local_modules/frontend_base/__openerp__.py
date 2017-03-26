@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+
 {
     'name': 'Frontend Base',
     'version': 'beta',
@@ -11,6 +12,7 @@
         'website',
         'res_group_archetype',
         'res_partner_industry',
+        'main_data',
     ],
     'data': [
         'templates/template_body.xml',

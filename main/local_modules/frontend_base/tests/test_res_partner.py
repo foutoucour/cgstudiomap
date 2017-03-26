@@ -128,3 +128,53 @@ class TestResPartner(common.TransactionCase):
             '<a href="http://www.example.com">tname</a>',
             self.partner_pool.link_to_studio_page('http://www.example.com', 'tname')
         )
+
+
+class TestResPartnerDomains(common.TransactionCase):
+    """Test suites for domain scopes."""
+    def setUp(self):
+        super(TestResPartnerDomains, self).setUp()
+        self.partner_pool = self.env['res.partner']
+        self.partner_pool.__dryRun__ = True
+        self.country_pool = self.env['res.country']
+        self.usa = self.country_pool.browse(235)
+        self.india = self.country_pool.browse(105)
+
+    def test_whenIndiaIsSearched_thenOnlyStudioInIndiaAreReturned(self):
+        """
+        Given the studio A is in the country India
+        Given the studio B is in the city indianapolis, USA
+        When India is searched
+        Then only the studio A is returned
+
+        :related ticket:
+        * https://github.com/cgstudiomap/cgstudiomap/issues/700
+        """
+        self.partner_pool.create({
+            'name': 'Studio A',
+            'is_company': True,
+            'street': 'DLF Cyber City',
+            'zip': '122002',
+            'city': 'Gurgaon',
+            'country_id': self.india.id,
+            'website': 'http://www.cgstudiomap.org',
+        })
+        self.partner_pool.create({
+            'name': 'Studio B',
+            'is_company': True,
+            'street': '6345 Carrollton Avenue',
+            'zip': '46220',
+            'city': 'Indianapolis',
+            'country_id': self.usa.id,
+            'website': 'http://www.cgstudiomap.org',
+        })
+        search_domain = self.partner_pool.get_company_domain('India')
+        result = self.partner_pool.search(search_domain.search, order=search_domain.order, limit=search_domain.limit)
+        # use all() here, as we might have some partners for other tests that are infect the test
+        # unfortunately. Anyway the fix aims to remove any result that looks like the need.
+        self.assertTrue(
+            all(partner.country_id == self.india for partner in result),
+            msg="{0} is/are not in India and should have been excluded form the search.".format(
+                [partner.name for partner in result if partner.country_id != self.india]
+            )
+        )

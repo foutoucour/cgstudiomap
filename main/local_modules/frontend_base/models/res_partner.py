@@ -28,7 +28,8 @@ class SearchDomain(object):
         self.limit = limit
 
 
-class ResPartner(models.Model):
+class ResPartnerDomain(models.Model):
+    """Definition of search domains for partners."""
     _inherit = 'res.partner'
 
     #: represent the limit for the domain with latest notion.
@@ -83,6 +84,56 @@ class ResPartner(models.Model):
         domain.order = 'write_date desc'
         domain.limit = self.latest_companies_limit
         return domain
+
+    @staticmethod
+    def search_domain(search):
+        """Return the domain that should be used to when a search is processed.
+
+        :param str search: string used for the search.
+        :return: list
+        """
+        _logger.debug('search domain')
+        _logger.debug('search: %s', search)
+        domain = []
+
+        for sub_search in search.split(' '):
+            _logger.debug('sub search: %s', sub_search)
+            domain += [
+                '|', '|', '|',
+                ('name', 'ilike', sub_search),
+                # Use perfect match for cities, countries and industries
+                # to avoid false results like https://github.com/cgstudiomap/cgstudiomap/issues/700
+                ('city', '=ilike', sub_search),
+                ('country_id.name', '=ilike', sub_search),
+                ('industry_ids.name', '=ilike', sub_search)
+            ]
+        _logger.debug('domain: %s', domain)
+        return domain
+
+    def get_company_domain(self, search, company_status='open'):
+        """get the domain to use for the given parameters.
+
+        :param str search: search to filter with
+        :param str company_status: main status of the companies to filter out.
+        :rtype: SearchDomain instance
+        """
+        search_domains = {
+            'active': self.active_companies_domain,
+            'open': self.open_companies_domain,
+            'closed': self.closed_companies_domain,
+            'latest_updated': self.latest_updated_companies_domain,
+            'latest_created': self.latest_created_companies_domain,
+        }
+
+        search_domain = search_domains.get(company_status, search_domains['open'])
+        if search:
+            search_domain.search.extend(self.search_domain(search))
+
+        return search_domain
+
+
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
 
     @api.model
     def get_most_popular_studios(self, sample_):
