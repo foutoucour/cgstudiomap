@@ -34,7 +34,7 @@
 							
 						</li>
 						<li class="hidden-xs" id="btGetLocation">
-							<button onclick="getLocation()" class="fontCGSMicons">location2</button>
+							<button onclick="google_map.getLocation()" class="fontCGSMicons">location2</button>
 						</li>
 					</ul>
 					
