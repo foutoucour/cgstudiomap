@@ -170,11 +170,88 @@ class TestResPartnerDomains(common.TransactionCase):
         })
         search_domain = self.partner_pool.get_company_domain('India')
         result = self.partner_pool.search(search_domain.search, order=search_domain.order, limit=search_domain.limit)
+        self.assertTrue(result, msg='The search India should have at least one result.')
         # use all() here, as we might have some partners for other tests that are infect the test
         # unfortunately. Anyway the fix aims to remove any result that looks like the need.
         self.assertTrue(
             all(partner.country_id == self.india for partner in result),
             msg="{0} is/are not in India and should have been excluded form the search.".format(
                 [partner.name for partner in result if partner.country_id != self.india]
+            )
+        )
+
+    def test_whenAStudioNameMatchsThesearch_ThenTheStudioIsReturned(self):
+        """
+        Given a studio is named "Toto Tata"
+        When To is searched
+        Then the studio is found
+        """
+        name = 'Toto Tata'
+        self.partner_pool.create({
+            'name': name,
+            'is_company': True,
+            'street': '110 Greene Street',
+            'zip': '10012',
+            'city': 'New York',
+            'country_id': self.usa.id,
+            'website': 'http://www.cgstudiomap.org',
+        })
+        # first part of the name
+        search_term = 'Toto'
+        search_domain = self.partner_pool.get_company_domain(search_term)
+        result = self.partner_pool.search(search_domain.search, order=search_domain.order, limit=search_domain.limit)
+        # Make sure there is at least a result
+        self.assertTrue(result, msg='The search {0} should have at least one result.'.format(search_term))
+        # use all() here, as we might have some partners for other tests that are infect the test
+        # unfortunately. Anyway the fix aims to remove any result that looks like the need.
+        self.assertTrue(
+            all(search_term in partner.name  for partner in result),
+            msg="{0} is/are not named with {1} and should have been excluded form the search.".format(
+                [partner.name for partner in result if search_term not in partner.name], search_term
+            )
+        )
+
+        # second part of the name
+        # to be sure the engine understands all
+        search_term = 'Tata'
+        search_domain = self.partner_pool.get_company_domain(search_term)
+        result = self.partner_pool.search(search_domain.search, order=search_domain.order, limit=search_domain.limit)
+        # Make sure there is at least a result
+        self.assertTrue(result, msg='The search {0} should have at least one result.'.format(search_term))
+        # use all() here, as we might have some partners for other tests that are infect the test
+        # unfortunately. Anyway the fix aims to remove any result that looks like the need.
+        self.assertTrue(
+            all(search_term in partner.name  for partner in result),
+            msg="{0} is/are not named with {1} and should have been excluded form the search.".format(
+                [partner.name for partner in result if search_term not in partner.name], search_term
+            )
+        )
+
+    def test_whenNewYorkIsSearched_thenStudiosInNewYorkCityAreFound(self):
+        """
+        Given a Studio NY is in the city New York
+        When New York is searched
+        Then the studio NY is found.
+        """
+        new_york = 'New York'
+        self.partner_pool.create({
+            'name': 'Studio NY',
+            'is_company': True,
+            'street': '110 Greene Street',
+            'zip': '10012',
+            'city': new_york,
+            'country_id': self.usa.id,
+            'website': 'http://www.cgstudiomap.org',
+        })
+        search_domain = self.partner_pool.get_company_domain(new_york)
+        result = self.partner_pool.search(search_domain.search, order=search_domain.order, limit=search_domain.limit)
+        # Make sure there is at least a result
+        self.assertTrue(result, msg='The search {0} should have at least one result.'.format(new_york))
+        # use all() here, as we might have some partners for other tests that are infect the test
+        # unfortunately. Anyway the fix aims to remove any result that looks like the need.
+        self.assertTrue(
+            all(partner.city == new_york for partner in result),
+            msg="{0} is/are not in {1} and should have been excluded form the search.".format(
+                [partner.name for partner in result if partner.city != new_york], new_york
             )
         )

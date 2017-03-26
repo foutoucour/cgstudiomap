@@ -103,9 +103,9 @@ class ResPartnerDomain(models.Model):
                 ('name', 'ilike', sub_search),
                 # Use perfect match for cities, countries and industries
                 # to avoid false results like https://github.com/cgstudiomap/cgstudiomap/issues/700
-                ('city', '=ilike', sub_search),
-                ('country_id.name', '=ilike', sub_search),
-                ('industry_ids.name', '=ilike', sub_search)
+                ('city', '=ilike', search),
+                ('country_id.name', '=ilike', search),
+                ('industry_ids.name', '=ilike', search)
             ]
         _logger.debug('domain: %s', domain)
         return domain
