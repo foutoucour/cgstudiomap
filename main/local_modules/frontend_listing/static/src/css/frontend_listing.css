@@ -531,40 +531,41 @@ table {
 #iw-container {
     margin-bottom: 10px;
 }
-#iw-container .iw-title {
-	text-align: center;
-    font-size: 1.28em;
-    font-weight: bold;
-    padding: 10px;
-    background-color: transparent;
-    color: #b05ae2;
-    margin: 0 auto;
+	#iw-container .iw-title {
+		text-align: center;
+		font-size: 1.28em;
+		font-weight: bold;
+		padding: 10px;
+		background-color: transparent;
+		color: #b05ae2;
+		margin: 0 auto;
 
-}
-#iw-container .iw-title a:active,
-#iw-container .iw-title a:visited,
-#iw-container .iw-title a:link {
-	padding: 0.5em 1.2em;
-    color: #b05ae2;
-	background-color: transparent;
-    text-decoration: none;
-}
-#iw-container .iw-title a:hover,
-#iw-container .iw-title a:focus {
-    color: #f1f1f3;
-	background-color: #b05ae2;
-    text-decoration: none;
-}
-#iw-container .iw-content {
-    font-size: 1.05em;
-    line-height: 14px;
-    font-weight: normal;
-    margin-right: 1px;
-    padding: 2px 0 20px 0;
-    max-height: 140px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
+	}
+		#iw-container .iw-title a:active,
+		#iw-container .iw-title a:visited,
+		#iw-container .iw-title a:link {
+			padding: 0.5em 1.2em;
+			color: #b05ae2;
+			background-color: transparent;
+			text-decoration: none;
+		}
+		#iw-container .iw-title a:hover,
+		#iw-container .iw-title a:focus {
+			color: #f1f1f3;
+			background-color: #b05ae2;
+			text-decoration: none;
+		}
+	#iw-container .iw-content {
+		font-size: 1.05em;
+		line-height: 14px;
+		font-weight: normal;
+		margin-right: 1px;
+		padding: 2px 0 20px 0;
+		max-height: 140px;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
 .iw-content img {
     float: right;
     margin: 0 5px 5px 10px;
@@ -629,56 +630,55 @@ table {
     background-color: #F1F1F3;
 
 }
+	footer .row {
+		padding: 0;
+		margin: 0;
+	}
 
-footer .row {
-    padding: 0;
-    margin: 0;
-}
+	footer .name {
+		font-family: 'cgsm-regular';
+		font-size: 1.4em;
+		line-height: 3.4em;
+		color: #323133;
+		display: inline-block;
+	}
+		footer .name::after {
+			content: " ";
+		}
 
-footer .name {
-    font-family: 'cgsm-regular';
-    font-size: 1.4em;
-    line-height: 3.4em;
-    color: #323133;
-    display: inline-block;
-}
+	footer .catch {
+		font-family: 'cgsm-regular';
+		font-size: 1.06em;
+		line-height: 1em;
+		color: #b05ae2;
+		text-indent: 1em;
+		display: inline-block;
 
-footer .name::after {
-    content: " ";
-}
+	}
 
-footer .catch {
-    font-family: 'cgsm-regular';
-    font-size: 1.06em;
-    line-height: 1em;
-    color: #b05ae2;
-    text-indent: 1em;
-    display: inline-block;
-    
-}
+	.footer .socials i {
+		padding: 0 15px;
+		padding-top: 20px!important;
+		color: #7f7d82;
+		text-align: right;
+		list-style-type: none;
+		background-color: transparent;
+		-webkit-transition: 0.2s linear;
+		-moz-transition: 0.2s linear;
+		-o-transition: 0.2s linear;
+		transition: 0.2s linear;
+		text-shadow:
+			1px 1px 1px rgba(50, 49, 51, 0.1),
+			-1px -1px 1px rgba(50, 49, 51, 0.1);
+	}
+		.footer .socials i ::after{
+			position: relative;
 
-.footer .socials i {
-    padding: 0 15px;
-    padding-top: 20px!important;
-    color: #7f7d82;
-    text-align: right;
-    list-style-type: none;
-    background-color: transparent;
-    -webkit-transition: 0.2s linear;
-    -moz-transition: 0.2s linear;
-    -o-transition: 0.2s linear;
-    transition: 0.2s linear;
-	text-shadow:
-		1px 1px 1px rgba(50, 49, 51, 0.1),
-		-1px -1px 1px rgba(50, 49, 51, 0.1);
-}
-.footer .socials i ::after{
-	position: relative;
+			width: 64px;
+			height: 64px;
+			background-color: red;
+		}
 
-	width: 64px;
-	height: 64px;
-	background-color: red;
-}
 .socials i,
 footer .catch,
 footer .name{
@@ -690,13 +690,13 @@ footer .name{
 }
 
 
-.footer .socials i a:hover {
-    cursor: pointer;
-    text-decoration: none;
-	text-shadow: 
-		0 0 0 rgba(255, 255, 255, 0),
-		0 0 0 rgba(255, 255, 255, 0);
-}
+		.footer .socials i a:hover {
+			cursor: pointer;
+			text-decoration: none;
+			text-shadow: 
+				0 0 0 rgba(255, 255, 255, 0),
+				0 0 0 rgba(255, 255, 255, 0);
+		}
 
 .fa-github:hover {
     color: #B05AE2!important;
@@ -712,26 +712,6 @@ footer .name{
 }
 .changeBG {
     background-color: transparent;
-}
-
-/*/////////////////////////////////
-        ADMIN ToolBox
-///////////////////////////////// */
-#admin-toolbox {
-	position: absolute;
-	top: 50px;
-	left: 0;
-	background-color: #323133;
-	padding: 0.5em;
-	color: #f1f1f3;
-	z-index: 10000;
-}
-#admin-toolbox p {
-	font-size: 0.66em;
-	text-transform: uppercase;
-}
-#admin-toolbox input {
-	font-size: 1.8em;
 }
 
 

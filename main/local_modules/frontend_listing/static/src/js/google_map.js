@@ -1,9 +1,8 @@
 /**
  * Script to manage the map displayed to list companies
- * Created by foutoucour on 12/10/15.
+ * Created by foutoucour on 26/03/17.
  * The theme of the map is loaded from `snazzy_theme.py` file.
 
- * CUSTOMS infos windows ref : http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html
  */
 
 // namespace
