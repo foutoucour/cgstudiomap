@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="form_res_partner_locate_me_stats" model="ir.ui.view">
+            <field name="model">res.partner.locate_me_stats</field>
+            <field name="arch" type="xml">
+                <form string="Locate Me Stats">
+                    <field name="user_id" />
+                    <field name="latitude"/>
+                    <field name="longitude" />
+                    <field name="success" />
+                    <field name="create_date" />
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_res_partner_locate_me_stats" model="ir.ui.view">
+            <field name="model">res.partner.locate_me_stats</field>
+            <field name="arch" type="xml">
+                <tree string="Locate Me Stats">
+                    <field name="user_id" />
+                    <field name="latitude"/>
+                    <field name="longitude" />
+                    <field name="success" />
+                    <field name="create_date" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="search_res_partner_locate_me_stats" model="ir.ui.view">
+            <field name="model">res.partner.locate_me_stats</field>
+            <field name="arch" type="xml">
+                <search string="Search Stats">
+                    <field name="user_id" />
+                    <field name="latitude"/>
+                    <field name="longitude" />
+                    <field name="success" />
+                </search>
+            </field>
+        </record>
+
+        <record id="action_res_partner_locate_me_stats" model="ir.actions.act_window">
+            <field name="name">Locate Me Stats</field>
+            <field name="res_model">res.partner.locate_me_stats</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_res_partner_locate_me_stats"/>
+            <field name="search_view_id" ref="search_res_partner_locate_me_stats"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Record and track who and when an user used to "Locate Me"
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+                id="menu_res_partner_relation_sales"
+                sequence="11"
+                parent="base.menu_sales"
+                action="action_res_partner_locate_me_stats"
+        />
+
+    </data>
+</openerp>

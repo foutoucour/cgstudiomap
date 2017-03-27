@@ -14,7 +14,7 @@
     },
     'data': [
         'security/ir.model.access.csv',
-        'views/res_partner_locate_me_stats.xml',
+        'views/res_partner_locate_me_stats_view.xml',
     ],
     'installable': True,
 }

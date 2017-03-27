@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_res_partner_count_view,access_res_partner_count_view,model_res_partner_count_view,,1,1,1,1
+access_res_partner_locate_me_stats,access_res_partner_locate_me_stats,model_res_partner_locate_me_stats,,1,1,1,1
