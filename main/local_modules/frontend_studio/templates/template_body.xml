@@ -24,7 +24,7 @@
 		
         <template id="frontend_studio.flag_button" name="Studio: Flag mode">
 			
-			<button type="button" class="btn btn-edit outline" data-toggle="modal" data-target="#myModal">
+			<button type="button" class="btn btn-edit outline hidden" data-toggle="modal" data-target="#myModal">
 				<span class="fontCGSMicons">flag</span><label class="hidden-xs">  Alert</label>
 			</button>
         </template>
