@@ -106,6 +106,45 @@ body {
 
 	}
 }
+#btGetLocation {
+	background-color: transparent;
+	color: #f1f1f3;
+	padding: 0.55em 0;
+	margin-left: -1.2em;
+	
+	button {
+		background-color: #b05ae2;
+		padding: 0.6em 0.8em;
+		font-size: 1.25em;
+
+		-webkit-border-top-right-radius: 5px !important;
+		-webkit-border-bottom-right-radius: 5px !important;
+		-moz-border-radius-topright: 5px !important;
+		-moz-border-radius-bottomright: 5px !important;
+		border-top-right-radius: 5px !important;
+		border-bottom-right-radius: 5px !important;
+	}
+}
+
+#btGetLocation2 {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	background-color: transparent;
+	z-index: 10000;
+
+	button {
+		background-color: rgb(255, 255, 255);
+		padding: 0.48em;
+		font-size: 1em;
+		font-weight: 700;
+		color: rgba(49, 50, 51, 0.85);
+	}
+}
+
+
+
+
 .header-search {
 	width: 360px;
 

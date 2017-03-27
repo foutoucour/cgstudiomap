@@ -7027,6 +7027,35 @@ body {
     .navbar-center > li > a {
       font-size: 2em; } }
 
+#btGetLocation {
+  background-color: transparent;
+  color: #f1f1f3;
+  padding: 0.55em 0;
+  margin-left: -1.2em; }
+  #btGetLocation button, #btGetLocation .openerp .oe_button, .openerp #btGetLocation .oe_button {
+    background-color: #b05ae2;
+    padding: 0.6em 0.8em;
+    font-size: 1.25em;
+    -webkit-border-top-right-radius: 5px !important;
+    -webkit-border-bottom-right-radius: 5px !important;
+    -moz-border-radius-topright: 5px !important;
+    -moz-border-radius-bottomright: 5px !important;
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important; }
+
+#btGetLocation2 {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  background-color: transparent;
+  z-index: 10000; }
+  #btGetLocation2 button, #btGetLocation2 .openerp .oe_button, .openerp #btGetLocation2 .oe_button {
+    background-color: white;
+    padding: 0.48em;
+    font-size: 1em;
+    font-weight: 700;
+    color: rgba(49, 50, 51, 0.85); }
+
 .header-search {
   width: 360px; }
   @media (max-width: 768px) {
@@ -7051,8 +7080,9 @@ body {
   font-size: 1em;
   line-height: 1;
   vertical-align: baseline;
-  padding: 0.66em;
-  margin: 0.66em auto;
+  padding: 0 1em;
+  margin: 0.55em auto;
+  height: 38px;
   border-radius: 5px !important;
   -webkit-border-radius: 5px !important;
   -moz-border-radius: 5px !important;
