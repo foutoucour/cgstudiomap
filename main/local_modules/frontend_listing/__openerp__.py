@@ -15,6 +15,7 @@
         'frontend_base',
         'res_group_archetype',
         'website_menu_by_user_status',
+        'res_partner_locate_me_stats',
     ],
     'data': [
         'templates/template_body.xml',

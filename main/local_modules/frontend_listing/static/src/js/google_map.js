@@ -3,6 +3,7 @@
  * Created by foutoucour on 26/03/17.
  * The theme of the map is loaded from `snazzy_theme.py` file.
 
+ * CUSTOMS infos windows ref : http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html
  */
 
 // namespace
@@ -13,15 +14,37 @@ var google_map = {
      Get the current position of the user and move the google map to the location
      */
     getLocation: function () {
+        var ajax_locate_me_stats = function(success, latitude, longitude) {
+            $.ajax({
+                type: "post",
+                url: "/ajax/locate_me_stats",
+                data: {
+                    success: success,
+                    latitude: latitude,
+                    longitude: longitude
+                }
+            });
+        };
+
+        // default values for the ajax call
+        var success = false;
+        var latitude = null;
+        var longitude = null;
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
-                var center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-				/*google_map.map.setZoom(7);*/
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+                success= true;
+                var center = new google.maps.LatLng(latitude, longitude);
                 google_map.map.panTo(center);
-				setTimeout("google_map.map.setZoom(7)",1000)
+                setTimeout("google_map.map.setZoom(7)",1000);
+                ajax_locate_me_stats(success, latitude, longitude);
+
             });
         } else {
             x.innerHTML = "Geolocation is not supported by this browser.";
+            ajax_locate_me_stats(success, latitude, longitude);
         }
     }
 };

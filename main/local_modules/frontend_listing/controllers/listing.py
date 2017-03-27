@@ -176,7 +176,6 @@ class Listing(Base):
         """Dispatch between homepage depending on the status of the user."""
         return self.map(**kw)
 
-
     @http.route('/directory', type='http', auth="public", website=True)
     def directory_to_root(self, **kw):
         """Redirect the /directory route to /
