@@ -15,3 +15,8 @@
 .thumbnail .caption {
 	min-height: 140px;
 }
+
+
+#btGetLocation, #btGetLocation2, #btGetLocation button, #btGetLocation2 button {
+	display: none !important;
+}

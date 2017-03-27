@@ -468,6 +468,13 @@ label {
 	-webkit-transform: rotate(-45deg);
 }
 
+
+#btGetLocation, #btGetLocation2, #btGetLocation button, #btGetLocation2 button {
+	display: none !important;
+}
+
+
+
 /*/////////////////////////////////
         MODAL missing details
 ///////////////////////////////// */
