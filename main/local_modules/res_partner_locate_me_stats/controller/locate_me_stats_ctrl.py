@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import simplejson
 from datadog import statsd
 from openerp.http import request
 from openerp.addons.web import http
@@ -21,3 +22,4 @@ class LocateMeStats(Base):
         """
         user_partner = request.env['res.users'].browse(request.uid).partner_id
         user_partner.add_locate_me_view(success, latitude=latitude, longitude=longitude)
+        return simplejson.dumps({})

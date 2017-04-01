@@ -3,7 +3,7 @@
 import logging
 from openerp import models, fields, api
 
-_logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class ResPartnerLocateMeStats(models.Model):
@@ -35,5 +35,5 @@ class ResPartner(models.Model):
 
         if success:
             details.update({'latitude': latitude, 'longitude': longitude})
-
+        logger.info('Locate me: %s', details)
         return locate_me_stats.create(details)
