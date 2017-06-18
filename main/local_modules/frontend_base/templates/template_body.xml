@@ -7,37 +7,11 @@
 				<div class="container">
                 <div class="navbar-header">
 
-                    <span class="navbar-text navbar-left">
+                    <span class="navbar-text navbar-left" id="navbar-logo-span">
 						<a href="/" class="navbar-link"><span id="logo-nav"></span></a>
 					</span>
-                    <ul class="nav navbar-nav navbar-left">
-						<li class="header-search">
-                            <form action="/directory"
-                                  method="post"
-                                  t-att-class="search_class"
-								  class="navbar-form">
-								<div class="form-group" style="display:inline;">
-									<div class="input-group">
-                                        <input type="text"
-                                               name="search"
-                                               class="search-query form-control"
-                                               placeholder="Search in CG Studio Map..."
-                                               t-att-value="search"/>
-                                        <input type="hidden" name='company_status'
-                                               t-att-value='company_status'/>
-										<span class="input-group-addon">
-                                            <a class="a-submit" type="button" data-toggle="tooltip" data-placement="bottom" title="Search for"><span class="fontCGSMicons">search</span></a>
-										</span>
-									</div>
-								</div>
-							</form>
-							
-						</li>
-						<li class="hidden-xs" id="btGetLocation">
-							<button onclick="google_map.getLocation()" class="fontCGSMicons">location2</button>
-						</li>
-					</ul>
-					
+                    <!--Note: The search bar is in frontend_searchbar-->
+
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="fontCGSMicons">menu</span>
                     </button>

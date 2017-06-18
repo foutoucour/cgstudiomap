@@ -43,6 +43,7 @@
         'frontend_shop',
         'frontend_studio',
         'frontend_about',
+        'frontend_searchbar',
         # website
         'website_iframe_host',
     ],
