@@ -1,0 +1,71 @@
+/*!** resets **!*/
+/*#searchfield { display: block; width: 100%; text-align: center; margin-bottom: 35px; }*/
+
+/*#searchfield form {*/
+  /*display: inline-block;*/
+  /*background: #eeefed;*/
+  /*padding: 0;*/
+  /*margin: 0;*/
+  /*padding: 5px;*/
+  /*border-radius: 3px;*/
+  /*margin: 5px 0 0 0;*/
+/*}*/
+/*#searchfield form .biginput {*/
+  /*width: 600px;*/
+  /*height: 40px;*/
+  /*padding: 0 10px 0 10px;*/
+  /*background-color: #fff;*/
+  /*border: 1px solid #c8c8c8;*/
+  /*border-radius: 3px;*/
+  /*color: #aeaeae;*/
+  /*font-weight:normal;*/
+  /*font-size: 1.5em;*/
+  /*-webkit-transition: all 0.2s linear;*/
+  /*-moz-transition: all 0.2s linear;*/
+  /*transition: all 0.2s linear;*/
+/*}*/
+/*#searchfield form .biginput:focus {*/
+  /*color: #858585;*/
+/*}*/
+
+
+
+
+/*.autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }*/
+/*.autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }*/
+/*.autocomplete-selected { background: #f0f0f0; }*/
+/*.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }*/
+
+/*.ui-autocomplete-input {*/
+    /*background-color: #ffff66;*/
+/*}*/
+
+.ui-autocomplete span.hl_results {
+    background-color: #ffff66 !important;
+}
+
+/* loading - the AJAX indicator */
+/*.ui-autocomplete-loading {*/
+    /*background: white url('../img/ui-anim_basic_16x16.gif') right center no-repeat;*/
+/*}*/
+
+/* scroll results */
+.ui-autocomplete {
+    max-height: 250px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding for vertical scrollbar */
+    padding-right: 5px;
+}
+
+.ui-autocomplete li {
+    font-size: 16px;
+}
+
+/* IE 6 doesn't support max-height
+* we use height instead, but this forces the menu to always be this tall
+*/
+* html .ui-autocomplete {
+    height: 250px;
+}

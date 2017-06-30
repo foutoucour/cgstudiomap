@@ -12,9 +12,6 @@
 					</span>
                     <!--Note: The search bar is in frontend_searchbar-->
 
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="fontCGSMicons">menu</span>
-                    </button>
 
                 </div>
 

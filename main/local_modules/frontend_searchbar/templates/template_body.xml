@@ -2,8 +2,12 @@
 <openerp>
     <data>
         <template id="frontend_searchbar.search" name="SearchBar: search widget">
-            <li class="header-search">
-                <form action="/directory"
+            <link rel="stylesheet"
+                  type="text/css"
+                  media="all"
+                  href="/frontend_searchbar/static/src/css/style.css"/>
+            <li class="header-search searchfield">
+                <form action="/"
                       method="post"
                       t-att-class="search_class"
                       class="navbar-form">
@@ -13,6 +17,7 @@
                                    name="search"
                                    class="search-query form-control"
                                    placeholder="Search in CG Studio Map..."
+                                   id="autocomplete"
                                    t-att-value="search"/>
                             <input type="hidden" name='company_status'
                                    t-att-value='company_status'/>
@@ -27,6 +32,12 @@
                 </form>
 
             </li>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="fontCGSMicons">menu</span>
+            </button>
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script type="text/javascript" src="/frontend_searchbar/static/src/js/searchbar-ajax.js" async="async"></script>
         </template>
 
         <template id="frontend_searchbar.geolocation" name="SearchBar: geolocation widget">
