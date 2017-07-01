@@ -47,8 +47,8 @@ def select_from_term(term):
     query = '{0} ORDER BY value'.format(' UNION '.join(build_query(term, *case) for case in cases))
     logger.debug('query: %s', query)
     cr.execute(query)
-    result = cr.dictfetchall()
-    logger.debug('Result: %s', result)
+    result = [r['value'] for r in cr.dictfetchall()]
+    logger.debug('Result from SELECT: %s', result)
     return result
 
 
@@ -65,5 +65,6 @@ class Ajax(Website):
         :rtype: json
         """
         logger.debug('Term: %s', term)
-        result = select_from_term(term) if term else []
-        return simplejson.dumps(result)
+        json = simplejson.dumps(select_from_term(term) if term else [], ensure_ascii=False).encode('utf8')
+        logger.debug('Json that will be sent to browser: %s', json)
+        return json
