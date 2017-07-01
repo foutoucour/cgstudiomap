@@ -2,10 +2,10 @@
 <openerp>
     <data>
         <template id="frontend_searchbar.search" name="SearchBar: search widget">
-            <link rel="stylesheet"
-                  type="text/css"
-                  media="all"
-                  href="/frontend_searchbar/static/src/css/style.css"/>
+            <!--<link rel="stylesheet"-->
+                  <!--type="text/css"-->
+                  <!--media="all"-->
+                  <!--href="/frontend_searchbar/static/src/css/style.css"/>-->
             <li class="header-search searchfield">
                 <form action="/"
                       method="post"

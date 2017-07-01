@@ -7,17 +7,10 @@ $("#autocomplete").autocomplete({
         $.ajax({
             url: "/ajax/search_bar/get_auto_complete_search_values",
             data: {term: request.term},
-            success: function (data) {response($.parseJSON(data));}
+            success: function (data) {
+                response($.parseJSON(data));
+            }
         });
-    },
-    // preventDefault prevents the field to be filled with label and it is now filled by data.
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#autocomplete").val(ui.item.data);
-    },
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#autocomplete").val(ui.item.data);
     }
 });
 

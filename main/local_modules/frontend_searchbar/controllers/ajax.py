@@ -6,24 +6,23 @@ from datadog import statsd
 from openerp.addons.web import http
 from openerp.addons.website.controllers.main import Website
 
-from openerp.http import request, werkzeug
+from openerp.http import request
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 
-def build_query(term, field, type_, table, where_condition=None):
+def build_query(term, field, table, where_condition=None):
     """
 
     :param str term:
     :param str field:
-    :param str type_:
     :param str table:
     :param str|None where_condition:
     :return:
     """
-    query_pattern = "SELECT {field} as data, {field}::text||' ({type_})' as label FROM {table}".format(
-        field=field, type_=type_, table=table
+    query_pattern = "SELECT {field} as value FROM {table}".format(
+        field=field, table=table
     )
     term_case = "{field} ilike '%{term}%'".format(field=field, term=term)
     conditions = ' AND '.join(filter(lambda x: bool(x), (term_case, where_condition)))
@@ -38,14 +37,14 @@ def select_from_term(term):
     """
     cr = request.env.cr
     cases = (
-        ('name', 'company', 'res_partner', "is_company is True AND state = 'open'"),
-        ('name', 'country', 'res_country'),
-        ('name', 'industry', 'res_industry'),
-        ('name', 'state', 'res_country_state'),
-        ('city', 'city', 'res_partner', 'is_company is True AND city is not null')
+        ('name', 'res_partner', "is_company is True AND state = 'open'"),
+        ('name', 'res_country'),  # TODO: only countries with partners
+        ('name', 'res_industry'),  # TODO: only industries with partners
+        # ('name', 'res_country_state'), # TODO: only states with partners
+        ('city', 'res_partner', 'is_company is True AND city is not null')
     )
     # Alphabetical order for the results
-    query = '{0} ORDER BY label'.format(' UNION '.join(build_query(term, *case) for case in cases))
+    query = '{0} ORDER BY value'.format(' UNION '.join(build_query(term, *case) for case in cases))
     logger.debug('query: %s', query)
     cr.execute(query)
     result = cr.dictfetchall()
