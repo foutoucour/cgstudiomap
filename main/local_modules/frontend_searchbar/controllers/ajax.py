@@ -11,6 +11,24 @@ from openerp.http import request
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
+TERM_CASE_PATTERN = "{field} ilike '%{term}%'"
+
+PARTNER_CONDITION = "is_company is True AND state = 'open'"
+#: In the case of countries, we want to list only the countries that have partner related to it.
+COUNTRY_CASE = (
+    'SELECT DISTINCT res_country.name as value FROM res_partner'
+    ' INNER JOIN res_country'
+    ' ON res_partner.country_id=res_country.id'
+    ' WHERE {0} AND {1}'
+)
+
+INDUSTRY_CASE = (
+    "SELECT DISTINCT res_industry.name as value FROM res_partner"
+    " LEFT OUTER JOIN res_industry_res_partner_rel AS rpr ON rpr.res_partner_id = res_partner.id"
+    " LEFT OUTER JOIN res_industry ON res_industry.id = rpr.res_industry_id"
+    ' WHERE {0} AND {1}'
+)
+
 
 def build_query(term, field, table, where_condition=None):
     """
@@ -24,7 +42,8 @@ def build_query(term, field, table, where_condition=None):
     query_pattern = "SELECT {field} as value FROM {table}".format(
         field=field, table=table
     )
-    term_case = "{field} ilike '%{term}%'".format(field=field, term=term)
+    term_case = TERM_CASE_PATTERN.format(field=field, term=term)
+    # filter out Nones and empty
     conditions = ' AND '.join(filter(lambda x: bool(x), (term_case, where_condition)))
     return ' WHERE '.join(filter(lambda x: bool(x), (query_pattern, conditions)))
 
@@ -37,14 +56,21 @@ def select_from_term(term):
     """
     cr = request.env.cr
     cases = (
-        ('name', 'res_partner', "is_company is True AND state = 'open'"),
-        ('name', 'res_country'),  # TODO: only countries with partners
-        ('name', 'res_industry'),  # TODO: only industries with partners
-        # ('name', 'res_country_state'), # TODO: only states with partners
+        ('name', 'res_partner', PARTNER_CONDITION),
+        # ('name', 'res_country_state'), # TODO: states are not considered by the search engine.
         ('city', 'res_partner', 'is_company is True AND city is not null')
     )
+
+    sub_queries = [build_query(term, *case) for case in cases]
+    sub_queries.append(
+        COUNTRY_CASE.format(PARTNER_CONDITION, TERM_CASE_PATTERN.format(field='res_country.name', term=term))
+    )
+    sub_queries.append(
+        INDUSTRY_CASE.format(PARTNER_CONDITION, TERM_CASE_PATTERN.format(field='res_industry.name', term=term))
+    )
+
     # Alphabetical order for the results
-    query = '{0} ORDER BY value'.format(' UNION '.join(build_query(term, *case) for case in cases))
+    query = '{0} ORDER BY value'.format(' UNION '.join(sub_queries))
     logger.debug('query: %s', query)
     cr.execute(query)
     result = [r['value'] for r in cr.dictfetchall()]
