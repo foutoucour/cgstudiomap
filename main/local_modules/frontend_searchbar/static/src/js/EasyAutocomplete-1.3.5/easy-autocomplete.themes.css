@@ -14,21 +14,22 @@
   /* Solid */
   /* Plate */
 }
-.easy-autocomplete.eac-square {
-  font-family: "Roboto", "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-.easy-autocomplete.eac-square input {
-  border: 1px solid #7f8c8d;
-  border-radius: 0;
-  color: #7f8c8d;
-  font-family: inherit;
-  font-size: 18px;
-  font-style: italic;
-  font-weight: 300;
-  margin: 0;
-  min-width: 350px;
-  padding: 12px 43px 12px 15px;
-}
+/*.easy-autocomplete.eac-square {*/
+  /*font-family: "Roboto", "Helvetica Neue",Helvetica,Arial,sans-serif;*/
+/*}*/
+/*.easy-autocomplete.eac-square input {*/
+  /*border: 1px solid #7f8c8d;*/
+  /*border-radius: 0;*/
+  /*color: #7f8c8d;*/
+  /*font-family: inherit;*/
+  /*font-size: 18px;*/
+  /*font-style: italic;*/
+  /*font-weight: 300;*/
+  /*margin: 0;*/
+  /*min-width: 350px;*/
+  /*padding: 12px 43px 12px 15px;*/
+/*}*/
+
 .easy-autocomplete.eac-square ul {
   border-color: #7f8c8d;
   border-top: 0;

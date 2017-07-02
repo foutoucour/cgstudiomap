@@ -1,0 +1,20 @@
+#autocomplete {
+    border: 0;
+}
+
+#eac-container-autocomplete {
+    top: 39px;
+}
+
+#eac-container-autocomplete > ul {
+    border-radius: 5px !important;
+}
+
+#eac-container-autocomplete > ul > li {
+    border: 0;
+    border-radius: 5px !important;
+}
+
+#eac-container-autocomplete > ul > li > div > b {
+    color: #b05ae2;
+}
