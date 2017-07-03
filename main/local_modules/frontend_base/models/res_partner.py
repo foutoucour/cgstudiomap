@@ -6,7 +6,8 @@ from copy import deepcopy
 from openerp import api, models, fields
 from openerp.addons.website.models.website import hashlib
 
-_logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 
 class SearchDomain(object):
@@ -92,22 +93,20 @@ class ResPartnerDomain(models.Model):
         :param str search: string used for the search.
         :return: list
         """
-        _logger.debug('search domain')
-        _logger.debug('search: %s', search)
+        logger.debug('Search: %s', search)
         domain = []
-
-        for sub_search in search.split(' '):
-            _logger.debug('sub search: %s', sub_search)
+        for sub_search in map(lambda s: s.strip(), search.split(',')):
             domain += [
-                '|', '|', '|',
+                '|', '|', '|', '|',
                 ('name', 'ilike', sub_search),
                 # Use perfect match for cities, countries and industries
                 # to avoid false results like https://github.com/cgstudiomap/cgstudiomap/issues/700
-                ('city', '=ilike', search),
-                ('country_id.name', '=ilike', search),
-                ('industry_ids.name', '=ilike', search)
+                ('city', '=ilike', sub_search),
+                ('country_id.name', '=ilike', sub_search),
+                ('state_id.name', '=ilike', sub_search),
+                ('industry_ids.name', '=ilike', sub_search)
             ]
-        _logger.debug('domain: %s', domain)
+        logger.debug('domain: %s', domain)
         return domain
 
     def get_company_domain(self, search, company_status='open'):
@@ -164,7 +163,7 @@ class ResPartner(models.Model):
                     ('image', '!=', False)
                 ]
             )
-            ]
+        ]
 
         # doing kind of unittest in here as I do not know how to
         # do unittest with request :(
@@ -178,11 +177,11 @@ class ResPartner(models.Model):
         """Force to reset small_image_url to be reset if image is set to the
         partner.
         """
-        _logger.debug('vals: %s', vals)
+        logger.debug('vals: %s', vals)
 
         if 'image' in vals:
             vals.update({'small_image_url': False})
-            _logger.debug('updated vals: %s', vals)
+            logger.debug('updated vals: %s', vals)
 
         return super(ResPartner, self).write(vals)
 
@@ -202,8 +201,6 @@ class ResPartner(models.Model):
         :return: <a> tag
         :rtype: str
         """
-        _logger.debug('partner_url: %s', partner_url)
-        _logger.debug('link_text: %s', link_text)
         return '<a href="{0}">{1}</a>'.format(partner_url, link_text.encode('utf8'))
 
     def info_window(self, company_status='open'):
@@ -219,7 +216,7 @@ class ResPartner(models.Model):
             [
                 ind.tag_url_link(company_status=company_status)
                 for ind in self.industry_ids
-                ]
+            ]
         )
         body += '</div>'
         footer = (
@@ -250,7 +247,7 @@ class ResPartner(models.Model):
             [
                 industry_pool.tag_url_link_details(ind_name_, company_status)
                 for ind_name_ in industries
-                ]
+            ]
         )
         body += '</div>'
         footer = (

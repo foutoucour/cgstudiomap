@@ -276,3 +276,30 @@ class TestResPartnerDomains(common.TransactionCase):
                 [partner.name for partner in result if partner.city != new_york], new_york
             )
         )
+
+    def test_whenSearchForState_thenStudiosInTheStateAreFound(self):
+        """
+        Given a studio is in California
+        When California is searched
+        Then the studio from california is found
+
+        See: https://github.com/cgstudiomap/cgstudiomap/pull/842
+        """
+        self.trash.append(
+            # Placerville is in california. No need to set the state, it is set automatically
+            # by google in the process.
+            # Bonus, we test here is the state is well set ;)
+            self.partner_pool.create({
+                'name': 'Californication',
+                'is_company': True,
+                'street': '934 Cottage Street',
+                'zip': '95667',
+                'city': 'Placerville',
+                'country_id': self.usa.id,
+                'website': 'http://www.cgstudiomap.org',
+            })
+        )
+        search_domain = self.partner_pool.get_company_domain('california')
+        result = self.partner_pool.search(search_domain.search, order=search_domain.order, limit=search_domain.limit)
+        self.assertTrue(result, msg='The search {0} should have at least one result.'.format('california'))
+        self.assertTrue(all(partner.state_id.name.lower() == 'california' for partner in result))
