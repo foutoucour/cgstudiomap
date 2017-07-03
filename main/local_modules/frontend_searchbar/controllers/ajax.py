@@ -29,6 +29,13 @@ INDUSTRY_CASE = (
     ' WHERE {0} AND {1}'
 )
 
+STATE_CASE = (
+    'SELECT DISTINCT res_country_state.name as value FROM res_partner'
+    ' INNER JOIN res_country_state'
+    ' ON res_partner.state_id=res_country_state.id'
+    ' WHERE {0} AND {1}'
+)
+
 
 def build_query(term, field, table, where_condition=None):
     """
@@ -67,6 +74,9 @@ def select_from_term(term):
     )
     sub_queries.append(
         INDUSTRY_CASE.format(PARTNER_CONDITION, TERM_CASE_PATTERN.format(field='res_industry.name', term=term))
+    )
+    sub_queries.append(
+        STATE_CASE.format(PARTNER_CONDITION, TERM_CASE_PATTERN.format(field='res_country_state.name', term=term))
     )
 
     # Alphabetical order for the results
