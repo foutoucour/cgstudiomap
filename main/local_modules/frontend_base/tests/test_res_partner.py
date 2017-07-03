@@ -32,6 +32,11 @@ class TestResPartner(common.TransactionCase):
         self.partner_pool.__dryRun__ = True
         self.country_pool = self.env['res.country']
         self.canada = self.country_pool.browse(39)
+        self.trash = []
+
+    def tearDown(self):
+        """Clean up after the tests"""
+        [record.unlink() for record in self.trash]
 
     def test_small_image_url_exists(self):
         """Check if the field exist on res.partner."""
@@ -39,6 +44,7 @@ class TestResPartner(common.TransactionCase):
             'name': 'tpartner',
             'small_image_url': 'tsmall_image_url',
         })
+        self.trash.append(partner)
         self.assertEqual(partner.small_image_url, 'tsmall_image_url')
 
     def test_write_resetSmallImageUrl(self):
@@ -47,6 +53,7 @@ class TestResPartner(common.TransactionCase):
             'name': 'tpartner',
             'small_image_url': 'tsmall_image_url',
         })
+        self.trash.append(partner)
         self.assertEqual(partner.small_image_url, 'tsmall_image_url')
         partner.write({'image': False})
         self.assertEqual(partner.small_image_url, False)
@@ -93,6 +100,7 @@ class TestResPartner(common.TransactionCase):
             'website': 'http://www.cgstudiomap.org',
             'industry_ids': [(6, 0, [1, 2])]
         })
+        self.trash.append(partner)
         res = (
             '<div id="iw-container">'
             '<div class="iw-title">'
@@ -139,6 +147,11 @@ class TestResPartnerDomains(common.TransactionCase):
         self.country_pool = self.env['res.country']
         self.usa = self.country_pool.browse(235)
         self.india = self.country_pool.browse(105)
+        self.trash = []
+
+    def tearDown(self):
+        """Clean up after tests"""
+        [record.unlink() for record in self.trash]
 
     def test_whenIndiaIsSearched_thenOnlyStudioInIndiaAreReturned(self):
         """
@@ -150,24 +163,28 @@ class TestResPartnerDomains(common.TransactionCase):
         :related ticket:
         * https://github.com/cgstudiomap/cgstudiomap/issues/700
         """
-        self.partner_pool.create({
-            'name': 'Studio A',
-            'is_company': True,
-            'street': 'DLF Cyber City',
-            'zip': '122002',
-            'city': 'Gurgaon',
-            'country_id': self.india.id,
-            'website': 'http://www.cgstudiomap.org',
-        })
-        self.partner_pool.create({
-            'name': 'Studio B',
-            'is_company': True,
-            'street': '6345 Carrollton Avenue',
-            'zip': '46220',
-            'city': 'Indianapolis',
-            'country_id': self.usa.id,
-            'website': 'http://www.cgstudiomap.org',
-        })
+        self.trash.append(
+            self.partner_pool.create({
+                'name': 'Studio A',
+                'is_company': True,
+                'street': 'DLF Cyber City',
+                'zip': '122002',
+                'city': 'Gurgaon',
+                'country_id': self.india.id,
+                'website': 'http://www.cgstudiomap.org',
+            })
+        )
+        self.trash.append(
+            self.partner_pool.create({
+                'name': 'Studio B',
+                'is_company': True,
+                'street': '6345 Carrollton Avenue',
+                'zip': '46220',
+                'city': 'Indianapolis',
+                'country_id': self.usa.id,
+                'website': 'http://www.cgstudiomap.org',
+            })
+        )
         search_domain = self.partner_pool.get_company_domain('India')
         result = self.partner_pool.search(search_domain.search, order=search_domain.order, limit=search_domain.limit)
         self.assertTrue(result, msg='The search India should have at least one result.')
@@ -180,22 +197,24 @@ class TestResPartnerDomains(common.TransactionCase):
             )
         )
 
-    def test_whenAStudioNameMatchsThesearch_ThenTheStudioIsReturned(self):
+    def test_whenAStudioNameMatchsTheSearch_ThenTheStudioIsReturned(self):
         """
         Given a studio is named "Toto Tata"
         When To is searched
         Then the studio is found
         """
         name = 'Toto Tata'
-        self.partner_pool.create({
-            'name': name,
-            'is_company': True,
-            'street': '110 Greene Street',
-            'zip': '10012',
-            'city': 'New York',
-            'country_id': self.usa.id,
-            'website': 'http://www.cgstudiomap.org',
-        })
+        self.trash.append(
+            self.partner_pool.create({
+                'name': name,
+                'is_company': True,
+                'street': '110 Greene Street',
+                'zip': '10012',
+                'city': 'New York',
+                'country_id': self.usa.id,
+                'website': 'http://www.cgstudiomap.org',
+            })
+        )
         # first part of the name
         search_term = 'Toto'
         search_domain = self.partner_pool.get_company_domain(search_term)
@@ -234,15 +253,17 @@ class TestResPartnerDomains(common.TransactionCase):
         Then the studio NY is found.
         """
         new_york = 'New York'
-        self.partner_pool.create({
-            'name': 'Studio NY',
-            'is_company': True,
-            'street': '110 Greene Street',
-            'zip': '10012',
-            'city': new_york,
-            'country_id': self.usa.id,
-            'website': 'http://www.cgstudiomap.org',
-        })
+        self.trash.append(
+            self.partner_pool.create({
+                'name': 'Studio NY',
+                'is_company': True,
+                'street': '110 Greene Street',
+                'zip': '10012',
+                'city': new_york,
+                'country_id': self.usa.id,
+                'website': 'http://www.cgstudiomap.org',
+            })
+        )
         search_domain = self.partner_pool.get_company_domain(new_york)
         result = self.partner_pool.search(search_domain.search, order=search_domain.order, limit=search_domain.limit)
         # Make sure there is at least a result
