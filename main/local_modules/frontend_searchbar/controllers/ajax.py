@@ -13,7 +13,7 @@ logger.setLevel(logging.DEBUG)
 
 TERM_CASE_PATTERN = "{field} ilike '%{term}%'"
 
-PARTNER_CONDITION = "is_company is True AND state = 'open'"
+PARTNER_CONDITION = "is_company is True AND state = 'open' AND active is True"
 #: In the case of countries, we want to list only the countries that have partner related to it.
 COUNTRY_CASE = (
     'SELECT DISTINCT res_country.name as value FROM res_partner'
