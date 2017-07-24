@@ -91,6 +91,9 @@ body {
 
 .navbar-toggle {
 	font-size: 28px !important;
+	position: absolute !important;
+	top: 4px;
+	right: 0;
 }
 .navbar .navbar-collapse {
     text-align: left;
