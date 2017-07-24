@@ -19,3 +19,6 @@
 #eac-container-autocomplete > ul > li > div > b {
     color: #b05ae2;
 }
+.easy-autocomplete {
+    width: 100% !important;
+}
