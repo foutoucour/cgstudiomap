@@ -40,7 +40,6 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="fontCGSMicons">menu</span>
             </button>
-            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
             <script src="/frontend_searchbar/static/src/js/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.js"
                     async="async"></script>
             <script type="text/javascript"
