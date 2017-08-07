@@ -94,7 +94,7 @@ class Ajax(Website):
     @statsd.timed('odoo.frontend.ajax.get_auto_complete_search_values',
                   tags=['frontend', 'frontend:search_bar', 'ajax'])
     @http.route('/ajax/search_bar/get_auto_complete_search_values',
-                type='http', methods=['GET'])
+                type='http', methods=['POST'])
     def get_auto_complete_search_values(self, term=None):
         """Ajax call to get the value for the auto-complete of the search bar.
 
