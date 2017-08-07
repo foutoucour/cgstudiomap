@@ -15,14 +15,11 @@
                       class="navbar-form">
                     <div class="form-group" style="display:inline;">
                         <div class="input-group">
-                            <!--63 is the beta tester group-->
-                            <!--Only beta testers has access to autocomplete for now-->
-                            <!--see: https://github.com/cgstudiomap/cgstudiomap/pull/842-->
                             <input type="text"
                                    name="search"
                                    class="search-query form-control"
                                    placeholder="Search in CG Studio Map..."
-                                   t-att-id="'autocomplete' if 63 in (g.id for g in user_id.groups_id) else ''"
+                                   id="autocomplete"
                                    t-att-value="search"/>
                             <input type="hidden" name='company_status'
                                    t-att-value='company_status'/>
