@@ -1,0 +1,20 @@
+# for tests:
+# docker-compose -f test-compose.yml up -d; sudo docker logs -f cgstudiomap; sudo docker wait cgstudiomap
+version: "2"
+services:
+
+  pgsql:
+    extends:
+      file: docker-services.yml
+      service: base_pgsql
+
+  cgstudiomap:
+    extends:
+      file: docker-services.yml
+      service: base_cgstudiomap
+    depends_on:
+      - pgsql
+    links:
+      - "pgsql:pgsql-server"
+    command: /opt/cgstudiomap/parts/odoo/openerp-server -c /opt/cgstudiomap/etc/odoo.cfg -d cgstudiomap -r cgstudiomap --workers=0 --test-enable -i main --stop-after-init
+      - ./openerp_serverrc:/home/cgstudiomap/.openerp_serverrc

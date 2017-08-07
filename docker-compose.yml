@@ -1,0 +1,20 @@
+version: "2"
+services:
+
+  pgsql:
+    extends:
+      file: docker-services.yml
+      service: base_pgsql
+
+  cgstudiomap:
+    extends:
+      file: docker-services.yml
+      service: base_cgstudiomap
+    depends_on:
+      - pgsql
+    links:
+      - "pgsql:pgsql-server"
+    volumes:
+      - /home/cgstudiomap/.openerp_serverrc:/home/cgstudiomap/.openerp_serverrc
+      - /home/cgstudiomap/odoo_server.cfg:/home/cgstudiomap/odoo_server.cfg
+    command: /opt/cgstudiomap/bin/start_odoo -c /home/cgstudiomap/odoo_server.cfg --unaccent

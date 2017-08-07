@@ -1,0 +1,19 @@
+version: "2"
+services:
+  base_pgsql:
+    image: cgstudiomap/docker-postgis-unaccent
+    volumes:
+      - ~/.containers/cgstudiomap-pgsql-9.4:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: odoo8dev
+      POSTGRES_PASSWORD: cgstudiomap
+
+  base_cgstudiomap:
+    container_name: cgstudiomap
+    build: .
+    ports:
+      - "localhost:8069:8069"
+      - "localhost:8072:8072"
+    volumes:
+      - ./main:/opt/cgstudiomap
+
